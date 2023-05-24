@@ -26,6 +26,7 @@ namespace ET
 
 		public static async ETTask OnEnterMapClickHandler(this DlgLobby self)
 		{
+			self.DomainScene().GetComponent<UIComponent>().HideWindow<DlgLobby>();
 			await EnterMapHelper.EnterMapAsync(self.ClientScene());
 		}
 
