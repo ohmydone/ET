@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using CommandLine;
+using ET.Client;
 using UnityEngine;
 using YooAsset;
 
@@ -38,10 +39,12 @@ namespace ET
 			ETTask.ExceptionHandler += Log.Error;
 			YooAssets.Initialize();
 			StartCoroutine(InitPackage(StartProgram));
+			
 		}
 
 		void StartProgram()
 		{
+			Game.AddSingleton<ResComponent>();
 			Game.AddSingleton<CodeLoader>().Start();
 		}
 		

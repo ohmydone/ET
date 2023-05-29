@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using ET.Client;
 using UnityEngine;
 
 namespace ET
@@ -38,10 +39,9 @@ namespace ET
 				byte[] pdbBytes;
 				if (!Define.IsEditor)
 				{
-					Dictionary<string, UnityEngine.Object> dictionary = AssetsBundleHelper.LoadBundle("code.unity3d");
-					assBytes = ((TextAsset)dictionary["Model.dll"]).bytes;
-					pdbBytes = ((TextAsset)dictionary["Model.pdb"]).bytes;
-
+					assBytes=ResComponent.Instance.LoadRawFileDataSync("Assets/Bundles/Code/Model.dll");
+					pdbBytes=ResComponent.Instance.LoadRawFileDataSync("Assets/Bundles/Code/Model.pdb");
+					
 					if (Define.EnableIL2CPP)
 					{
 						HybridCLRHelper.Load();
@@ -68,9 +68,8 @@ namespace ET
 			byte[] pdbBytes;
 			if (!Define.IsEditor)
 			{
-				Dictionary<string, UnityEngine.Object> dictionary = AssetsBundleHelper.LoadBundle("code.unity3d");
-				assBytes = ((TextAsset)dictionary["Hotfix.dll"]).bytes;
-				pdbBytes = ((TextAsset)dictionary["Hotfix.pdb"]).bytes;
+				assBytes=ResComponent.Instance.LoadRawFileDataSync("Assets/Bundles/Code/Hotfix.dll");
+				pdbBytes=ResComponent.Instance.LoadRawFileDataSync("Assets/Bundles/Code/Hotfix.pdb");
 			}
 			else
 			{

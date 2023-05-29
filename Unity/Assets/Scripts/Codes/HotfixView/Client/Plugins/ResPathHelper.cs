@@ -6,9 +6,17 @@ namespace ET.Client
 {
     public static class ResPathHelper 
     {
-        public static string GetUIPath(string ui)
+        public static string GetUIDlgPath(string ui)
         {
-            return "Assets/Bundles/UI/"+ui;
+            return "Assets/Bundles/UI/Dlg/"+ui;
+        }
+        public static string GetUIItemPath(string ui)
+        {
+            return "Assets/Bundles/UI/Item/"+ui;
+        }
+        public static string GetUIRedDotPath(string ui)
+        {
+            return "Assets/Bundles/UI/RedDot/"+ui;
         }
         public static string GetUnitPath(string unit)
         {

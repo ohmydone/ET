@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ET.Client;
 using UnityEngine;
 
 namespace ET
@@ -302,7 +303,7 @@ namespace ET
         
         public static GameObject GetORedDotGameObjectFromPool(this RedDotComponent self)
         {
-            return GameObjectPoolHelper.GetObjectFromPool("RedDot",true,5);
+            return GameObjectPoolHelper.GetObjectFromPool(ResPathHelper.GetUIRedDotPath("RedDot"),true,5);
         }
 
         public static void RecycleRedDotGameObject(this RedDotComponent self, GameObject go)

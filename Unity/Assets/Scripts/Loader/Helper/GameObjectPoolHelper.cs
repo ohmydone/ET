@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ET.Client;
 using UnityEngine;
 
 namespace ET
@@ -8,9 +9,9 @@ namespace ET
     {
         private static Dictionary<string, GameObjectPool> poolDict = new Dictionary<string, GameObjectPool>();
         
-        public static void InitPool( string poolName, int size, PoolInflationType type = PoolInflationType.DOUBLE)
+        public static void InitPool( string path, int size, PoolInflationType type = PoolInflationType.DOUBLE)
         {
-            if (poolDict.ContainsKey(poolName))
+            if (poolDict.ContainsKey(path))
             {
                 return;
             }
@@ -18,15 +19,15 @@ namespace ET
             {
                 try
                 {
-                    GameObject pb = GetGameObjectByResType(poolName);
+                    GameObject pb = GetGameObjectByResType(path);
                     if (pb == null)
                     {
-                        Debug.LogError("[ResourceManager] Invalide prefab name for pooling :" + poolName);
+                        Debug.LogError("[ResourceManager] Invalide prefab name for pooling :" + path);
                         return;
                     }
 
                     
-                    poolDict[poolName] = new GameObjectPool(poolName, pb, GameObject.Find("Global/PoolRoot"), size, type);
+                    poolDict[path] = new GameObjectPool(path, pb, GameObject.Find("Global/PoolRoot"), size, type);
                 }
                 catch (Exception e)
                 {
@@ -145,9 +146,10 @@ namespace ET
             ReturnObjectToPool(t.gameObject);
         }
 
-        public static GameObject GetGameObjectByResType( string poolName)
+        public static GameObject GetGameObjectByResType( string path)
         {
             GameObject pb = null;
+            pb= ResComponent.Instance.LoadAsset<GameObject>(path);
             // Dictionary<string, UnityEngine.Object>  assetDict = AssetsBundleHelper.LoadBundle(poolName + ".unity3d").Item2;
             // pb = assetDict[poolName] as GameObject;
             return pb;

@@ -27,13 +27,13 @@ public partial class UICodeSpawner
         }
         string strDlgName = gameObject.name;
 
-        string strFilePath = Application.dataPath + "/../Codes/HotfixView/Demo/UIItemBehaviour";
+        string strFilePath = Application.dataPath + "/Scripts/Codes/HotfixView/Demo/UIItemBehaviour";
 
         if ( !System.IO.Directory.Exists(strFilePath) )
         {
             System.IO.Directory.CreateDirectory(strFilePath);
         }
-        strFilePath     = Application.dataPath + "/../Codes/HotfixView/Demo/UIItemBehaviour/" + strDlgName + "ViewSystem.cs";
+        strFilePath     = Application.dataPath + "/Scripts/Codes/HotfixView/Demo/UIItemBehaviour/" + strDlgName + "ViewSystem.cs";
         StreamWriter sw = new StreamWriter(strFilePath, false, Encoding.UTF8);
 
         StringBuilder strBuilder = new StringBuilder();
@@ -47,7 +47,7 @@ public partial class UICodeSpawner
         strBuilder.AppendLine("\t[ObjectSystem]");
         strBuilder.AppendFormat("\tpublic class Scroll_{0}DestroySystem : DestroySystem<Scroll_{1}> \r\n", strDlgName, strDlgName);
         strBuilder.AppendLine("\t{");
-        strBuilder.AppendFormat("\t\tpublic override void Destroy( Scroll_{0} self )",strDlgName);
+        strBuilder.AppendFormat("\t\tprotected override void Destroy( Scroll_{0} self )",strDlgName);
         strBuilder.AppendLine("\n\t\t{");
         
         strBuilder.AppendFormat("\t\t\tself.DestroyWidget();\r\n");
@@ -70,13 +70,13 @@ public partial class UICodeSpawner
         }
         string strDlgName = gameObject.name;
 
-        string strFilePath = Application.dataPath + "/../Codes/ModelView/Demo/UIItemBehaviour";
+        string strFilePath = Application.dataPath + "/Scripts/Codes/ModelView/Demo/UIItemBehaviour";
 
         if ( !System.IO.Directory.Exists(strFilePath) )
         {
             System.IO.Directory.CreateDirectory(strFilePath);
         }
-        strFilePath     = Application.dataPath + "/../Codes/ModelView/Demo/UIItemBehaviour/" + strDlgName + ".cs";
+        strFilePath     = Application.dataPath + "/Scripts/Codes/ModelView/Demo/UIItemBehaviour/" + strDlgName + ".cs";
         StreamWriter sw = new StreamWriter(strFilePath, false, Encoding.UTF8);
 
         StringBuilder strBuilder = new StringBuilder();

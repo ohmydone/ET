@@ -17,6 +17,8 @@ namespace UnityEngine.UI
     [System.Serializable]
     public class LoopScrollPrefabSourceInstance : LoopScrollPrefabSource
     {
+        private string path = "Assets/Bundles/UI/Item/";
+        
         public string prefabName;
         public int poolSize = 5;
 
@@ -27,10 +29,10 @@ namespace UnityEngine.UI
             {
                 if(!inited)
                 {
-                    GameObjectPoolHelper.InitPool(prefabName, poolSize);
+                    GameObjectPoolHelper.InitPool(path+ prefabName, poolSize);
                     inited = true;
                 }
-                return GameObjectPoolHelper.GetObjectFromPool(prefabName);
+                return GameObjectPoolHelper.GetObjectFromPool(path+ prefabName);
             }
             catch (Exception e)
             {

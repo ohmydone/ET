@@ -11,8 +11,6 @@ namespace ET.Client
     {
         public override Dictionary<Type, ByteBuf> Handle(ConfigComponent.GetAllConfigBytes args)
         {
-            Root.Instance.Scene.AddComponent<ResComponent>();
-            
             Dictionary<Type, ByteBuf> output = new Dictionary<Type, ByteBuf>();
             HashSet<Type> configTypes = EventSystem.Instance.GetTypes(typeof(ConfigAttribute));
 

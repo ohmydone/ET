@@ -279,7 +279,7 @@ namespace ET
             UIEventComponent.Instance.GetUIEventHandler(id).BeforeUnload(baseWindow);
             if(baseWindow.IsPreLoad)
             {
-                ResComponent.Instance.UnloadAsset(ResPathHelper.GetUIPath(baseWindow.UIPrefabGameObject.name));
+                ResComponent.Instance.UnloadAsset(ResPathHelper.GetUIDlgPath(baseWindow.UIPrefabGameObject.name));
                 UnityEngine.Object.Destroy( baseWindow.UIPrefabGameObject);
                 baseWindow.UIPrefabGameObject = null;
             }
@@ -483,7 +483,7 @@ namespace ET
                 Log.Error($"{baseWindow.WindowID} uiPath is not Exist!");
                 return;
             }
-            GameObject go                      = ResComponent.Instance.LoadAsset<GameObject>(ResPathHelper.GetUIPath(value));
+            GameObject go                      = ResComponent.Instance.LoadAsset<GameObject>(ResPathHelper.GetUIDlgPath(value));
             baseWindow.UIPrefabGameObject      = UnityEngine.Object.Instantiate(go);
             baseWindow.UIPrefabGameObject.name = go.name;
             
@@ -510,7 +510,7 @@ namespace ET
                 return;
             }
             
-            GameObject go                      = await ResComponent.Instance.LoadAssetAsync<GameObject>(ResPathHelper.GetUIPath(value));
+            GameObject go                      = await ResComponent.Instance.LoadAssetAsync<GameObject>(ResPathHelper.GetUIDlgPath(value));
             baseWindow.UIPrefabGameObject      = UnityEngine.Object.Instantiate(go);
             baseWindow.UIPrefabGameObject.name = go.name;
             
