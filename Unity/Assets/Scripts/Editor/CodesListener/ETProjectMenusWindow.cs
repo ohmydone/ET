@@ -22,10 +22,10 @@ public class ETProjectMenusWindow : EditorWindow
         }
         string title = (mode) switch
         {
-            Mode.CreateScript => "´´½¨½Å±¾",
-            Mode.CreateFolder => "´´½¨Ä¿Â¼",
-            Mode.RenameFolder => "ÖØÃüÃû½Å±¾",
-            Mode.RenamScript => "ÖØÃüÃûÄ¿Â¼",
+            Mode.CreateScript => "åˆ›å»ºè„šæœ¬",
+            Mode.CreateFolder => "åˆ›å»ºç›®å½•",
+            Mode.RenameFolder => "é‡å‘½åè„šæœ¬",
+            Mode.RenamScript => "é‡å‘½åç›®å½•",
             _ => mode.ToString(),
         };
         var window = GetWindow<ETProjectMenusWindow>(false, title);
@@ -64,10 +64,10 @@ public class ETProjectMenusWindow : EditorWindow
         }
         string btnName = (_mode) switch
         {
-            Mode.CreateScript => "´´½¨½Å±¾",
-            Mode.CreateFolder => "´´½¨Ä¿Â¼",
-            Mode.RenameFolder => "ÖØÃüÃû½Å±¾",
-            Mode.RenamScript => "ÖØÃüÃûÄ¿Â¼",
+            Mode.CreateScript => "åˆ›å»ºè„šæœ¬",
+            Mode.CreateFolder => "åˆ›å»ºç›®å½•",
+            Mode.RenameFolder => "é‡å‘½åè„šæœ¬",
+            Mode.RenamScript => "é‡å‘½åç›®å½•",
             _ => _mode.ToString(),
         };
         if (GUILayout.Button(btnName))
@@ -78,7 +78,7 @@ public class ETProjectMenusWindow : EditorWindow
                     {
                         if (_textFieldStr.Contains("/") || _textFieldStr.Contains("\\"))
                         {
-                            EditorUtility.DisplayDialog("´íÎó", "Õâ¸öÃû×Ö²»ºÏ·¨", "¹Ø±Õ");
+                            EditorUtility.DisplayDialog("é”™è¯¯", "è¿™ä¸ªåå­—ä¸åˆæ³•", "å…³é—­");
                             return;
                         }
                         if (!_textFieldStr.EndsWith(".cs"))
@@ -97,7 +97,7 @@ public class ETProjectMenusWindow : EditorWindow
                     {
                         if (_textFieldStr.Contains("/") || _textFieldStr.Contains("\\"))
                         {
-                            EditorUtility.DisplayDialog("´íÎó", "Õâ¸öÃû×Ö²»ºÏ·¨", "¹Ø±Õ");
+                            EditorUtility.DisplayDialog("é”™è¯¯", "è¿™ä¸ªåå­—ä¸åˆæ³•", "å…³é—­");
                             return;
                         }
                         DirectoryInfo dirInfo = new DirectoryInfo(_fullPath);
@@ -111,7 +111,7 @@ public class ETProjectMenusWindow : EditorWindow
                         FileInfo file = new FileInfo(_fullPath);
                         if (_textFieldStr.Contains("/") || _textFieldStr.Contains("\\"))
                         {
-                            EditorUtility.DisplayDialog("´íÎó", "Õâ¸öÃû×Ö²»ºÏ·¨", "¹Ø±Õ");
+                            EditorUtility.DisplayDialog("é”™è¯¯", "è¿™ä¸ªåå­—ä¸åˆæ³•", "å…³é—­");
                             return;
                         }
                         if (!_textFieldStr.EndsWith(".cs"))
@@ -122,7 +122,7 @@ public class ETProjectMenusWindow : EditorWindow
 
                         if (File.Exists(dest))
                         {
-                            EditorUtility.DisplayDialog("´íÎó", "Õâ¸öÒÑ´æÔÚÍ¬ÃûÎÄ¼ş", "¹Ø±Õ");
+                            EditorUtility.DisplayDialog("é”™è¯¯", "è¿™ä¸ªå·²å­˜åœ¨åŒåæ–‡ä»¶", "å…³é—­");
                             return;
                         }
                         File.Move(file.FullName, dest);
@@ -133,7 +133,7 @@ public class ETProjectMenusWindow : EditorWindow
                     {
                         if (_textFieldStr.Contains("/") || _textFieldStr.Contains("\\"))
                         {
-                            EditorUtility.DisplayDialog("´íÎó", "Õâ¸öÃû×Ö²»ºÏ·¨", "¹Ø±Õ");
+                            EditorUtility.DisplayDialog("é”™è¯¯", "è¿™ä¸ªåå­—ä¸åˆæ³•", "å…³é—­");
                             return;
                         }
                         DirectoryInfo dirInfo = new DirectoryInfo(_fullPath);
@@ -141,7 +141,7 @@ public class ETProjectMenusWindow : EditorWindow
 
                         if (File.Exists(dest))
                         {
-                            EditorUtility.DisplayDialog("´íÎó", "Õâ¸öÒÑ´æÔÚÍ¬ÃûÎÄ¼ş", "¹Ø±Õ");
+                            EditorUtility.DisplayDialog("é”™è¯¯", "è¿™ä¸ªå·²å­˜åœ¨åŒåæ–‡ä»¶", "å…³é—­");
                             return;
                         }
                         Directory.Move(dirInfo.FullName, dest);

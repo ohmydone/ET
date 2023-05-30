@@ -5,6 +5,7 @@ D:/project/Magic/Config/Excel/c/GameConfig/localizeconfig_excel_encategory.bytes
 D:/project/Magic/Config/Excel/c/GameConfig/localizeconfig_ui_chscategory.bytes,A55F526B9DD9C24114443942D8CEB90,861,1684723500673
 D:/project/Magic/Config/Excel/c/GameConfig/localizeconfig_ui_chtcategory.bytes,829852B5277C8AC82D43F36801D96,863,1684723500674
 D:/project/Magic/Config/Excel/c/GameConfig/localizeconfig_ui_encategory.bytes,5DAF6B161F612A4E38AA8B327AFB96B,789,1684723500674
+D:/project/Magic/Config/Excel/c/GameConfig/spellconfigcategory.bytes,99CDB36881744FCBE13354F0256D9F40,40,1685427961884
 D:/project/Magic/Config/Excel/c/GameConfig/unitconfigcategory.bytes,2DD3BCECFA39F85F80CC3D8917737A8,152,1684723500674
 D:/project/Magic/Config/Excel/cs/GameConfig/aiconfigcategory.bytes,37AA4CC6969B1A5C214592393A8E6F,65,1684723506199
 D:/project/Magic/Config/Excel/cs/GameConfig/localizeconfig_excel_chscategory.bytes,CD345C35AC8361F0F3BA9B4DBA819EA2,128,1684723506199
@@ -13,12 +14,14 @@ D:/project/Magic/Config/Excel/cs/GameConfig/localizeconfig_excel_encategory.byte
 D:/project/Magic/Config/Excel/cs/GameConfig/localizeconfig_ui_chscategory.bytes,A55F526B9DD9C24114443942D8CEB90,861,1684723506199
 D:/project/Magic/Config/Excel/cs/GameConfig/localizeconfig_ui_chtcategory.bytes,829852B5277C8AC82D43F36801D96,863,1684723506197
 D:/project/Magic/Config/Excel/cs/GameConfig/localizeconfig_ui_encategory.bytes,5DAF6B161F612A4E38AA8B327AFB96B,789,1684723506199
+D:/project/Magic/Config/Excel/cs/GameConfig/spellconfigcategory.bytes,99CDB36881744FCBE13354F0256D9F40,40,1685427967393
 D:/project/Magic/Config/Excel/cs/GameConfig/unitconfigcategory.bytes,5D6D30B5B447B8E682E3F04AEEA76E27,156,1684723506198
 D:/project/Magic/Config/Excel/cs/StartConfig/Localhost/startmachineconfigcategory.bytes,8FFAD2F95982422EF86D8F1F217924AA,28,1684723763091
 D:/project/Magic/Config/Excel/cs/StartConfig/Localhost/startprocessconfigcategory.bytes,283AC87C82882EDB0DEA8D3574CC239,6,1684723763091
 D:/project/Magic/Config/Excel/cs/StartConfig/Localhost/startsceneconfigcategory.bytes,4D59F7123EF2F4D4A569C5867FEDEE3,247,1684723763091
 D:/project/Magic/Config/Excel/cs/StartConfig/Localhost/startzoneconfigcategory.bytes,2BF8E436A2732CFB0181C4478F7F554,65,1684723763091
 D:/project/Magic/Config/Excel/s/GameConfig/aiconfigcategory.bytes,37AA4CC6969B1A5C214592393A8E6F,65,1684723502316
+D:/project/Magic/Config/Excel/s/GameConfig/spellconfigcategory.bytes,99CDB36881744FCBE13354F0256D9F40,40,1685427963481
 D:/project/Magic/Config/Excel/s/GameConfig/unitconfigcategory.bytes,A0F33326DCA62B3E36363AF61CC6DC2A,148,1684723502316
 D:/project/Magic/Config/Excel/s/StartConfig/Localhost/startmachineconfigcategory.bytes,8FFAD2F95982422EF86D8F1F217924AA,28,1684723759273
 D:/project/Magic/Config/Excel/s/StartConfig/Localhost/startprocessconfigcategory.bytes,283AC87C82882EDB0DEA8D3574CC239,6,1684723759273
@@ -31,6 +34,7 @@ D:/project/Magic/Config/Json/c/GameConfig/localizeconfig_excel_encategory.json,7
 D:/project/Magic/Config/Json/c/GameConfig/localizeconfig_ui_chscategory.json,DEEE5DE76D69267A68ACEE43A585,1926,1684723501464
 D:/project/Magic/Config/Json/c/GameConfig/localizeconfig_ui_chtcategory.json,D662862AD4B1AF38EF6F00195AB920,1930,1684723501465
 D:/project/Magic/Config/Json/c/GameConfig/localizeconfig_ui_encategory.json,B9B08EAD6AD88B814739C59A197C6FBD,1830,1684723501464
+D:/project/Magic/Config/Json/c/GameConfig/spellconfigcategory.json,6F2FB92E0C62C5F93374D9875D61116,206,1685427962663
 D:/project/Magic/Config/Json/c/GameConfig/unitconfigcategory.json,9351BBA3F36D4DB1AA4CF735F18C714,690,1684723501464
 D:/project/Magic/Config/Json/cs/GameConfig/aiconfigcategory.json,BDFA9879E58338A413EA9E8B93296CE,414,1684723508508
 D:/project/Magic/Config/Json/cs/GameConfig/localizeconfig_excel_chscategory.json,EFDD289DFC31D3923FA56029D9B3FEB0,306,1684723508508
@@ -39,6 +43,7 @@ D:/project/Magic/Config/Json/cs/GameConfig/localizeconfig_excel_encategory.json,
 D:/project/Magic/Config/Json/cs/GameConfig/localizeconfig_ui_chscategory.json,DEEE5DE76D69267A68ACEE43A585,1926,1684723508509
 D:/project/Magic/Config/Json/cs/GameConfig/localizeconfig_ui_chtcategory.json,D662862AD4B1AF38EF6F00195AB920,1930,1684723508507
 D:/project/Magic/Config/Json/cs/GameConfig/localizeconfig_ui_encategory.json,B9B08EAD6AD88B814739C59A197C6FBD,1830,1684723508509
+D:/project/Magic/Config/Json/cs/GameConfig/spellconfigcategory.json,6F2FB92E0C62C5F93374D9875D61116,206,1685427969683
 D:/project/Magic/Config/Json/cs/GameConfig/unitconfigcategory.json,18E5C53D66CC1985C7FAC2D75BAF0E6,766,1684723508510
 D:/project/Magic/Config/Json/cs/StartConfig/Benchmark/startmachineconfigcategory.json,58E3A390C4302FD4F4172A5FBFF2340,114,1684724341036
 D:/project/Magic/Config/Json/cs/StartConfig/Benchmark/startprocessconfigcategory.json,711971A35F2C83985938121CA4A97746,213,1684724341036
@@ -57,6 +62,7 @@ D:/project/Magic/Config/Json/cs/StartConfig/RouterTest/startprocessconfigcategor
 D:/project/Magic/Config/Json/cs/StartConfig/RouterTest/startsceneconfigcategory.json,2295DC266F98C69D92B53E4156D36F95,1627,1684724327522
 D:/project/Magic/Config/Json/cs/StartConfig/RouterTest/startzoneconfigcategory.json,C24B175FEE23DF9338DB10D3D5D41923,311,1684724327522
 D:/project/Magic/Config/Json/s/GameConfig/aiconfigcategory.json,BDFA9879E58338A413EA9E8B93296CE,414,1684723504634
+D:/project/Magic/Config/Json/s/GameConfig/spellconfigcategory.json,6F2FB92E0C62C5F93374D9875D61116,206,1685427965827
 D:/project/Magic/Config/Json/s/GameConfig/unitconfigcategory.json,DEF642B743E47ACFB5BB3BCE254FEE88,686,1684723504634
 D:/project/Magic/Config/Json/s/StartConfig/Localhost/startmachineconfigcategory.json,58E3A390C4302FD4F4172A5FBFF2340,114,1684723505377
 D:/project/Magic/Config/Json/s/StartConfig/Localhost/startprocessconfigcategory.json,9EB5A7C3E1DC288BCF49DFD134FB7A7,73,1684723505376
@@ -64,10 +70,11 @@ D:/project/Magic/Config/Json/s/StartConfig/Localhost/startsceneconfigcategory.js
 D:/project/Magic/Config/Json/s/StartConfig/Localhost/startzoneconfigcategory.json,E4B983FA8E2ACDDFFD4FB5614DD4877,310,1684723505377
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/__beans__.xlsx,E64435157449EC4A1B2B9884B6D52510,9947,1684480326781
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/__enums__.xlsx,3758A8A00C7D60B33A2A213BC8A8E6,10208,1676530553510
-D:/project/Magic/Unity/Assets/Config/Excel/Datas/__tables__.xlsx,7E7D82A7AE487946B85F713FCE418E,10579,1684480326783
+D:/project/Magic/Unity/Assets/Config/Excel/Datas/__tables__.xlsx,E41FF150A158296B451ADBB6C4A6A7,10686,1685427550844
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/AIConfig.xlsx,57C6517AA7FBD1AB557C82FB8957C130,10754,1676530553413
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/LocalizeConfig_Excel.csv,C47C5A8F45E59433B35C587A6639FD5,322,1684480326756
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/LocalizeConfig_UI.csv,BD1E571B4F43A33F88BB4FB197346FB,1951,1684480326757
+D:/project/Magic/Unity/Assets/Config/Excel/Datas/SpellConfig.xlsx,4B3498286E8AB8DD2714A6D48F44B4F8,9873,1685427951966
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/StartConfig/Localhost/__beans__.xlsx,E5CEDBF09DDE2B155B1835B5D8E165E,9789,1676530553434
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/StartConfig/Localhost/__enums__.xlsx,B8844630A416337714D2256ED395F0C5,10219,1676530553435
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/StartConfig/Localhost/__tables__.xlsx,7ED061484D109A6CA29862CAB26DEA5,10265,1676530553436
@@ -88,6 +95,8 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/Localiz
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/LocalizeConfig_UI_CHSCategory.cs,BBEF8DA8A1F282C11F91B6948F86AC2,2327,1684723500698
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/LocalizeConfig_UI_CHTCategory.cs,603724A6D3B2492DCC1AB7FD25FBE827,2327,1684723500696
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/LocalizeConfig_UI_ENCategory.cs,59AFC5DCCA2BB08F6986E027AB1DBEB6,2311,1684723500695
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SpellConfig.cs,D42D2951B553BBD298D3CEBE528DA6,1439,1685427961884
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SpellConfigCategory.cs,1269BB6BFB1211B6B2CF6CAB1EC254,2184,1685427961884
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/UnitConfig.cs,E221CBE55E275E7C96A779F21509918,2043,1684723500697
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/UnitConfigCategory.cs,9D3C6D5B92BA7AD89799E25D7CFD69,2168,1684723500696
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/AIConfig.cs,DEBB8837DBD540193DED42E1EDA45D,2350,1684723763881
@@ -102,6 +111,8 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/L
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/LocalizeConfig_UI_CHSCategory.cs,BBEF8DA8A1F282C11F91B6948F86AC2,2327,1684723763884
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/LocalizeConfig_UI_CHTCategory.cs,603724A6D3B2492DCC1AB7FD25FBE827,2327,1684723763885
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/LocalizeConfig_UI_ENCategory.cs,59AFC5DCCA2BB08F6986E027AB1DBEB6,2311,1684723763885
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/SpellConfig.cs,D42D2951B553BBD298D3CEBE528DA6,1439,1685427968917
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/SpellConfigCategory.cs,1269BB6BFB1211B6B2CF6CAB1EC254,2184,1685427968917
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/StartMachineConfig.cs,A9B3D044F6581FEE98F41B342B91EC7D,1880,1684723763885
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/StartMachineConfigCategory.cs,46B9B7163BE23CBA72DE9B6E2C5F6A1E,2296,1684723763880
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/StartProcessConfig.cs,BB37661913AD17ACBA6743E5AF3CF5CB,1676,1684723763886
@@ -114,6 +125,8 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/U
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/UnitConfigCategory.cs,9D3C6D5B92BA7AD89799E25D7CFD69,2168,1684723763880
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/AIConfig.cs,DEBB8837DBD540193DED42E1EDA45D,2350,1684723503884
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/AIConfigCategory.cs,27B7EF389B315CFFF986E6F04F8FEDB0,2136,1684723503884
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/SpellConfig.cs,D42D2951B553BBD298D3CEBE528DA6,1439,1685427965061
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/SpellConfigCategory.cs,1269BB6BFB1211B6B2CF6CAB1EC254,2184,1685427965061
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/StartMachineConfig.cs,A9B3D044F6581FEE98F41B342B91EC7D,1880,1684723503884
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/StartMachineConfigCategory.cs,46B9B7163BE23CBA72DE9B6E2C5F6A1E,2296,1684723503886
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/StartProcessConfig.cs,BB37661913AD17ACBA6743E5AF3CF5CB,1676,1684723503884
