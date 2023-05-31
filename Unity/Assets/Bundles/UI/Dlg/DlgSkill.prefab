@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSource:
-    prefabName: 
+    prefabName: ItemSkil
     poolSize: 5
   totalCount: 0
   reverseDirection: 0

@@ -19,30 +19,6 @@ namespace ET
 			return this;
 		}
 
-		public UnityEngine.UI.Text ELabel_IndexText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if (this.isCacheNode)
-     			{
-     				if( this.m_ELabel_IndexText == null )
-     				{
-		    			this.m_ELabel_IndexText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ELabel_Index");
-     				}
-     				return this.m_ELabel_IndexText;
-     			}
-     			else
-     			{
-		    		return UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ELabel_Index");
-     			}
-     		}
-     	}
-
 		public UnityEngine.UI.Image E_testImage
      	{
      		get
@@ -67,16 +43,66 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Text ELab_BindText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if (this.isCacheNode)
+     			{
+     				if( this.m_ELab_BindText == null )
+     				{
+		    			this.m_ELab_BindText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ELab_Bind");
+     				}
+     				return this.m_ELab_BindText;
+     			}
+     			else
+     			{
+		    		return UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ELab_Bind");
+     			}
+     		}
+     	}
+
+		public UnityEngine.UI.Text ELab_NameText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if (this.isCacheNode)
+     			{
+     				if( this.m_ELab_NameText == null )
+     				{
+		    			this.m_ELab_NameText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ELab_Name");
+     				}
+     				return this.m_ELab_NameText;
+     			}
+     			else
+     			{
+		    		return UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"ELab_Name");
+     			}
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
-			this.m_ELabel_IndexText = null;
 			this.m_E_testImage = null;
+			this.m_ELab_BindText = null;
+			this.m_ELab_NameText = null;
 			this.uiTransform = null;
 			this.DataId = 0;
 		}
 
-		private UnityEngine.UI.Text m_ELabel_IndexText = null;
 		private UnityEngine.UI.Image m_E_testImage = null;
+		private UnityEngine.UI.Text m_ELab_BindText = null;
+		private UnityEngine.UI.Text m_ELab_NameText = null;
 		public Transform uiTransform = null;
 	}
 }

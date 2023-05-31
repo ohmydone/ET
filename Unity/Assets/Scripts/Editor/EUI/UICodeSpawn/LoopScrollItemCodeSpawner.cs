@@ -34,6 +34,13 @@ public partial class UICodeSpawner
             System.IO.Directory.CreateDirectory(strFilePath);
         }
         strFilePath     = Application.dataPath + "/Scripts/Codes/HotfixView/Demo/UIItemBehaviour/" + strDlgName + "ViewSystem.cs";
+        
+        if (System.IO.Directory.Exists(strFilePath) )
+        {
+            Debug.LogError("已存在 " + strDlgName + "System.cs,将不会再次生成。");
+            return;
+        }
+        
         StreamWriter sw = new StreamWriter(strFilePath, false, Encoding.UTF8);
 
         StringBuilder strBuilder = new StringBuilder();
