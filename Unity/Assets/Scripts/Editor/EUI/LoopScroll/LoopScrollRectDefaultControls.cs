@@ -142,7 +142,7 @@ namespace UnityEditor.UI
             GameObject go = LoopScrollRectDefaultControls.CreateLoopHorizontalScrollRect(GetStandardResources());
             PlaceUIElementRoot(go, menuCommand);
           
-            go.name = "ELoopScrollList_";
+            go.name = "ELSV_";
         }
 
         [MenuItem("GameObject/EUI/Loop Vertical Scroll Rect", false, -1)]
@@ -151,7 +151,7 @@ namespace UnityEditor.UI
             GameObject go = LoopScrollRectDefaultControls.CreateLoopVerticalScrollRect(GetStandardResources());
             PlaceUIElementRoot(go, menuCommand);
          
-            go.name = "ELoopScrollList_";
+            go.name = "ELSV_";
         }
         
         
@@ -161,7 +161,7 @@ namespace UnityEditor.UI
             GameObject go = LoopScrollRectDefaultControls.CreateLoopHorizontalScrollRect(GetStandardResources(),true);
             PlaceUIElementRoot(go, menuCommand);
           
-            go.name = "ELoopScrollList_";
+            go.name = "ELSV_";
         }
 
         [MenuItem("GameObject/EUI/Loop Vertical Grid Scroll Rect", false, -1)]
@@ -170,7 +170,7 @@ namespace UnityEditor.UI
             GameObject go = LoopScrollRectDefaultControls.CreateLoopVerticalScrollRect(GetStandardResources(),true);
             PlaceUIElementRoot(go, menuCommand);
          
-            go.name = "ELoopScrollList_";
+            go.name = "ELSV_";
         }
         
         
@@ -186,7 +186,7 @@ namespace UnityEditor.UI
             go.AddComponent<CanvasRenderer>();
             go.AddComponent<Image>();
          
-            go.name = "ESprite_";
+            go.name = "EImg_";
         }
         
         
@@ -202,7 +202,7 @@ namespace UnityEditor.UI
             go.AddComponent<Image>();
             go.AddComponent<Button>();
            
-            go.name = "EButton_";
+            go.name = "EBtn_";
         }
         
         
@@ -218,7 +218,7 @@ namespace UnityEditor.UI
             go.AddComponent<Image>();
             go.AddComponent<Button>();
          
-            go.name = "EButton_";
+            go.name = "EBtn_";
             GameObject go2 = new GameObject();
             go2.transform.SetParent(go.transform,false);
             go2.transform.SetAsLastSibling();
@@ -228,7 +228,7 @@ namespace UnityEditor.UI
             text.color = Color.black;
             text.text = "1111";
            
-            go2.name = "ELabel_";
+            go2.name = "ELab_";
         }
         
         [MenuItem("GameObject/EUI/EUILabel", false, -1)]
@@ -244,7 +244,7 @@ namespace UnityEditor.UI
             text.color = Color.black;
             text.text = "1111";
           
-            go.name = "ELabel_";
+            go.name = "ELab_";
         }
         
     }

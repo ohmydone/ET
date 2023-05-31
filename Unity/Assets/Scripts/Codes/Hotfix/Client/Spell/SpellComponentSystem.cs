@@ -9,7 +9,7 @@ namespace ET.Client
     {
         protected override void Awake(SpellComponent self)
         {
-            
+            self.Init();
         }
     }
 	

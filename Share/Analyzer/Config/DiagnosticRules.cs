@@ -106,7 +106,7 @@ namespace ET.Analyzer
                     MessageFormat,
                     DiagnosticCategories.Hotfix,
                     DiagnosticSeverity.Error,
-                    true,
+                    false,
                     Description);
     }
 

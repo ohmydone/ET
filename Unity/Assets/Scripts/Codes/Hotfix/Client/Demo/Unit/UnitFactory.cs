@@ -8,7 +8,7 @@ namespace ET.Client
         {
 	        UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
 	        Unit unit = unitComponent.AddChildWithId<Unit, int>(unitInfo.UnitId, unitInfo.ConfigId);
-	        unitComponent.Add(unit);
+	        unitComponent.SetUnit(unit);
 	        
 	        unit.Position = unitInfo.Position;
 	        unit.Forward = unitInfo.Forward;
@@ -34,7 +34,8 @@ namespace ET.Client
 	        unit.AddComponent<XunLuoPathComponent>();
 
 	        unit.AddComponent<SpellComponent>();
-	        
+
+
 	        EventSystem.Instance.Publish(unit.DomainScene(), new EventType.AfterUnitCreate() {Unit = unit});
             return unit;
         }

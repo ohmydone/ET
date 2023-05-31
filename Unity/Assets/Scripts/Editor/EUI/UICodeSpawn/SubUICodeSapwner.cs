@@ -26,14 +26,14 @@ public partial class UICodeSpawner
         }
         string strDlgName = objPanel.name;
 
-        string strFilePath = Application.dataPath + "/../Codes/HotfixView/Demo/UIBehaviour/CommonUI" +
+        string strFilePath = Application.dataPath + "/Scripts/Codes/HotfixView/Demo/UIBehaviour/CommonUI" +
                              "";
 
         if ( !System.IO.Directory.Exists(strFilePath) )
         {
             System.IO.Directory.CreateDirectory(strFilePath);
         }
-        strFilePath     = Application.dataPath + "/../Codes/HotfixView/Demo/UIBehaviour/CommonUI/" + strDlgName + "ViewSystem.cs";
+        strFilePath     = Application.dataPath + "/Scripts/Codes/HotfixView/Demo/UIBehaviour/CommonUI/" + strDlgName + "ViewSystem.cs";
 	    
         StreamWriter sw = new StreamWriter(strFilePath, false, Encoding.UTF8);
 
@@ -46,7 +46,7 @@ public partial class UICodeSpawner
         strBuilder.AppendLine("\t[ObjectSystem]");
         strBuilder.AppendFormat("\tpublic class {0}AwakeSystem : AwakeSystem<{1},Transform> \r\n", strDlgName, strDlgName);
         strBuilder.AppendLine("\t{");
-        strBuilder.AppendFormat("\t\tpublic override void Awake({0} self,Transform transform)\n",strDlgName);
+        strBuilder.AppendFormat("\t\tprotected override void Awake({0} self,Transform transform)\n",strDlgName);
         strBuilder.AppendLine("\t\t{");
         strBuilder.AppendLine("\t\t\tself.uiTransform = transform;");
         strBuilder.AppendLine("\t\t}");
@@ -57,7 +57,7 @@ public partial class UICodeSpawner
         strBuilder.AppendLine("\t[ObjectSystem]");
         strBuilder.AppendFormat("\tpublic class {0}DestroySystem : DestroySystem<{1}> \r\n", strDlgName, strDlgName);
         strBuilder.AppendLine("\t{");
-        strBuilder.AppendFormat("\t\tpublic override void Destroy({0} self)",strDlgName);
+        strBuilder.AppendFormat("\t\tprotected override void Destroy({0} self)",strDlgName);
         strBuilder.AppendLine("\n\t\t{");
 
         strBuilder.AppendFormat("\t\t\tself.DestroyWidget();\r\n");
@@ -79,13 +79,13 @@ public partial class UICodeSpawner
         }
         string strDlgName = objPanel.name;
 
-        string strFilePath = Application.dataPath + "/../Codes/ModelView/Demo/UIBehaviour/CommonUI";
+        string strFilePath = Application.dataPath + "/Scripts/Codes/ModelView/Demo/UIBehaviour/CommonUI";
 
         if ( !System.IO.Directory.Exists(strFilePath) )
         {
             System.IO.Directory.CreateDirectory(strFilePath);
         }
-        strFilePath = Application.dataPath + "/../Codes/ModelView/Demo/UIBehaviour/CommonUI/" + strDlgName + ".cs";
+        strFilePath = Application.dataPath + "/Scripts/Codes/ModelView/Demo/UIBehaviour/CommonUI/" + strDlgName + ".cs";
 	    
         StreamWriter sw = new StreamWriter(strFilePath, false, Encoding.UTF8);
 
