@@ -10,7 +10,8 @@
         "Unity.Mathematics",
         "Unity.Loader",
         "YooAsset",
-        "Animancer"
+        "Animancer",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [
         "Editor"

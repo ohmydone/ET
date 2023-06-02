@@ -26,10 +26,15 @@ namespace ET.Client
         {
             return "Assets/Scenes/"+scene;
         }
+
+        public static string GetInputPath(string asset)
+        {
+            return "Assets/Bundles/InputAction/" + asset;
+        }
         
         public static string GetConfigPath(string config)
         {
-            return "Assets/Config/"+config;
+            return "Assets/Bundles/Config/"+config;
         }
         
         public static string GetSpriteAltasPath(string sa)
