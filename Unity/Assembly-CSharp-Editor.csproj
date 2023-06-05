@@ -324,9 +324,6 @@
      <Reference Include="LZ4">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.focus-creative-games.hybridclr_unity@00cedc166f\Plugins\LZ4.dll</HintPath>
      </Reference>
-     <Reference Include="DOTween">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\DOTween\DOTween.dll</HintPath>
-     </Reference>
      <Reference Include="Sirenix.OdinInspector.Attributes">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
      </Reference>
@@ -380,6 +377,36 @@
      </Reference>
      <Reference Include="MongoDB.Bson">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\MongoDB.Bson.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTween">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\DOTween.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenPro">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiLib">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenProEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\Editor\DOTweenProEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI.OpenXmlFormats">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXmlFormats.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI.OOXML">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OOXML.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI.OpenXml4Net">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXml4Net.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -871,6 +898,10 @@
       <Project>{03938ccd-4b40-8dfb-6b9b-21988d5cac0a}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
+      <Project>{c4d634f5-6833-2b03-289c-a943cc171719}</Project>
+      <Name>Assembly-CSharp-Editor-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="YooAsset.Editor.csproj">
       <Project>{e17e49b1-467b-9f35-a59e-d9aea156de57}</Project>
       <Name>YooAsset.Editor</Name>
@@ -962,6 +993,14 @@
     <ProjectReference Include="Unity.Editor.Codes.csproj">
       <Project>{89dd0821-4ae5-0ee7-65a0-445ef4c85913}</Project>
       <Name>Unity.Editor.Codes</Name>
+    </ProjectReference>
+    <ProjectReference Include="DOTween.Modules.csproj">
+      <Project>{e98cb742-1497-f2c7-9027-6d6184506ff6}</Project>
+      <Name>DOTween.Modules</Name>
+    </ProjectReference>
+    <ProjectReference Include="DOTweenPro.Scripts.csproj">
+      <Project>{a83d90bd-03b8-832b-85d8-a3fd7710b697}</Project>
+      <Name>DOTweenPro.Scripts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

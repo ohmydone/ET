@@ -324,9 +324,6 @@
      <Reference Include="LZ4">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.focus-creative-games.hybridclr_unity@00cedc166f\Plugins\LZ4.dll</HintPath>
      </Reference>
-     <Reference Include="DOTween">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\DOTween\DOTween.dll</HintPath>
-     </Reference>
      <Reference Include="Sirenix.OdinInspector.Attributes">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
      </Reference>
@@ -380,6 +377,36 @@
      </Reference>
      <Reference Include="MongoDB.Bson">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\MongoDB.Bson.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTween">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\DOTween.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenPro">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiLib">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenProEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\Editor\DOTweenProEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI.OpenXmlFormats">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXmlFormats.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI.OOXML">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OOXML.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI.OpenXml4Net">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXml4Net.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>

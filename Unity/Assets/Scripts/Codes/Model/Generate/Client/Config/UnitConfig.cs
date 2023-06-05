@@ -17,10 +17,8 @@ public sealed partial class UnitConfig: Bright.Config.BeanBase
     public UnitConfig(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
+        Name = _buf.ReadString();
         Type = _buf.ReadInt();
-        Name_l10n_key = _buf.ReadString(); Name = _buf.ReadString();
-        Position = _buf.ReadInt();
-        Height = _buf.ReadInt();
         PostInit();
     }
 
@@ -34,22 +32,10 @@ public sealed partial class UnitConfig: Bright.Config.BeanBase
     /// </summary>
     public int Id { get; private set; }
     /// <summary>
-    /// Type
-    /// </summary>
-    public int Type { get; private set; }
-    /// <summary>
     /// 名字
     /// </summary>
     public string Name { get; private set; }
-    public string Name_l10n_key { get; }
-    /// <summary>
-    /// 位置
-    /// </summary>
-    public int Position { get; private set; }
-    /// <summary>
-    ///  
-    /// </summary>
-    public int Height { get; private set; }
+    public int Type { get; private set; }
 
     public const int __ID__ = -568528378;
     public override int GetTypeId() => __ID__;
@@ -61,17 +47,14 @@ public sealed partial class UnitConfig: Bright.Config.BeanBase
 
     public  void TranslateText(System.Func<string, string, string> translator)
     {
-        Name = translator(Name_l10n_key, Name);
     }
 
     public override string ToString()
     {
         return "{ "
         + "Id:" + Id + ","
-        + "Type:" + Type + ","
         + "Name:" + Name + ","
-        + "Position:" + Position + ","
-        + "Height:" + Height + ","
+        + "Type:" + Type + ","
         + "}";
     }
     
