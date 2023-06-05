@@ -4,7 +4,7 @@ using ET;
 using System.Collections.Generic;
 using UnityEngine;
 
-#if !EGAMEPLAY_EXCEL
+
 namespace EGamePlay.Combat
 {
     public partial class SkillAbility : Entity, IAbilityEntity
@@ -91,4 +91,3 @@ namespace EGamePlay.Combat
         }
     }
 }
-#endif

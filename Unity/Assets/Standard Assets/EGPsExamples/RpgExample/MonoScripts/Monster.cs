@@ -35,12 +35,9 @@ public sealed class Monster : MonoBehaviour
         CombatEntity.ListenActionPoint(ActionPointType.PostReceiveCure, OnReceiveCure);
         CombatEntity.ListenActionPoint(ActionPointType.PostReceiveStatus, OnReceiveStatus);
         CombatEntity.Subscribe<RemoveStatusEvent>(OnRemoveStatus);
-
-#if EGAMEPLAY_EXCEL
-        var config = ET.StatusConfigCategory.Instance.GetByName("Tenacity");
-#else
+        
         var config = Resources.Load<StatusConfigObject>("StatusConfigs/Status_Tenacity");
-#endif
+
         var Status = CombatEntity.AttachStatus(config);
         Status.AddComponent<StatusTenacityComponent>();
         Status.OwnerEntity = CombatEntity;
@@ -48,12 +45,11 @@ public sealed class Monster : MonoBehaviour
         if (name == "Monster")
         {
             Boss = this;
-#if !EGAMEPLAY_EXCEL
             config = Resources.Load<StatusConfigObject>("StatusConfigs/Status_QiangTi");
             Status = CombatEntity.AttachStatus(config);
             Status.OwnerEntity = CombatEntity;
             Status.TryActivateAbility();
-#endif
+
         }
     }
 
@@ -114,11 +110,8 @@ public sealed class Monster : MonoBehaviour
     {
         var action = combatAction as AddStatusAction;
         var addStatusEffect = action.AddStatusEffect;
-#if EGAMEPLAY_EXCEL
-        var statusConfig = addStatusEffect.AddStatusConfig;
-#else
         var statusConfig = addStatusEffect.AddStatus;
-#endif
+
         if (name == "Monster")
         {
             if (StatusSlotsTrm != null)

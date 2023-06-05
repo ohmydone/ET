@@ -29,7 +29,7 @@ namespace EGamePlay.Combat
     }
 
     /// <summary>
-    /// Ê©¼Ó×´Ì¬ÐÐ¶¯
+    /// Ê©ï¿½ï¿½×´Ì¬ï¿½Ð¶ï¿½
     /// </summary>
     public class AddStatusAction : Entity, IActionExecution
     {
@@ -37,13 +37,13 @@ namespace EGamePlay.Combat
         public AddStatusEffect AddStatusEffect => SourceAssignAction.AbilityEffect.EffectConfig as AddStatusEffect;
         public StatusAbility Status { get; set; }
 
-        /// ÐÐ¶¯ÄÜÁ¦
+        /// ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½
         public Entity ActionAbility { get; set; }
-        /// Ð§¹û¸³¸øÐÐ¶¯Ô´
+        /// Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Ô´
         public EffectAssignAction SourceAssignAction { get; set; }
-        /// ÐÐ¶¯ÊµÌå
+        /// ï¿½Ð¶ï¿½Êµï¿½ï¿½
         public CombatEntity Creator { get; set; }
-        /// Ä¿±ê¶ÔÏó
+        /// Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
         public CombatEntity Target { get; set; }
 
 
@@ -52,7 +52,7 @@ namespace EGamePlay.Combat
             Entity.Destroy(this);
         }
 
-        //Ç°ÖÃ´¦Àí
+        //Ç°ï¿½Ã´ï¿½ï¿½ï¿½
         private void PreProcess()
         {
 
@@ -61,16 +61,10 @@ namespace EGamePlay.Combat
         public void ApplyAddStatus()
         {
             PreProcess();
-
-#if EGAMEPLAY_EXCEL
-            var statusConfig = AddStatusEffect.AddStatusConfig;
-            var canStack = statusConfig.CanStack == "ÊÇ";
-            var enabledLogicTrigger = statusConfig.EnabledLogicTrigger();
-#else
             var statusConfig = AddStatusEffect.AddStatus;
             var canStack = statusConfig.CanStack;
             //var enabledLogicTrigger = statusConfig.EnabledLogicTrigger;
-#endif
+
             if (canStack == false)
             {
                 if (Target.HasStatus(statusConfig.ID))
@@ -99,7 +93,7 @@ namespace EGamePlay.Combat
             FinishAction();
         }
 
-        //ºóÖÃ´¦Àí
+        //ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½
         private void PostProcess()
         {
             Creator.TriggerActionPoint(ActionPointType.PostGiveStatus, this);

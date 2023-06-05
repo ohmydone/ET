@@ -49,9 +49,7 @@ public class SkillExecution1006Component : EGamePlay.Component
         }
         foreach (var item in EntityChannels)
         {
-#if !EGAMEPLAY_EXCEL
             GetEntity<SkillExecution>().SkillAbility.Get<AbilityEffectComponent>().TryAssignEffectByIndex(item.Key, 2);
-#endif
         }
         Enable = true;
     }
@@ -75,13 +73,12 @@ public class SkillExecution1006Component : EGamePlay.Component
     public void OnLock()
     {
         //Log.Debug("OnLock");
-#if !EGAMEPLAY_EXCEL
+
         foreach (var item in EntityChannels)
         {
             GetEntity<SkillExecution>().SkillAbility.Get<AbilityEffectComponent>().TryAssignEffectByIndex(item.Key, 0);
             GetEntity<SkillExecution>().SkillAbility.Get<AbilityEffectComponent>().TryAssignEffectByIndex(item.Key, 1);
         }
-#endif
         EndExecute();
     }
 

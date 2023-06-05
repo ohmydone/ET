@@ -38,7 +38,7 @@ public class SpellPreviewComponent : EGamePlay.Component
             PreviewingSkill = OwnerEntity.InputSkills[KeyCode.E];
             EnterPreview();
         }
-#if !EGAMEPLAY_EXCEL
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             Cursor.visible = false;
@@ -63,7 +63,7 @@ public class SpellPreviewComponent : EGamePlay.Component
             PreviewingSkill = OwnerEntity.InputSkills[KeyCode.A];
             EnterPreview();
         }
-#endif
+
         if (Input.GetMouseButtonDown((int)UnityEngine.UIElements.MouseButton.RightMouse))
         {
             CancelPreview();
@@ -80,13 +80,10 @@ public class SpellPreviewComponent : EGamePlay.Component
         var targetSelectType = SkillTargetSelectType.Custom;
         var affectTargetType = SkillAffectTargetType.EnemyTeam;
         var skillId = PreviewingSkill.SkillConfig.Id;
-#if EGAMEPLAY_EXCEL
-        if (PreviewingSkill.SkillConfig.TargetSelect == "手动指定") targetSelectType = SkillTargetSelectType.PlayerSelect;
-        if (PreviewingSkill.SkillConfig.TargetSelect == "固定区域场检测") targetSelectType = SkillTargetSelectType.AreaSelect;
-#else
+
         targetSelectType = PreviewingSkill.SkillConfig.TargetSelectType;
         affectTargetType = PreviewingSkill.SkillConfig.AffectTargetType;
-#endif
+
         if (targetSelectType == SkillTargetSelectType.PlayerSelect)
         {
             TargetSelectManager.Instance.TargetLimitType = TargetLimitType.EnemyTeam;

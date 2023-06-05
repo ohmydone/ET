@@ -57,23 +57,7 @@ public sealed class Hero : MonoBehaviour
         CombatEntity.Subscribe<AnimationClip>(OnPlayAnimation);
         CombatEntity.CurrentHealth.Minus(30000);
 
-#if EGAMEPLAY_EXCEL
-        var config = ConfigHelper.Get<SkillConfig>(1001);
-        SkillAbility ability = CombatEntity.AttachSkill<SkillAbility>(config);
-        CombatEntity.BindSkillInput(ability, KeyCode.Q);
 
-        config = ConfigHelper.Get<SkillConfig>(1002);
-        ability = CombatEntity.AttachSkill<SkillAbility>(config);
-        CombatEntity.BindSkillInput(ability, KeyCode.W);
-
-        config = ConfigHelper.Get<SkillConfig>(1004);
-        ability = CombatEntity.AttachSkill<SkillAbility>(config);
-        CombatEntity.BindSkillInput(ability, KeyCode.E);
-
-        SkillSlotsTrm.Find("SkillButtonD").gameObject.SetActive(false);
-        SkillSlotsTrm.Find("SkillButtonE").gameObject.SetActive(false);
-        SkillSlotsTrm.Find("SkillButtonF").gameObject.SetActive(false);
-#else
         LoadSkillWithCodeBind("SkillConfigs/Skill_1001_黑火球术", KeyCode.Q);
         LoadSkillWithCodeBind("SkillConfigs/Skill_1002_炎爆", KeyCode.W);
         LoadSkillWithCodeBind("SkillConfigs/Skill_1003_治愈", KeyCode.Y);
@@ -81,7 +65,6 @@ public sealed class Hero : MonoBehaviour
         LoadSkillWithCodeBind("SkillConfigs/Skill_1005_火弹", KeyCode.R);
         LoadSkillWithCodeBind("SkillConfigs/Skill_1006_灵魂镣铐", KeyCode.T).AddComponent<Skill1006Component>();
         LoadSkillWithCodeBind("SkillConfigs/Skill_1008_火焰箭", KeyCode.A);
-#endif
 
         CombatEntity.Get<SpellComponent>().LoadExecutionObjects();
 

@@ -33,17 +33,10 @@ namespace EGamePlay.Combat
             {
                 expression.Parameters["技能等级"].Value = GetEntity<AbilityEffect>().GetParent<StatusAbility>().Get<AbilityLevelComponent>().Level;
             }
-#if EGAMEPLAY_EXCEL
-            var interval = (float)expression.Value;
-            if (interval > 10)
-            {
-                interval = interval / 1000f;
-            }
-            IntervalTimer = new GameTimer(interval);
-#else
+
             var interval = (int)expression.Value / 1000f;
             IntervalTimer = new GameTimer(interval);
-#endif
+
         }
     }
 }

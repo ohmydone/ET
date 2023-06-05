@@ -6,7 +6,7 @@ namespace EGamePlay.Combat
 {
     public partial class StatusAbility : Entity, IAbilityEntity
     {
-#if !EGAMEPLAY_EXCEL
+
         /// 投放者、施术者
         public CombatEntity OwnerEntity { get; set; }
         public CombatEntity ParentEntity { get => GetParent<CombatEntity>(); }
@@ -88,8 +88,7 @@ namespace EGamePlay.Combat
         {
             return Duration;
         }
-
-#endif
+        
         public Entity CreateExecution()
         {
             var execution = OwnerEntity.AddChild<SkillExecution>(this);

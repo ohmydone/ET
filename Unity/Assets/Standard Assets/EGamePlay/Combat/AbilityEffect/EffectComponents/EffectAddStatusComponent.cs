@@ -20,23 +20,7 @@ namespace EGamePlay.Combat
             AddStatusEffect = GetEntity<AbilityEffect>().EffectConfig as AddStatusEffect;
             Duration = AddStatusEffect.Duration;
             Entity.OnEvent(nameof(AbilityEffect.StartAssignEffect), OnAssignEffect);
-
-#if EGAMEPLAY_EXCEL
-            var statusConfig = AddStatusEffect.AddStatusConfig;
-            if (statusConfig.EnabledAttributeModify())
-            {
-                if (!string.IsNullOrEmpty(statusConfig.AttributeParams))
-                {
-                    NumericValueProperty = statusConfig.AttributeParams;
-                    foreach (var aInputKVItem in AddStatusEffect.Params)
-                    {
-                        NumericValueProperty = NumericValueProperty.Replace(aInputKVItem.Key, aInputKVItem.Value);
-                    }
-                }
-            }
-#else
-
-#endif
+            
         }
 
         public int GetNumericValue()

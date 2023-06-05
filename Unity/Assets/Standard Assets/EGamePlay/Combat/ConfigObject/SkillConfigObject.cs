@@ -29,13 +29,7 @@ namespace EGamePlay.Combat
         public SkillAffectTargetType AffectTargetType;
         [LabelText("技能目标检测方式"), ShowIf("SkillSpellType", SkillSpellType.Initiative)]
         public SkillTargetSelectType TargetSelectType;
-        //[LabelText("区域场类型"), ShowIf("TargetSelectType", SkillTargetSelectType.AreaSelect)]
-        //public SkillAffectAreaType AffectAreaType;
-        //[LabelText("圆形区域场半径"), ShowIf("ShowCircleAreaRadius")]
-        //public float CircleAreaRadius;
-        //public bool ShowCircleAreaRadius { get { return AffectAreaType == SkillAffectAreaType.Circle && TargetSelectType == SkillTargetSelectType.AreaSelect; } }
-        //[LabelText("区域场配置"), ShowIf("TargetSelectType", SkillTargetSelectType.AreaSelect)]
-        //public GameObject AreaCollider;
+
         [LabelText("冷却时间"), SuffixLabel("毫秒", true), ShowIf("SkillSpellType", SkillSpellType.Initiative)]
         public uint ColdTime;
 
@@ -51,13 +45,6 @@ namespace EGamePlay.Combat
         }
 
 #if !NOT_UNITY
-        //[OnInspectorGUI("BeginBox", append: false)]
-        //[LabelText("技能执行")]
-        //public GameObject SkillExecutionAsset;
-        //[LabelText("技能音效")]
-        //[OnInspectorGUI("EndBox", append: true)]
-        //public AudioClip SkillAudio;
-
         [TextArea, LabelText("技能描述")/*, Space(30)*/]
         public string SkillDescription;
 #endif
@@ -184,25 +171,5 @@ namespace EGamePlay.Combat
             }
         }
 #endif
-    }
-
-    [LabelText("护盾类型")]
-    public enum ShieldType
-    {
-        [LabelText("普通护盾")]
-        Shield,
-        [LabelText("物理护盾")]
-        PhysicShield,
-        [LabelText("魔法护盾")]
-        MagicShield,
-        [LabelText("技能护盾")]
-        SkillShield,
-    }
-
-    [LabelText("标记类型")]
-    public enum TagType
-    {
-        [LabelText("能量标记")]
-        Power,
     }
 }
