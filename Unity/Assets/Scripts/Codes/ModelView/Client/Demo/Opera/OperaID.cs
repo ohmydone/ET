@@ -2,40 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ET
+namespace ET.Client
 {
-    public class OperaID
+    public static class OperaID
     {
-        public static string Fire
-        {
-            get
-            {
-                return "Fire";
-            }
-        }
-        
-        public static string ShowInfo
-        {
-            get
-            {
-                return "ShowInfo";
-            }
-        }
-        
-        public static string Slot1
-        {
-            get
-            {
-                return "Slot1";
-            }
-        }
+        public const string Fire = "Fire";
 
-        public static string Slot2
-        {
-            get
-            {
-                return "Slot2";
-            }
-        }
+        public const string ShowInfo = "ShowInfo";
+
+        public const string Slot1 = "Slot1";
+
+        public const string Slot2 = "Slot2";
     }
 }

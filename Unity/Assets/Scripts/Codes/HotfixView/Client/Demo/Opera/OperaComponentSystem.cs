@@ -19,9 +19,9 @@ namespace ET.Client
                     self.InputActionAsset.LoadBindingOverridesFromJson(rebinds);
                 
                 
-                self.Slot1 = self.InputActionAsset.FindAction("Slot1");
-                self.Slot2 = self.InputActionAsset.FindAction("Slot2");
-                self.ShowInfo = self.InputActionAsset.FindAction("ShowInfo");
+                self.Slot1 = self.InputActionAsset.FindAction(OperaID.Slot1);
+                self.Slot2 = self.InputActionAsset.FindAction(OperaID.Slot2);
+                self.ShowInfo = self.InputActionAsset.FindAction(OperaID.ShowInfo);
             }
         }
 
@@ -66,16 +66,16 @@ namespace ET.Client
 
                 if (self.Slot1.WasPerformedThisFrame())
                 {
-                    Log.Debug("test 1");
+                    EventSystem.Instance.Publish(self.ClientScene(), new EventType.DoOpera() { OperaId = OperaID.Slot1 });
                 }
                 if (self.Slot2.WasPerformedThisFrame())
                 {
-                    Log.Debug("test 2");
+                    EventSystem.Instance.Publish(self.ClientScene(), new EventType.DoOpera() { OperaId = OperaID.Slot2 });
                 }
                 
                 if (self.ShowInfo.WasPerformedThisFrame())
                 {
-                    Log.Debug("ShowInfo");
+                    EventSystem.Instance.Publish(self.ClientScene(), new EventType.DoOpera() { OperaId = OperaID.ShowInfo });
                 }
             }
         }

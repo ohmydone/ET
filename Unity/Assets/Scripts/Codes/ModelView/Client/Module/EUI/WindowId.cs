@@ -9,6 +9,6 @@
         WindowID_RedDot,   //红点测试界面
         WindowID_Help,   //提示界面
         WindowID_Skill,   //提示界面
-        
+        WindowID_Info
     }
 }
