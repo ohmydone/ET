@@ -33,7 +33,18 @@ namespace ET
 
             kSet.Add(m, n);
         }
+        public void Set(T t, M m, N n)
+        {
+            Dictionary<M, N> kSet;
+            this.TryGetValue(t, out kSet);
+            if (kSet == null)
+            {
+                kSet = DictionaryComponent<M, N>.Create();
+                this[t] = kSet;
+            }
 
+            kSet[m] = n;
+        }
         public bool Remove(T t, M m)
         {
             this.TryGetValue(t, out Dictionary<M, N> dic);

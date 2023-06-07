@@ -13,6 +13,7 @@ namespace ET
         Other,      //其他窗口
     }
     
+    [ChildOf(typeof(UIBaseWindow))]
     public class WindowCoreData : Entity,IAwake
     {
         public UIWindowType windowType = UIWindowType.Normal;
@@ -21,6 +22,6 @@ namespace ET
     
     public class ShowWindowData : Entity
     {
-        public Entity contextData;
+        public Entity contextData { get; set; }
     }
 }

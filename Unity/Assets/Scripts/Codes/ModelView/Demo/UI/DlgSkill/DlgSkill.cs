@@ -9,6 +9,6 @@ namespace ET
 		public DlgSkillViewComponent View { get => this.Parent.GetComponent<DlgSkillViewComponent>();}
 
 		public Dictionary<int, Scroll_ItemSkil> ScrollItemSkils;
-		public List<Spell> Spells;
+		
 	}
 }

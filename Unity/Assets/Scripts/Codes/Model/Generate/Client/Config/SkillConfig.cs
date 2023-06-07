@@ -17,18 +17,18 @@ public sealed partial class SkillConfig: Bright.Config.BeanBase
     public SkillConfig(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
+        DamageTarget = _buf.ReadInt();
         Name = _buf.ReadString();
-        Type = _buf.ReadString();
-        TargetSelect = _buf.ReadString();
-        Cooldown = _buf.ReadFloat();
+        Icon = _buf.ReadString();
+        DefaultGroup = _buf.ReadString();
+        InterruptGroup = _buf.ReadString();
+        RareLv = _buf.ReadInt();
+        Lv = _buf.ReadInt();
         Description = _buf.ReadString();
-        DamageTarget = _buf.ReadString();
-        Probability = _buf.ReadString();
-        DamageType = _buf.ReadString();
-        ValueFormula = _buf.ReadString();
-        Effect1 = _buf.ReadString();
-        Effect2 = _buf.ReadString();
-        Effect3 = _buf.ReadString();
+        CDTime = _buf.ReadInt();
+        Mode = _buf.ReadInt();
+        PreviewType = _buf.ReadInt();
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);PreviewRange = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); PreviewRange.Add(_e0);}}
         PostInit();
     }
 
@@ -42,44 +42,53 @@ public sealed partial class SkillConfig: Bright.Config.BeanBase
     /// </summary>
     public int Id { get; private set; }
     /// <summary>
+    /// 伤害作用对象(0自身1己方2敌方)
+    /// </summary>
+    public int DamageTarget { get; private set; }
+    /// <summary>
     /// 名字
     /// </summary>
     public string Name { get; private set; }
     /// <summary>
-    /// 技能类型
+    /// 图标
     /// </summary>
-    public string Type { get; private set; }
+    public string Icon { get; private set; }
     /// <summary>
-    /// 目标选择
+    /// 默认阶段
     /// </summary>
-    public string TargetSelect { get; private set; }
+    public string DefaultGroup { get; private set; }
     /// <summary>
-    /// 冷却时间
+    /// 打断阶段
     /// </summary>
-    public float Cooldown { get; private set; }
+    public string InterruptGroup { get; private set; }
     /// <summary>
-    /// 技能描述
+    /// 稀有度
+    /// </summary>
+    public int RareLv { get; private set; }
+    /// <summary>
+    /// 可用等级
+    /// </summary>
+    public int Lv { get; private set; }
+    /// <summary>
+    /// 描述
     /// </summary>
     public string Description { get; private set; }
     /// <summary>
-    /// 伤害作用对象
+    /// 冷却时间
     /// </summary>
-    public string DamageTarget { get; private set; }
+    public int CDTime { get; private set; }
     /// <summary>
-    /// 伤害触发概率
+    /// 施法模式（0：距离不够则选最大施法范围ps选目标的则不施法;1:距离不够走到最远距离施法）
     /// </summary>
-    public string Probability { get; private set; }
+    public int Mode { get; private set; }
     /// <summary>
-    /// 伤害类型
+    /// 技能预览类型(0大圈选一个目标，1大圈选小圈，2从脚底出发指向型……)
     /// </summary>
-    public string DamageType { get; private set; }
+    public int PreviewType { get; private set; }
     /// <summary>
-    /// 伤害取值
+    /// 技能预览释放范围（0半径；1半径，小圈半径；2，长度，宽度）
     /// </summary>
-    public string ValueFormula { get; private set; }
-    public string Effect1 { get; private set; }
-    public string Effect2 { get; private set; }
-    public string Effect3 { get; private set; }
+    public System.Collections.Generic.List<int> PreviewRange { get; private set; }
 
     public const int __ID__ = -844226349;
     public override int GetTypeId() => __ID__;
@@ -97,18 +106,18 @@ public sealed partial class SkillConfig: Bright.Config.BeanBase
     {
         return "{ "
         + "Id:" + Id + ","
-        + "Name:" + Name + ","
-        + "Type:" + Type + ","
-        + "TargetSelect:" + TargetSelect + ","
-        + "Cooldown:" + Cooldown + ","
-        + "Description:" + Description + ","
         + "DamageTarget:" + DamageTarget + ","
-        + "Probability:" + Probability + ","
-        + "DamageType:" + DamageType + ","
-        + "ValueFormula:" + ValueFormula + ","
-        + "Effect1:" + Effect1 + ","
-        + "Effect2:" + Effect2 + ","
-        + "Effect3:" + Effect3 + ","
+        + "Name:" + Name + ","
+        + "Icon:" + Icon + ","
+        + "DefaultGroup:" + DefaultGroup + ","
+        + "InterruptGroup:" + InterruptGroup + ","
+        + "RareLv:" + RareLv + ","
+        + "Lv:" + Lv + ","
+        + "Description:" + Description + ","
+        + "CDTime:" + CDTime + ","
+        + "Mode:" + Mode + ","
+        + "PreviewType:" + PreviewType + ","
+        + "PreviewRange:" + Bright.Common.StringUtil.CollectionToString(PreviewRange) + ","
         + "}";
     }
     

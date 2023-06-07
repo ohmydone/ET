@@ -47,7 +47,6 @@ namespace EGamePlay.Combat
         [HideReferenceObjectPicker]
         public List<Effect> Effects = new List<Effect>();
 
-        //[HorizontalGroup("EnabledLogicTrigger/Hor2")]
         [HorizontalGroup(PaddingLeft = 40, PaddingRight = 40)]
         [HideLabel, OnValueChanged("AddEffect"), ValueDropdown("EffectTypeSelect")]
         public string EffectTypeName = "(添加效果)";
@@ -78,8 +77,6 @@ namespace EGamePlay.Combat
                     .FirstOrDefault();
                 var effect = Activator.CreateInstance(effectType) as Effect;
                 effect.Enabled = true;
-                //if (effect is ActionProhibitEffect) effect.IsSkillEffect = true;
-                //if (effect is AttributeModifyEffect) effect.IsSkillEffect = true;
                 Effects.Add(effect);
                 EffectTypeName = "(添加效果)";
             }
@@ -140,27 +137,10 @@ namespace EGamePlay.Combat
         [OnInspectorGUI]
         private void OnInspectorGUI()
         {
-            //if (NeedClearLog)
-            //{
-            //    var assembly = Assembly.GetAssembly(typeof(UnityEditor.SceneView));
-            //    var type = assembly.GetType("UnityEditor.LogEntries");
-            //    var method = type.GetMethod("Clear");
-            //    method.Invoke(new object(), null);
-            //    NeedClearLog = false;
-            //}
-            //if (EffectType != SkillEffectType.None)
-            //{
-            //    if (EffectType == SkillEffectType.AddStatus) MyToggleObjects.Add(new StateToggleGroup());
-            //    if (EffectType == SkillEffectType.NumericModify) MyToggleObjects.Add(new DurationToggleGroup());
-            //    EffectType = SkillEffectType.None;
-            //    NeedClearLog = true;
-            //}
-
             if (!AutoRename)
             {
                 return;
             }
-
             RenameFile();
         }
 

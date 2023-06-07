@@ -15,11 +15,18 @@ namespace ET.Client
                 case OperaID.Fire:
                     break;
                 case OperaID.Slot1:
-                    break;
                 case OperaID.Slot2:
                     break;
                 case OperaID.ShowInfo:
-                    
+                    UIComponent uiComponent= scene.CurrentScene().GetComponent<UIComponent>();
+                    if (uiComponent.IsWindowVisible(WindowID.WindowID_Info))
+                    {
+                        uiComponent.HideWindow<DlgInfo>();
+                    }
+                    else
+                    {
+                        uiComponent.ShowWindow<DlgInfo>();
+                    }
                     break;
             }
             await ETTask.CompletedTask;

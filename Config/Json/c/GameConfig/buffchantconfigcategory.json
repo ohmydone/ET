@@ -1,0 +1,9 @@
+[
+  {
+    "Id": 1002,
+    "MoveInterrupt": 1,
+    "DamageInterrupt": 1,
+    "BackCoolingPermillage": 0,
+    "BackCostPermillage": 0
+  }
+]

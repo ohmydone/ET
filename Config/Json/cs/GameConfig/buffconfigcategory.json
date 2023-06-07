@@ -1,0 +1,41 @@
+[
+  {
+    "Id": 1000,
+    "Name": "",
+    "Description": "",
+    "Icon": "",
+    "StatusSlot": 0,
+    "EffectId": 1000,
+    "Type": [
+      2
+    ],
+    "Group": 0,
+    "Priority": 0
+  },
+  {
+    "Id": 1001,
+    "Name": "",
+    "Description": "",
+    "Icon": "",
+    "StatusSlot": 0,
+    "EffectId": 0,
+    "Type": [
+      3
+    ],
+    "Group": 0,
+    "Priority": 0
+  },
+  {
+    "Id": 1002,
+    "Name": "",
+    "Description": "",
+    "Icon": "",
+    "StatusSlot": 0,
+    "EffectId": 0,
+    "Type": [
+      4
+    ],
+    "Group": 0,
+    "Priority": 0
+  }
+]

@@ -21,7 +21,9 @@ namespace ET
     public interface IAwake<A, B, C, D>
     {
     }
-    
+    public interface IAwake<A, B, C, D,E>
+    {
+    }
     public interface IAwakeSystem: ISystemType
     {
         void Run(Entity o);

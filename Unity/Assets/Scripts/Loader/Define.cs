@@ -4,6 +4,12 @@
 	{
 		public const string BuildOutputDir = "./Temp/Bin/Debug";
 
+#if UNITY_EDITOR
+		public static readonly bool Debug = true;
+#else
+        public static readonly bool Debug = false;
+#endif
+
 #if UNITY_EDITOR && !ASYNC
 		public static bool IsAsync = false;
 #else

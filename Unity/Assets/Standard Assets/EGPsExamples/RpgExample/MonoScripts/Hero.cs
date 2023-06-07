@@ -47,7 +47,7 @@ public sealed class Hero : MonoBehaviour
         {
             CombatEntity.AddComponent<SpellPreviewComponent>();
         }
-        CombatEntity.AddComponent<EquipmentComponent>();
+        //CombatEntity.AddComponent<EquipmentComponent>();
         CombatEntity.ListenActionPoint(ActionPointType.PreSpell, OnPreSpell);
         CombatEntity.ListenActionPoint(ActionPointType.PostSpell, OnPostSpell);
         CombatEntity.ListenActionPoint(ActionPointType.PostReceiveDamage, OnReceiveDamage);
@@ -56,8 +56,6 @@ public sealed class Hero : MonoBehaviour
         CombatEntity.Subscribe<RemoveStatusEvent>(OnRemoveStatus);
         CombatEntity.Subscribe<AnimationClip>(OnPlayAnimation);
         CombatEntity.CurrentHealth.Minus(30000);
-
-
         LoadSkillWithCodeBind("SkillConfigs/Skill_1001_黑火球术", KeyCode.Q);
         LoadSkillWithCodeBind("SkillConfigs/Skill_1002_炎爆", KeyCode.W);
         LoadSkillWithCodeBind("SkillConfigs/Skill_1003_治愈", KeyCode.Y);
@@ -70,7 +68,7 @@ public sealed class Hero : MonoBehaviour
 
         HealthBarImage.fillAmount = CombatEntity.CurrentHealth.Percent();
         AnimTimer.MaxTime = AnimTime;
-        InitInventory();
+        //InitInventory();
     }
 
     private SkillAbility LoadSkillWithCodeBind(string path, KeyCode bindCode)
@@ -81,53 +79,53 @@ public sealed class Hero : MonoBehaviour
         return ability;
     }
 
-    private void InitInventory()
-    {
-        if (InventoryPanelTrm != null)
-        {
-            for (int i = InventoryPanelTrm.childCount; i > 0; i--)
-            {
-                GameObject.Destroy(InventoryPanelTrm.GetChild(i - 1).gameObject);
-            }
-            var allItemConfigs = ConfigHelper.GetAll<EquipmentConfig>();
-            foreach (var item in allItemConfigs)
-            {
-                var itemObj = GameObject.Instantiate(ItemPrefab);
-                itemObj.transform.parent = InventoryPanelTrm;
-                itemObj.transform.Find("Icon").GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>($"Icons/{item.Value.Name}");
-                var text = itemObj.transform.Find("Text").GetComponent<UnityEngine.UI.Text>();
-                text.text = $"+{item.Value.Value}";
-                if (item.Value.Attribute == "AttackPower")
-                {
-                    text.color = Color.red;
-                }
-                itemObj.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => {
-                    if (EquipmentPanelTrm.childCount >= 4)
-                    {
-                        return;
-                    }
-                    var equipObj = GameObject.Instantiate(ItemPrefab);
-                    equipObj.transform.parent = EquipmentPanelTrm;
-                    equipObj.transform.Find("Icon").GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>($"Icons/{item.Value.Name}");
-                    var equipText = equipObj.transform.Find("Text").GetComponent<UnityEngine.UI.Text>();
-                    equipText.text = $"+{item.Value.Value}";
-                    if (item.Value.Attribute == "AttackPower")
-                    {
-                        equipText.color = Color.red;
-                    }
-                    var itemData = CombatEntity.AddChild<ItemData>();
-                    equipObj.name = $"{itemData.Id}";
-                    itemData.ConfigId = (short)item.Value.Id;
-                    CombatEntity.GetComponent<EquipmentComponent>().AddItemData(itemData);
-                    equipObj.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => {
-                        var id = long.Parse(equipObj.name);
-                        CombatEntity.GetComponent<EquipmentComponent>().RemoveItemData(id);
-                        GameObject.Destroy(equipObj);
-                    });
-                });
-            }
-        }
-    }
+    // private void InitInventory()
+    // {
+    //     if (InventoryPanelTrm != null)
+    //     {
+    //         for (int i = InventoryPanelTrm.childCount; i > 0; i--)
+    //         {
+    //             GameObject.Destroy(InventoryPanelTrm.GetChild(i - 1).gameObject);
+    //         }
+    //         var allItemConfigs = ConfigHelper.GetAll<EquipmentConfig>();
+    //         foreach (var item in allItemConfigs)
+    //         {
+    //             var itemObj = GameObject.Instantiate(ItemPrefab);
+    //             itemObj.transform.parent = InventoryPanelTrm;
+    //             itemObj.transform.Find("Icon").GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>($"Icons/{item.Value.Name}");
+    //             var text = itemObj.transform.Find("Text").GetComponent<UnityEngine.UI.Text>();
+    //             text.text = $"+{item.Value.Value}";
+    //             if (item.Value.Attribute == "AttackPower")
+    //             {
+    //                 text.color = Color.red;
+    //             }
+    //             itemObj.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => {
+    //                 if (EquipmentPanelTrm.childCount >= 4)
+    //                 {
+    //                     return;
+    //                 }
+    //                 var equipObj = GameObject.Instantiate(ItemPrefab);
+    //                 equipObj.transform.parent = EquipmentPanelTrm;
+    //                 equipObj.transform.Find("Icon").GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>($"Icons/{item.Value.Name}");
+    //                 var equipText = equipObj.transform.Find("Text").GetComponent<UnityEngine.UI.Text>();
+    //                 equipText.text = $"+{item.Value.Value}";
+    //                 if (item.Value.Attribute == "AttackPower")
+    //                 {
+    //                     equipText.color = Color.red;
+    //                 }
+    //                 var itemData = CombatEntity.AddChild<ItemData>();
+    //                 equipObj.name = $"{itemData.Id}";
+    //                 itemData.ConfigId = (short)item.Value.Id;
+    //                 CombatEntity.GetComponent<EquipmentComponent>().AddItemData(itemData);
+    //                 equipObj.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => {
+    //                     var id = long.Parse(equipObj.name);
+    //                     CombatEntity.GetComponent<EquipmentComponent>().RemoveItemData(id);
+    //                     GameObject.Destroy(equipObj);
+    //                 });
+    //             });
+    //         }
+    //     }
+    // }
 
     // Update is called once per frame
     void Update()

@@ -41,9 +41,9 @@ namespace ET.Client
             {
                 if (Input.GetMouseButtonDown(1))
                 {
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit hit;
-                    if (Physics.Raycast(ray, out hit, 1000, self.mapMask))
+                    UnityEngine.Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    UnityEngine.RaycastHit hit;
+                    if (UnityEngine.Physics.Raycast(ray, out hit, 1000, self.mapMask))
                     {
                         C2M_PathfindingResult c2MPathfindingResult = new C2M_PathfindingResult();
                         c2MPathfindingResult.Position = hit.point;

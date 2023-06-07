@@ -1,0 +1,14 @@
+[
+  {
+    "Id": 0,
+    "Formula": "0"
+  },
+  {
+    "Id": 1,
+    "Formula": "ATK*(1-$DEF/($DEF+$Lv*100+500)*Lv/$Lv)"
+  },
+  {
+    "Id": 2,
+    "Formula": "50"
+  }
+]

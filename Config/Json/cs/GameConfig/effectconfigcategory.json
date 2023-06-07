@@ -1,0 +1,28 @@
+[
+  {
+    "Id": 1000,
+    "Prefab": "Buff/Buff_1001/Prefabs/Buff_1001.prefab",
+    "PlayTime": -1,
+    "MountPoint": "Head",
+    "IsMount": 1,
+    "RelativePos": [
+      0
+    ],
+    "RelativeRotation": [
+      0
+    ]
+  },
+  {
+    "Id": 1002,
+    "Prefab": "Buff/Buff_1001/Prefabs/Buff_1001.prefab",
+    "PlayTime": 1000,
+    "MountPoint": "Head",
+    "IsMount": 0,
+    "RelativePos": [
+      0
+    ],
+    "RelativeRotation": [
+      0
+    ]
+  }
+]

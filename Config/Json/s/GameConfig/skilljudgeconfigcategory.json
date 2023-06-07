@@ -1,0 +1,57 @@
+[
+  {
+    "Id": 1000,
+    "ColliderType": 0,
+    "StartPosType": 3,
+    "Time": 300,
+    "ColliderShape": 2,
+    "ColliderPara": [
+      2.5
+    ],
+    "Speed": 0
+  },
+  {
+    "Id": 1001,
+    "ColliderType": 1,
+    "StartPosType": 1,
+    "Time": 300,
+    "ColliderShape": 1,
+    "ColliderPara": [
+      0.5,
+      5,
+      5
+    ],
+    "Speed": 0
+  },
+  {
+    "Id": 1002,
+    "ColliderType": 2,
+    "StartPosType": 1,
+    "Time": 3000,
+    "ColliderShape": 2,
+    "ColliderPara": [
+      0.2
+    ],
+    "Speed": 2
+  },
+  {
+    "Id": 1003,
+    "ColliderType": 3,
+    "StartPosType": 1,
+    "Time": 300,
+    "ColliderShape": 2,
+    "ColliderPara": [
+      0.2
+    ],
+    "Speed": 5
+  },
+  {
+    "Id": 1004,
+    "ColliderType": 4,
+    "StartPosType": 2,
+    "Time": 0,
+    "ColliderShape": 0,
+    "ColliderPara": [],
+    "Speed": 0
+  }
+]

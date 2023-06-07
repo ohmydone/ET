@@ -98,8 +98,6 @@ namespace EGamePlay.Combat
         }
 
 #if UNITY_EDITOR
-        //[ShowInInspector, LabelText("自动重命名")]
-        //public static bool AutoRename;
 
         [OnInspectorGUI("BeginBox", append: false)]
         [SerializeField, LabelText("自动重命名")]
@@ -122,18 +120,13 @@ namespace EGamePlay.Combat
 
         private void BeginBox()
         {
-            //GUILayout.Space(30);
             SirenixEditorGUI.DrawThickHorizontalSeparator();
             GUILayout.Space(10);
-            //SirenixEditorGUI.BeginBox("技能表现");
         }
 
         private void EndBox()
         {
-            //SirenixEditorGUI.EndBox();
             GUILayout.Space(30);
-            //SirenixEditorGUI.DrawThickHorizontalSeparator();
-            //GUILayout.Space(10);
         }
 
         [OnInspectorGUI]

@@ -866,7 +866,16 @@ namespace ET
             EventSystem.Instance.Awake(component, a, b, c);
             return component;
         }
+        public T AddChild<T, A, B, C,D>(A a, B b, C c,D d, bool isFromPool = false) where T : Entity, IAwake<A, B, C,D>
+        {
+            Type type = typeof (T);
+            T component = (T) Entity.Create(type, isFromPool);
+            component.Id = IdGenerater.Instance.GenerateId();
+            component.Parent = this;
 
+            EventSystem.Instance.Awake(component, a, b, c,d);
+            return component;
+        }
         public T AddChildWithId<T>(long id, bool isFromPool = false) where T : Entity, IAwake
         {
             Type type = typeof (T);

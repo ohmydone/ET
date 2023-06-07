@@ -1,62 +1,124 @@
 [
   {
     "Id": 1001,
-    "Name": "黑火球术",
-    "Type": "主动",
-    "TargetSelect": "手动指定",
-    "Cooldown": 0,
-    "Description": "",
-    "DamageTarget": "技能目标",
-    "Probability": "10000",
-    "DamageType": "魔法伤害",
-    "ValueFormula": "300+自身攻击力*0.4",
-    "Effect1": "AddStatus=Id",
-    "Effect2": "",
-    "Effect3": ""
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 0,
+    "PreviewType": 1,
+    "PreviewRange": [
+      5,
+      2
+    ]
   },
   {
     "Id": 1002,
-    "Name": "炎爆",
-    "Type": "主动",
-    "TargetSelect": "固定区域场检测",
-    "Cooldown": 0,
-    "Description": "",
-    "DamageTarget": "技能目标",
-    "Probability": "10000",
-    "DamageType": "魔法伤害",
-    "ValueFormula": "800",
-    "Effect1": "AddStatus=Id",
-    "Effect2": "",
-    "Effect3": ""
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 0,
+    "PreviewType": 2,
+    "PreviewRange": [
+      5,
+      1
+    ]
   },
   {
     "Id": 1003,
-    "Name": "治愈",
-    "Type": "主动",
-    "TargetSelect": "手动指定",
-    "Cooldown": 0,
-    "Description": "",
-    "DamageTarget": "",
-    "Probability": "",
-    "DamageType": "",
-    "ValueFormula": "",
-    "Effect1": "Cure=Id",
-    "Effect2": "净化",
-    "Effect3": ""
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 0,
+    "PreviewType": 2,
+    "PreviewRange": [
+      5,
+      1
+    ]
   },
   {
     "Id": 1004,
-    "Name": "血红激光炮",
-    "Type": "主动",
-    "TargetSelect": "固定区域场检测",
-    "Cooldown": 0,
-    "Description": "",
-    "DamageTarget": "技能目标",
-    "Probability": "10000",
-    "DamageType": "魔法伤害",
-    "ValueFormula": "3333",
-    "Effect1": "AddStatus=Id",
-    "Effect2": "",
-    "Effect3": ""
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 1,
+    "PreviewType": 0,
+    "PreviewRange": [
+      5
+    ]
+  },
+  {
+    "Id": 1005,
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 1,
+    "PreviewType": 0,
+    "PreviewRange": [
+      5
+    ]
+  },
+  {
+    "Id": 1006,
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 1,
+    "PreviewType": 0,
+    "PreviewRange": [
+      5
+    ]
+  },
+  {
+    "Id": 1007,
+    "DamageTarget": 2,
+    "Name": "Skill_Name_NormalAttack",
+    "Icon": "UI/UICommon/Atlas/SkillIcon/Atlas/skill_normal_attack.png",
+    "DefaultGroup": "Start",
+    "InterruptGroup": "Interrupt",
+    "RareLv": 0,
+    "Lv": 0,
+    "Description": "Skill_Desc_NormalAttack",
+    "CDTime": 0,
+    "Mode": 0,
+    "PreviewType": 3,
+    "PreviewRange": [
+      2
+    ]
   }
 ]

@@ -20,6 +20,7 @@ namespace ET.Client
             unit.AddComponent<AnimationComponent,GameObject>(go);
             unit.GetComponent<AnimationComponent>().Play(AnimClipType.Idle);
             unit.AddComponent<CameraComponent>().Unit=unit;
+            //unit.GetComponent<SpellComponent>().BindKey();
             await ETTask.CompletedTask;
         }
     }
