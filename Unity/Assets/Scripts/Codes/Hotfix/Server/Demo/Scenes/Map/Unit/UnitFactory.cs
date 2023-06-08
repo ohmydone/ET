@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Unity.Mathematics;
 
 namespace ET.Server
@@ -8,6 +9,8 @@ namespace ET.Server
         public static Unit Create(Scene scene, long id, UnitType unitType)
         {
             UnitComponent unitComponent = scene.GetComponent<UnitComponent>();
+            //Unit unit = unitComponent.AddChildWithId<Unit, int>(id,);
+            
             switch (unitType)
             {
                 case UnitType.Player:
@@ -17,12 +20,15 @@ namespace ET.Server
                     unit.Position = new float3(-10, 0, -10);
 			
                     NumericComponent numericComponent = unit.AddComponent<NumericComponent>();
-                    numericComponent.Set(NumericType.Speed, 6f); // 速度是6米每秒
-                    numericComponent.Set(NumericType.AOI, 15000); // 视野15米
+                    numericComponent.Set(NumericType.SpeedBase, 6f); // 速度是6米每秒
+                    numericComponent.Set(NumericType.AOIBase, 2); // 视野2格
+                    numericComponent.Set(NumericType.HpBase, 1000); // 生命1000
+                    numericComponent.Set(NumericType.MaxHpBase, 1000); // 最大生命1000
+                    numericComponent.Set(NumericType.LvBase,1); //1级
+                    numericComponent.Set(NumericType.ATKBase,100); //100攻击
+                    numericComponent.Set(NumericType.DEFBase,500); //500防御
                     
-                    unitComponent.SetUnit(unit);
-                    // 加入aoi
-                    unit.AddComponent<AOIEntity, int, float3>(9 * 1000, unit.Position);
+                    unitComponent.Add(unit);
                     return unit;
                 }
                 default:

@@ -19,9 +19,8 @@
 	
 	public static class UnitComponentSystem
 	{
-		public static void SetUnit(this UnitComponent self, Unit unit)
+		public static void Add(this UnitComponent self, Unit unit)
 		{
-			self.My = unit;
 		}
 
 		public static Unit Get(this UnitComponent self, long id)

@@ -10,6 +10,7 @@ namespace ET
     {
         protected override void Awake(UIComponent self)
         {
+            UIComponent.Instance = self;
             self.Awake();
         }
     }
@@ -37,6 +38,10 @@ namespace ET
             self.VisibleWindowsDic?.Clear();
             self.StackWindowsQueue?.Clear();
             self.UIBaseWindowlistCached?.Clear();
+            
+            var flagx = (float)Define.DesignScreen_Width / (Screen.width > Screen.height ? Screen.width : Screen.height);
+            var flagy = (float)Define.DesignScreen_Height / (Screen.width > Screen.height ? Screen.height : Screen.width);
+            self.ScreenSizeflag = flagx > flagy ? flagx : flagy;
         }
         
         /// <summary>
@@ -524,7 +529,6 @@ namespace ET
             
             self.AllWindowsDic[(int)baseWindow.WindowID] = baseWindow;
         }
-       
-
+        
     }
 }

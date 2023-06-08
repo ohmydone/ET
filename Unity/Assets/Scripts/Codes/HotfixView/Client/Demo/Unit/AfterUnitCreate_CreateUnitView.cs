@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace ET.Client
 {
@@ -10,17 +11,32 @@ namespace ET.Client
             Unit unit = args.Unit;
             // Unit View层
             // 这里可以改成异步加载，demo就不搞了
-            //GameObject bundleGameObject = (GameObject)ResourcesComponent.Instance.GetAsset("Unit.unity3d", "Unit");
+            switch (unit.Type)
+            {
+                case UnitType.Monster:
+                case UnitType.Player:
+                {
+                    GameObject bundleGameObject = await ResComponent.Instance.LoadAssetAsync<GameObject>(ResPathHelper.GetUnitPath("Unit"));
+                    GameObject prefab = bundleGameObject.Get<GameObject>("Skeleton");
+                    GameObject go = UnityEngine.Object.Instantiate(prefab, GlobalComponent.Instance.Unit, true);
+                    go.transform.position = unit.Position;
+                    unit.AddComponent<GameObjectComponent>().GameObject = go;
+                    unit.AddComponent<AnimationComponent,GameObject>(go);
+                    unit.GetComponent<AnimationComponent>().Play(AnimClipType.Idle);
+                    unit.AddComponent<CameraComponent>().Unit=unit;
+                    
+                    var SkillIds = new List<int>(){1001,1002,1003,1004,1005,1006,1007};//初始技能
+                    CombatUnitComponent combatU = unit.AddComponent<CombatUnitComponent,List<int>>(SkillIds);
+                    
+                    break;
+                }
+                case UnitType.Skill:
+                    
+                    break;
+            }
 
-            GameObject bundleGameObject = await ResComponent.Instance.LoadAssetAsync<GameObject>(ResPathHelper.GetUnitPath("Unit"));
-            GameObject prefab = bundleGameObject.Get<GameObject>("Skeleton");
-            GameObject go = UnityEngine.Object.Instantiate(prefab, GlobalComponent.Instance.Unit, true);
-            go.transform.position = unit.Position;
-            unit.AddComponent<GameObjectComponent>().GameObject = go;
-            unit.AddComponent<AnimationComponent,GameObject>(go);
-            unit.GetComponent<AnimationComponent>().Play(AnimClipType.Idle);
-            unit.AddComponent<CameraComponent>().Unit=unit;
-            //unit.GetComponent<SpellComponent>().BindKey();
+            
+
             await ETTask.CompletedTask;
         }
     }

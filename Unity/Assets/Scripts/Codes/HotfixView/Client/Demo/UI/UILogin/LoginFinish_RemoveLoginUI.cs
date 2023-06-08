@@ -5,7 +5,7 @@
 	{
 		protected override async ETTask Run(Scene scene, EventType.LoginFinish args)
 		{
-			scene.GetComponent<UIComponent>().HideWindow<DlgLogin>();
+			UIComponent.Instance.HideWindow<DlgLogin>();
 			await ETTask.CompletedTask;
 		}
 	}

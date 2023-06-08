@@ -18,7 +18,7 @@ namespace ET.Client
                 case OperaID.Slot2:
                     break;
                 case OperaID.ShowInfo:
-                    UIComponent uiComponent= scene.CurrentScene().GetComponent<UIComponent>();
+                    UIComponent uiComponent= UIComponent.Instance;
                     if (uiComponent.IsWindowVisible(WindowID.WindowID_Info))
                     {
                         uiComponent.HideWindow<DlgInfo>();

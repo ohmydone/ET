@@ -17,6 +17,7 @@ namespace ET.Client
             self.FixedRoot = GameObject.Find("Global/UI/FixedRoot").transform;
             self.OtherRoot = GameObject.Find("Global/UI/OtherRoot").transform;
             self.PoolRoot =  GameObject.Find("Global/PoolRoot").transform;
+            self.UICamera =  GameObject.Find("Global/UICamera").GetComponent<Camera>();
         }
     }
 }

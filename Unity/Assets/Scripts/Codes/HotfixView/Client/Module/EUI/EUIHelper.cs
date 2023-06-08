@@ -307,12 +307,12 @@ namespace ET
             closeButton.onClick.RemoveAllListeners();
             if (isClose)
             {
-                closeButton.onClick.AddListener(() => { self.DomainScene().GetComponent<UIComponent>().CloseWindow(self.GetParent<UIBaseWindow>().WindowID); });
+                closeButton.onClick.AddListener(() => { UIComponent.Instance.CloseWindow(self.GetParent<UIBaseWindow>().WindowID); });
 
             }
             else
             {
-                closeButton.onClick.AddListener(() => { self.DomainScene().GetComponent<UIComponent>().HideWindow(self.GetParent<UIBaseWindow>().WindowID); });
+                closeButton.onClick.AddListener(() => { UIComponent.Instance.HideWindow(self.GetParent<UIBaseWindow>().WindowID); });
             }
         }
 
