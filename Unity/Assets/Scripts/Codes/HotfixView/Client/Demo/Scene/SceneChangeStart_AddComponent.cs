@@ -16,9 +16,11 @@ namespace ET.Client
             // // 切换到map场景
             //
             // await SceneManager.LoadSceneAsync(currentScene.Name);
-			
-
+            
+            //currentScene.AddComponent<OperaComponent>();
+            //输入订阅组件
             currentScene.AddComponent<OperaComponent>();
+            currentScene.AddComponent<OperaWatcherComponent>();
         }
     }
 }

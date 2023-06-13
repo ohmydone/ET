@@ -8,6 +8,7 @@ namespace ET.Client
             scene.AddComponent<UIPathComponent>();
             scene.AddComponent<UIEventComponent>();
             scene.AddComponent<RedDotComponent>();
+            scene.AddComponent<UIComponent>();
             scene.AddComponent<ResourcesLoaderComponent>();
             await ETTask.CompletedTask;
         }

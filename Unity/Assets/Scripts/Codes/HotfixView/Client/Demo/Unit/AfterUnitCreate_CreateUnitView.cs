@@ -25,8 +25,8 @@ namespace ET.Client
                     unit.GetComponent<AnimationComponent>().Play(AnimClipType.Idle);
                     unit.AddComponent<CameraComponent>().Unit=unit;
                     
-                    var SkillIds = new List<int>(){1001,1002,1003,1004,1005,1006,1007};//初始技能
-                    CombatUnitComponent combatU = unit.AddComponent<CombatUnitComponent,List<int>>(SkillIds);
+                    // var SkillIds = new List<int>(){1001,1002,1003,1004,1005,1006,1007};//初始技能
+                    // CombatUnitComponent combatU = unit.AddComponent<CombatUnitComponent,List<int>>(SkillIds);
                     
                     break;
                 }

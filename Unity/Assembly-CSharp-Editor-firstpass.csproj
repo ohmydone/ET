@@ -41,31 +41,31 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\ColorTypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\Entity\EditorLayout.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\Combat\CombatAttributeWindow.cs" />
      <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\ComponentViewEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\Entity\EditorLayout.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\ExcelExporterEditor\ExcelExporterEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\DoubleTypeDrawer.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\ColorTypeDrawer.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\ITypeDrawer.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\BoolTypeDrawer.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\Combat\CombatAttributeWindow.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\AnimationCurveTypeDrawer.cs" />
      <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\EnumTypeDrawer.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\CharTypeDrawer.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\Combat\EGamePlayTools.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawerAttribute.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\Vector4TypeDrawer.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\LongTypeDrawer.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\FloatTypeDrawer.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\DateTimeTypeDrawer.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\RectTypeDrawer.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\UnityObjectTypeDrawer.cs" />
      <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\IntTypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\BoundsTypeDrawer.cs" />
      <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\Vector3TypeDrawer.cs" />
      <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\StringTypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawerAttribute.cs" />
      <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\Entity\SerializationTypeExtension.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\DateTimeTypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\BoolTypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\FloatTypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\RectTypeDrawer.cs" />
      <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\Vector2TypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\AnimationCurveTypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\Combat\EGamePlayTools.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\DoubleTypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\Vector4TypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\CharTypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\LongTypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\UnityObjectTypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\ITypeDrawer.cs" />
-     <Compile Include="Assets\Standard Assets\Editor\ExcelExporterEditor\ExcelExporterEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\EGamePlay\ComponentViewEditor\TypeDrawer\BoundsTypeDrawer.cs" />
      <Folder Include="Assets\Standard Assets\Demigiant\DOTween\Editor\Imgs" />
      <Folder Include="Assets\Plugins\Sirenix\Odin Validator\Editor\Config" />
      <Folder Include="Assets\Standard Assets\Demigiant\DemiLib\Core\Editor\Imgs\project" />
@@ -363,6 +363,15 @@
      <Reference Include="LZ4">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.focus-creative-games.hybridclr_unity@00cedc166f\Plugins\LZ4.dll</HintPath>
      </Reference>
+     <Reference Include="NPOI.OpenXmlFormats">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXmlFormats.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI.OOXML">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OOXML.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.OdinInspector.Attributes">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
      </Reference>
@@ -384,6 +393,9 @@
      <Reference Include="dnlib">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.focus-creative-games.hybridclr_unity@00cedc166f\Plugins\dnlib.dll</HintPath>
      </Reference>
+     <Reference Include="DOTween">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\DOTween.dll</HintPath>
+     </Reference>
      <Reference Include="DnsClient">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\DnsClient.dll</HintPath>
      </Reference>
@@ -393,14 +405,32 @@
      <Reference Include="MongoDB.Driver.Core">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.Core.dll</HintPath>
      </Reference>
+     <Reference Include="DOTweenPro">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.Utilities.Editor">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiLib">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.OdinInspector.Editor">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="DOTweenProEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\Editor\DOTweenProEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Burst.Cecil.Mdb">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI.OpenXml4Net">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXml4Net.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
@@ -416,36 +446,6 @@
      </Reference>
      <Reference Include="MongoDB.Bson">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\MongoDB.Bson.dll</HintPath>
-     </Reference>
-     <Reference Include="DemiEditor">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.dll</HintPath>
-     </Reference>
-     <Reference Include="DOTween">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\DOTween.dll</HintPath>
-     </Reference>
-     <Reference Include="DOTweenPro">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
-     </Reference>
-     <Reference Include="DemiLib">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
-     </Reference>
-     <Reference Include="DOTweenProEditor">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\Editor\DOTweenProEditor.dll</HintPath>
-     </Reference>
-     <Reference Include="DOTweenEditor">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
-     </Reference>
-     <Reference Include="NPOI.OpenXmlFormats">
-     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXmlFormats.dll</HintPath>
-     </Reference>
-     <Reference Include="NPOI.OOXML">
-     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OOXML.dll</HintPath>
-     </Reference>
-     <Reference Include="NPOI">
-     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.dll</HintPath>
-     </Reference>
-     <Reference Include="NPOI.OpenXml4Net">
-     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXml4Net.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -825,11 +825,11 @@
      <Reference Include="System.Xml.XPath.XDocument">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
      </Reference>
-     <Reference Include="UnityEngine.TestRunner">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
-     </Reference>
      <Reference Include="UnityEditor.TestRunner">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.TestRunner">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
      </Reference>
      <Reference Include="HybridCLR.Runtime">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\HybridCLR.Runtime.dll</HintPath>
@@ -840,14 +840,44 @@
      <Reference Include="Unity.RenderPipelines.Universal.Shaders">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-     </Reference>
      <Reference Include="UnityEditor.CacheServer">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEditor.CacheServer.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro.Editor">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Searcher.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.UI">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.InputSystem">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Rider.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.UI">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.ShaderGraph.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Mathematics.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="PPv2URPConverters">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualStudio.Editor">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
@@ -861,41 +891,17 @@
      <Reference Include="Unity.Burst.Editor">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Searcher.Editor">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Runtime">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-     </Reference>
-     <Reference Include="PPv2URPConverters">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Postprocessing.Editor">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="UnityEditor.UI">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.InputSystem">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Rider.Editor">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="HybridCLR.Editor">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\HybridCLR.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-     </Reference>
-     <Reference Include="UnityEngine.UI">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Mathematics">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.ShaderGraph.Editor">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
@@ -906,17 +912,11 @@
      <Reference Include="Unity.RenderPipelines.Universal.Editor">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Timeline.Editor">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Mathematics.Editor">
-     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.ScriptableBuildPipeline">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
@@ -937,21 +937,9 @@
       <Project>{e17e49b1-467b-9f35-a59e-d9aea156de57}</Project>
       <Name>YooAsset.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Hotfix.Codes.csproj">
-      <Project>{d2d0dc3c-8414-f3b5-7b89-aea449f00e4d}</Project>
-      <Name>Unity.Hotfix.Codes</Name>
-    </ProjectReference>
     <ProjectReference Include="Animancer.FSM.csproj">
       <Project>{774b51b6-b901-b97e-d593-35721140fea6}</Project>
       <Name>Animancer.FSM</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
-      <Project>{9f5687e3-5f72-c8f5-517b-584709b7d5d8}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Editor.csproj">
-      <Project>{041131cd-3018-19b1-81b6-5dbee2467ffb}</Project>
-      <Name>Unity.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="IngameDebugConsole.Editor.csproj">
       <Project>{1a015f2f-ef4c-fc52-3777-906da4065b5e}</Project>
@@ -969,29 +957,17 @@
       <Project>{56df1de4-7636-2075-3b3d-021f8dba6bfa}</Project>
       <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Hotfix.csproj">
-      <Project>{52f66610-896a-c4d1-9881-1a19df7ab80e}</Project>
-      <Name>Unity.Hotfix</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.HotfixView.csproj">
       <Project>{de4513d3-889b-5c52-8e9c-744c99ae7509}</Project>
       <Name>Unity.HotfixView</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Model.csproj">
-      <Project>{9498bfb4-d9f5-c441-13e3-3f26f7700e29}</Project>
-      <Name>Unity.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Loader.csproj">
-      <Project>{32b76b98-b8f4-f864-d1f9-50cf255042d8}</Project>
-      <Name>Unity.Loader</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Model.Codes.csproj">
       <Project>{f35320f7-9304-81e8-7d71-b379f8ba7e35}</Project>
       <Name>Unity.Model.Codes</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.ModelView.csproj">
-      <Project>{c109842f-01da-64d4-dbf2-00c6449e459e}</Project>
-      <Name>Unity.ModelView</Name>
+    <ProjectReference Include="DOTween.Modules.csproj">
+      <Project>{e98cb742-1497-f2c7-9027-6d6184506ff6}</Project>
+      <Name>DOTween.Modules</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.ModelView.Codes.csproj">
       <Project>{e80dcc2f-4205-c895-4e78-6ed5fe5cd429}</Project>
@@ -1001,6 +977,10 @@
       <Project>{159e65f6-d363-1a6d-ec57-6db30da1b98f}</Project>
       <Name>Animancer</Name>
     </ProjectReference>
+    <ProjectReference Include="DOTweenPro.Scripts.csproj">
+      <Project>{a83d90bd-03b8-832b-85d8-a3fd7710b697}</Project>
+      <Name>DOTweenPro.Scripts</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.HotfixView.Codes.csproj">
       <Project>{ab58bec6-6a17-b4dc-a2ec-30ae7ca7216c}</Project>
       <Name>Unity.HotfixView.Codes</Name>
@@ -1008,10 +988,6 @@
     <ProjectReference Include="YooAsset.csproj">
       <Project>{969b6393-7326-9cc5-ac5f-d252d24b1a34}</Project>
       <Name>YooAsset</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Core.csproj">
-      <Project>{770e9beb-b313-3761-faa2-76daf4b34ada}</Project>
-      <Name>Unity.Core</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinValidator.csproj">
       <Project>{bbcb15a3-cbf9-80fb-1f01-767a894b6cfd}</Project>
@@ -1021,17 +997,41 @@
       <Project>{d2ad5be1-263a-9a30-ab0f-dc5b08044350}</Project>
       <Name>Unity.ThirdParty</Name>
     </ProjectReference>
+    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
+      <Project>{9f5687e3-5f72-c8f5-517b-584709b7d5d8}</Project>
+      <Name>Sirenix.OdinInspector.CompatibilityLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Editor.csproj">
+      <Project>{041131cd-3018-19b1-81b6-5dbee2467ffb}</Project>
+      <Name>Unity.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Hotfix.csproj">
+      <Project>{52f66610-896a-c4d1-9881-1a19df7ab80e}</Project>
+      <Name>Unity.Hotfix</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Model.csproj">
+      <Project>{9498bfb4-d9f5-c441-13e3-3f26f7700e29}</Project>
+      <Name>Unity.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Loader.csproj">
+      <Project>{32b76b98-b8f4-f864-d1f9-50cf255042d8}</Project>
+      <Name>Unity.Loader</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ModelView.csproj">
+      <Project>{c109842f-01da-64d4-dbf2-00c6449e459e}</Project>
+      <Name>Unity.ModelView</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Core.csproj">
+      <Project>{770e9beb-b313-3761-faa2-76daf4b34ada}</Project>
+      <Name>Unity.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Hotfix.Codes.csproj">
+      <Project>{d2d0dc3c-8414-f3b5-7b89-aea449f00e4d}</Project>
+      <Name>Unity.Hotfix.Codes</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Editor.Codes.csproj">
       <Project>{89dd0821-4ae5-0ee7-65a0-445ef4c85913}</Project>
       <Name>Unity.Editor.Codes</Name>
-    </ProjectReference>
-    <ProjectReference Include="DOTween.Modules.csproj">
-      <Project>{e98cb742-1497-f2c7-9027-6d6184506ff6}</Project>
-      <Name>DOTween.Modules</Name>
-    </ProjectReference>
-    <ProjectReference Include="DOTweenPro.Scripts.csproj">
-      <Project>{a83d90bd-03b8-832b-85d8-a3fd7710b697}</Project>
-      <Name>DOTweenPro.Scripts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,6 +7,7 @@ namespace ET.Client
     public static class OperaID
     {
         public const string Fire = "Fire";
+        public const string ReLoad = "ReLoad";
 
         public const string ShowInfo = "ShowInfo";
 

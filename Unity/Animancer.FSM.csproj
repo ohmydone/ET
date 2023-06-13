@@ -318,6 +318,15 @@
      <Reference Include="LZ4">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.focus-creative-games.hybridclr_unity@00cedc166f\Plugins\LZ4.dll</HintPath>
      </Reference>
+     <Reference Include="NPOI.OpenXmlFormats">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXmlFormats.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI.OOXML">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OOXML.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.OdinInspector.Attributes">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
      </Reference>
@@ -339,6 +348,9 @@
      <Reference Include="dnlib">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.focus-creative-games.hybridclr_unity@00cedc166f\Plugins\dnlib.dll</HintPath>
      </Reference>
+     <Reference Include="DOTween">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\DOTween.dll</HintPath>
+     </Reference>
      <Reference Include="DnsClient">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\DnsClient.dll</HintPath>
      </Reference>
@@ -348,14 +360,32 @@
      <Reference Include="MongoDB.Driver.Core">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.Core.dll</HintPath>
      </Reference>
+     <Reference Include="DOTweenPro">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.Utilities.Editor">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiLib">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.OdinInspector.Editor">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="DOTweenProEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\Editor\DOTweenProEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenEditor">
+     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Burst.Cecil.Mdb">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+     </Reference>
+     <Reference Include="NPOI.OpenXml4Net">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXml4Net.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
@@ -371,36 +401,6 @@
      </Reference>
      <Reference Include="MongoDB.Bson">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\MongoDB.Bson.dll</HintPath>
-     </Reference>
-     <Reference Include="DemiEditor">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.dll</HintPath>
-     </Reference>
-     <Reference Include="DOTween">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\DOTween.dll</HintPath>
-     </Reference>
-     <Reference Include="DOTweenPro">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
-     </Reference>
-     <Reference Include="DemiLib">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
-     </Reference>
-     <Reference Include="DOTweenProEditor">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTweenPro\Editor\DOTweenProEditor.dll</HintPath>
-     </Reference>
-     <Reference Include="DOTweenEditor">
-     <HintPath>D:\project\Magic\Unity\Assets\Standard Assets\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
-     </Reference>
-     <Reference Include="NPOI.OpenXmlFormats">
-     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXmlFormats.dll</HintPath>
-     </Reference>
-     <Reference Include="NPOI.OOXML">
-     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OOXML.dll</HintPath>
-     </Reference>
-     <Reference Include="NPOI">
-     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.dll</HintPath>
-     </Reference>
-     <Reference Include="NPOI.OpenXml4Net">
-     <HintPath>D:\project\Magic\Unity\Assets\Plugins\npoi\NPOI.OpenXml4Net.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\mscorlib.dll</HintPath>
