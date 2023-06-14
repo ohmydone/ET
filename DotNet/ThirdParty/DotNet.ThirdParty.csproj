@@ -42,6 +42,22 @@
       <Link>Recast\Recast.cs</Link>
     </Compile>
 
+    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\LubanLib\BeanBase.cs">
+      <Link>LubanLib\BeanBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\LubanLib\ByteBuf.cs">
+      <Link>LubanLib\ByteBuf.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\LubanLib\ByteBufExtensions.cs">
+      <Link>LubanLib\ByteBufExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\LubanLib\ITypeId.cs">
+      <Link>LubanLib\ITypeId.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Assets\Scripts\ThirdParty\LubanLib\StringUtil.cs">
+      <Link>LubanLib\StringUtil.cs</Link>
+    </Compile>
+
     <Compile Include="..\..\Unity\Library\PackageCache\com.unity.mathematics*\Unity.Mathematics\**\*.cs">
         <Link>Unity.Mathematics/$([System.String]::new(%(RecursiveDir)).Substring($([System.String]::new(%(RecursiveDir)).Indexof("Unity.Mathematics"))).Replace("Unity.Mathematics", ""))/%(FileName)%(Extension)</Link>
     </Compile>

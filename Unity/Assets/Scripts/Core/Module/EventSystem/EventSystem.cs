@@ -17,6 +17,11 @@ namespace ET
             public readonly UnOrderMultiMap<Type, object> Map = new();
             // 这里不用hash，数量比较少，直接for循环速度更快
             public readonly bool[] QueueFlag;
+
+            public void Add(Type type,object obj)
+            {
+                Map.Add(type,obj);
+            }
         }
 
         private readonly int count;

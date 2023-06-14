@@ -22,22 +22,22 @@ public sealed partial class SkillStepConfig: Bright.Config.BeanBase
         ParaCount = _buf.ReadInt();
         TriggerTime0 = _buf.ReadInt();
         StepStyle0 = _buf.ReadInt();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter0 = new System.Collections.Generic.List<string>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { string _e0;  _e0 = _buf.ReadString(); StepParameter0.Add(_e0);}}
+        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter0 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter0[__index0] = __e0;}}
         TriggerTime1 = _buf.ReadInt();
         StepStyle1 = _buf.ReadInt();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter1 = new System.Collections.Generic.List<string>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { string _e0;  _e0 = _buf.ReadString(); StepParameter1.Add(_e0);}}
+        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter1 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter1[__index0] = __e0;}}
         TriggerTime2 = _buf.ReadInt();
         StepStyle2 = _buf.ReadInt();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter2 = new System.Collections.Generic.List<string>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { string _e0;  _e0 = _buf.ReadString(); StepParameter2.Add(_e0);}}
+        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter2 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter2[__index0] = __e0;}}
         TriggerTime3 = _buf.ReadInt();
         StepStyle3 = _buf.ReadInt();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter3 = new System.Collections.Generic.List<string>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { string _e0;  _e0 = _buf.ReadString(); StepParameter3.Add(_e0);}}
+        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter3 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter3[__index0] = __e0;}}
         TriggerTime4 = _buf.ReadInt();
         StepStyle4 = _buf.ReadInt();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter4 = new System.Collections.Generic.List<string>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { string _e0;  _e0 = _buf.ReadString(); StepParameter4.Add(_e0);}}
+        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter4 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter4[__index0] = __e0;}}
         TriggerTime5 = _buf.ReadInt();
         StepStyle5 = _buf.ReadInt();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter5 = new System.Collections.Generic.List<string>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { string _e0;  _e0 = _buf.ReadString(); StepParameter5.Add(_e0);}}
+        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter5 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter5[__index0] = __e0;}}
         PostInit();
     }
 
@@ -73,7 +73,7 @@ public sealed partial class SkillStepConfig: Bright.Config.BeanBase
     /// <summary>
     /// 步骤参数0
     /// </summary>
-    public System.Collections.Generic.List<string> StepParameter0 { get; private set; }
+    public string[] StepParameter0 { get; private set; }
     /// <summary>
     /// 时间节点1
     /// </summary>
@@ -85,7 +85,7 @@ public sealed partial class SkillStepConfig: Bright.Config.BeanBase
     /// <summary>
     /// 步骤参数1
     /// </summary>
-    public System.Collections.Generic.List<string> StepParameter1 { get; private set; }
+    public string[] StepParameter1 { get; private set; }
     /// <summary>
     /// 时间节点2
     /// </summary>
@@ -97,7 +97,7 @@ public sealed partial class SkillStepConfig: Bright.Config.BeanBase
     /// <summary>
     /// 步骤参数2
     /// </summary>
-    public System.Collections.Generic.List<string> StepParameter2 { get; private set; }
+    public string[] StepParameter2 { get; private set; }
     /// <summary>
     /// 时间节点3
     /// </summary>
@@ -109,7 +109,7 @@ public sealed partial class SkillStepConfig: Bright.Config.BeanBase
     /// <summary>
     /// 步骤参数3
     /// </summary>
-    public System.Collections.Generic.List<string> StepParameter3 { get; private set; }
+    public string[] StepParameter3 { get; private set; }
     /// <summary>
     /// 时间节点4
     /// </summary>
@@ -121,7 +121,7 @@ public sealed partial class SkillStepConfig: Bright.Config.BeanBase
     /// <summary>
     /// 步骤参数4
     /// </summary>
-    public System.Collections.Generic.List<string> StepParameter4 { get; private set; }
+    public string[] StepParameter4 { get; private set; }
     /// <summary>
     /// 时间节点5
     /// </summary>
@@ -133,7 +133,7 @@ public sealed partial class SkillStepConfig: Bright.Config.BeanBase
     /// <summary>
     /// 步骤参数5
     /// </summary>
-    public System.Collections.Generic.List<string> StepParameter5 { get; private set; }
+    public string[] StepParameter5 { get; private set; }
 
     public const int __ID__ = 1762171455;
     public override int GetTypeId() => __ID__;

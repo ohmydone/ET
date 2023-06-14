@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ET.Client;
 using UnityEngine;
 
 namespace ET
@@ -18,15 +19,14 @@ namespace ET
         /// <summary>
         /// 默认键位
         /// </summary>
-        public readonly Dictionary<int, int> DefaultKeyCodeMap = new Dictionary<int, int>()
+        public readonly List<string> DefaultKeyCodeMap = new List<string>()
         {
-            { KeyCodeType.Skill1, 49 },//KeyCode.Alpha1
-            { KeyCodeType.Skill2, 50 },
-            { KeyCodeType.Skill3, 51 },
-            { KeyCodeType.Skill4, 52 },
-            { KeyCodeType.Skill5, 53 },
-            { KeyCodeType.Skill6, 54 },
-            { KeyCodeType.Skill7, 55 },
+            OperaID.Slot1,
+            OperaID.Slot2,
+            OperaID.Slot3,
+            OperaID.Slot4,
+            OperaID.Slot5,
+            OperaID.Slot6,
         };
     }
 }

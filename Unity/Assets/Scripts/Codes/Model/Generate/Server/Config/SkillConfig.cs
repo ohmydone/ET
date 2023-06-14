@@ -28,7 +28,7 @@ public sealed partial class SkillConfig: Bright.Config.BeanBase
         CDTime = _buf.ReadInt();
         Mode = _buf.ReadInt();
         PreviewType = _buf.ReadInt();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);PreviewRange = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); PreviewRange.Add(_e0);}}
+        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);PreviewRange = new int[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { int __e0;__e0 = _buf.ReadInt(); PreviewRange[__index0] = __e0;}}
         PostInit();
     }
 
@@ -88,7 +88,7 @@ public sealed partial class SkillConfig: Bright.Config.BeanBase
     /// <summary>
     /// 技能预览释放范围（0半径；1半径，小圈半径；2，长度，宽度）
     /// </summary>
-    public System.Collections.Generic.List<int> PreviewRange { get; private set; }
+    public int[] PreviewRange { get; private set; }
 
     public const int __ID__ = -844226349;
     public override int GetTypeId() => __ID__;

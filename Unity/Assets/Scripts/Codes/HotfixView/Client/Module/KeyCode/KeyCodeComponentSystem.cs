@@ -23,7 +23,7 @@ namespace ET
 //                 }
 //             }
 // #endif
-            self.Reset(self.KeyMap);
+            
             KeyCodeComponent.Instance = self;
         }
     }
@@ -45,26 +45,6 @@ namespace ET
 #endif
         }
         
-        public static Dictionary<int, int> GetKeys(this KeyCodeComponent self)
-        {
-            return self.DefaultKeyCodeMap;
-        }
         
-        public static void Reset(this KeyCodeComponent self,Dictionary<int, int> old = null)
-        {
-            self.KeyMap = new Dictionary<int, int>();
-            foreach (var item in self.DefaultKeyCodeMap)
-            {
-                var key = item.Key;
-                if (old != null && old.TryGetValue(key, out var val))
-                {
-                    self.KeyMap[key] = val;
-                }
-                else
-                {
-                    self.KeyMap[key] = item.Value;
-                }
-            }
-        }
     }
 }

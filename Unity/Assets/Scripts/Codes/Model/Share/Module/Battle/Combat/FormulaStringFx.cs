@@ -128,7 +128,7 @@ public class FormulaStringFx
                 templist.Add(formulaNodeList[i]);
         }
         formulaNodeList = templist;
-        if(Define.Debug)
+        //if(Define.Debug)
             Print();
     }
 

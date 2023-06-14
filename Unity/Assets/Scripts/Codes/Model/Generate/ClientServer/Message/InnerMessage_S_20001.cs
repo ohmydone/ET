@@ -378,6 +378,147 @@ namespace ET
 
 	}
 
+	[Message(InnerMessage.M2M_UseSkill)]
+	[ProtoContract]
+	public partial class M2M_UseSkill: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public int SkillConfigId { get; set; }
+
+		[ProtoMember(3)]
+		public long Sender { get; set; }
+
+		[ProtoMember(4)]
+		public long Reciver { get; set; }
+
+		[ProtoMember(5)]
+		public float X { get; set; }
+
+		[ProtoMember(6)]
+		public float Y { get; set; }
+
+		[ProtoMember(7)]
+		public float Z { get; set; }
+
+	}
+
+	[Message(InnerMessage.M2M_AddBuff)]
+	[ProtoContract]
+	public partial class M2M_AddBuff: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public int ConfigId { get; set; }
+
+		[ProtoMember(3)]
+		public long Timestamp { get; set; }
+
+		[ProtoMember(4)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(5)]
+		public long SourceId { get; set; }
+
+	}
+
+	[Message(InnerMessage.M2M_Damage)]
+	[ProtoContract]
+	public partial class M2M_Damage: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public long FromId { get; set; }
+
+		[ProtoMember(3)]
+		public long ToId { get; set; }
+
+		[ProtoMember(4)]
+		public long Damage { get; set; }
+
+		[ProtoMember(5)]
+		public long NowBase { get; set; }
+
+	}
+
+	[Message(InnerMessage.M2M_ChangeSkillGroup)]
+	[ProtoContract]
+	public partial class M2M_ChangeSkillGroup: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(3)]
+		public int Result { get; set; }
+
+		[ProtoMember(4)]
+		public long Timestamp { get; set; }
+
+	}
+
+	[Message(InnerMessage.M2M_RemoveBuff)]
+	[ProtoContract]
+	public partial class M2M_RemoveBuff: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public int ConfigId { get; set; }
+
+		[ProtoMember(3)]
+		public long Timestamp { get; set; }
+
+		[ProtoMember(4)]
+		public long UnitId { get; set; }
+
+	}
+
+	[Message(InnerMessage.M2M_Interrupt)]
+	[ProtoContract]
+	public partial class M2M_Interrupt: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public int ConfigId { get; set; }
+
+		[ProtoMember(3)]
+		public long Timestamp { get; set; }
+
+		[ProtoMember(4)]
+		public long UnitId { get; set; }
+
+	}
+
 	public static class InnerMessage
 	{
 		 public const ushort ObjectQueryRequest = 20002;
@@ -403,5 +544,11 @@ namespace ET
 		 public const ushort ObjectQueryResponse = 20022;
 		 public const ushort M2M_UnitTransferRequest = 20023;
 		 public const ushort M2M_UnitTransferResponse = 20024;
+		 public const ushort M2M_UseSkill = 20025;
+		 public const ushort M2M_AddBuff = 20026;
+		 public const ushort M2M_Damage = 20027;
+		 public const ushort M2M_ChangeSkillGroup = 20028;
+		 public const ushort M2M_RemoveBuff = 20029;
+		 public const ushort M2M_Interrupt = 20030;
 	}
 }

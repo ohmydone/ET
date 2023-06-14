@@ -135,7 +135,7 @@ namespace ET
                 return;
             if(!spellSkill.CanUse())return;
             self.CurSkillConfigId = spellSkill.ConfigId;
-            if (spellSkill.SkillConfig.PreviewRange != null && spellSkill.SkillConfig.PreviewRange.Count >=1 &&
+            if (spellSkill.SkillConfig.PreviewRange != null && spellSkill.SkillConfig.PreviewRange.Length >=1 &&
                 spellSkill.SkillConfig.PreviewRange[0] > 0)//不填或者填非正数表示无限距离
             {
                 var nowpos = self.GetParent<CombatUnitComponent>().unit.Position;
