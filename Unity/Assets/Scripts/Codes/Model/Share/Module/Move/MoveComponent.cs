@@ -5,6 +5,7 @@ using Unity.Mathematics;
 namespace ET
 {
     [ComponentOf(typeof(Unit))]
+    [FriendOf(typeof(MoveComponent))]
     public class MoveComponent: Entity, IAwake, IDestroy
     {
         public float3 PreTarget

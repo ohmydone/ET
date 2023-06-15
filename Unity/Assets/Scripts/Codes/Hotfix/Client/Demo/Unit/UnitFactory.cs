@@ -1,4 +1,6 @@
-﻿using Unity.Mathematics;
+﻿using System.Collections.Generic;
+using Unity.Mathematics;
+using UnityEngine;
 
 namespace ET.Client
 {
@@ -33,6 +35,27 @@ namespace ET.Client
                             unit.MoveToAsync(unitInfo.MoveInfo.Points).Coroutine();
                         }
                     }
+                    
+                    unit.AddComponent<AOIUnitComponent,Vector3,Quaternion, UnitType>(unitInfo.Position,unit.Rotation,unit.Type);
+                    CombatUnitComponent combatU;
+                    if (unitInfo.SkillIds != null)
+                    {
+                        combatU = unit.AddComponent<CombatUnitComponent,List<int>>(unitInfo.SkillIds);
+				        
+                    }
+                    else
+                    {
+                        combatU = unit.AddComponent<CombatUnitComponent>();
+                    }
+
+                    if (unitInfo.BuffIds != null&&unitInfo.BuffIds.Count>0)
+                    {
+                        var buffC = combatU.GetComponent<BuffComponent>();
+                        buffC.Init(unitInfo.BuffIds, unitInfo.BuffTimestamp,unitInfo.BuffSourceIds);
+
+                    }
+
+                    
                     unit.AddComponent<ObjectWait>();
 
                     unit.AddComponent<XunLuoPathComponent>();

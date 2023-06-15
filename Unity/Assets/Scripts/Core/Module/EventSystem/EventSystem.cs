@@ -455,7 +455,32 @@ namespace ET
                 }
             }
         }
+        
+        public void Awake<P1, P2, P3, P4,P5>(Entity component, P1 p1, P2 p2, P3 p3, P4 p4,P5 p5)
+        {
+            List<object> iAwakeSystems = this.typeSystems.GetSystems(component.GetType(), typeof (IAwakeSystem<P1, P2, P3, P4,P5>));
+            if (iAwakeSystems == null)
+            {
+                return;
+            }
 
+            foreach (IAwakeSystem<P1, P2, P3, P4,P5> aAwakeSystem in iAwakeSystems)
+            {
+                if (aAwakeSystem == null)
+                {
+                    continue;
+                }
+
+                try
+                {
+                    aAwakeSystem.Run(component, p1, p2, p3, p4,p5);
+                }
+                catch (Exception e)
+                {
+                    Log.Error(e);
+                }
+            }
+        }
         public void Load()
         {
             Queue<long> queue = this.queues[InstanceQueueIndex.Load];

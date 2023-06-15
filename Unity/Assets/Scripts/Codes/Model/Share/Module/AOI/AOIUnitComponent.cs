@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnityEditor.UI;
 using UnityEngine;
 
 namespace ET
@@ -12,8 +11,12 @@ namespace ET
     /// 使用时注意 平面是x,z；竖直方向是y
     /// </summary>
     [ComponentOf(typeof(Unit))]
-    public class AOIUnitComponent:Entity,IAwake<Vector3,Quaternion,UnitType,int>,IAwake<Vector3,Quaternion,UnitType>,
-            IAwake<Vector3,Quaternion,UnitType,int,bool>,IAwake<Vector3,Quaternion,UnitType,bool>,IDestroy
+    public class AOIUnitComponent:Entity,
+            IAwake<Vector3,Quaternion,UnitType,int>,
+            IAwake<Vector3,Quaternion,UnitType>,
+            IAwake<Vector3,Quaternion,UnitType,int,bool>,
+            IAwake<Vector3,Quaternion,UnitType,bool>
+            ,IDestroy
     {
         public Vector3 Position;
         public Quaternion Rotation;

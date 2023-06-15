@@ -155,6 +155,18 @@ namespace ET
 		[ProtoMember(7)]
 		public MoveInfo MoveInfo { get; set; }
 
+		[ProtoMember(8)]
+		public List<int> SkillIds { get; set; }
+
+		[ProtoMember(9)]
+		public List<int> BuffIds { get; set; }
+
+		[ProtoMember(10)]
+		public List<long> BuffTimestamp { get; set; }
+
+		[ProtoMember(11)]
+		public List<long> BuffSourceIds { get; set; }
+
 	}
 
 	[Message(OuterMessage.M2C_CreateUnits)]

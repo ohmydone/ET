@@ -337,8 +337,7 @@ namespace ET
         {
             return self.Cell.ListenerUnits;
         }
-
-#if SERVER
+        
         /// <summary>
         /// 自己是不是影子
         /// </summary>
@@ -354,7 +353,6 @@ namespace ET
 
             return false;
         }
-#endif
     }
     
 }

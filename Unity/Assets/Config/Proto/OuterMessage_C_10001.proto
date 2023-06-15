@@ -73,7 +73,12 @@ message UnitInfo
 	Unity.Mathematics.float3 Forward = 5;
 	map<int32, int64> KV = 6;
 	MoveInfo MoveInfo = 7;
+	repeated int32 SkillIds = 8;
+	repeated int32 BuffIds = 9;
+	repeated int64 BuffTimestamp = 10;
+	repeated int64 BuffSourceIds = 11;
 }
+
 
 message M2C_CreateUnits // IActorMessage
 {

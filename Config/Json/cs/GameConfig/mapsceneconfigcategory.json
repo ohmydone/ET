@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 5,
+    "Name": "Map1",
+    "Area": "Map1AreaConfigCategory",
+    "Recast": "Map1"
+  },
+  {
+    "Id": 6,
+    "Name": "Map2",
+    "Area": "",
+    "Recast": "Map2"
+  },
+  {
+    "Id": 10,
+    "Name": "Map1",
+    "Area": "Map1AreaConfigCategory",
+    "Recast": "Map1"
+  }
+]

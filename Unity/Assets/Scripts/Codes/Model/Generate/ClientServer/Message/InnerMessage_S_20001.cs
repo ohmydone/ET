@@ -376,6 +376,9 @@ namespace ET
 		[ProtoMember(3)]
 		public string Message { get; set; }
 
+		[ProtoMember(4)]
+		public long NewInstanceId { get; set; }
+
 	}
 
 	[Message(InnerMessage.M2M_UseSkill)]
@@ -519,6 +522,175 @@ namespace ET
 
 	}
 
+	[Message(InnerMessage.M2M_PathfindingResult)]
+	[ProtoContract]
+	public partial class M2M_PathfindingResult: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public float X { get; set; }
+
+		[ProtoMember(3)]
+		public float Y { get; set; }
+
+		[ProtoMember(4)]
+		public float Z { get; set; }
+
+		[ProtoMember(5)]
+		public List<float> Xs { get; set; }
+
+		[ProtoMember(6)]
+		public List<float> Ys { get; set; }
+
+		[ProtoMember(7)]
+		public List<float> Zs { get; set; }
+
+	}
+
+	[Message(InnerMessage.M2M_Stop)]
+	[ProtoContract]
+	public partial class M2M_Stop: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int Error { get; set; }
+
+		[ProtoMember(2)]
+		public long Id { get; set; }
+
+		[ProtoMember(3)]
+		public float X { get; set; }
+
+		[ProtoMember(4)]
+		public float Y { get; set; }
+
+		[ProtoMember(5)]
+		public float Z { get; set; }
+
+		[ProtoMember(6)]
+		public float A { get; set; }
+
+		[ProtoMember(7)]
+		public float B { get; set; }
+
+		[ProtoMember(8)]
+		public float C { get; set; }
+
+		[ProtoMember(9)]
+		public float W { get; set; }
+
+	}
+
+	[Message(InnerMessage.M2M_UnitAreaRemove)]
+	[ProtoContract]
+	public partial class M2M_UnitAreaRemove: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public long UnitId { get; set; }
+
+	}
+
+	[Message(InnerMessage.M2M_UnitAreaAdd)]
+	[ProtoContract]
+	public partial class M2M_UnitAreaAdd: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public Unit Unit { get; set; }
+
+		[ProtoMember(3)]
+		public List<Entity> Entitys { get; set; }
+
+		[ProtoMember(4)]
+		public List<RecursiveEntitys> Map { get; set; }
+
+		[ProtoMember(5)]
+		public MoveInfo MoveInfo { get; set; }
+
+	}
+
+	[Message(InnerMessage.M2M_UnitAreaCreate)]
+	[ProtoContract]
+	public partial class M2M_UnitAreaCreate: ProtoObject, IActorLocationMessage
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public Unit Unit { get; set; }
+
+		[ProtoMember(3)]
+		public List<Entity> Entitys { get; set; }
+
+		[ProtoMember(4)]
+		public List<RecursiveEntitys> Map { get; set; }
+
+	}
+
+	[Message(InnerMessage.RecursiveEntitys)]
+	[ProtoContract]
+	public partial class RecursiveEntitys: ProtoObject
+	{
+		[ProtoMember(1)]
+		public int IsChild { get; set; }
+
+		[ProtoMember(2)]
+		public int ParentIndex { get; set; }
+
+		[ProtoMember(3)]
+		public int ChildIndex { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2M_UnitAreaTransferResponse))]
+	[Message(InnerMessage.M2M_UnitAreaTransferRequest)]
+	[ProtoContract]
+	public partial class M2M_UnitAreaTransferRequest: ProtoObject, IActorRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public Unit Unit { get; set; }
+
+		[ProtoMember(3)]
+		public List<Entity> Entitys { get; set; }
+
+		[ProtoMember(4)]
+		public List<RecursiveEntitys> Map { get; set; }
+
+	}
+
+	[Message(InnerMessage.M2M_UnitAreaTransferResponse)]
+	[ProtoContract]
+	public partial class M2M_UnitAreaTransferResponse: ProtoObject, IActorResponse
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int Error { get; set; }
+
+		[ProtoMember(3)]
+		public string Message { get; set; }
+
+		[ProtoMember(4)]
+		public long NewInstanceId { get; set; }
+
+	}
+
 	public static class InnerMessage
 	{
 		 public const ushort ObjectQueryRequest = 20002;
@@ -550,5 +722,13 @@ namespace ET
 		 public const ushort M2M_ChangeSkillGroup = 20028;
 		 public const ushort M2M_RemoveBuff = 20029;
 		 public const ushort M2M_Interrupt = 20030;
+		 public const ushort M2M_PathfindingResult = 20031;
+		 public const ushort M2M_Stop = 20032;
+		 public const ushort M2M_UnitAreaRemove = 20033;
+		 public const ushort M2M_UnitAreaAdd = 20034;
+		 public const ushort M2M_UnitAreaCreate = 20035;
+		 public const ushort RecursiveEntitys = 20036;
+		 public const ushort M2M_UnitAreaTransferRequest = 20037;
+		 public const ushort M2M_UnitAreaTransferResponse = 20038;
 	}
 }

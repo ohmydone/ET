@@ -48,7 +48,10 @@ namespace ET
     {
         void Run(Entity o, A a, B b, C c, D d);
     }
-
+    public interface IAwakeSystem<A, B, C, D,E>: ISystemType
+    {
+        void Run(Entity o, A a, B b, C c, D d,E e);
+    }
     [ObjectSystem]
     public abstract class AwakeSystem<T> : IAwakeSystem where T: Entity, IAwake
     {
