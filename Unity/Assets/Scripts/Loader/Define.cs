@@ -70,5 +70,7 @@
 		public static readonly int DesignScreen_Width = 1366;
 		public static readonly int DesignScreen_Height = 768;
 		
+		
+		public static readonly int CellLen = 9;
 	}
 }

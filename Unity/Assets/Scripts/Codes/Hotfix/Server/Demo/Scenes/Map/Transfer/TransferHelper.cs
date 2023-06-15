@@ -22,14 +22,14 @@ namespace ET.Server
             long unitId = unit.Id;
             long unitInstanceId = unit.InstanceId;
             
-            M2M_UnitTransferRequest request = new M2M_UnitTransferRequest() {Entitys = new List<byte[]>()};
+            M2M_UnitTransferRequest request = new M2M_UnitTransferRequest() {Entitys = new List<Entity>()};
             request.OldInstanceId = unitInstanceId;
-            request.Unit = unit.ToBson();
+            request.Unit = unit;
             foreach (Entity entity in unit.Components.Values)
             {
                 if (entity is ITransfer)
                 {
-                    request.Entitys.Add(entity.ToBson());
+                    request.Entitys.Add(entity);
                 }
             }
             unit.Dispose();

@@ -9,60 +9,64 @@ namespace ET
     public interface IAwake<A>
     {
     }
-	
+
     public interface IAwake<A, B>
     {
     }
-	
+
     public interface IAwake<A, B, C>
     {
     }
-	
+
     public interface IAwake<A, B, C, D>
     {
     }
-    public interface IAwake<A, B, C, D,E>
+
+    public interface IAwake<A, B, C, D, E>
     {
     }
+
     public interface IAwakeSystem: ISystemType
     {
         void Run(Entity o);
     }
-	
+
     public interface IAwakeSystem<A>: ISystemType
     {
         void Run(Entity o, A a);
     }
-	
+
     public interface IAwakeSystem<A, B>: ISystemType
     {
         void Run(Entity o, A a, B b);
     }
-	
+
     public interface IAwakeSystem<A, B, C>: ISystemType
     {
         void Run(Entity o, A a, B b, C c);
     }
-	
+
     public interface IAwakeSystem<A, B, C, D>: ISystemType
     {
         void Run(Entity o, A a, B b, C c, D d);
     }
-    public interface IAwakeSystem<A, B, C, D,E>: ISystemType
+
+    public interface IAwakeSystem<A, B, C, D, E>: ISystemType
     {
-        void Run(Entity o, A a, B b, C c, D d,E e);
+        void Run(Entity o, A a, B b, C c, D d, E e);
     }
+
     [ObjectSystem]
-    public abstract class AwakeSystem<T> : IAwakeSystem where T: Entity, IAwake
+    public abstract class AwakeSystem<T>: IAwakeSystem where T : Entity, IAwake
     {
         Type ISystemType.Type()
         {
-            return typeof(T);
+            return typeof (T);
         }
 
         Type ISystemType.SystemType()
         {
-            return typeof(IAwakeSystem);
+            return typeof (IAwakeSystem);
         }
 
         int ISystemType.GetInstanceQueueIndex()
@@ -77,18 +81,18 @@ namespace ET
 
         protected abstract void Awake(T self);
     }
-    
+
     [ObjectSystem]
-    public abstract class AwakeSystem<T, A> : IAwakeSystem<A> where T: Entity, IAwake<A>
+    public abstract class AwakeSystem<T, A>: IAwakeSystem<A> where T : Entity, IAwake<A>
     {
         Type ISystemType.Type()
         {
-            return typeof(T);
+            return typeof (T);
         }
 
         Type ISystemType.SystemType()
         {
-            return typeof(IAwakeSystem<A>);
+            return typeof (IAwakeSystem<A>);
         }
 
         int ISystemType.GetInstanceQueueIndex()
@@ -105,16 +109,16 @@ namespace ET
     }
 
     [ObjectSystem]
-    public abstract class AwakeSystem<T, A, B> : IAwakeSystem<A, B> where T: Entity, IAwake<A, B>
+    public abstract class AwakeSystem<T, A, B>: IAwakeSystem<A, B> where T : Entity, IAwake<A, B>
     {
         Type ISystemType.Type()
         {
-            return typeof(T);
+            return typeof (T);
         }
 
         Type ISystemType.SystemType()
         {
-            return typeof(IAwakeSystem<A, B>);
+            return typeof (IAwakeSystem<A, B>);
         }
 
         int ISystemType.GetInstanceQueueIndex()
@@ -131,16 +135,16 @@ namespace ET
     }
 
     [ObjectSystem]
-    public abstract class AwakeSystem<T, A, B, C> : IAwakeSystem<A, B, C> where T: Entity, IAwake<A, B, C>
+    public abstract class AwakeSystem<T, A, B, C>: IAwakeSystem<A, B, C> where T : Entity, IAwake<A, B, C>
     {
         Type ISystemType.Type()
         {
-            return typeof(T);
+            return typeof (T);
         }
 
         Type ISystemType.SystemType()
         {
-            return typeof(IAwakeSystem<A, B, C>);
+            return typeof (IAwakeSystem<A, B, C>);
         }
 
         int ISystemType.GetInstanceQueueIndex()
@@ -155,18 +159,18 @@ namespace ET
 
         protected abstract void Awake(T self, A a, B b, C c);
     }
-    
+
     [ObjectSystem]
-    public abstract class AwakeSystem<T, A, B, C, D> : IAwakeSystem<A, B, C, D> where T: Entity, IAwake<A, B, C, D>
+    public abstract class AwakeSystem<T, A, B, C, D>: IAwakeSystem<A, B, C, D> where T : Entity, IAwake<A, B, C, D>
     {
         Type ISystemType.Type()
         {
-            return typeof(T);
+            return typeof (T);
         }
 
         Type ISystemType.SystemType()
         {
-            return typeof(IAwakeSystem<A, B, C, D>);
+            return typeof (IAwakeSystem<A, B, C, D>);
         }
 
         int ISystemType.GetInstanceQueueIndex()
@@ -180,5 +184,31 @@ namespace ET
         }
 
         protected abstract void Awake(T self, A a, B b, C c, D d);
+    }
+
+    [ObjectSystem]
+    public abstract class AwakeSystem<T, A, B, C, D, E>: IAwakeSystem<A, B, C, D, E> where T : Entity, IAwake<A, B, C, D, E>
+    {
+        Type ISystemType.Type()
+        {
+            return typeof (T);
+        }
+
+        Type ISystemType.SystemType()
+        {
+            return typeof (IAwakeSystem<A, B, C, D, E>);
+        }
+
+        int ISystemType.GetInstanceQueueIndex()
+        {
+            return InstanceQueueIndex.None;
+        }
+
+        void IAwakeSystem<A, B, C, D, E>.Run(Entity o, A a, B b, C c, D d, E e)
+        {
+            this.Awake((T)o, a, b, c, d, e);
+        }
+
+        protected abstract void Awake(T self, A a, B b, C c, D d,E e);
     }
 }

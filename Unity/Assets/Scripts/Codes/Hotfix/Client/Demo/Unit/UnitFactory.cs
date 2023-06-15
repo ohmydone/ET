@@ -35,27 +35,24 @@ namespace ET.Client
                             unit.MoveToAsync(unitInfo.MoveInfo.Points).Coroutine();
                         }
                     }
-                    
-                    unit.AddComponent<AOIUnitComponent,Vector3,Quaternion, UnitType>(unitInfo.Position,unit.Rotation,unit.Type);
+
+                    unit.AddComponent<AOIUnitComponent, Vector3, Quaternion, UnitType>(unitInfo.Position, unit.Rotation, unit.Type);
                     CombatUnitComponent combatU;
                     if (unitInfo.SkillIds != null)
                     {
-                        combatU = unit.AddComponent<CombatUnitComponent,List<int>>(unitInfo.SkillIds);
-				        
+                        combatU = unit.AddComponent<CombatUnitComponent, List<int>>(unitInfo.SkillIds);
                     }
                     else
                     {
                         combatU = unit.AddComponent<CombatUnitComponent>();
                     }
 
-                    if (unitInfo.BuffIds != null&&unitInfo.BuffIds.Count>0)
+                    if (unitInfo.BuffIds != null && unitInfo.BuffIds.Count > 0)
                     {
                         var buffC = combatU.GetComponent<BuffComponent>();
-                        buffC.Init(unitInfo.BuffIds, unitInfo.BuffTimestamp,unitInfo.BuffSourceIds);
-
+                        buffC.Init(unitInfo.BuffIds, unitInfo.BuffTimestamp, unitInfo.BuffSourceIds);
                     }
 
-                    
                     unit.AddComponent<ObjectWait>();
 
                     unit.AddComponent<XunLuoPathComponent>();
@@ -79,12 +76,61 @@ namespace ET.Client
                             unit.MoveToAsync(unitInfo.MoveInfo.Points).Coroutine();
                         }
                     }
+
+                    unit.AddComponent<AOIUnitComponent, Vector3, Quaternion, UnitType>(unit.Position, unit.Rotation, unit.Type);
                     unit.AddComponent<ObjectWait>();
                     break;
                 }
             }
+
             EventSystem.Instance.Publish(unit.DomainScene(), new EventType.AfterUnitCreate() { Unit = unit });
             return unit;
         }
+        
+        /// <summary>
+    /// 创建技能触发体（单机用）
+    /// </summary>
+    /// <param name="currentScene"></param>
+    /// <param name="configId"></param>
+    /// <param name="pos"></param>
+    /// <param name="rota"></param>
+    /// <param name="para"></param>
+    /// <returns></returns>
+    public static Unit CreateSkillCollider(Scene currentScene, int configId, Vector3 pos, Quaternion rota, SkillPara para)
+    {
+        UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
+        Unit unit = unitComponent.AddChild<Unit, int>(configId);
+
+        unit.Position = pos;
+        unit.Rotation = rota;
+        var collider = SkillJudgeConfigCategory.Instance.Get(configId);
+        if (collider.ColliderType == ColliderType.Target) //朝指定位置方向飞行碰撞体
+        {
+            var numc = unit.AddComponent<NumericComponent>();
+
+            numc.Set(NumericType.SpeedBase, collider.Speed);
+            var moveComp = unit.AddComponent<MoveComponent>();
+            Log.Info(pos + " " + pos + (para.Position - pos).normalized * collider.Speed * collider.Time / 1000f);
+            List<float3> target = new List<float3>();
+            target.Add(pos);
+            target.Add(pos + (para.Position - pos).normalized * collider.Speed * collider.Time / 1000f);
+            moveComp.MoveToAsync(target, collider.Speed).Coroutine();
+            unit.AddComponent<SkillColliderComponent, SkillPara, Vector3>(para, para.Position);
+        }
+        else if (collider.ColliderType == ColliderType.Aim) //锁定目标飞行
+        {
+            var numc = unit.AddComponent<NumericComponent>();
+            numc.Set(NumericType.SpeedBase, collider.Speed);
+            unit.AddComponent<MoveComponent>();
+            unit.AddComponent<ZhuiZhuAimComponent, Unit>(para.To.unit);
+            unit.AddComponent<AIComponent, int, int>(2, 50);
+            unit.AddComponent<SkillColliderComponent, SkillPara, long>(para, para.To.Id);
+        }
+
+        unit.AddComponent<AOIUnitComponent, Vector3, Quaternion, UnitType>(pos, rota, unit.Type);
+        return unit;
     }
+    }
+
+    
 }

@@ -72,10 +72,7 @@ namespace ET
                         else if (collider.ColliderType == ColliderType.Aim) //锁定目标飞行
                         {
                             var toUnit = unit.Parent.GetChild<Unit>(skillInfo.ToId);
-                            unit.AddComponent<ZhuiZhuAimComponent, Unit, Action>(toUnit, () =>
-                            {
-                                unit.Dispose();
-                            });
+                            unit.AddComponent<ZhuiZhuAimComponent, Unit>(toUnit);
                             unit.AddComponent<AIComponent,int,int>(2,50);
                         }
                         var aoiu =unit.AddComponent<AOIUnitComponent,Vector3,Quaternion, UnitType,bool>(pos,unit.Rotation,unit.Type,type!=CreateUnitFromMsgType.Create);
@@ -154,10 +151,7 @@ namespace ET
                 var numc = unit.AddComponent<NumericComponent>();
                 numc.Set(NumericType.SpeedBase,collider.Speed);
                 unit.AddComponent<MoveComponent>();
-                unit.AddComponent<ZhuiZhuAimComponent, Unit, Action>(para.To.unit, () =>
-                {
-                    unit.Dispose();
-                });
+                unit.AddComponent<ZhuiZhuAimComponent, Unit>(para.To.unit);
                 unit.AddComponent<AIComponent,int,int>(2,50);
                 unit.AddComponent<SkillColliderComponent,SkillPara,long>(para,para.To.Id);
             }

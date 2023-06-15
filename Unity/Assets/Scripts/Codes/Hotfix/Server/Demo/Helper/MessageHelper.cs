@@ -21,14 +21,20 @@ namespace ET.Server
             MessageHelper.SendToClient(unit, removeUnits);
         }
         
-        public static void Broadcast(Unit unit, IActorMessage message)
+        public static void Broadcast(Unit unit, IActorMessage message,GhostComponent ghost =null)
         {
-            Dictionary<long, AOIEntity> dict = unit.GetBeSeePlayers();
-            // 网络底层做了优化，同一个消息不会多次序列化
-            ActorLocationSenderOneType oneTypeLocationType = ActorLocationSenderComponent.Instance.Get(LocationType.Player);
-            foreach (AOIEntity u in dict.Values)
+            if (ghost == null)
             {
-                oneTypeLocationType.Send(u.Unit.Id, message);
+                ghost = unit.GetComponent<AOIUnitComponent>()?.GetComponent<GhostComponent>();
+            }
+            if (ghost!=null && !ghost.IsGoast)
+            {
+                unit.GetComponent<AOIUnitComponent>()?.GetComponent<GhostComponent>()?.HandleMsg(message);
+            }
+            
+            foreach (var u in unit.GetBeSeeUnits())
+            {
+                SendToClient(u.GetParent<Unit>(), message);
             }
         }
         

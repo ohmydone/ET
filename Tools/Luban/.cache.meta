@@ -17,7 +17,7 @@ D:/project/Magic/Config/Excel/c/GameConfig/mapsceneconfigcategory.bytes,1A6CAD11
 D:/project/Magic/Config/Excel/c/GameConfig/skillconfigcategory.bytes,D289C94163872270758A17A8D54486F0,928,1686121684491
 D:/project/Magic/Config/Excel/c/GameConfig/skilljudgeconfigcategory.bytes,5ACD915273B3A0949062E15227332E7B,84,1686121684494
 D:/project/Magic/Config/Excel/c/GameConfig/skillstepconfigcategory.bytes,71EA55DD1F9E1303FB68D299ECC6B51,400,1686121684493
-D:/project/Magic/Config/Excel/c/GameConfig/unitconfigcategory.bytes,AA4AA36D23BDEFDA89875EDADDA37561,14,1685945070996
+D:/project/Magic/Config/Excel/c/GameConfig/unitconfigcategory.bytes,1DF82C36BE945CD9ADB7F2334D133E5,413,1686809325183
 D:/project/Magic/Config/Excel/cs/GameConfig/aiconfigcategory.bytes,37AA4CC6969B1A5C214592393A8E6F,65,1684723506199
 D:/project/Magic/Config/Excel/cs/GameConfig/attributeconfigcategory.bytes,70623D74454C8E30E4DDD67AA1A8F21B,547,1686121690377
 D:/project/Magic/Config/Excel/cs/GameConfig/buffactioncontrolconfigcategory.bytes,896E9B18AB3D7CCFA2AE80FB5C4A934F,7,1686121690333
@@ -37,7 +37,7 @@ D:/project/Magic/Config/Excel/cs/GameConfig/mapsceneconfigcategory.bytes,1A6CAD1
 D:/project/Magic/Config/Excel/cs/GameConfig/skillconfigcategory.bytes,D289C94163872270758A17A8D54486F0,928,1686121690368
 D:/project/Magic/Config/Excel/cs/GameConfig/skilljudgeconfigcategory.bytes,5ACD915273B3A0949062E15227332E7B,84,1686121690377
 D:/project/Magic/Config/Excel/cs/GameConfig/skillstepconfigcategory.bytes,71EA55DD1F9E1303FB68D299ECC6B51,400,1686121690377
-D:/project/Magic/Config/Excel/cs/GameConfig/unitconfigcategory.bytes,AA4AA36D23BDEFDA89875EDADDA37561,14,1685945077065
+D:/project/Magic/Config/Excel/cs/GameConfig/unitconfigcategory.bytes,1DF82C36BE945CD9ADB7F2334D133E5,413,1686809330836
 D:/project/Magic/Config/Excel/cs/StartConfig/Localhost/startmachineconfigcategory.bytes,8FFAD2F95982422EF86D8F1F217924AA,28,1684723763091
 D:/project/Magic/Config/Excel/cs/StartConfig/Localhost/startprocessconfigcategory.bytes,283AC87C82882EDB0DEA8D3574CC239,6,1684723763091
 D:/project/Magic/Config/Excel/cs/StartConfig/Localhost/startsceneconfigcategory.bytes,4D59F7123EF2F4D4A569C5867FEDEE3,247,1684723763091
@@ -55,7 +55,7 @@ D:/project/Magic/Config/Excel/s/GameConfig/mapsceneconfigcategory.bytes,1A6CAD11
 D:/project/Magic/Config/Excel/s/GameConfig/skillconfigcategory.bytes,D289C94163872270758A17A8D54486F0,928,1686121686253
 D:/project/Magic/Config/Excel/s/GameConfig/skilljudgeconfigcategory.bytes,5ACD915273B3A0949062E15227332E7B,84,1686121686244
 D:/project/Magic/Config/Excel/s/GameConfig/skillstepconfigcategory.bytes,71EA55DD1F9E1303FB68D299ECC6B51,400,1686121686244
-D:/project/Magic/Config/Excel/s/GameConfig/unitconfigcategory.bytes,AA4AA36D23BDEFDA89875EDADDA37561,14,1685945072656
+D:/project/Magic/Config/Excel/s/GameConfig/unitconfigcategory.bytes,1DF82C36BE945CD9ADB7F2334D133E5,413,1686809326839
 D:/project/Magic/Config/Excel/s/StartConfig/Localhost/startmachineconfigcategory.bytes,8FFAD2F95982422EF86D8F1F217924AA,28,1684723759273
 D:/project/Magic/Config/Excel/s/StartConfig/Localhost/startprocessconfigcategory.bytes,283AC87C82882EDB0DEA8D3574CC239,6,1684723759273
 D:/project/Magic/Config/Excel/s/StartConfig/Localhost/startsceneconfigcategory.bytes,4D59F7123EF2F4D4A569C5867FEDEE3,247,1684723759273
@@ -79,7 +79,7 @@ D:/project/Magic/Config/Json/c/GameConfig/mapsceneconfigcategory.json,E2C1AA1D4C
 D:/project/Magic/Config/Json/c/GameConfig/skillconfigcategory.json,16E7A1CCDFD25A432292CE6680F9F373,2882,1686121685388
 D:/project/Magic/Config/Json/c/GameConfig/skilljudgeconfigcategory.json,5E546449A5267DA693187BD31B37AD,890,1686121685379
 D:/project/Magic/Config/Json/c/GameConfig/skillstepconfigcategory.json,3A87A9EBA7B1C6A5EEA945523A6A9E8,4890,1686121685380
-D:/project/Magic/Config/Json/c/GameConfig/unitconfigcategory.json,E92D173D74250D03B776FD5E12E33A9,72,1685945071786
+D:/project/Magic/Config/Json/c/GameConfig/unitconfigcategory.json,4EC013B84877F9B6C6AA8F97727173C8,1273,1686809325979
 D:/project/Magic/Config/Json/cs/GameConfig/aiconfigcategory.json,BDFA9879E58338A413EA9E8B93296CE,414,1684723508508
 D:/project/Magic/Config/Json/cs/GameConfig/attributeconfigcategory.json,B8CE44F94317646489B145611212135E,2229,1686121692797
 D:/project/Magic/Config/Json/cs/GameConfig/buffactioncontrolconfigcategory.json,DBEF61060F219619C55AB2EAE3FE,91,1686121692795
@@ -99,7 +99,7 @@ D:/project/Magic/Config/Json/cs/GameConfig/mapsceneconfigcategory.json,E2C1AA1D4
 D:/project/Magic/Config/Json/cs/GameConfig/skillconfigcategory.json,16E7A1CCDFD25A432292CE6680F9F373,2882,1686121692810
 D:/project/Magic/Config/Json/cs/GameConfig/skilljudgeconfigcategory.json,5E546449A5267DA693187BD31B37AD,890,1686121692795
 D:/project/Magic/Config/Json/cs/GameConfig/skillstepconfigcategory.json,3A87A9EBA7B1C6A5EEA945523A6A9E8,4890,1686121692796
-D:/project/Magic/Config/Json/cs/GameConfig/unitconfigcategory.json,E92D173D74250D03B776FD5E12E33A9,72,1685945079405
+D:/project/Magic/Config/Json/cs/GameConfig/unitconfigcategory.json,4EC013B84877F9B6C6AA8F97727173C8,1273,1686809333165
 D:/project/Magic/Config/Json/cs/StartConfig/Benchmark/startmachineconfigcategory.json,58E3A390C4302FD4F4172A5FBFF2340,114,1684724341036
 D:/project/Magic/Config/Json/cs/StartConfig/Benchmark/startprocessconfigcategory.json,711971A35F2C83985938121CA4A97746,213,1684724341036
 D:/project/Magic/Config/Json/cs/StartConfig/Benchmark/startsceneconfigcategory.json,1C474826A91A7B5CE2EBF832F9D133,464,1684724341036
@@ -129,7 +129,7 @@ D:/project/Magic/Config/Json/s/GameConfig/mapsceneconfigcategory.json,E2C1AA1D4C
 D:/project/Magic/Config/Json/s/GameConfig/skillconfigcategory.json,16E7A1CCDFD25A432292CE6680F9F373,2882,1686121688713
 D:/project/Magic/Config/Json/s/GameConfig/skilljudgeconfigcategory.json,5E546449A5267DA693187BD31B37AD,890,1686121688686
 D:/project/Magic/Config/Json/s/GameConfig/skillstepconfigcategory.json,3A87A9EBA7B1C6A5EEA945523A6A9E8,4890,1686121688686
-D:/project/Magic/Config/Json/s/GameConfig/unitconfigcategory.json,E92D173D74250D03B776FD5E12E33A9,72,1685945075378
+D:/project/Magic/Config/Json/s/GameConfig/unitconfigcategory.json,4EC013B84877F9B6C6AA8F97727173C8,1273,1686809329267
 D:/project/Magic/Config/Json/s/StartConfig/Localhost/startmachineconfigcategory.json,58E3A390C4302FD4F4172A5FBFF2340,114,1684723505377
 D:/project/Magic/Config/Json/s/StartConfig/Localhost/startprocessconfigcategory.json,9EB5A7C3E1DC288BCF49DFD134FB7A7,73,1684723505376
 D:/project/Magic/Config/Json/s/StartConfig/Localhost/startsceneconfigcategory.json,ED75B9B73CCE79779ACA8976C6FFA487,1627,1684723505376
@@ -160,7 +160,7 @@ D:/project/Magic/Unity/Assets/Config/Excel/Datas/StartConfig/Localhost/StartMach
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/StartConfig/Localhost/StartProcessConfig.xlsx,F23ED00A0F96E52D49739239AE,9818,1676530553431
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/StartConfig/Localhost/StartSceneConfig.xlsx,CA3C2E3CEC103C6BA043138D9A2B2FA,12603,1676530553432
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/StartConfig/Localhost/StartZoneConfig.xlsx,72F73554F023E7256A32D68FF068A58,10799,1676530553433
-D:/project/Magic/Unity/Assets/Config/Excel/Datas/UnitConfig.xlsx,E320DD2CC6184CAEDA69B3C292FFC612,9849,1685945066410
+D:/project/Magic/Unity/Assets/Config/Excel/Datas/UnitConfig.xlsx,61A4C6C13A7ACDE61EF0A8A041CAB04,11578,1686809314792
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/AIConfig.cs,DEBB8837DBD540193DED42E1EDA45D,2350,1684723500695
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/AIConfigCategory.cs,27B7EF389B315CFFF986E6F04F8FEDB0,2136,1684723500697
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/ALocalizeConfig.cs,ABCCF690CBD190AEDCD22C6B958D98F,1494,1684723500698
@@ -197,7 +197,7 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SkillJu
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SkillJudgeConfigCategory.cs,86723C5056EC734294E0C341E5D76D94,2264,1686121684469
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SkillStepConfig.cs,F185C69E8E58333B14AEB5A1BADF9083,6734,1686727901564
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SkillStepConfigCategory.cs,91122D3B9C41BFCD3F16873913753B,2248,1686121684464
-D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/UnitConfig.cs,E8A6D75526B73D76336DAACD4C3FA893,1538,1685945070996
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/UnitConfig.cs,F330D4A8CA93ECFC2CDB85CCE3E8C5,2429,1686809325195
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/UnitConfigCategory.cs,9D3C6D5B92BA7AD89799E25D7CFD69,2168,1684723500696
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/AIConfig.cs,DEBB8837DBD540193DED42E1EDA45D,2350,1684723763881
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/AIConfigCategory.cs,27B7EF389B315CFFF986E6F04F8FEDB0,2136,1684723763880
@@ -243,7 +243,7 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/S
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/StartSceneConfigCategory.cs,8C5D37C67FD9369682D18FDB1987C1,2264,1684723763880
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/StartZoneConfig.cs,DB586FA83D954FF8AAFE8F2B034E357,1838,1684723763883
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/StartZoneConfigCategory.cs,43D11DE31B8BC3A9EA612CC654ADA7F,2248,1684723763885
-D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/UnitConfig.cs,E8A6D75526B73D76336DAACD4C3FA893,1538,1685945078622
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/UnitConfig.cs,F330D4A8CA93ECFC2CDB85CCE3E8C5,2429,1686809332384
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/UnitConfigCategory.cs,9D3C6D5B92BA7AD89799E25D7CFD69,2168,1684723763880
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/AIConfig.cs,DEBB8837DBD540193DED42E1EDA45D,2350,1684723503884
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/AIConfigCategory.cs,27B7EF389B315CFFF986E6F04F8FEDB0,2136,1684723503884
@@ -279,5 +279,5 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/StartSc
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/StartSceneConfigCategory.cs,8C5D37C67FD9369682D18FDB1987C1,2264,1684723503884
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/StartZoneConfig.cs,DB586FA83D954FF8AAFE8F2B034E357,1838,1684723503885
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/StartZoneConfigCategory.cs,43D11DE31B8BC3A9EA612CC654ADA7F,2248,1684723503886
-D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/UnitConfig.cs,E8A6D75526B73D76336DAACD4C3FA893,1538,1685945074562
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/UnitConfig.cs,F330D4A8CA93ECFC2CDB85CCE3E8C5,2429,1686809328441
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/UnitConfigCategory.cs,9D3C6D5B92BA7AD89799E25D7CFD69,2168,1684723503886

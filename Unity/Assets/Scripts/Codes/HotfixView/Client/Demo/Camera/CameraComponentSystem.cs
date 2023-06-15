@@ -11,6 +11,9 @@ namespace ET.Client
 			protected override void Awake(CameraComponent self)
 			{
 				self.Awake();
+				self.mainCamera.transform.rotation = Quaternion.Euler(Vector3.right*80);
+				Vector3 cameraPos = self.mainCamera.transform.position;
+				self.mainCamera.transform.position = new Vector3(cameraPos.x, 10, cameraPos.z - 1);
 			}
 		}
 
@@ -38,6 +41,7 @@ namespace ET.Client
 		{
 			Vector3 cameraPos = self.mainCamera.transform.position;
 			self.mainCamera.transform.position = new Vector3(self.Unit.Position.x, cameraPos.y, self.Unit.Position.z - 1);
+			
 		}
 	}
 }

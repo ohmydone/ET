@@ -40,11 +40,11 @@ namespace ET
             aoiScene.RegisterUnit(self).Coroutine();
         }
     }
-#if SERVER
+
     [ObjectSystem]
     public class AOIUnitComponentAwakeSystem3 : AwakeSystem<AOIUnitComponent,Vector3,Quaternion, UnitType,int,bool>
     {
-        public override void Awake(AOIUnitComponent self,Vector3 pos,Quaternion rota, UnitType type,int range,bool isGhost)
+        protected override void Awake(AOIUnitComponent self,Vector3 pos,Quaternion rota, UnitType type,int range,bool isGhost)
         {
             self.Position = pos;
             self.Rotation = rota;
@@ -59,7 +59,7 @@ namespace ET
     [ObjectSystem]
     public class AOIUnitComponentAwakeSystem4 : AwakeSystem<AOIUnitComponent,Vector3,Quaternion, UnitType,bool>
     {
-        public override void Awake(AOIUnitComponent self,Vector3 pos,Quaternion rota, UnitType type,bool isGhost)
+        protected override void Awake(AOIUnitComponent self,Vector3 pos,Quaternion rota, UnitType type,bool isGhost)
         {
             self.Position = pos;
             self.Rotation = rota;
@@ -71,7 +71,6 @@ namespace ET
             aoiScene.RegisterUnit(self).Coroutine();
         }
     }
-#endif
     [ObjectSystem]
     public class AOIUnitComponentDestroySystem : DestroySystem<AOIUnitComponent>
     {

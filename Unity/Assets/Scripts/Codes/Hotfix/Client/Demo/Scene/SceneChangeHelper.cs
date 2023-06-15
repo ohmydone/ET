@@ -5,13 +5,14 @@
         // 场景切换协程
         public static async ETTask SceneChangeTo(Scene clientScene, string sceneName, long sceneInstanceId)
         {
-            clientScene.RemoveComponent<AIComponent>();
-            
+            //clientScene.RemoveComponent<AIComponent>();
+            clientScene.AddComponent<KeyCodeComponent>();
             CurrentScenesComponent currentScenesComponent = clientScene.GetComponent<CurrentScenesComponent>();
             currentScenesComponent.Scene?.Dispose(); // 删除之前的CurrentScene，创建新的
             Scene currentScene = SceneFactory.CreateCurrentScene(sceneInstanceId, clientScene.Zone, sceneName, currentScenesComponent);
             UnitComponent unitComponent = currentScene.AddComponent<UnitComponent>();
-         
+            currentScene.AddComponent<AOISceneComponent,int>(6);
+
             // 可以订阅这个事件中创建Loading界面
             EventSystem.Instance.Publish(clientScene, new EventType.SceneChangeStart());
             // 等待CreateMyUnit的消息

@@ -12,7 +12,7 @@ namespace ET
             self.Groups = new Dictionary<string, long>();
             self.LastSpellOverTime = TimeHelper.ServerNow()-self.SkillConfig.CDTime;
             self.LastSpellTime = TimeHelper.ServerNow()-self.SkillConfig.CDTime;
-            var groups = SkillStepConfigCategory.Instance.GetAll(); 
+            var groups = SkillStepConfigCategory.Instance.GetSkillGroups(self.ConfigId); 
             for (int i = 0; i < groups.Count; i++)
             {
                 var group = self.AddChild<SkillAbilityGroup, int>(groups[i].Id);

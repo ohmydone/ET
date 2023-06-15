@@ -17,8 +17,13 @@ public sealed partial class UnitConfig: Bright.Config.BeanBase
     public UnitConfig(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
-        Name = _buf.ReadString();
         Type = _buf.ReadInt();
+        Name = _buf.ReadString();
+        Desc = _buf.ReadString();
+        Position = _buf.ReadInt();
+        Height = _buf.ReadInt();
+        Weight = _buf.ReadInt();
+        Perfab = _buf.ReadString();
         PostInit();
     }
 
@@ -32,10 +37,33 @@ public sealed partial class UnitConfig: Bright.Config.BeanBase
     /// </summary>
     public int Id { get; private set; }
     /// <summary>
+    /// Type
+    /// </summary>
+    public int Type { get; private set; }
+    /// <summary>
     /// 名字
     /// </summary>
     public string Name { get; private set; }
-    public int Type { get; private set; }
+    /// <summary>
+    /// 描述
+    /// </summary>
+    public string Desc { get; private set; }
+    /// <summary>
+    /// 位置
+    /// </summary>
+    public int Position { get; private set; }
+    /// <summary>
+    /// 身高
+    /// </summary>
+    public int Height { get; private set; }
+    /// <summary>
+    /// 体重
+    /// </summary>
+    public int Weight { get; private set; }
+    /// <summary>
+    /// 预制体路径
+    /// </summary>
+    public string Perfab { get; private set; }
 
     public const int __ID__ = -568528378;
     public override int GetTypeId() => __ID__;
@@ -53,8 +81,13 @@ public sealed partial class UnitConfig: Bright.Config.BeanBase
     {
         return "{ "
         + "Id:" + Id + ","
-        + "Name:" + Name + ","
         + "Type:" + Type + ","
+        + "Name:" + Name + ","
+        + "Desc:" + Desc + ","
+        + "Position:" + Position + ","
+        + "Height:" + Height + ","
+        + "Weight:" + Weight + ","
+        + "Perfab:" + Perfab + ","
         + "}";
     }
     

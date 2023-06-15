@@ -1,5 +1,6 @@
 ﻿using System;
 using Unity.Mathematics;
+using UnityEngine;
 
 namespace ET.Server
 {
@@ -9,17 +10,16 @@ namespace ET.Server
 		protected override async ETTask Run(Scene scene, M2M_UnitTransferRequest request, M2M_UnitTransferResponse response)
 		{
 			UnitComponent unitComponent = scene.GetComponent<UnitComponent>();
-			Unit unit = MongoHelper.Deserialize<Unit>(request.Unit);
+			Unit unit = request.Unit;
 			
 			unitComponent.AddChild(unit);
 			unitComponent.Add(unit);
 
-			foreach (byte[] bytes in request.Entitys)
+			foreach (Entity entity in request.Entitys)
 			{
-				Entity entity = MongoHelper.Deserialize<Entity>(bytes);
 				unit.AddComponent(entity);
 			}
-			
+
 			unit.AddComponent<MoveComponent>();
 			unit.AddComponent<PathfindingComponent, string>(scene.Name);
 			unit.Position = new float3(-10, 0, -10);
@@ -35,8 +35,13 @@ namespace ET.Server
 			m2CCreateUnits.Unit = UnitHelper.CreateUnitInfo(unit);
 			MessageHelper.SendToClient(unit, m2CCreateUnits);
 			
+			
+			var numericComponent = unit.GetComponent<NumericComponent>();
 			// 加入aoi
-			unit.AddComponent<AOIEntity, int, float3>(9 * 1000, unit.Position);
+			var aoiu = unit.AddComponent<AOIUnitComponent,Vector3,Quaternion, UnitType,int>
+					(unit.Position,unit.Rotation,unit.Type,numericComponent.GetAsInt(NumericType.AOI));
+			
+			aoiu.AddSphereCollider(0.5f);
 			
 			// 解锁location，可以接收发给Unit的消息
 			await LocationProxyComponent.Instance.UnLock(LocationType.Unit, unit.Id, request.OldInstanceId, unit.InstanceId);
