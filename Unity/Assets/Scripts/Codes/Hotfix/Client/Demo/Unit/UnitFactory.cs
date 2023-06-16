@@ -11,7 +11,11 @@ namespace ET.Client
             UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
             Unit unit = unitComponent.AddChildWithId<Unit, int>(unitInfo.UnitId, unitInfo.ConfigId);
             unitComponent.Add(unit);
-
+            if (unit.Type == UnitType.Player)
+            {
+                unitComponent.My = unit;
+            }
+            
             unit.Position = unitInfo.Position;
             unit.Forward = unitInfo.Forward;
 

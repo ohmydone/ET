@@ -8,7 +8,16 @@ namespace ET.Client
             scene.AddComponent<UIPathComponent>();
             scene.AddComponent<UIEventComponent>();
             scene.AddComponent<RedDotComponent>();
+            
+            //输入订阅组件
+            scene.AddComponent<InputComponent>();
+            scene.AddComponent<InputWatcherComponent>();
+            
             scene.AddComponent<UIComponent>();
+            
+            //摄像机与场景管理
+            scene.AddComponent<CameraManagerComponent>();
+            
             scene.AddComponent<ResourcesLoaderComponent>();
             await ETTask.CompletedTask;
         }

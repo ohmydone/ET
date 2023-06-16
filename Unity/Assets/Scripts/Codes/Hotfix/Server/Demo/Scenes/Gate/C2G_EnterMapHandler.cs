@@ -15,7 +15,9 @@
 			
 			// 这里可以从DB中加载Unit
 			Unit unit = UnitFactory.Create(scene, player.Id, UnitType.Player);
+			unit.AddComponent<UnitGateComponent, long>(session.InstanceId);
 			
+			UnitComponent.Instance.My = unit;
 			StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Map1");
 			response.MyId = player.Id;
 

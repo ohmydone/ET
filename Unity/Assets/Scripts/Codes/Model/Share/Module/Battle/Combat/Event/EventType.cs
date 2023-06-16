@@ -17,9 +17,7 @@ namespace ET.EventType
         public long DamageValue;//计算伤害值
         public long RealValue;//生命变化值.正数少血，负数加血
         public long NowBaseValue;//当前生命base值
-#if SERVER
         public GhostComponent Ghost;//SkillUnit的Ghost
-#endif
     }
     
     /// <summary>

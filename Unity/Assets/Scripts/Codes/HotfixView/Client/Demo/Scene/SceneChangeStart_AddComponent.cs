@@ -20,7 +20,6 @@ namespace ET.Client
             //currentScene.AddComponent<OperaComponent>();
             //输入订阅组件
             currentScene.AddComponent<OperaComponent>();
-            currentScene.AddComponent<OperaWatcherComponent>();
         }
     }
 }

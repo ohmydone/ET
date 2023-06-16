@@ -7,7 +7,7 @@ using ET.Client;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-namespace ET
+namespace ET.Client
 {
     [ObjectSystem]
     public class CameraManagerComponentAwakeSystem : AwakeSystem<CameraManagerComponent>
@@ -47,7 +47,7 @@ namespace ET
 
         public static Camera MainCamera(this CameraManagerComponent self)
         {
-            return self.sceneMainCamera;
+            return Camera.main;
         }
         public static void SetCameraStackAtLoadingDone(this CameraManagerComponent self)
         {

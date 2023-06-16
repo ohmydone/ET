@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using ET.Client;
 using UnityEngine;
+
 namespace ET
 {
     [ObjectSystem]
-    [FriendOf(typeof(KeyCodeComponent))]
-    public class SpellPreviewComponentAwakeSystem : AwakeSystem<SpellPreviewComponent,Dictionary<string,int>>
+    [FriendOf(typeof (KeyCodeComponent))]
+    public class SpellPreviewComponentAwakeSystem: AwakeSystem<SpellPreviewComponent, Dictionary<int, int>>
     {
-        protected override void Awake(SpellPreviewComponent self,Dictionary<string,int> info)
+        protected override void Awake(SpellPreviewComponent self, Dictionary<int, int> info)
         {
             self.Enable = true;
             if (info != null)
             {
                 var combatU = self.GetParent<CombatUnitComponent>();
-                foreach (var item in KeyCodeComponent.Instance.DefaultKeyCodeMap)
+                foreach (var item in KeyCodeComponent.Instance.KeyMap)
                 {
-                    var keyCode = item;
-                    if (info.ContainsKey(keyCode) && combatU.TryGetSkillAbility(info[keyCode],out var skill))
+                    var keyCode = item.Key;
+                    if (info.ContainsKey(keyCode) && combatU.TryGetSkillAbility(info[keyCode], out var skill))
                     {
                         self.BindSkillKeyCode(keyCode, skill);
                     }
@@ -27,11 +27,13 @@ namespace ET
             {
                 self.BindSkillKeyDefault();
             }
+
             InputWatcherComponent.Instance.RegisterInputEntity(self);
         }
     }
+
     [ObjectSystem]
-    [FriendOf(typeof(KeyCodeComponent))]
+    [FriendOf(typeof (KeyCodeComponent))]
     public class SpellPreviewComponentAwakeSystem1: AwakeSystem<SpellPreviewComponent>
     {
         protected override void Awake(SpellPreviewComponent self)
@@ -41,8 +43,9 @@ namespace ET
             InputWatcherComponent.Instance.RegisterInputEntity(self);
         }
     }
+
     [ObjectSystem]
-    [FriendOf(typeof(KeyCodeComponent))]
+    [FriendOf(typeof (KeyCodeComponent))]
     public class SpellPreviewComponentDestroySystem1: DestroySystem<SpellPreviewComponent>
     {
         protected override void Destroy(SpellPreviewComponent self)
@@ -50,15 +53,17 @@ namespace ET
             InputWatcherComponent.Instance.RemoveInputEntity(self);
         }
     }
-    [OperaSystem(OperaID.Slot1)]
-    [OperaSystem(OperaID.Slot2)]
-    [OperaSystem(OperaID.Slot3)]
-    [OperaSystem(OperaID.Slot4)]
-    [OperaSystem(OperaID.Slot5)]
-    [OperaSystem(OperaID.Slot6)]
-    public class SpellPreviewComponentInputSystem_Spell : OperaSystem<SpellPreviewComponent>
+
+    [InputSystem(KeyCodeType.Skill1, InputType.KeyDown)]
+    [InputSystem(KeyCodeType.Skill2, InputType.KeyDown)]
+    [InputSystem(KeyCodeType.Skill3, InputType.KeyDown)]
+    [InputSystem(KeyCodeType.Skill4, InputType.KeyDown)]
+    [InputSystem(KeyCodeType.Skill5, InputType.KeyDown)]
+    [InputSystem(KeyCodeType.Skill6, InputType.KeyDown)]
+    [InputSystem(KeyCodeType.Skill7, InputType.KeyDown)]
+    public class SpellPreviewComponentInputSystem_Spell: InputSystem<SpellPreviewComponent>
     {
-        protected override void Run(SpellPreviewComponent self, string actionName)
+        public override void Run(SpellPreviewComponent self, int key, int type, ref bool stop)
         {
             KeyCodeComponent keyCode = KeyCodeComponent.Instance;
             if (keyCode != null)
@@ -69,22 +74,20 @@ namespace ET
                 {
                     return;
                 }
-                if (spellPreviewComponent.InputSkills.ContainsKey(actionName))
+
+                if (spellPreviewComponent.InputSkills.ContainsKey(key))
                 {
-                    var spellSkill = spellPreviewComponent.InputSkills[actionName];
+                    var spellSkill = spellPreviewComponent.InputSkills[key];
                     if (spellSkill == null || !spellSkill.CanUse()) return;
                     spellPreviewComponent.PreviewingSkill = spellSkill;
                     spellPreviewComponent.EnterPreview();
                 }
             }
         }
-        
     }
-    
-    
-    [FriendOf(typeof(SpellPreviewComponent))]
-    [FriendOf(typeof(CombatUnitComponent))]
-    [FriendOf(typeof(KeyCodeComponent))]
+
+    [FriendOf(typeof (SpellPreviewComponent))]
+    [FriendOf(typeof (CombatUnitComponent))]
     public static class SpellPreviewComponentSystem
     {
         /// <summary>
@@ -98,9 +101,10 @@ namespace ET
             {
                 self.CancelPreview();
             }
+
             self.Enable = enable;
         }
-        
+
         /// <summary>
         /// 使用默认按键配置,技能绑定按键
         /// </summary>
@@ -109,38 +113,45 @@ namespace ET
         {
             var combatU = self.GetParent<CombatUnitComponent>();
             Log.Info("使用默认按键配置,技能绑定按键");
+            int[] SkillKeys = new[]
+            {
+                KeyCodeType.Skill1, KeyCodeType.Skill2, KeyCodeType.Skill3, KeyCodeType.Skill4, KeyCodeType.Skill5, KeyCodeType.Skill6,
+                KeyCodeType.Skill7
+            };
+
             int i = 0;
             foreach (var item in combatU.IdSkillMap)
             {
-                if (i < KeyCodeComponent.Instance.DefaultKeyCodeMap.Count)
+                if (i < SkillKeys.Length)
                 {
-                    var keyCode = KeyCodeComponent.Instance.DefaultKeyCodeMap[i];
+                    var keyCode = SkillKeys[i];
                     self.BindSkillKeyCode(keyCode, combatU.GetChild<SkillAbility>(item.Value));
                 }
                 else
                 {
                     break;
                 }
-
                 i++;
             }
         }
+
         /// <summary>
         /// 绑定技能与按键
         /// </summary>
         /// <param name="self"></param>
         /// <param name="keyCode"></param>
         /// <param name="ability"></param>
-        public static void BindSkillKeyCode(this SpellPreviewComponent self, string keyCode, SkillAbility ability)
+        public static void BindSkillKeyCode(this SpellPreviewComponent self, int keyCode, SkillAbility ability)
         {
-            self.InputSkills[keyCode]=ability;
+            self.InputSkills[keyCode] = ability;
         }
+
         /// <summary>
         /// 进入预览
         /// </summary>
         /// <param name="self"></param>
         /// <param name="auto">只能施法？</param>
-        public static void EnterPreview(this SpellPreviewComponent self,bool auto = true)
+        public static void EnterPreview(this SpellPreviewComponent self, bool auto = true)
         {
             if (!self.Enable) return;
             self.CancelPreview();
@@ -150,25 +161,26 @@ namespace ET
             //技能预览类型(0大圈选一个目标，1大圈选小圈)
             var previewType = self.PreviewingSkill.SkillConfig.PreviewType;
             // Log.Info("affectTargetType"+affectTargetType+" targetSelectType"+targetSelectType+" previewType"+previewType);
-            
+
             //0大圈选一个目标
             if (previewType == SkillPreviewType.SelectTarget)
             {
                 var comp = self.GetComponent<TargetSelectComponent>();
-                if (comp==null)
+                if (comp == null)
                 {
                     comp = self.AddComponent<TargetSelectComponent>();
                 }
+
                 comp.TargetLimitType = affectTargetType;
                 if (auto)
                 {
-                    SelectWatcherComponent.Instance.AutoSpell<Action<Unit>,int[]>(comp,(a)=> { self.OnSelectedTarget(a); },
+                    SelectWatcherComponent.Instance.AutoSpell<Action<Unit>, int[]>(comp, (a) => { self.OnSelectedTarget(a); },
                         self.PreviewingSkill.SkillConfig.PreviewRange);
                 }
                 else
                 {
                     comp.Mode = self.PreviewingSkill.SkillConfig.Mode;
-                    SelectWatcherComponent.Instance.Show<Action<Unit>,int[]>(comp,(a)=> { self.OnSelectedTarget(a); },
+                    SelectWatcherComponent.Instance.Show<Action<Unit>, int[]>(comp, (a) => { self.OnSelectedTarget(a); },
                         self.PreviewingSkill.SkillConfig.PreviewRange).Coroutine();
                     self.CurSelect = comp;
                 }
@@ -177,11 +189,11 @@ namespace ET
             else if (previewType == SkillPreviewType.SelectCircularInCircularArea)
             {
                 var comp = self.GetComponent<PointSelectComponent>();
-                if (comp==null)
+                if (comp == null)
                 {
                     comp = self.AddComponent<PointSelectComponent>();
                 }
-                
+
                 if (auto)
                 {
                     SelectWatcherComponent.Instance.AutoSpell<Action<Vector3>, int[]>(comp, (a) => { self.OnInputPoint(a); },
@@ -194,17 +206,16 @@ namespace ET
                         self.PreviewingSkill.SkillConfig.PreviewRange).Coroutine();
                     self.CurSelect = comp;
                 }
-                
             }
             //2矩形
             else if (previewType == SkillPreviewType.SelectRectangleArea)
             {
                 var comp = self.GetComponent<DirectRectSelectComponent>();
-                if (comp==null)
+                if (comp == null)
                 {
                     comp = self.AddComponent<DirectRectSelectComponent>();
                 }
-               
+
                 if (auto)
                 {
                     SelectWatcherComponent.Instance.AutoSpell<Action<Vector3>, int[]>(comp, (a) => { self.OnInputDirect(a); },
@@ -222,58 +233,55 @@ namespace ET
             else if (previewType == SkillPreviewType.SelectCircularArea)
             {
                 var comp = self.GetComponent<CircularSelectComponent>();
-                if (comp==null)
+                if (comp == null)
                 {
                     comp = self.AddComponent<CircularSelectComponent>();
                 }
-                
+
                 if (auto)
                 {
-                    SelectWatcherComponent.Instance.AutoSpell<Action<Vector3>,int[]>(comp,(a)=> { self.OnInputPoint(a); },
+                    SelectWatcherComponent.Instance.AutoSpell<Action<Vector3>, int[]>(comp, (a) => { self.OnInputPoint(a); },
                         self.PreviewingSkill.SkillConfig.PreviewRange);
                 }
                 else
                 {
                     comp.Mode = self.PreviewingSkill.SkillConfig.Mode;
-                    SelectWatcherComponent.Instance.Show<Action<Vector3>,int[]>(comp,(a)=> { self.OnInputPoint(a); },
+                    SelectWatcherComponent.Instance.Show<Action<Vector3>, int[]>(comp, (a) => { self.OnInputPoint(a); },
                         self.PreviewingSkill.SkillConfig.PreviewRange).Coroutine();
                     self.CurSelect = comp;
                 }
-               
             }
             //自动
             else
             {
-                Log.Error("未处理的施法类型"+previewType);
+                Log.Error("未处理的施法类型" + previewType);
             }
-            
-            
         }
 
         public static void CancelPreview(this SpellPreviewComponent self)
         {
             self.Previewing = false;
-            if(self.CurSelect!=null)
+            if (self.CurSelect != null)
                 SelectWatcherComponent.Instance.Hide(self.CurSelect);
         }
-        
-        private static void OnSelectedTarget(this SpellPreviewComponent self,Unit unit)
+
+        private static void OnSelectedTarget(this SpellPreviewComponent self, Unit unit)
         {
             if (self.PreviewingSkill.SkillConfig.Mode == 0)
             {
 #if SERVER //纯客户端单机游戏去掉
                 self.MoveAndSpellComp.SpellWithTarget(self.PreviewingSkill, unit?.GetComponent<CombatUnitComponent>());
 #else
-                self.PreviewingSkill.UseSkill(Vector3.zero,unit.Id);
+                self.PreviewingSkill.UseSkill(Vector3.zero, unit.Id);
 #endif
             }
             else
             {
                 self.MoveAndSpellComp.SpellWithTarget(self.PreviewingSkill, unit?.GetComponent<CombatUnitComponent>());
             }
-        }   
+        }
 
-        private static void OnInputPoint(this SpellPreviewComponent self,Vector3 point)
+        private static void OnInputPoint(this SpellPreviewComponent self, Vector3 point)
         {
             if (self.PreviewingSkill.SkillConfig.Mode == 0)
             {
@@ -305,10 +313,8 @@ namespace ET
             }
         }
 
-        public static void SelectTargetsWithDistance(this SpellPreviewComponent self,Vector3 point)
+        public static void SelectTargetsWithDistance(this SpellPreviewComponent self, Vector3 point)
         {
-            
         }
-        
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace ET
+﻿namespace ET.Client
 {
 	 [ComponentOf(typeof(UIBaseWindow))]
 	public  class DlgLogin :Entity,IAwake,IUILogic

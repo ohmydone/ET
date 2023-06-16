@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ET
+namespace ET.Client
 {
 	[FriendOf(typeof(DlgHelp))]
 	public static  class DlgHelpSystem

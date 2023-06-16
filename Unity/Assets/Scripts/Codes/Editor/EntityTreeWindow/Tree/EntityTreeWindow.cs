@@ -15,7 +15,7 @@ namespace ET
         private EntityTreeView treeView;
         private SearchField    searchField;
 
-        [MenuItem("ET/Entity Tree Window")]
+        [MenuItem("ET/Entity Tree Window _F12")]
         private static void OpenWindow()
         {
             if(!Application.isPlaying)

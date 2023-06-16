@@ -47,7 +47,7 @@ public partial class UICodeSpawner
         strBuilder.AppendLine()
             .AppendLine("using UnityEngine;");
         strBuilder.AppendLine("using UnityEngine.UI;");
-        strBuilder.AppendLine("namespace ET");
+        strBuilder.AppendLine("namespace ET.Client");
         strBuilder.AppendLine("{");
         
         
@@ -90,7 +90,7 @@ public partial class UICodeSpawner
         strBuilder.AppendLine()
             .AppendLine("using UnityEngine;");
         strBuilder.AppendLine("using UnityEngine.UI;");
-        strBuilder.AppendLine("namespace ET");
+        strBuilder.AppendLine("namespace ET.Client");
         strBuilder.AppendLine("{");
         strBuilder.AppendLine("\t[EnableMethod]");
         strBuilder.AppendFormat("\tpublic  class Scroll_{0} : Entity,IAwake,IDestroy,IUIScrollItem \r\n", strDlgName)

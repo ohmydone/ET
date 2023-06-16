@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ET.Client
 {
-    [Event(SceneType.Client)]
+    [Event(SceneType.Current)]
     [FriendOf(typeof(CombatUnitComponent))]
     public class AfterCombatUnitComponentCreate_Init:AEvent<Scene,EventType.AfterCombatUnitComponentCreate>
     {

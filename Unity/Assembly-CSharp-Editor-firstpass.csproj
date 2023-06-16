@@ -378,11 +378,11 @@
      <Reference Include="CommandLine">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\CommandLine.dll</HintPath>
      </Reference>
+     <Reference Include="EPPlus">
+     <HintPath>D:\project\Magic\Unity\Assets\Scripts\Editor\ArtToolsEditor\EPPlus.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Burst.Cecil.Pdb">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.burst@1.8.2\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
-     </Reference>
-     <Reference Include="MongoDB.Driver">
-     <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.dll</HintPath>
      </Reference>
      <Reference Include="NLog">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\NLog.dll</HintPath>
@@ -398,6 +398,9 @@
      </Reference>
      <Reference Include="DnsClient">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\DnsClient.dll</HintPath>
+     </Reference>
+     <Reference Include="MongoDB.Driver">
+     <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\MongoDB.Driver.dll</HintPath>
      </Reference>
      <Reference Include="ICSharpCode.SharpZipLib">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -446,9 +449,6 @@
      </Reference>
      <Reference Include="MongoDB.Bson">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\MongoDB.Bson.dll</HintPath>
-     </Reference>
-     <Reference Include="EPPlus">
-     <HintPath>D:\project\Magic\Unity\Assets\Scripts\Editor\ArtToolsEditor\EPPlus.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>

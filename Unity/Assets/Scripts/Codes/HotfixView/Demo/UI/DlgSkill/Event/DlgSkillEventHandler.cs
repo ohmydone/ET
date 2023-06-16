@@ -1,4 +1,4 @@
-﻿namespace ET
+﻿namespace ET.Client
 {
 	[FriendOf(typeof(WindowCoreData))]
 	[FriendOf(typeof(UIBaseWindow))]

@@ -16,28 +16,77 @@ namespace ET.Server
         }
         
 
+        /// <summary>
+        /// 切换大地图
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <param name="sceneInstanceId"></param>
+        /// <param name="sceneName"></param>
         public static async ETTask Transfer(Unit unit, long sceneInstanceId, string sceneName)
         {
-            // location加锁
-            long unitId = unit.Id;
-            long unitInstanceId = unit.InstanceId;
-            
-            M2M_UnitTransferRequest request = new M2M_UnitTransferRequest() {Entitys = new List<Entity>()};
-            request.OldInstanceId = unitInstanceId;
-            request.Unit = unit;
-            foreach (Entity entity in unit.Components.Values)
+            using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.Transfer, unit.Id))
             {
-                if (entity is ITransfer)
+                if(unit.IsDisposed||unit.IsGhost()) return;
+                // 通知客户端开始切场景
+                M2C_StartSceneChange m2CStartSceneChange = new M2C_StartSceneChange() { SceneInstanceId = sceneInstanceId, SceneName = sceneName };
+                MessageHelper.SendToClient(unit, m2CStartSceneChange);
+
+                M2M_UnitTransferRequest request = new M2M_UnitTransferRequest();
+                request.Entitys = new List<Entity>();
+                request.Map = new List<RecursiveEntitys>();
+                
+                ListComponent<int> Stack = ListComponent<int>.Create();
+                request.Unit = unit;
+                Entity curEntity = unit;
+                Stack.Add(-1);
+                while (Stack.Count > 0)
                 {
-                    request.Entitys.Add(entity);
+                    var index = Stack[Stack.Count - 1];
+                    if (index != -1)
+                    {
+                        curEntity = request.Entitys[index];
+                    }
+
+                    Stack.RemoveAt(Stack.Count - 1);
+                    foreach (Entity entity in curEntity.Components.Values)
+                    {
+                        if (entity is ITransfer)
+                        {
+                            var childIndex = request.Entitys.Count;
+                            request.Entitys.Add(entity);
+                            Stack.Add(childIndex);
+                            request.Map.Add(new RecursiveEntitys { ChildIndex = childIndex, ParentIndex = index, IsChild = 0 });
+                        }
+                    }
+
+                    foreach (Entity entity in curEntity.Children.Values)
+                    {
+                        if (entity is ITransfer)
+                        {
+                            var childIndex = request.Entitys.Count;
+                            request.Entitys.Add(entity);
+                            Stack.Add(childIndex);
+                            request.Map.Add(new RecursiveEntitys { ChildIndex = childIndex, ParentIndex = index, IsChild = 1 });
+                        }
+                    }
                 }
+
+                Stack.Dispose();
+                // 删除Mailbox,让发给Unit的ActorLocation消息重发
+                unit.RemoveComponent<MailBoxComponent>();
+                long oldInstanceId = unit.InstanceId;
+                // location加锁
+                await LocationProxyComponent.Instance.Lock(LocationType.Player,unit.Id, unit.InstanceId);
+                M2M_UnitTransferResponse response =
+                        response = await ActorMessageSenderComponent.Instance.Call(sceneInstanceId, request) as M2M_UnitTransferResponse;
+                await LocationProxyComponent.Instance.UnLock(LocationType.Player,unit.Id, oldInstanceId, response.NewInstanceId);
+                //unit.RemoveComponent<UnitGateComponent>(); //先移除，防止AOI销毁的消息发到了客户端
+                Log.Info(unit.Id + " Dispose " + unit.DomainScene().Id);
+                unit.Dispose();
             }
-            unit.Dispose();
-            
-            await LocationProxyComponent.Instance.Lock(LocationType.Unit, unitId, unitInstanceId);
-            await ActorMessageSenderComponent.Instance.Call(sceneInstanceId, request);
         }
-                /// <summary>
+        
+        /// <summary>
         /// 大地图切换区域
         /// </summary>
         /// <param name="aoiU"></param>

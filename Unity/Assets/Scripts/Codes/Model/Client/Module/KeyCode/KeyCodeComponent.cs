@@ -19,14 +19,15 @@ namespace ET
         /// <summary>
         /// 默认键位
         /// </summary>
-        public readonly List<string> DefaultKeyCodeMap = new List<string>()
+        public readonly Dictionary<int, int> DefaultKeyCodeMap = new Dictionary<int, int>()
         {
-            OperaID.Slot1,
-            OperaID.Slot2,
-            OperaID.Slot3,
-            OperaID.Slot4,
-            OperaID.Slot5,
-            OperaID.Slot6,
+            { KeyCodeType.Skill1, 49 },//KeyCode.Alpha1
+            { KeyCodeType.Skill2, 50 },
+            { KeyCodeType.Skill3, 51 },
+            { KeyCodeType.Skill4, 52 },
+            { KeyCodeType.Skill5, 53 },
+            { KeyCodeType.Skill6, 54 },
+            { KeyCodeType.Skill7, 55 },
         };
     }
 }

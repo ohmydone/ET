@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 using UnityEngine.UI;
-namespace ET
+namespace ET.Client
 {
 	[EnableMethod]
 	public  class Scroll_ItemNum : Entity,IAwake,IDestroy,IUIScrollItem 

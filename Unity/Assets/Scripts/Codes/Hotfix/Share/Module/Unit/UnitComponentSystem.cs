@@ -5,6 +5,7 @@
 	{
 		protected override void Awake(UnitComponent self)
 		{
+			UnitComponent.Instance = self;
 		}
 	}
 	
