@@ -8,7 +8,7 @@ namespace ET.Client
         protected override void Awake(DirectRectSelectComponent self)
         {
             self.waiter = ETTask<GameObject>.Create(); 
-            string path = "GameAssets/SkillPreview/Prefabs/DirectRectSelectManager.prefab";
+            string path = "SkillPreview/Prefabs/DirectRectSelectManager.prefab";
             GameObjectPoolComponent.Instance.GetGameObjectAsync(path, (obj) =>
             {
                 self.gameObject = obj;

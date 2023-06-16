@@ -353,16 +353,13 @@ namespace ET
 		public int RpcId { get; set; }
 
 		[ProtoMember(2)]
-		public Unit Unit { get; set; }
+		public long OldInstanceId { get; set; }
 
 		[ProtoMember(3)]
-		public List<Entity> Entitys { get; set; }
+		public byte[] Unit { get; set; }
 
 		[ProtoMember(4)]
-		public List<RecursiveEntitys> Map { get; set; }
-
-		[ProtoMember(5)]
-		public long OldInstanceId { get; set; }
+		public List<byte[]> Entitys { get; set; }
 
 	}
 
@@ -378,9 +375,6 @@ namespace ET
 
 		[ProtoMember(3)]
 		public string Message { get; set; }
-
-		[ProtoMember(4)]
-		public long NewInstanceId { get; set; }
 
 	}
 

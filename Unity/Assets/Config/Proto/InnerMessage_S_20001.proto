@@ -165,10 +165,9 @@ message ObjectQueryResponse // IActorResponse
 message M2M_UnitTransferRequest // IActorRequest
 {
 	int32 RpcId = 1;
-	Unit Unit = 2;
-	repeated Entity Entitys = 3;
-	repeated RecursiveEntitys Map = 4;
-	int64 OldInstanceId = 5;
+	int64 OldInstanceId = 2;
+	bytes Unit = 3;
+	repeated bytes Entitys = 4;
 }
 
 message M2M_UnitTransferResponse // IActorResponse
@@ -176,7 +175,6 @@ message M2M_UnitTransferResponse // IActorResponse
 	int32 RpcId = 1;
 	int32 Error = 2;
 	string Message = 3;
-	int64 NewInstanceId = 4;
 }
 
 
