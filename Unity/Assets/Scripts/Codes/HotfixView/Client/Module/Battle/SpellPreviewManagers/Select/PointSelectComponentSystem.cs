@@ -7,21 +7,19 @@ namespace ET.Client
     {
         protected override void Awake(PointSelectComponent self)
         {
-            self.waiter = ETTask<GameObject>.Create(); 
-            string path = "GameAssets/SkillPreview/Prefabs/PointSelectManager.prefab";
-            GameObjectPoolComponent.Instance.GetGameObjectAsync(path, (obj) =>
+            self.waiter = ETTask<GameObject>.Create();
+            string path =ResPathHelper.GetSpellPreviewPath("PointSelectManager"); 
+            var obj= ResComponent.Instance.LoadAsset<GameObject>(path);
+            self.gameObject =GameObject.Instantiate(obj);
+            self.RangeCircleObj =  self.gameObject.transform.Find("RangeCircle").gameObject;
+            self.SkillPointObj=  self.gameObject.transform.Find("SkillPointPreview").gameObject;
+            self.SkillPointObj.SetActive(true);
+            self.waiter.SetResult( self.gameObject);
+            self.waiter = null;
+            if (!self.IsShow)
             {
-                self.gameObject = obj;
-                self.RangeCircleObj = obj.transform.Find("RangeCircle").gameObject;
-                self.SkillPointObj= obj.transform.Find("SkillPointPreview").gameObject;
-                self.SkillPointObj.SetActive(true);
-                self.waiter.SetResult(obj);
-                self.waiter = null;
-                if (!self.IsShow)
-                {
-                    self.gameObject.SetActive(false);
-                }
-            }).Coroutine();
+                self.gameObject.SetActive(false);
+            }
             self.HeroObj = UnitComponent.Instance.My.GetComponent<GameObjectComponent>().GameObject;
             InputWatcherComponent.Instance.RegisterInputEntity(self);
         }
@@ -61,7 +59,7 @@ namespace ET.Client
     {
         protected override void Destroy(PointSelectComponent self)
         {
-            GameObjectPoolComponent.Instance?.RecycleGameObject(self.gameObject);
+            GameObject.DestroyImmediate(self.gameObject); 
             InputWatcherComponent.Instance?.RemoveInputEntity(self);
         }
     }

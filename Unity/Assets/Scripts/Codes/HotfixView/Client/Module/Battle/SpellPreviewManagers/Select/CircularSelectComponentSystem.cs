@@ -12,21 +12,21 @@ namespace ET.Client
             protected override void Awake(CircularSelectComponent self)
             {
                 self.waiter = ETTask<GameObject>.Create(); 
-                string path = "GameAssets/SkillPreview/Prefabs/PointSelectManager.prefab";
-                GameObjectPoolComponent.Instance.GetGameObjectAsync(path, (obj) =>
+                
+                string path =ResPathHelper.GetSpellPreviewPath("PointSelectManager"); 
+                var obj= ResComponent.Instance.LoadAsset<GameObject>(path);
+                
+                self.gameObject =GameObject.Instantiate(obj);
+                self.RangeCircleObj = self.gameObject.transform.Find("RangeCircle").gameObject;
+                self.SkillPointObj= self.gameObject.transform.Find("SkillPointPreview").gameObject;
+                self.SkillPointObj.SetActive(false);
+                self.waiter.SetResult(obj);
+                self.waiter = null;
+                if (!self.IsShow) return;
                 {
-                    self.gameObject = obj;
-                    self.RangeCircleObj = obj.transform.Find("RangeCircle").gameObject;
-                    self.SkillPointObj= obj.transform.Find("SkillPointPreview").gameObject;
-                    self.SkillPointObj.SetActive(false);
-                    self.waiter.SetResult(obj);
-                    self.waiter = null;
-                    if (!self.IsShow) return;
-                    {
-                        self.gameObject.SetActive(false);
-                        self.SkillPointObj.SetActive(true);
-                    }
-                }).Coroutine();
+                    self.gameObject.SetActive(false);
+                    self.SkillPointObj.SetActive(true);
+                }
                 self.HeroObj = UnitComponent.Instance.My.GetComponent<GameObjectComponent>().GameObject;
                 InputWatcherComponent.Instance.RegisterInputEntity(self);
             }
@@ -54,7 +54,7 @@ namespace ET.Client
         {
             protected override void Destroy(CircularSelectComponent self)
             {
-                GameObjectPoolComponent.Instance?.RecycleGameObject(self.gameObject);
+                GameObject.DestroyImmediate(self.gameObject); 
                 InputWatcherComponent.Instance?.RemoveInputEntity(self);
             }
         }

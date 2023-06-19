@@ -151,7 +151,7 @@ namespace ET
         /// </summary>
         /// <param name="self"></param>
         /// <param name="auto">只能施法？</param>
-        public static void EnterPreview(this SpellPreviewComponent self, bool auto = true)
+        public static void EnterPreview(this SpellPreviewComponent self, bool auto = false)
         {
             if (!self.Enable) return;
             self.CancelPreview();
@@ -265,7 +265,7 @@ namespace ET
                 SelectWatcherComponent.Instance.Hide(self.CurSelect);
         }
 
-        private static void OnSelectedTarget(this SpellPreviewComponent self, Unit unit)
+        public static void OnSelectedTarget(this SpellPreviewComponent self, Unit unit)
         {
             if (self.PreviewingSkill.SkillConfig.Mode == 0)
             {
@@ -281,7 +281,7 @@ namespace ET
             }
         }
 
-        private static void OnInputPoint(this SpellPreviewComponent self, Vector3 point)
+        public static void OnInputPoint(this SpellPreviewComponent self, Vector3 point)
         {
             if (self.PreviewingSkill.SkillConfig.Mode == 0)
             {
@@ -297,7 +297,7 @@ namespace ET
             }
         }
 
-        private static void OnInputDirect(this SpellPreviewComponent self, Vector3 point)
+        public static void OnInputDirect(this SpellPreviewComponent self, Vector3 point)
         {
             if (self.PreviewingSkill.SkillConfig.Mode == 0)
             {

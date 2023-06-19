@@ -8,19 +8,19 @@ namespace ET.Client
         protected override void Awake(DirectRectSelectComponent self)
         {
             self.waiter = ETTask<GameObject>.Create(); 
-            string path = "SkillPreview/Prefabs/DirectRectSelectManager.prefab";
-            GameObjectPoolComponent.Instance.GetGameObjectAsync(path, (obj) =>
+
+            string path =ResPathHelper.GetSpellPreviewPath("DirectRectSelectManager"); 
+            var obj= ResComponent.Instance.LoadAsset<GameObject>(path);
+            
+            self.gameObject =GameObject.Instantiate(obj);
+            self.DirectObj = self.gameObject.transform.GetChild(0).gameObject;
+            self.AreaObj = self.DirectObj.transform.GetChild(0).gameObject;
+            self.waiter.SetResult(self.gameObject);
+            self.waiter = null;
+            if (!self.IsShow)
             {
-                self.gameObject = obj;
-                self.DirectObj = obj.transform.GetChild(0).gameObject;
-                self.AreaObj = self.DirectObj.transform.GetChild(0).gameObject;
-                self.waiter.SetResult(obj);
-                self.waiter = null;
-                if (!self.IsShow)
-                {
-                    self.gameObject.SetActive(false);
-                }
-            }).Coroutine();
+                self.gameObject.SetActive(false);
+            }
             self.HeroObj = UnitComponent.Instance.My.GetComponent<GameObjectComponent>().GameObject;
             InputWatcherComponent.Instance.RegisterInputEntity(self);
         }
@@ -43,7 +43,7 @@ namespace ET.Client
     {
         protected override void Destroy(DirectRectSelectComponent self)
         {
-            GameObjectPoolComponent.Instance?.RecycleGameObject(self.gameObject);
+            GameObject.DestroyImmediate(self.gameObject); 
             InputWatcherComponent.Instance?.RemoveInputEntity(self);
         }
     }
@@ -124,6 +124,7 @@ namespace ET.Client
                 SelectWatcherComponent.Instance.Hide(self);
                 EventSystem.Instance.Publish(self.DomainScene(),new EventType.OnDirectRectSelect()
                 {
+                    
                     pos = hitPoint
                 });
                 return true;

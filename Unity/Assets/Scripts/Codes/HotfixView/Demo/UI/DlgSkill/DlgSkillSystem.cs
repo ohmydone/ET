@@ -20,17 +20,16 @@ namespace ET
 
         public static void ShowWindow(this DlgSkill self, Entity contextData = null)
         {
-            // UnitComponent unitComponent = self.DomainScene().GetComponent<UnitComponent>();
-            // SpellComponent spellComponent = unitComponent.My.GetComponent<SpellComponent>();
-            // self.Spells = new List<Spell>();
-            // foreach (long id in spellComponent.Children.Keys)
-            // {
-            //     Spell spell = spellComponent.GetChild<Spell>(id);
-            //     self.Spells.Add(spell);
-            // }
-            //
-            // self.AddUIScrollItems(ref self.ScrollItemSkils,self.Spells.Count);
-            // self.View.ELSV_SkillLoopHorizontalScrollRect.SetVisible(true,self.Spells.Count);
+            SpellComponent spellComponent = UnitComponent.Instance.My.GetComponent<CombatUnitComponent>().GetComponent<SpellComponent>();
+           var list = new List<SkillAbility>();
+            foreach (long id in spellComponent.Children.Keys)
+            {
+                SkillAbility spell = spellComponent.GetChild<SkillAbility>(id);
+                list.Add(spell);
+            }
+            
+            self.AddUIScrollItems(ref self.ScrollItemSkils,list.Count);
+            self.View.ELSV_SkillLoopHorizontalScrollRect.SetVisible(true,list.Count);
         }
 
         public static void ItemReFresh(this DlgSkill self,Transform arg1, int arg2)

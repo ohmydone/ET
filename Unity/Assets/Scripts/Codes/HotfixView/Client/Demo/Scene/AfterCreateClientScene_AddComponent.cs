@@ -19,6 +19,15 @@ namespace ET.Client
             scene.AddComponent<CameraManagerComponent>();
             
             scene.AddComponent<ResourcesLoaderComponent>();
+            
+            //技能
+            scene.AddComponent<SkillStepComponent>();
+            scene.AddComponent<SkillWatcherComponent>();
+            scene.AddComponent<BuffWatcherComponent>();
+            scene.AddComponent<SelectWatcherComponent>();
+            scene.AddComponent<ConditionWatcherComponent>();
+            
+
             await ETTask.CompletedTask;
         }
     }

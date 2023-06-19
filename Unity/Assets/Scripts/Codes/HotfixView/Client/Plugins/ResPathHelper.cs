@@ -41,5 +41,10 @@ namespace ET.Client
         {
             return "Assets/SpriteAltas/"+sa;
         }
+        
+        public static string GetSpellPreviewPath(string sa)
+        {
+            return "Assets/Bundles/SkillPreview/Prefabs/"+sa;
+        }
     }
 }

@@ -68,8 +68,9 @@ namespace ET.Client
     {
         protected override void Destroy(TargetSelectComponent self)
         {
-            GameObjectPoolComponent.Instance?.RecycleGameObject(self.gameObject);
-            GameObjectPoolComponent.Instance?.RecycleGameObject(self.CursorImage.gameObject);
+            GameObject.DestroyImmediate(self.gameObject); 
+            GameObject.DestroyImmediate(self.CursorImage.gameObject); 
+            //GameObjectPoolComponent.Instance?.RecycleGameObject(self.CursorImage.gameObject);
             InputWatcherComponent.Instance?.RemoveInputEntity(self);
         }
     }
@@ -151,9 +152,10 @@ namespace ET.Client
         }
         private static async ETTask GetTargetIcon(this TargetSelectComponent self)
         {
-            string targetPath = "GameAssets/SkillPreview/Prefabs/TargetIcon.prefab";
-            var obj = await GameObjectPoolComponent.Instance.GetGameObjectAsync(targetPath);
-            self.CursorImage = obj.GetComponent<Image>();
+            string targetPath = ResPathHelper.GetSpellPreviewPath("TargetIcon");
+            var obj = await ResComponent.Instance.LoadAssetAsync<GameObject>(targetPath);
+            GameObject go = GameObject.Instantiate(obj);
+            self.CursorImage = go.GetComponent<Image>();
             self.CursorImage.transform.parent = GlobalComponent.Instance.PopUpRoot.transform;
             self.CursorImage.transform.localPosition = Vector3.zero;
             self.CursorImage.rectTransform.anchoredPosition = Input.mousePosition;
@@ -165,10 +167,11 @@ namespace ET.Client
         
         private static async ETTask GetTargetSelectManager(this TargetSelectComponent self)
         {
-            string path = "GameAssets/SkillPreview/Prefabs/TargetSelectManager.prefab";
-            var obj = await GameObjectPoolComponent.Instance.GetGameObjectAsync(path);
-            self.RangeCircleObj = obj.transform.Find("RangeCircle").gameObject;
-            self.gameObject = obj;
+            string path = ResPathHelper.GetSpellPreviewPath("TargetSelectManager");
+            var obj = await ResComponent.Instance.LoadAssetAsync<GameObject>(path);
+            GameObject go = GameObject.Instantiate(obj);
+            self.RangeCircleObj = go.transform.Find("RangeCircle").gameObject;
+            self.gameObject = go;
             if (!self.IsShow)
             {
                 self.gameObject.SetActive(false);
