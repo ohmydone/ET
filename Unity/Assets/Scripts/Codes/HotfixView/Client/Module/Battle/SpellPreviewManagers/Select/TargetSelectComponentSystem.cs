@@ -157,6 +157,7 @@ namespace ET.Client
             GameObject go = GameObject.Instantiate(obj);
             self.CursorImage = go.GetComponent<Image>();
             self.CursorImage.transform.parent = GlobalComponent.Instance.PopUpRoot.transform;
+            self.CursorImage.rectTransform.localScale = Vector3.one;
             self.CursorImage.transform.localPosition = Vector3.zero;
             self.CursorImage.rectTransform.anchoredPosition = Input.mousePosition;
             if (!self.IsShow)

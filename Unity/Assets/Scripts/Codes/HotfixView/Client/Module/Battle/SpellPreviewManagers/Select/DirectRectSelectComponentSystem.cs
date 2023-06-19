@@ -114,7 +114,7 @@ namespace ET.Client
         public static void SetArea(this DirectRectSelectComponent self,float length, float width)
         {
             self.AreaObj.transform.localScale = new Vector3(width, length, 10);
-            self.AreaObj.transform.localPosition = new Vector3(0, 0, length/2);
+            self.AreaObj.transform.localPosition = Vector3.zero;
         }
 
         public static bool RunCheck(this DirectRectSelectComponent self)
