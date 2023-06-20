@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace ET
 {
     [ObjectSystem]
-    public class OBBComponentAwakeSystem : AwakeSystem<OBBComponent,Vector3>
+    public class OBBComponentAwakeSystem : AwakeSystem<OBBComponent,float3>
     {
-        protected override void Awake(OBBComponent self, Vector3 a)
+        protected override void Awake(OBBComponent self, float3 a)
         {
             self.Scale = a;
-            self.LastVertex = ListComponent<Vector3>.Create();
+            self.LastVertex = ListComponent<float3>.Create();
             self.LastSides = ListComponent<Ray>.Create();
         }
     }
@@ -39,9 +40,9 @@ namespace ET
         /// <param name="realPos"></param>
         /// <param name="realRot"></param>
         /// <returns></returns>
-        public static List<Vector3> GetAllVertex(this OBBComponent self,Vector3 realPos,Quaternion realRot)
+        public static List<float3> GetAllVertex(this OBBComponent self,float3 realPos,Quaternion realRot)
         {
-            if (self.LastVertexPosRot != null&&self.LastVertexPosRot.Pos == realPos&&self.LastVertexPosRot.Rot==realRot)
+            if (self.LastVertexPosRot != null&& self.LastVertexPosRot.Pos.Equals(realPos)&&self.LastVertexPosRot.Rot.Equals(realRot))
             {
                 return self.LastVertex;
             }
@@ -54,7 +55,7 @@ namespace ET
                     for (float k = -0.5f; k <= 0.5f; k++)
                     {
                         Vector3 temp = new Vector3(self.Scale.x*i,self.Scale.y*j,self.Scale.z*k);
-                        temp = realPos + realRot * temp;
+                        temp = (Vector3)realPos + realRot * temp;
                         self.LastVertex.Add(temp);
                     }
                 }
@@ -72,7 +73,7 @@ namespace ET
         /// <returns></returns>
         public static List<Ray> GetAllSide(this OBBComponent self, Vector3 realPos, Quaternion realRot)
         {
-            if (self.LastSidesPosRot != null&&self.LastSidesPosRot.Pos == realPos&&self.LastSidesPosRot.Rot==realRot)
+            if (self.LastSidesPosRot != null&&self.LastSidesPosRot.Pos .Equals(realPos) &&self.LastSidesPosRot.Rot.Equals(realRot))
             {
                 return self.LastSides;
             }

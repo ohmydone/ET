@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 
 namespace ET
 {
@@ -30,6 +31,6 @@ namespace ET
     
     public interface IMoveBuffWatcher
     {
-        void AfterMove(Unit target,Buff buff,Vector3 before);
+        void AfterMove(Unit target,Buff buff,float3 before);
     }
 }

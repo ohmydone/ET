@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Mathematics;
 using UnityEngine;
 namespace ET
 {
@@ -189,9 +190,9 @@ namespace ET
 #endif
         }
 
-        public static void MoveTo(this MoveAndSpellComponent self,Unit unit, Vector3 point)
+        public static void MoveTo(this MoveAndSpellComponent self,Unit unit, float3 point)
         {
-            if (self.Skill==null||(self.Point-point).sqrMagnitude>self.Skill.SkillConfig.PreviewRange[0]/2f)
+            if (self.Skill==null|| ((Vector3)(self.Point-point)).sqrMagnitude>self.Skill.SkillConfig.PreviewRange[0]/2f)
             {
                 self.Point = point;
 #if !SERVER

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace ET
@@ -27,7 +28,7 @@ namespace ET
         /// <summary>
         /// 目标位置
         /// </summary>
-        public Vector3 Position{ get; set; }
+        public float3 Position{ get; set; }
         /// <summary>
         /// 创建逻辑触发器时间，非显示View的时间
         /// </summary>

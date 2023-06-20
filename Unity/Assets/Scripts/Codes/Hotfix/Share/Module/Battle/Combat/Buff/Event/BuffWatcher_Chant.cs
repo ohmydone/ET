@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 
 namespace ET
 {
@@ -29,7 +30,7 @@ namespace ET
     [MoveBuffWatcher(BuffSubType.Chant)]
     public class AfterMove_TryInterruptChant: IMoveBuffWatcher
     {
-        public void AfterMove(Unit target, Buff buff, Vector3 before)
+        public void AfterMove(Unit target, Buff buff, float3 before)
         {
 #if SERVER //纯客户端单机游戏去掉
             if (buff.BuffChantConfig.MoveInterrupt == 1)

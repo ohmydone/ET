@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using MongoDB.Bson.Serialization.Attributes;
+using Unity.Mathematics;
+
 namespace ET
 {
     [ComponentOf(typeof(CombatUnitComponent))]
@@ -11,7 +13,7 @@ namespace ET
         [BsonIgnore]
         public long TimerId;
         [BsonIgnore]
-        public Vector3 Point;
+        public float3 Point;
 
         [BsonIgnore]
         public CombatUnitComponent Target { get; set; }

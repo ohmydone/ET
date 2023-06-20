@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace ET
@@ -144,7 +145,7 @@ namespace ET
         {
             if (self.OffsetY != 0)
             {
-                return self.GetParent<AOIUnitComponent>().Position + new Vector3(0, self.OffsetY, 0);
+                return self.GetParent<AOIUnitComponent>().Position + new float3(0, self.OffsetY, 0);
             }
             else
             {
@@ -470,7 +471,7 @@ namespace ET
         {
             float radius = Mathf.Sqrt(scale.x*scale.x+scale.y*scale.y+scale.z*scale.z)/2;
             var trigger = self.AddTrigger(radius, flag, handler,selecter);
-            trigger.AddComponent<OBBComponent, Vector3>(scale);
+            trigger.AddComponent<OBBComponent, float3>(scale);
             trigger.TriggerType=TriggerShapeType.Cube;
             #region 添加监听事件，并判断触发进入触发器
 
@@ -494,7 +495,7 @@ namespace ET
             }
             float radius = Mathf.Sqrt(scale.x*scale.x+scale.y*scale.y+scale.z*scale.z)/2;
             var trigger = self.AddCollider(radius);
-            trigger.AddComponent<OBBComponent, Vector3>(scale);
+            trigger.AddComponent<OBBComponent, float3>(scale);
             trigger.TriggerType=TriggerShapeType.Cube;
             #region 添加监听事件，并判断触发进入触发器
 
@@ -517,7 +518,7 @@ namespace ET
         {
             float radius = Mathf.Sqrt(scale.x*scale.x+scale.y*scale.y+scale.z*scale.z)/2;
             var trigger = self.AddTrigger(radius, flag, handler,selecter);
-            trigger.AddComponent<OBBComponent, Vector3>(scale);
+            trigger.AddComponent<OBBComponent, float3>(scale);
             trigger.TriggerType=TriggerShapeType.Cube;
             #region 添加监听事件，并判断触发进入触发器
 
@@ -541,7 +542,7 @@ namespace ET
             }
             float radius = Mathf.Sqrt(scale.x*scale.x+scale.y*scale.y+scale.z*scale.z)/2;
             var trigger = self.AddCollider(radius);
-            trigger.AddComponent<OBBComponent, Vector3>(scale);
+            trigger.AddComponent<OBBComponent, float3>(scale);
             trigger.TriggerType=TriggerShapeType.Cube;
             #region 添加监听事件，并判断触发进入触发器
 
@@ -1446,7 +1447,7 @@ namespace ET
                 var points = obb.GetAllVertex(posOBB, rotOBB);
                 for (int i = 0; i < points.Count; i++)
                 {
-                    if (Vector3.SqrMagnitude(temp- points[i]) > triggerSphere.SqrRadius)
+                    if (  math.lengthsq(temp-(Vector3)points[i]) > triggerSphere.SqrRadius)
                     {
                         return false;
                     }

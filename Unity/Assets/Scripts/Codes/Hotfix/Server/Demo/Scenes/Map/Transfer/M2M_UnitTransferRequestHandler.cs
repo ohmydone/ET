@@ -56,7 +56,7 @@ namespace ET.Server
 			
 			var numericComponent = unit.GetComponent<NumericComponent>();
 			// 加入aoi
-			var aoiu = unit.AddComponent<AOIUnitComponent,Vector3,Quaternion, UnitType,int>
+			var aoiu = unit.AddComponent<AOIUnitComponent,float3,Quaternion, UnitType,int>
 					(unit.Position,unit.Rotation,unit.Type,numericComponent.GetAsInt(NumericType.AOI));
 			
 			aoiu.AddSphereCollider(0.5f);

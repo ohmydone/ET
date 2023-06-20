@@ -40,7 +40,7 @@ namespace ET.Client
                         }
                     }
 
-                    unit.AddComponent<AOIUnitComponent, Vector3, Quaternion, UnitType>(unitInfo.Position, unit.Rotation, unit.Type);
+                    unit.AddComponent<AOIUnitComponent, float3, Quaternion, UnitType>(unitInfo.Position, unit.Rotation, unit.Type);
                     CombatUnitComponent combatU;
                     if (unitInfo.SkillIds != null)
                     {
@@ -81,7 +81,7 @@ namespace ET.Client
                         }
                     }
 
-                    unit.AddComponent<AOIUnitComponent, Vector3, Quaternion, UnitType>(unit.Position, unit.Rotation, unit.Type);
+                    unit.AddComponent<AOIUnitComponent, float3, Quaternion, UnitType>(unit.Position, unit.Rotation, unit.Type);
                     unit.AddComponent<ObjectWait>();
                     break;
                 }
@@ -131,7 +131,7 @@ namespace ET.Client
             unit.AddComponent<SkillColliderComponent, SkillPara, long>(para, para.To.Id);
         }
 
-        unit.AddComponent<AOIUnitComponent, Vector3, Quaternion, UnitType>(pos, rota, unit.Type);
+        unit.AddComponent<AOIUnitComponent, float3, Quaternion, UnitType>(pos, rota, unit.Type);
         return unit;
     }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace ET
@@ -12,13 +13,13 @@ namespace ET
     /// </summary>
     [ComponentOf(typeof(Unit))]
     public class AOIUnitComponent:Entity,
-            IAwake<Vector3,Quaternion,UnitType,int>,
-            IAwake<Vector3,Quaternion,UnitType>,
-            IAwake<Vector3,Quaternion,UnitType,int,bool>,
-            IAwake<Vector3,Quaternion,UnitType,bool>
+            IAwake<float3,Quaternion,UnitType,int>,
+            IAwake<float3,Quaternion,UnitType>,
+            IAwake<float3,Quaternion,UnitType,int,bool>,
+            IAwake<float3,Quaternion,UnitType,bool>
             ,IDestroy
     {
-        public Vector3 Position;
+        public float3 Position;
         public Quaternion Rotation;
         public AOISceneComponent Scene{ get; set; }
         public UnitType Type { get; set; }

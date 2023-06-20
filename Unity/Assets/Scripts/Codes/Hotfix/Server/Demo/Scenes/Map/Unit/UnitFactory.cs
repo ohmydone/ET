@@ -25,8 +25,8 @@ namespace ET.Server
                         var numericComponent = unit.GetComponent<NumericComponent>();
 
                         // 加入aoi
-                        var aoiu = unit.AddComponent<AOIUnitComponent, Vector3, Quaternion, UnitType, int,bool>(
-                            (Vector3) unit.Position,(Quaternion) unit.Rotation, 
+                        var aoiu = unit.AddComponent<AOIUnitComponent, float3, Quaternion, UnitType, int,bool>(
+                            unit.Position,(Quaternion) unit.Rotation, 
                             unit.Type,
                             numericComponent.GetAsInt(NumericType.AOI),
                             type!=CreateUnitFromMsgType.Create);
@@ -59,14 +59,14 @@ namespace ET.Server
                     if (unit.GetComponent<AOIUnitComponent>()==null)
                     {
                         var skillInfo = unit.GetComponent<SkillColliderComponent>();
-                        var pos =(Vector3) unit.Position;
+                        var pos =unit.Position;
                         var collider = skillInfo.Config;
                         if (collider.ColliderType == ColliderType.Target)//朝指定位置方向飞行碰撞体
                         {
                             var moveComp = unit.AddComponent<MoveComponent>();
                             List<float3> target = new List<float3>();
                             target.Add(pos);
-                            target.Add(pos + (skillInfo.Position - pos).normalized * collider.Speed * collider.Time / 1000f);
+                            target.Add(pos + math.normalize(skillInfo.Position - pos) * collider.Speed * collider.Time / 1000f);
                             moveComp.MoveToAsync(target, collider.Speed).Coroutine();
                         }
                         else if (collider.ColliderType == ColliderType.Aim) //锁定目标飞行
@@ -75,7 +75,7 @@ namespace ET.Server
                             unit.AddComponent<ZhuiZhuAimComponent, Unit>(toUnit);
                             unit.AddComponent<AIComponent,int,int>(2,50);
                         }
-                        var aoiu =unit.AddComponent<AOIUnitComponent,Vector3,Quaternion, UnitType,bool>(pos,unit.Rotation,unit.Type,type!=CreateUnitFromMsgType.Create);
+                        var aoiu =unit.AddComponent<AOIUnitComponent,float3,Quaternion, UnitType,bool>(pos,unit.Rotation,unit.Type,type!=CreateUnitFromMsgType.Create);
                         skillInfo.OnCreate();
                         if (type != CreateUnitFromMsgType.Create)
                         {
@@ -159,7 +159,7 @@ namespace ET.Server
             {
                 unit.AddComponent<SkillColliderComponent, SkillPara>(para);
             }
-            unit.AddComponent<AOIUnitComponent,Vector3,Quaternion, UnitType>(pos,rota,unit.Type);
+            unit.AddComponent<AOIUnitComponent,float3,Quaternion, UnitType>(pos,rota,unit.Type);
             return unit;
         }
     }
