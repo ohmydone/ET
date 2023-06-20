@@ -10,7 +10,8 @@
             {
                 bc.AfterMove(args.Unit,args.OldPos);
             }
-            
+
+            await ETTask.CompletedTask;
         }
     }
 }

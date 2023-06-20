@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using Unity.Mathematics;
-using UnityEngine;
 
 namespace ET.Client
 {
@@ -54,6 +53,8 @@ namespace ET.Client
                 Log.Error("技能不存在");
                 return;
             }
+
+            await ETTask.CompletedTask;
         }
     }
 }

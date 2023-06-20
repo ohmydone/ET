@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-
+﻿
 namespace ET
 {
     [Event(SceneType.Map)]
@@ -10,6 +9,7 @@ namespace ET
             AOIUnitComponent aoiUnitComponent = args.Unit?.GetComponent<AOIUnitComponent>();
             if (aoiUnitComponent == null || aoiUnitComponent.IsDisposed) return;
             aoiUnitComponent.Turn(args.Unit.Rotation);
+            await ETTask.CompletedTask;
         }
     }
 }

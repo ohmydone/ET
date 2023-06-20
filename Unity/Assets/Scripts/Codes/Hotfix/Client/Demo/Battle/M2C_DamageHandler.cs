@@ -13,6 +13,7 @@
                 var from = uc.Get(message.FromId);
                 BattleHelper.Damage(from?.GetComponent<CombatUnitComponent>(),unit.GetComponent<CombatUnitComponent>(),message.Damage);
             }
+            await ETTask.CompletedTask;
         }
 
     }

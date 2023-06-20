@@ -36,6 +36,8 @@
                 }
                 spell.WaitStepOver(SkillStepType.ChangeGroup);
             }
+            
+            await ETTask.CompletedTask;
         }
 
     }

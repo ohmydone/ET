@@ -20,6 +20,8 @@
                 var buff = buffC.GetByConfigId(message.ConfigId);
                 if(buff!=null)buffC.RemoveByOther(buff.Id,true);
             }
+            
+            await ETTask.CompletedTask;
         }
 
     }

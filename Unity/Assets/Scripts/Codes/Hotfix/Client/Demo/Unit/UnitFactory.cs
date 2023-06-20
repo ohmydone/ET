@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Unity.Mathematics;
-using UnityEngine;
 
 namespace ET.Client
 {

@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-namespace ET
+﻿namespace ET
 {
     [FriendOf(typeof(SkillAbility))]
     public static class BattleHelper

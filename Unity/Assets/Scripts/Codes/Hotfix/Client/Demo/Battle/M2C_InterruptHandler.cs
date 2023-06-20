@@ -31,6 +31,7 @@
                     spell.PlayNextSkillStep(0);
                 }
             }
+            await ETTask.CompletedTask;
         }
 
     }

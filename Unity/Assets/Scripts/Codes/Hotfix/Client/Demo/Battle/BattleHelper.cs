@@ -1,5 +1,4 @@
 ﻿using Unity.Mathematics;
-using UnityEngine;
 namespace ET.Client
 {
     [FriendOf(typeof(SkillAbility))]

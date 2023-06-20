@@ -19,6 +19,7 @@
                 var buffC = combatU.GetComponent<BuffComponent>();
                 buffC.AddBuff(message.ConfigId, message.Timestamp,message.SourceId);
             }
+            await ETTask.CompletedTask;
         }
 
     }
