@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using ET.Server;
 using Unity.Mathematics;
 
-namespace ET
+namespace ET.Server
 {
     public static class UnitFactory
     {
@@ -127,7 +127,7 @@ namespace ET
             }
         }
         
-        public static Unit CreateSkillCollider(Scene currentScene, int configId, Vector3 pos,Quaternion rota,SkillPara para)
+        public static Unit CreateSkillCollider(Scene currentScene, int configId, float3 pos,Quaternion rota,SkillPara para)
         {
             UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
             Unit unit = unitComponent.AddChild<Unit,int>(configId);
@@ -142,7 +142,7 @@ namespace ET
                 var moveComp = unit.AddComponent<MoveComponent>();
                 List<float3> target = new List<float3>();
                 target.Add(pos);
-                target.Add(pos + (para.Position - pos).normalized * collider.Speed * collider.Time / 1000f);
+                target.Add(pos + math.normalize(para.Position - pos) * collider.Speed * collider.Time / 1000f);
                 moveComp.MoveToAsync(target, collider.Speed).Coroutine();
                 unit.AddComponent<SkillColliderComponent,SkillPara,Vector3>(para,para.Position);
             }

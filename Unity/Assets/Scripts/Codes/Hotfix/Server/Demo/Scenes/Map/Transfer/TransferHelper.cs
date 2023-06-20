@@ -21,14 +21,50 @@ namespace ET.Server
             long unitId = unit.Id;
             long unitInstanceId = unit.InstanceId;
             
-            M2M_UnitTransferRequest request = new M2M_UnitTransferRequest() {Entitys = new List<byte[]>()};
-            request.OldInstanceId = unitInstanceId;
-            request.Unit = unit.ToBson();
-            foreach (Entity entity in unit.Components.Values)
+            M2M_UnitTransferRequest request = new M2M_UnitTransferRequest()
             {
-                if (entity is ITransfer)
+                Entitys = new List<byte[]>(),
+                Map = new List<RecursiveEntitys>()
+            };
+            request.OldInstanceId = unitInstanceId;
+            
+            request.Unit = unit.ToBson();
+            
+            Entity curEntity = unit;
+            List<Entity> entitys = new List<Entity>();
+            ListComponent<int> Stack = ListComponent<int>.Create();
+            Stack.Add(-1);
+            while (Stack.Count > 0)
+            {
+                var index = Stack[Stack.Count - 1];
+                if (index != -1)
                 {
-                    request.Entitys.Add(entity.ToBson());
+                    curEntity =entitys[index];
+                }
+
+                Stack.RemoveAt(Stack.Count - 1);
+                foreach (Entity entity in curEntity.Components.Values)
+                {
+                    if (entity is ITransfer)
+                    {
+                        var childIndex = request.Entitys.Count;
+                        request.Entitys.Add(entity.ToBson());
+                        entitys.Add(entity);
+                        Stack.Add(childIndex);
+                        request.Map.Add(new RecursiveEntitys { ChildIndex = childIndex, ParentIndex = index, IsChild = 0 });
+                    }
+                }
+
+                foreach (Entity entity in curEntity.Children.Values)
+                {
+                    if (entity is ITransfer)
+                    {
+                        var childIndex = request.Entitys.Count;
+                        request.Entitys.Add(entity.ToBson());
+                        entitys.Add(entity);
+                        Stack.Add(childIndex);
+                        request.Map.Add(new RecursiveEntitys { ChildIndex = childIndex, ParentIndex = index, IsChild = 1 });
+                    }
                 }
             }
             unit.Dispose();
@@ -37,6 +73,7 @@ namespace ET.Server
             await ActorMessageSenderComponent.Instance.Call(sceneInstanceId, request);
         }
         
+
         /// <summary>
         /// 大地图切换区域
         /// </summary>

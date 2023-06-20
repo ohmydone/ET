@@ -168,6 +168,7 @@ message M2M_UnitTransferRequest // IActorRequest
 	int64 OldInstanceId = 2;
 	bytes Unit = 3;
 	repeated bytes Entitys = 4;
+	repeated RecursiveEntitys Map = 5;
 }
 
 message M2M_UnitTransferResponse // IActorResponse

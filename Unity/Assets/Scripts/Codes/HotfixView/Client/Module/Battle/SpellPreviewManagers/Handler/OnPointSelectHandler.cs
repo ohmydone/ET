@@ -2,7 +2,7 @@
 
 namespace ET.Client
 {
-    [Event(SceneType.Map)]
+    [Event(SceneType.Current)]
     public class OnPointSelectHandler: AEvent<Scene,ET.EventType.OnPointSelect>
     {
         protected override async ETTask Run(Scene scene, OnPointSelect a)

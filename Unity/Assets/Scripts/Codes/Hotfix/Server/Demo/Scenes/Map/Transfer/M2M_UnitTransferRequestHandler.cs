@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -16,11 +17,28 @@ namespace ET.Server
 			unitComponent.AddChild(unit);
 			unitComponent.Add(unit);
 
+			List<Entity> entities = new List<Entity>();
 			foreach (byte[] bytes in request.Entitys)
 			{
-				Entity entity = MongoHelper.Deserialize<Entity>(bytes);
-				unit.AddComponent(entity);
+				entities.Add(MongoHelper.Deserialize<Entity>(bytes));
 			}
+
+			foreach (var item in request.Map)
+			{
+				var entity = entities[item.ChildIndex];
+				Entity parent;
+				if (item.ParentIndex == -1)//父组件为自己
+					parent = unit;
+				else
+					parent = entities[item.ParentIndex];
+				
+				if (item.IsChild == 0)
+					parent.AddComponent(entity);
+				else
+					parent.AddChild(entity);
+			}
+			
+			
 			unit.AddComponent<MoveComponent>();
 			unit.AddComponent<PathfindingComponent, string>(scene.Name);
 			unit.Position = new float3(-10, 0, -10);

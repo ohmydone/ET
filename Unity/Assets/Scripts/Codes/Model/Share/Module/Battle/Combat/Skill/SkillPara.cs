@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
+using Unity.Mathematics;
 
 namespace ET
 {
@@ -17,8 +18,8 @@ namespace ET
     public class SkillPara:Entity,IDestroy,IAwake,ITransfer
     {
 
-        public Vector3 Position { get; set; }
-        public Quaternion Rotation { get; set; }
+        public float3 Position { get; set; }
+        public quaternion Rotation { get; set; }
         [BsonIgnore]
         public CombatUnitComponent From => this.Parent.Parent.Parent.Parent.GetChild<Unit>(FromId)?.GetComponent<CombatUnitComponent>();
         [BsonIgnore]

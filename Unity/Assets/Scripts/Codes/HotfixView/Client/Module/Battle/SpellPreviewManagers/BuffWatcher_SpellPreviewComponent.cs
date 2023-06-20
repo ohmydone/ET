@@ -1,4 +1,4 @@
-﻿namespace ET
+﻿namespace ET.Client
 {
     [ActionControlActiveWatcher(ActionControlType.BanSpell,true)]
     public class ActionControlActiveWatcherSpellPreviewComponent_AddAttackBanned:IActionControlActiveWatcher

@@ -14,7 +14,7 @@ namespace ET.Client
                 Z = pos.z,
                 Id = id
             };
-            ClientSceneManagerComponent.Instance.ClientScene().GetComponent<SessionComponent>().Session.Send(msg);
+            skill.ClientScene().GetComponent<SessionComponent>().Session.Send(msg);
         }
 
         public static void Damage(CombatUnitComponent from, CombatUnitComponent to, float value)
@@ -37,7 +37,7 @@ namespace ET.Client
                 int now = t.GetAsInt(NumericType.Hp);
                 int nowBaseValue = now - realValue;
                 t.Set(NumericType.HpBase, nowBaseValue);
-                EventSystem.Instance.Publish(ClientSceneManagerComponent.Instance.ClientScene(), new EventType.AfterCombatUnitGetDamage()
+                EventSystem.Instance.Publish(from.ClientScene(), new EventType.AfterCombatUnitGetDamage()
                 {
                     From = from, 
                     Unit = to, 

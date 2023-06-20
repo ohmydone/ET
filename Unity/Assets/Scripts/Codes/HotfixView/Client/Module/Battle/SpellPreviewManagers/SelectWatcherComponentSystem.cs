@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace ET
+namespace ET.Client
 {
 	using OneTypeSystems = UnOrderMultiMap<Type, object>;
 

@@ -2,7 +2,7 @@
 
 namespace ET.Client
 {
-    [Event(SceneType.Map)]
+    [Event(SceneType.Current)]
     public class OnCircularSelectHandler: AEvent<Scene,ET.EventType.OnCircularSelect>
     {
         protected override async ETTask Run(Scene scene, OnCircularSelect a)

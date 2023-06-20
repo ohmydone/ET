@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace ET
 {
+
+    
     [ObjectSystem]
     public class SkillAbilityAwakeSystem : AwakeSystem<SkillAbility,int>
     {
@@ -42,10 +44,10 @@ namespace ET
             return null;
         }
         
-        public static void UseSkill(this SkillAbility skill, Vector3 pos,long id = 0)
-        {
-            
-        }
+        // public static void UseSkill(this SkillAbility skill, Vector3 pos,long id = 0)
+        // {
+        //     EventSystem.Instance.Invoke<InvokeUseSkill>(new InvokeUseSkill(){Pos= pos,Id= id});
+        // }
 
         public static void Damage(CombatUnitComponent from, CombatUnitComponent to, float value)
         {

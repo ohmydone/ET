@@ -361,6 +361,9 @@ namespace ET
 		[ProtoMember(4)]
 		public List<byte[]> Entitys { get; set; }
 
+		[ProtoMember(5)]
+		public List<RecursiveEntitys> Map { get; set; }
+
 	}
 
 	[Message(InnerMessage.M2M_UnitTransferResponse)]

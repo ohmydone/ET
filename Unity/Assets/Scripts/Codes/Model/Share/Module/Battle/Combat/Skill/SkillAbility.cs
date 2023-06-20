@@ -1,9 +1,17 @@
 ﻿using System.Collections.Generic;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
+using Unity.Mathematics;
 
 namespace ET
 {
+    public struct InvokeUseSkill
+    {
+        public float3 Pos;
+        public long Id;
+    }
+    
+    
     [ChildOf(typeof(CombatUnitComponent))]
     public class SkillAbility:Entity,IAwake<int>,IDestroy,ITransfer
     {
