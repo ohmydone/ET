@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace ET
@@ -53,7 +54,7 @@ namespace ET
         /// <param name="position"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static int GetRelationshipWithTrigger(this AOICell self, AOITrigger trigger,Vector3 position ,Quaternion rotation)
+        public static int GetRelationshipWithTrigger(this AOICell self, AOITrigger trigger,float3 position ,quaternion rotation)
         {
             var len = self.GetParent<AOISceneComponent>().gridLen;
             if (trigger.TriggerType == TriggerShapeType.Cube)
@@ -77,7 +78,7 @@ namespace ET
         /// <param name="position"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static bool IsIntersectWithTrigger(this AOICell self, AOITrigger trigger,Vector3 position ,Quaternion rotation)
+        public static bool IsIntersectWithTrigger(this AOICell self, AOITrigger trigger,float3 position ,quaternion rotation)
         {
             var len = self.GetParent<AOISceneComponent>().gridLen;
             return AOIHelper.IsGridIntersectWithSphere(position,trigger.Radius,len,self.xMin,

@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 
 namespace ET
 {
     public struct RaycastHit
     {
-        public Vector3 Hit;
+        public float3 Hit;
 
         public AOITrigger Trigger;
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace ET
@@ -11,7 +12,7 @@ namespace ET
             return (long) ((ulong) x << 32) | (uint) y;
         }
 
-        public static long CreateCellId(Vector3 pos,int gridLen)
+        public static long CreateCellId(float3 pos,int gridLen)
         {
             int x = (int)pos.x / gridLen;
             int y = (int)pos.z / gridLen;
@@ -21,7 +22,7 @@ namespace ET
         /// <summary>
         /// 获取x，z平面投影与球的关系：-1无关 0相交或包括碰撞器 1在碰撞器内部
         /// </summary>
-        public static int GetGridRelationshipWithSphere(Vector3 position,float radius, 
+        public static int GetGridRelationshipWithSphere(float3 position,float radius, 
             int gridLen, int xMin, int yMin,float sqrRadius)
         {
             int yMax;
@@ -123,28 +124,28 @@ namespace ET
         /// <summary>
         /// 获取x，z平面投影与OBB的关系：-1无关 0相交或包括碰撞器 1在碰撞器内部
         /// </summary>
-        public static int GetGridRelationshipWithOBB(Vector3 position ,Quaternion rotation ,Vector3 scale,int gridLen,
+        public static int GetGridRelationshipWithOBB(float3 position ,quaternion rotation ,float3 scale,int gridLen,
             int xMin,int yMin,float radius,float sqrRadius)
         {
             var res = GetGridRelationshipWithSphere(position, radius,gridLen,xMin,yMin,sqrRadius);
             if (res>=0)
             {
                 //判断格子4个顶点是否在碰撞体内
-                if (!IsPointInTrigger(new Vector3(xMin, position.y, yMin),position,rotation,scale))
+                if (!IsPointInTrigger(new float3(xMin, position.y, yMin),position,rotation,scale))
                 {
                     return 0;
                 }
                 var xMax = xMin + gridLen;
-                if (!IsPointInTrigger(new Vector3(xMax, position.y, yMin),position,rotation,scale))
+                if (!IsPointInTrigger(new float3(xMax, position.y, yMin),position,rotation,scale))
                 {
                     return 0;
                 }
                 var yMax = yMin + gridLen;
-                if (!IsPointInTrigger(new Vector3(xMin, position.y, yMax),position,rotation,scale))
+                if (!IsPointInTrigger(new float3(xMin, position.y, yMax),position,rotation,scale))
                 {
                     return 0;
                 }
-                if (!IsPointInTrigger(new Vector3(xMax, position.y, yMax),position,rotation,scale))
+                if (!IsPointInTrigger(new float3(xMax, position.y, yMax),position,rotation,scale))
                 {
                     return 0;
                 }
@@ -158,7 +159,7 @@ namespace ET
         /// <summary>
         /// 获取x，z平面投影与球的关系：false无关 true相交
         /// </summary>
-        public static bool IsGridIntersectWithSphere(Vector3 position, float radius,
+        public static bool IsGridIntersectWithSphere(float3 position, float radius,
             int gridLen, int xMin, int yMin,float sqrRadius)
         {
             var xMax = xMin + gridLen;
@@ -243,9 +244,9 @@ namespace ET
         ///  <param name="center"></param>
         /// <param name="rot"></param>
         /// <returns></returns>
-        public static bool IsPointInTrigger(Vector3 pos,Vector3 center,Quaternion rot,Vector3 scale)
+        public static bool IsPointInTrigger(float3 pos,float3 center,quaternion rot,float3 scale)
         {
-            Vector3 temp = Quaternion.Inverse(rot)*(pos - center); //转换到触发器模型空间坐标
+            float3 temp =math.mul( math.inverse(rot),(pos - center)); //转换到触发器模型空间坐标
             var xMax = scale.x / 2;
             var yMax = scale.y / 2;
             var zMax = scale.z / 2;

@@ -68,12 +68,12 @@ namespace ET
                                 if (z1 > yMin && z1 < yMax)
                                 {
                                     xIndex++;
-                                    inPoint = new Vector3(xMax, inPoint.y+(xMax-inPoint.x)*ray.Dir.y/ray.Dir.x, z1);
+                                    inPoint = new float3(xMax, inPoint.y+(xMax-inPoint.x)*ray.Dir.y/ray.Dir.x, z1);
                                 }
                                 else
                                 {
                                     yIndex++;
-                                    inPoint = new Vector3((yMax - b) * k_1, inPoint.y+(yMax-inPoint.z)*ray.Dir.y/ray.Dir.z, yMax);
+                                    inPoint = new float3((yMax - b) * k_1, inPoint.y+(yMax-inPoint.z)*ray.Dir.y/ray.Dir.z, yMax);
                                 }
                             }
                             else if (ray.Dir.x > 0 && ray.Dir.z < 0)
@@ -82,12 +82,12 @@ namespace ET
                                 if (z1 > yMin && z1 < yMax)
                                 {
                                     xIndex++;
-                                    inPoint = new Vector3(xMax, inPoint.y+(xMax-inPoint.x)*ray.Dir.y/ray.Dir.x, z1);
+                                    inPoint = new float3(xMax, inPoint.y+(xMax-inPoint.x)*ray.Dir.y/ray.Dir.x, z1);
                                 }
                                 else
                                 {
                                     yIndex--;
-                                    inPoint = new Vector3((yMin - b) * k_1, inPoint.y+(yMin-inPoint.z)*ray.Dir.y/ray.Dir.z, yMin);
+                                    inPoint = new float3((yMin - b) * k_1, inPoint.y+(yMin-inPoint.z)*ray.Dir.y/ray.Dir.z, yMin);
                                 }
                             }
                             else if (ray.Dir.x < 0 && ray.Dir.z < 0)
@@ -96,12 +96,12 @@ namespace ET
                                 if (z1 > yMin && z1 < yMax)
                                 {
                                     xIndex--;
-                                    inPoint = new Vector3(xMin, inPoint.y+(xMin-inPoint.x)*ray.Dir.y/ray.Dir.x, z1);
+                                    inPoint = new float3(xMin, inPoint.y+(xMin-inPoint.x)*ray.Dir.y/ray.Dir.x, z1);
                                 }
                                 else
                                 {
                                     yIndex--;
-                                    inPoint = new Vector3((yMin - b) * k_1, inPoint.y+(yMin-inPoint.z)*ray.Dir.y/ray.Dir.z, yMin);
+                                    inPoint = new float3((yMin - b) * k_1, inPoint.y+(yMin-inPoint.z)*ray.Dir.y/ray.Dir.z, yMin);
                                 }
                             }
                             else if (ray.Dir.x < 0 && ray.Dir.z > 0)
@@ -110,12 +110,12 @@ namespace ET
                                 if (z1 > yMin && z1 < yMax)
                                 {
                                     xIndex--;
-                                    inPoint = new Vector3(xMin, inPoint.y+(xMin-inPoint.x)*ray.Dir.y/ray.Dir.x, z1);
+                                    inPoint = new float3(xMin, inPoint.y+(xMin-inPoint.x)*ray.Dir.y/ray.Dir.x, z1);
                                 }
                                 else
                                 {
                                     yIndex++;
-                                    inPoint = new Vector3((yMax - b) * k_1, inPoint.y+(yMax-inPoint.z)*ray.Dir.y/ray.Dir.z, yMax);
+                                    inPoint = new float3((yMax - b) * k_1, inPoint.y+(yMax-inPoint.z)*ray.Dir.y/ray.Dir.z, yMax);
                                 }
                             }
                             else
@@ -129,12 +129,12 @@ namespace ET
                             if (ray.Dir.z > 0)
                             {
                                 yIndex++;
-                                inPoint = new Vector3(inPoint.x, inPoint.y+(yMax-inPoint.z)*ray.Dir.y/ray.Dir.z, yMax);
+                                inPoint = new float3(inPoint.x, inPoint.y+(yMax-inPoint.z)*ray.Dir.y/ray.Dir.z, yMax);
                             }
                             else
                             {
                                 yIndex--;
-                                inPoint = new Vector3(inPoint.x, inPoint.y+(yMin-inPoint.z)*ray.Dir.y/ray.Dir.z, yMin);
+                                inPoint = new float3(inPoint.x, inPoint.y+(yMin-inPoint.z)*ray.Dir.y/ray.Dir.z, yMin);
                             }
                         }
                         else if (ray.Dir.z == 0&& ray.Dir.x != 0)
@@ -142,18 +142,18 @@ namespace ET
                             if (ray.Dir.x > 0)
                             {
                                 xIndex++;
-                                inPoint = new Vector3(xMax, inPoint.y+(xMax-inPoint.x)*ray.Dir.y/ray.Dir.x, inPoint.z);
+                                inPoint = new float3(xMax, inPoint.y+(xMax-inPoint.x)*ray.Dir.y/ray.Dir.x, inPoint.z);
                             }
                             else
                             {
                                 xIndex--;
-                                inPoint = new Vector3(xMin, inPoint.y+(xMin-inPoint.x)*ray.Dir.y/ray.Dir.x, inPoint.z);
+                                inPoint = new float3(xMin, inPoint.y+(xMin-inPoint.x)*ray.Dir.y/ray.Dir.x, inPoint.z);
                             }
                         }
                         //垂直于地图
                         else
                             break;
-                        if(Vector3.SqrMagnitude(inPoint-ray.Start)>ray.SqrDistance)
+                        if(math.lengthsq(inPoint-ray.Start)>ray.SqrDistance)
                             break;
                     }
                 }
@@ -161,7 +161,7 @@ namespace ET
             return false;
         }
 
-        private static void RaycastHits(Ray ray, AOICell cell,Vector3 inPoint,ListComponent<RaycastHit> hits,
+        private static void RaycastHits(Ray ray, AOICell cell,float3 inPoint,ListComponent<RaycastHit> hits,
             HashSetComponent<AOITrigger> triggers, DictionaryComponent<UnitType, bool> type)
         {
             for (int i = cell.Colliders.Count-1; i >=0 ; i--)
@@ -183,7 +183,7 @@ namespace ET
                         {
                             Hit = inPoint,
                             Trigger = item,
-                            Distance = Vector3.Distance(inPoint,ray.Start)
+                            Distance =math.length(inPoint-ray.Start)
                         });
                     }
                     else if (item.IsRayInTrigger(ray,item.GetRealPos(),item.GetRealRot(),out var hit))
@@ -193,7 +193,7 @@ namespace ET
                         {
                             Hit = hit,
                             Trigger = item,
-                            Distance = Vector3.Distance(hit,ray.Start)
+                            Distance = math.length(hit-ray.Start)
                         });
                     }
                 }

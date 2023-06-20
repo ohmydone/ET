@@ -151,7 +151,7 @@ namespace ET
             }
             if (self.Config.ColliderShape == ColliderShape.OBB)
             {
-                Vector3 par = new Vector3(self.Config.ColliderPara[0], self.Config.ColliderPara[1],
+                float3 par = new float3(self.Config.ColliderPara[0], self.Config.ColliderPara[1],
                     self.Config.ColliderPara[2]);
                 skillAOIUnit.AddOBBTrigger(par, AOITriggerType.All,
                     (o, e) =>

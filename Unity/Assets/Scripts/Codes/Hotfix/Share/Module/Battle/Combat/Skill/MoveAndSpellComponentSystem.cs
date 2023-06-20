@@ -77,7 +77,7 @@ namespace ET
             var unit = self.GetParent<CombatUnitComponent>().unit;
             var nowpos = unit.Position;
             var point = targetEntity.unit.Position;
-            if (Vector2.Distance(new Vector2(nowpos.x, nowpos.z), new Vector2(point.x, point.z)) >
+            if (math.length(new float2(nowpos.x, nowpos.z)-new float2(point.x, point.z)) >
                 spellSkill.SkillConfig.PreviewRange[0])
             {
                 self.MoveTo(unit, point);
@@ -110,7 +110,7 @@ namespace ET
         /// <param name="self"></param>
         /// <param name="spellSkill"></param>
         /// <param name="point"></param>
-        public static void SpellWithPoint(this MoveAndSpellComponent self,SkillAbility spellSkill, Vector3 point)
+        public static void SpellWithPoint(this MoveAndSpellComponent self,SkillAbility spellSkill, float3 point)
         {
             if(!spellSkill.CanUse())return;
             if (self.Skill != null)//换新技能释放了
@@ -122,7 +122,7 @@ namespace ET
 
             var unit = self.GetParent<CombatUnitComponent>().unit;
             var nowpos = unit.Position;
-            if (Vector2.Distance(new Vector2(nowpos.x, nowpos.z), new Vector2(point.x, point.z)) >
+            if (math.length(new float2(nowpos.x, nowpos.z)- new float2(point.x, point.z)) >
                 spellSkill.SkillConfig.PreviewRange[0])
             {
                 self.MoveTo(unit, point);
@@ -152,7 +152,7 @@ namespace ET
         /// <param name="self"></param>
         /// <param name="spellSkill"></param>
         /// <param name="point"></param>
-        public static void SpellWithDirect(this MoveAndSpellComponent self,SkillAbility spellSkill, Vector3 point)
+        public static void SpellWithDirect(this MoveAndSpellComponent self,SkillAbility spellSkill, float3 point)
         {
             if(!spellSkill.CanUse())return;
             if (self.Skill != null)//换新技能释放了
@@ -164,7 +164,7 @@ namespace ET
 
             var  unit = self.GetParent<CombatUnitComponent>().unit;
             var nowpos = unit.Position;
-            if (Vector2.Distance(new Vector2(nowpos.x, nowpos.z), new Vector2(point.x, point.z)) >
+            if (math.length(new float2(nowpos.x, nowpos.z)- new float2(point.x, point.z)) >
                 spellSkill.SkillConfig.PreviewRange[0])
             {
                 self.MoveTo(unit, point);
@@ -192,7 +192,7 @@ namespace ET
 
         public static void MoveTo(this MoveAndSpellComponent self,Unit unit, float3 point)
         {
-            if (self.Skill==null|| ((Vector3)(self.Point-point)).sqrMagnitude>self.Skill.SkillConfig.PreviewRange[0]/2f)
+            if (self.Skill==null|| math.lengthsq(self.Point-point)>self.Skill.SkillConfig.PreviewRange[0]/2f)
             {
                 self.Point = point;
 #if !SERVER

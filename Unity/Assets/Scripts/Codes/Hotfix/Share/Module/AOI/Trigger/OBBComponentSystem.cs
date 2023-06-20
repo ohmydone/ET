@@ -42,7 +42,7 @@ namespace ET
         /// <param name="realPos"></param>
         /// <param name="realRot"></param>
         /// <returns></returns>
-        public static List<float3> GetAllVertex(this OBBComponent self, float3 realPos, Quaternion realRot)
+        public static List<float3> GetAllVertex(this OBBComponent self, float3 realPos, quaternion realRot)
         {
             if (self.LastVertexPosRot != null && self.LastVertexPosRot.Pos.Equals(realPos) && self.LastVertexPosRot.Rot.Equals(realRot))
             {
@@ -74,7 +74,7 @@ namespace ET
         /// <param name="realPos"></param>
         /// <param name="realRot"></param>
         /// <returns></returns>
-        public static List<Ray> GetAllSide(this OBBComponent self, float3 realPos, Quaternion realRot)
+        public static List<Ray> GetAllSide(this OBBComponent self, float3 realPos, quaternion realRot)
         {
             if (self.LastSidesPosRot != null && self.LastSidesPosRot.Pos.Equals(realPos) && self.LastSidesPosRot.Rot.Equals(realRot))
             {
@@ -83,37 +83,37 @@ namespace ET
 
             self.LastSides.Clear();
             float3 temp = realPos + math.mul(realRot, new float3(self.Scale.x, self.Scale.y, self.Scale.z));
-            Ray ray = new Ray() { Start = temp, Dir = realRot * math.left(), Distance = self.Scale.x };
+            Ray ray = new Ray() { Start = temp, Dir =math.mul( realRot , math.left()), Distance = self.Scale.x };
             self.LastSides.Add(ray);
-            ray = new Ray() { Start = temp, Dir = realRot * math.down(), Distance = self.Scale.y };
+            ray = new Ray() { Start = temp, Dir = math.mul(realRot , math.down()), Distance = self.Scale.y };
             self.LastSides.Add(ray);
-            ray = new Ray() { Start = temp, Dir = realRot * math.back(), Distance = self.Scale.z };
+            ray = new Ray() { Start = temp, Dir =math.mul( realRot , math.back()), Distance = self.Scale.z };
             self.LastSides.Add(ray);
 
             temp = realPos + math.mul(realRot, new float3(-self.Scale.x, -self.Scale.y, -self.Scale.z));
-            ray = new Ray() { Start = temp, Dir = realRot * math.right(), Distance = self.Scale.x };
+            ray = new Ray() { Start = temp, Dir =math.mul( realRot , math.right()), Distance = self.Scale.x };
             self.LastSides.Add(ray);
-            ray = new Ray() { Start = temp, Dir = realRot * math.up(), Distance = self.Scale.y };
+            ray = new Ray() { Start = temp, Dir =math.mul( realRot , math.up()), Distance = self.Scale.y };
             self.LastSides.Add(ray);
-            ray = new Ray() { Start = temp, Dir = realRot * math.forward(), Distance = self.Scale.z };
+            ray = new Ray() { Start = temp, Dir = math.mul(realRot , math.forward()), Distance = self.Scale.z };
             self.LastSides.Add(ray);
 
             temp = realPos + math.mul(realRot, new float3(-self.Scale.x, self.Scale.y, self.Scale.z));
-            ray = new Ray() { Start = temp, Dir = realRot * math.up(), Distance = self.Scale.y };
+            ray = new Ray() { Start = temp, Dir =math.mul( realRot , math.up()), Distance = self.Scale.y };
             self.LastSides.Add(ray);
-            ray = new Ray() { Start = temp, Dir = realRot * math.forward(), Distance = self.Scale.z };
+            ray = new Ray() { Start = temp, Dir =math.mul( realRot , math.forward()), Distance = self.Scale.z };
             self.LastSides.Add(ray);
 
             temp = realPos + math.mul(realRot, new float3(self.Scale.x, self.Scale.y, -self.Scale.z));
-            ray = new Ray() { Start = temp, Dir = realRot * math.right(), Distance = self.Scale.x };
+            ray = new Ray() { Start = temp, Dir =math.mul( realRot , math.right()), Distance = self.Scale.x };
             self.LastSides.Add(ray);
-            ray = new Ray() { Start = temp, Dir = realRot * math.up(), Distance = self.Scale.y };
+            ray = new Ray() { Start = temp, Dir = math.mul(realRot , math.up()), Distance = self.Scale.y };
             self.LastSides.Add(ray);
 
             temp = realPos + math.mul(realRot, new float3(self.Scale.x, -self.Scale.y, self.Scale.z));
-            ray = new Ray() { Start = temp, Dir = realRot * math.right(), Distance = self.Scale.x };
+            ray = new Ray() { Start = temp, Dir =math.mul( realRot , math.right()), Distance = self.Scale.x };
             self.LastSides.Add(ray);
-            ray = new Ray() { Start = temp, Dir = realRot * math.forward(), Distance = self.Scale.z };
+            ray = new Ray() { Start = temp, Dir = math.mul(realRot , math.forward()), Distance = self.Scale.z };
             self.LastSides.Add(ray);
             self.LastSidesPosRot = new OBBComponent.TempPosRot() { Pos = realPos, Rot = realRot };
             return self.LastSides;
@@ -130,7 +130,7 @@ namespace ET
         /// <param name="rotation2"></param>
         /// <returns></returns>
         public static bool IsInTrigger(this OBBComponent trigger1, OBBComponent trigger2, float3 pos1,
-        Quaternion rotation1, float3 pos2, Quaternion rotation2)
+        quaternion rotation1, float3 pos2, quaternion rotation2)
         {
             // Log.Info("判断OBB触发");
             //第一种情况一方有一个点在对方内部即为触发
@@ -176,7 +176,7 @@ namespace ET
         /// <param name="center"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static bool IsPointInTrigger(this OBBComponent trigger, float3 position, float3 center, Quaternion rotation)
+        public static bool IsPointInTrigger(this OBBComponent trigger, float3 position, float3 center, quaternion rotation)
         {
             return AOIHelper.IsPointInTrigger(position, center, rotation, trigger.Scale);
         }
@@ -189,7 +189,7 @@ namespace ET
         /// <param name="center"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static bool IsRayInTrigger(this OBBComponent self, Ray ray, float3 center, Quaternion rotation)
+        public static bool IsRayInTrigger(this OBBComponent self, Ray ray, float3 center, quaternion rotation)
         {
             var hit = float3.zero;
             //转换到模型空间
@@ -334,9 +334,9 @@ namespace ET
                 return false;
             }
 
-            if (Mathf.Abs(Mathf.Abs(hit2d1.y) - zMax) < Mathf.Abs(Mathf.Abs(hit2d1.x) - yMax))
+            if (math.abs(math.abs(hit2d1.y) - zMax) < math.abs(math.abs(hit2d1.x) - yMax))
             {
-                if (Mathf.Abs(Mathf.Abs(hit2d3.y) - yMax) < Mathf.Abs(Mathf.Abs(hit2d3.x) - xMax))
+                if (math.abs(math.abs(hit2d3.y) - yMax) < math.abs(math.abs(hit2d3.x) - xMax))
                 {
                     hit = new float3(hit2d3.x, hit2d1.y, hit2d1.x);
                 }
@@ -347,7 +347,7 @@ namespace ET
             }
             else
             {
-                if (Mathf.Abs(Mathf.Abs(hit2d2.x) - xMax) < Mathf.Abs(Mathf.Abs(hit2d2.y) - zMax))
+                if (math.abs(math.abs(hit2d2.x) - xMax) < math.abs(math.abs(hit2d2.y) - zMax))
                 {
                     hit = new float3(hit2d2.x, hit2d1.x, hit2d2.y);
                 }
@@ -370,7 +370,7 @@ namespace ET
         /// <param name="center"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static bool IsRayInTrigger(this OBBComponent self, Ray ray, float3 center, Quaternion rotation, out float3 hit)
+        public static bool IsRayInTrigger(this OBBComponent self, Ray ray, float3 center, quaternion rotation, out float3 hit)
         {
             hit = float3.zero;
             //转换到模型空间
@@ -515,9 +515,9 @@ namespace ET
                 return false;
             }
 
-            if (Mathf.Abs(Mathf.Abs(hit2d1.y) - zMax) < Mathf.Abs(Mathf.Abs(hit2d1.x) - yMax))
+            if (math.abs(math.abs(hit2d1.y) - zMax) < math.abs(math.abs(hit2d1.x) - yMax))
             {
-                if (Mathf.Abs(Mathf.Abs(hit2d3.y) - yMax) < Mathf.Abs(Mathf.Abs(hit2d3.x) - xMax))
+                if (math.abs(math.abs(hit2d3.y) - yMax) < math.abs(math.abs(hit2d3.x) - xMax))
                 {
                     hit = new float3(hit2d3.x, hit2d1.y, hit2d1.x);
                 }
@@ -528,7 +528,7 @@ namespace ET
             }
             else
             {
-                if (Mathf.Abs(Mathf.Abs(hit2d2.x) - xMax) < Mathf.Abs(Mathf.Abs(hit2d2.y) - zMax))
+                if (math.abs(math.abs(hit2d2.x) - xMax) < math.abs(math.abs(hit2d2.y) - zMax))
                 {
                     hit = new float3(hit2d2.x, hit2d1.x, hit2d2.y);
                 }
@@ -538,7 +538,7 @@ namespace ET
                 }
             }
 
-            hit =math.mul( rotation , hit) + center;
+            hit =math.mul(rotation,hit) + center;
             if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
             return true;
         }
@@ -555,9 +555,9 @@ namespace ET
         /// <param name="hit"></param>
         /// <returns></returns>
         public static bool IsRayInTrigger2D(float startX, float startY, float dirX, float dirY, float xMax, float yMax,
-        out Vector2 hit)
+        out float2 hit)
         {
-            hit = Vector2.zero;
+            hit = float2.zero;
             if (startX > 0 && startY > 0) //第一象限
             {
                 if (dirX > 0 && dirY > 0) return false;
@@ -571,9 +571,9 @@ namespace ET
                 var z2 = k * -xMax + b;
                 if (z2 > yMax) return false;
                 if (z1 <= yMax)
-                    hit = new Vector2(xMax, z1);
+                    hit = new float2(xMax, z1);
                 else
-                    hit = new Vector2((yMax - b) / k, yMax);
+                    hit = new float2((yMax - b) / k, yMax);
                 return true;
             }
 
@@ -590,9 +590,9 @@ namespace ET
                 var z2 = k * -xMax + b;
                 if (z2 < -yMax) return false;
                 if (z1 >= -yMax)
-                    hit = new Vector2(xMax, z1);
+                    hit = new float2(xMax, z1);
                 else
-                    hit = new Vector2((-yMax - b) / k, -yMax);
+                    hit = new float2((-yMax - b) / k, -yMax);
                 return true;
             }
 
@@ -609,9 +609,9 @@ namespace ET
                 var z2 = k * xMax + b;
                 if (z2 < -yMax) return false;
                 if (z1 >= -yMax)
-                    hit = new Vector2(-xMax, z1);
+                    hit = new float2(-xMax, z1);
                 else
-                    hit = new Vector2((-yMax - b) / k, -yMax);
+                    hit = new float2((-yMax - b) / k, -yMax);
                 return true;
             }
 
@@ -628,9 +628,9 @@ namespace ET
                 var z2 = k * xMax + b;
                 if (z2 > yMax) return false;
                 if (z1 >= -yMax)
-                    hit = new Vector2(-xMax, z1);
+                    hit = new float2(-xMax, z1);
                 else
-                    hit = new Vector2((yMax - b) / k, yMax);
+                    hit = new float2((yMax - b) / k, yMax);
                 return true;
             }
 

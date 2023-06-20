@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Numerics;
+using Unity.Mathematics;
+using UnityEngine;
 namespace ET.Server
 {
     [ActorMessageHandler(SceneType.Map)]
@@ -21,7 +23,7 @@ namespace ET.Server
             {
                 if (skill.SkillConfig.PreviewType == SkillPreviewType.SelectCircularInCircularArea)
                 {
-                    combatU.GetComponent<SpellComponent>().SpellWithPoint(skill,new Vector3(message.X,message.Y,message.Z));
+                    combatU.GetComponent<SpellComponent>().SpellWithPoint(skill,new float3(message.X,message.Y,message.Z));
                 }
                 else if (skill.SkillConfig.PreviewType == SkillPreviewType.SelectTarget)
                 {
@@ -41,11 +43,11 @@ namespace ET.Server
                 }
                 else if (skill.SkillConfig.PreviewType == SkillPreviewType.SelectRectangleArea)
                 {
-                    combatU.GetComponent<SpellComponent>().SpellWithDirect(skill,new Vector3(message.X,message.Y,message.Z));
+                    combatU.GetComponent<SpellComponent>().SpellWithDirect(skill,new float3(message.X,message.Y,message.Z));
                 }
                 else if (skill.SkillConfig.PreviewType == SkillPreviewType.SelectCircularArea)
                 {
-                    combatU.GetComponent<SpellComponent>().SpellWithPoint(skill,new Vector3(message.X,message.Y,message.Z));
+                    combatU.GetComponent<SpellComponent>().SpellWithPoint(skill,new float3(message.X,message.Y,message.Z));
                 }
                 else
                 {

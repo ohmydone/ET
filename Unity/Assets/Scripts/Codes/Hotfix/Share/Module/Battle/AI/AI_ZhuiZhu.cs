@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 
 namespace ET
 {
@@ -37,7 +38,7 @@ namespace ET
             ZhuiZhuAimComponent zhuiZhuAimPathComponent = myUnit.GetComponent<ZhuiZhuAimComponent>();
             while (zhuiZhuAimPathComponent?.Aim!=null)
             {
-                Vector3 nextTarget = zhuiZhuAimPathComponent.Aim.Position;
+                float3 nextTarget = zhuiZhuAimPathComponent.Aim.Position;
 #if SERVER //纯客户端单机游戏自己在客户端接入Recast库后去掉
                 myUnit.FindPathMoveToAsync(nextTarget,cancellationToken).Coroutine(); 
                 await TimerComponent.Instance.WaitAsync(100,cancellationToken);
@@ -46,7 +47,7 @@ namespace ET
                 await TimerComponent.Instance.WaitAsync(10,cancellationToken);
 #endif
                
-                if(Vector3.Distance(nextTarget,myUnit.Position)<0.1f) 
+                if(math.length(nextTarget-myUnit.Position)<0.1f) 
                     zhuiZhuAimPathComponent.Arrived();
             }
         }

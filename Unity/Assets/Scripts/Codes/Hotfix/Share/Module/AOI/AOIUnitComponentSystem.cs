@@ -8,9 +8,9 @@ using UnityEngine;
 namespace ET
 {
     [ObjectSystem]
-    public class AOIUnitComponentAwakeSystem : AwakeSystem<AOIUnitComponent,float3,Quaternion, UnitType,int>
+    public class AOIUnitComponentAwakeSystem : AwakeSystem<AOIUnitComponent,float3,quaternion, UnitType,int>
     {
-        protected override void Awake(AOIUnitComponent self,float3 pos,Quaternion rota, UnitType type,int range)
+        protected override void Awake(AOIUnitComponent self,float3 pos,quaternion rota, UnitType type,int range)
         {
             self.Position = pos;
             self.Rotation = rota;
@@ -25,9 +25,9 @@ namespace ET
         }
     }
     [ObjectSystem]
-    public class AOIUnitComponentAwakeSystem2 : AwakeSystem<AOIUnitComponent,float3,Quaternion, UnitType>
+    public class AOIUnitComponentAwakeSystem2 : AwakeSystem<AOIUnitComponent,float3,quaternion, UnitType>
     {
-        protected override void Awake(AOIUnitComponent self,float3 pos,Quaternion rota, UnitType type)
+        protected override void Awake(AOIUnitComponent self,float3 pos,quaternion rota, UnitType type)
         {
             self.Position = pos;
             self.Rotation = rota;
@@ -43,9 +43,9 @@ namespace ET
     }
 
     [ObjectSystem]
-    public class AOIUnitComponentAwakeSystem3 : AwakeSystem<AOIUnitComponent,float3,Quaternion, UnitType,int,bool>
+    public class AOIUnitComponentAwakeSystem3 : AwakeSystem<AOIUnitComponent,float3,quaternion, UnitType,int,bool>
     {
-        protected override void Awake(AOIUnitComponent self,float3 pos,Quaternion rota, UnitType type,int range,bool isGhost)
+        protected override void Awake(AOIUnitComponent self,float3 pos,quaternion rota, UnitType type,int range,bool isGhost)
         {
             self.Position = pos;
             self.Rotation = rota;
@@ -58,9 +58,9 @@ namespace ET
         }
     }
     [ObjectSystem]
-    public class AOIUnitComponentAwakeSystem4 : AwakeSystem<AOIUnitComponent,float3,Quaternion, UnitType,bool>
+    public class AOIUnitComponentAwakeSystem4 : AwakeSystem<AOIUnitComponent,float3,quaternion, UnitType,bool>
     {
-        protected override void Awake(AOIUnitComponent self,float3 pos,Quaternion rota, UnitType type,bool isGhost)
+        protected override void Awake(AOIUnitComponent self,float3 pos,quaternion rota, UnitType type,bool isGhost)
         {
             self.Position = pos;
             self.Rotation = rota;
@@ -119,7 +119,7 @@ namespace ET
         /// </summary>
         /// <param name="self"></param>
         /// <param name="position"></param>
-        public static async ETTask Move(this AOIUnitComponent self,Vector3 position)
+        public static async ETTask Move(this AOIUnitComponent self,float3 position)
         {
             var oldpos = self.Position;
             self.Position = position;
@@ -163,7 +163,7 @@ namespace ET
         /// </summary>
         /// <param name="self"></param>
         /// <param name="rotation"></param>
-        public static void Turn(this AOIUnitComponent self, Quaternion rotation)
+        public static void Turn(this AOIUnitComponent self, quaternion rotation)
         {
             var oldRotation = self.Rotation;
             self.Rotation = rotation;

@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 namespace ET.Client
 {
     [FriendOf(typeof(SkillAbility))]
     public static class BattleHelper
     {
-        public static void UseSkill(this SkillAbility skill, Vector3 pos,long id = 0)
+        public static void UseSkill(this SkillAbility skill, float3 pos,long id = 0)
         {
             C2M_UseSkill msg = new C2M_UseSkill()
             {

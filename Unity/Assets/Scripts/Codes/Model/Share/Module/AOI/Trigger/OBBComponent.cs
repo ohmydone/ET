@@ -19,7 +19,7 @@ namespace ET
         public class TempPosRot
         {
             public float3 Pos;
-            public Quaternion Rot;
+            public quaternion Rot;
         }
 
         public TempPosRot LastVertexPosRot;

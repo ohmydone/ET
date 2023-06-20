@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -184,7 +185,7 @@ namespace ET
         /// </summary>
         /// <param name="self"></param>
         /// <returns></returns>
-        public static Quaternion GetRealRot(this AOITrigger self)
+        public static quaternion GetRealRot(this AOITrigger self)
         {
             return self.GetParent<AOIUnitComponent>().Rotation;
         }
@@ -237,7 +238,7 @@ namespace ET
         static void AddTriggerListener(this AOIUnitComponent self, AOITrigger trigger, AOITriggerType type, bool broadcast = true)
         {
             var len = self.Scene.gridLen;
-            int count = (int)Mathf.Ceil(trigger.Radius / len);
+            int count = (int)math.ceil(trigger.Radius / len);
             if (count > 2) Log.Info("检测范围超过2格，触发半径：" + trigger.Radius);
             var pos = trigger.GetRealPos();
             var rot = trigger.GetRealRot();
@@ -310,7 +311,7 @@ namespace ET
         static void AddColliderListener(this AOIUnitComponent self, AOITrigger trigger, bool broadcast = true)
         {
             var len = self.Scene.gridLen;
-            int count = (int)Mathf.Ceil(trigger.Radius / len);
+            int count = (int)math.ceil(trigger.Radius / len);
             if (count > 2) Log.Info("检测范围超过2格，触发半径：" + trigger.Radius);
             var pos = trigger.GetRealPos();
             var rot = trigger.GetRealRot();
@@ -506,7 +507,7 @@ namespace ET
         public static AOITrigger AddOBBTrigger(this AOIUnitComponent self, float3 scale, AOITriggerType flag,
         Action<AOIUnitComponent, AOITriggerType> handler, params UnitType[] selecter)
         {
-            float radius = Mathf.Sqrt(scale.x * scale.x + scale.y * scale.y + scale.z * scale.z) / 2;
+            float radius = math.sqrt(scale.x * scale.x + scale.y * scale.y + scale.z * scale.z) / 2;
             var trigger = self.AddTrigger(radius, flag, handler, selecter);
             trigger.AddComponent<OBBComponent, float3>(scale);
             trigger.TriggerType = TriggerShapeType.Cube;
@@ -534,7 +535,7 @@ namespace ET
                 return null;
             }
 
-            float radius = Mathf.Sqrt(scale.x * scale.x + scale.y * scale.y + scale.z * scale.z) / 2;
+            float radius = math.sqrt(scale.x * scale.x + scale.y * scale.y + scale.z * scale.z) / 2;
             var trigger = self.AddCollider(radius);
             trigger.AddComponent<OBBComponent, float3>(scale);
             trigger.TriggerType = TriggerShapeType.Cube;
@@ -560,7 +561,7 @@ namespace ET
         public static AOITrigger AddOBBTriggerWithoutBroadcast(this AOIUnitComponent self, float3 scale, AOITriggerType flag,
         Action<AOIUnitComponent, AOITriggerType> handler, params UnitType[] selecter)
         {
-            float radius = Mathf.Sqrt(scale.x * scale.x + scale.y * scale.y + scale.z * scale.z) / 2;
+            float radius = math.sqrt(scale.x * scale.x + scale.y * scale.y + scale.z * scale.z) / 2;
             var trigger = self.AddTrigger(radius, flag, handler, selecter);
             trigger.AddComponent<OBBComponent, float3>(scale);
             trigger.TriggerType = TriggerShapeType.Cube;
@@ -588,7 +589,7 @@ namespace ET
                 return null;
             }
 
-            float radius = Mathf.Sqrt(scale.x * scale.x + scale.y * scale.y + scale.z * scale.z) / 2;
+            float radius = math.sqrt(scale.x * scale.x + scale.y * scale.y + scale.z * scale.z) / 2;
             var trigger = self.AddCollider(radius);
             trigger.AddComponent<OBBComponent, float3>(scale);
             trigger.TriggerType = TriggerShapeType.Cube;
@@ -624,7 +625,7 @@ namespace ET
             #region 移除监听事件，并判断触发离开触发器
 
             var len = self.Scene.gridLen;
-            int count = (int)Mathf.Ceil(trigger.Radius / len);
+            int count = (int)math.ceil(trigger.Radius / len);
             if (count > 2) Log.Info("检测范围超过2格，触发半径：" + trigger.Radius);
             HashSetComponent<AOITrigger> temp = HashSetComponent<AOITrigger>.Create();
             for (int i = trigger.FollowCell.Count - 1; i >= 0; i--)
@@ -682,7 +683,7 @@ namespace ET
             #region 移除监听事件，并判断触发离开触发器
 
             var len = self.Scene.gridLen;
-            int count = (int)Mathf.Ceil(collider.Radius / len);
+            int count = (int)math.ceil(collider.Radius / len);
             if (count > 2) Log.Info("检测范围超过2格，触发半径：" + collider.Radius);
             HashSetComponent<AOITrigger> temp = HashSetComponent<AOITrigger>.Create();
             for (int i = collider.FollowCell.Count - 1; i >= 0; i--)
@@ -725,9 +726,9 @@ namespace ET
             if (self.IsCollider) return;
             var unit = self.GetParent<AOIUnitComponent>();
             var len = unit.Scene.gridLen;
-            int count = (int)Mathf.Ceil(self.Radius / len);
+            int count = (int)math.ceil(self.Radius / len);
             if (count > 2) Log.Info("检测范围超过2格，触发半径：" + self.Radius);
-            Quaternion beforeRotation = self.GetRealRot();
+            quaternion beforeRotation = self.GetRealRot();
             HashSetComponent<AOITrigger> pre; //之前有的
             HashSetComponent<AOITrigger> after; //现在有的
             var nowPos = self.GetRealPos();
@@ -923,13 +924,13 @@ namespace ET
         /// </summary>
         /// <param name="self"></param>
         /// <param name="before"></param>
-        public static void AfterTriggerChangeRotationBroadcastToMe(this AOITrigger self, Quaternion before)
+        public static void AfterTriggerChangeRotationBroadcastToMe(this AOITrigger self, quaternion before)
         {
             if (self.IsCollider) return;
             if (self.TriggerType == TriggerShapeType.Sphere) return;
             var unit = self.GetParent<AOIUnitComponent>();
             var len = unit.Scene.gridLen;
-            int count = (int)Mathf.Ceil(self.Radius / len);
+            int count = (int)math.ceil(self.Radius / len);
             if (count > 2) Log.Info("检测范围超过2格，触发半径：" + self.Radius);
             DictionaryComponent<AOICell, int> triggers = DictionaryComponent<AOICell, int>.Create();
 
@@ -1141,7 +1142,7 @@ namespace ET
         /// <param name="beforePosition"></param>
         /// <param name="beforeRotation"></param>
         /// <param name="changeCell">是否跨格子</param>
-        public static void AfterColliderChangeBroadcastToOther(this AOITrigger self, float3 beforePosition, Quaternion beforeRotation,
+        public static void AfterColliderChangeBroadcastToOther(this AOITrigger self, float3 beforePosition, quaternion beforeRotation,
         bool changeCell)
         {
             if (!self.IsCollider) return;
@@ -1188,7 +1189,7 @@ namespace ET
             {
                 pre = HashSetComponent<AOITrigger>.Create(); //之前有的
                 after = HashSetComponent<AOITrigger>.Create(); //现在有的
-                int count = (int)Mathf.Ceil(self.Radius / unit.Scene.gridLen);
+                int count = (int)math.ceil(self.Radius / unit.Scene.gridLen);
                 if (count > 2) Log.Info("检测范围超过2格，触发半径：" + self.Radius);
                 DictionaryComponent<AOICell, int> triggers = DictionaryComponent<AOICell, int>.Create();
                 for (int i = 0; i < self.FollowCell.Count; i++)
@@ -1361,7 +1362,7 @@ namespace ET
         /// <param name="rotation2"></param>
         /// <returns></returns>
         public static bool IsInTrigger(this AOITrigger trigger1, AOITrigger trigger2,
-        float3 position1, Quaternion rotation1, float3 position2, Quaternion rotation2)
+        float3 position1, quaternion rotation1, float3 position2, quaternion rotation2)
         {
             if (trigger1 == null || trigger2 == null)
             {
@@ -1409,7 +1410,7 @@ namespace ET
                 }
 
                 var obb = triggerOBB.GetComponent<OBBComponent>();
-                float3 temp = Quaternion.Inverse(rotOBB) * (posSp - posOBB); //转换到触发器模型空间坐标
+                float3 temp = math.mul(math.inverse(rotOBB), (posSp - posOBB)); //转换到触发器模型空间坐标
                 var xMax = obb.Scale.x / 2;
                 var yMax = obb.Scale.y / 2;
                 var zMax = obb.Scale.z / 2;
@@ -1551,7 +1552,7 @@ namespace ET
         /// <param name="center"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static bool IsPointInTrigger(this AOITrigger trigger, float3 position, float3 center, Quaternion rotation)
+        public static bool IsPointInTrigger(this AOITrigger trigger, float3 position, float3 center, quaternion rotation)
         {
             var sqrDis = math.lengthsq(center - position);
             if (trigger.SqrRadius < sqrDis) return false;
@@ -1572,13 +1573,13 @@ namespace ET
         /// <param name="center"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static bool IsRayInTrigger(this AOITrigger trigger, Ray ray, float3 center, Quaternion rotation)
+        public static bool IsRayInTrigger(this AOITrigger trigger, Ray ray, float3 center, quaternion rotation)
         {
             //求点到直线的距离
-            var dis = Math.Sqrt(math.lengthsq(math.cross(ray.Start - center, ray.Dir)) / math.lengthsq(ray.Dir));
+            var dis = math.sqrt(math.lengthsq(math.cross(ray.Start - center, ray.Dir)) / math.lengthsq(ray.Dir));
             if (dis > trigger.Radius) return false;
             var disHitStartSqr = math.lengthsq(ray.Start - center) - dis * dis;
-            var hit = ray.Start + (float)(Math.Sqrt(disHitStartSqr) - Math.Sqrt(trigger.Radius * trigger.Radius - dis * dis))
+            var hit = ray.Start + (float)(math.sqrt(disHitStartSqr) - math.sqrt(trigger.Radius * trigger.Radius - dis * dis))
                     * ray.Dir;
             if (ray.Distance * ray.Distance < disHitStartSqr || math.lengthsq(hit - center) - trigger.SqrRadius > 0.1)
             {
@@ -1601,16 +1602,16 @@ namespace ET
         /// <param name="center"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static bool IsRayInTrigger(this AOITrigger trigger, Ray ray, float3 center, Quaternion rotation, out float3 hit)
+        public static bool IsRayInTrigger(this AOITrigger trigger, Ray ray, float3 center, quaternion rotation, out float3 hit)
         {
             hit = float3.zero;
             //求点到直线的距离
 
             //叉积 math.
-            var dis = Math.Sqrt(math.lengthsq(math.cross(ray.Start - center, ray.Dir)) / math.lengthsq(ray.Dir));
+            var dis = math.sqrt(math.lengthsq(math.cross(ray.Start - center, ray.Dir)) / math.lengthsq(ray.Dir));
             if (dis > trigger.Radius) return false;
             var disHitStartSqr = math.lengthsq(ray.Start - center) - dis * dis;
-            hit = ray.Start + (float)(Math.Sqrt(disHitStartSqr) - Math.Sqrt(trigger.Radius * trigger.Radius - dis * dis))
+            hit = ray.Start + (float)(math.sqrt(disHitStartSqr) - math.sqrt(trigger.Radius * trigger.Radius - dis * dis))
                     * ray.Dir;
             if (ray.Distance * ray.Distance < disHitStartSqr || math.lengthsq(hit - center) > trigger.SqrRadius)
             {

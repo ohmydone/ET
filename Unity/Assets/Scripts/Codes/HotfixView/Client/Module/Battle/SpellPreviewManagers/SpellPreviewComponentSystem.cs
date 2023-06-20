@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace ET.Client
@@ -272,7 +273,7 @@ namespace ET.Client
 #if SERVER //纯客户端单机游戏去掉
                 self.MoveAndSpellComp.SpellWithTarget(self.PreviewingSkill, unit?.GetComponent<CombatUnitComponent>());
 #else
-                self.PreviewingSkill.UseSkill(Vector3.zero, unit.Id);
+                self.PreviewingSkill.UseSkill(float3.zero, unit.Id);
 #endif
             }
             else

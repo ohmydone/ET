@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 
 namespace ET
 {
@@ -16,8 +17,8 @@ namespace ET
 
         public static void Clear(this SkillPara self)
         {
-            self.Position= Vector3.zero;
-            self.Rotation = Quaternion.identity;
+            self.Position= float3.zero;
+            self.Rotation = quaternion.identity;
             self.FromId = default;
             self.ToId = default;
             self.CostId.Clear();

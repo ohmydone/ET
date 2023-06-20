@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using ET.EventType;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace ET
@@ -44,7 +46,7 @@ namespace ET
         /// <param name="self"></param>
         /// <param name="pos"></param>
         /// <param name="create">没有是否创建</param>
-        public static AOICell GetAOICell(this AOISceneComponent self,Vector3 pos,bool create = true)
+        public static AOICell GetAOICell(this AOISceneComponent self,float3 pos,bool create = true)
         {
             int xIndex = (int)pos.x / self.gridLen;
             int yIndex = (int)pos.z / self.gridLen;
@@ -181,7 +183,7 @@ namespace ET
         /// <param name="turnNum"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public static ListComponent<AOICell> GetNearbyGrid(this AOISceneComponent self,int turnNum,Vector3 pos)
+        public static ListComponent<AOICell> GetNearbyGrid(this AOISceneComponent self,int turnNum,float3 pos)
         {
             var grid = self.GetAOICell(pos);
             ListComponent<AOICell> res = ListComponent<AOICell>.Create();

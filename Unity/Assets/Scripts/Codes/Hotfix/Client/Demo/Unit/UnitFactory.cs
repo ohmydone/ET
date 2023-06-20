@@ -40,7 +40,7 @@ namespace ET.Client
                         }
                     }
 
-                    unit.AddComponent<AOIUnitComponent, float3, Quaternion, UnitType>(unitInfo.Position, unit.Rotation, unit.Type);
+                    unit.AddComponent<AOIUnitComponent, float3, quaternion, UnitType>(unitInfo.Position, unit.Rotation, unit.Type);
                     CombatUnitComponent combatU;
                     if (unitInfo.SkillIds != null)
                     {
@@ -81,7 +81,7 @@ namespace ET.Client
                         }
                     }
 
-                    unit.AddComponent<AOIUnitComponent, float3, Quaternion, UnitType>(unit.Position, unit.Rotation, unit.Type);
+                    unit.AddComponent<AOIUnitComponent, float3, quaternion, UnitType>(unit.Position, unit.Rotation, unit.Type);
                     unit.AddComponent<ObjectWait>();
                     break;
                 }
@@ -100,7 +100,7 @@ namespace ET.Client
     /// <param name="rota"></param>
     /// <param name="para"></param>
     /// <returns></returns>
-    public static Unit CreateSkillCollider(Scene currentScene, int configId, float3 pos, Quaternion rota, SkillPara para)
+    public static Unit CreateSkillCollider(Scene currentScene, int configId, float3 pos, quaternion rota, SkillPara para)
     {
         UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
         Unit unit = unitComponent.AddChild<Unit, int>(configId);
@@ -131,7 +131,7 @@ namespace ET.Client
             unit.AddComponent<SkillColliderComponent, SkillPara, long>(para, para.To.Id);
         }
 
-        unit.AddComponent<AOIUnitComponent, float3, Quaternion, UnitType>(pos, rota, unit.Type);
+        unit.AddComponent<AOIUnitComponent, float3, quaternion, UnitType>(pos, rota, unit.Type);
         return unit;
     }
     }

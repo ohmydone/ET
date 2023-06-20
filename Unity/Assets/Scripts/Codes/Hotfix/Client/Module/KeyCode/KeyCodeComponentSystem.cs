@@ -9,7 +9,8 @@ namespace ET.Client
     {
         protected override void Awake(KeyCodeComponent self)
         {
-            var jstr = PlayerPrefs.GetString(CacheKeys.KeyCodeSetting);
+            //var jstr = PlayerPrefs.GetString(CacheKeys.KeyCodeSetting);
+            var jstr = "";
             if (!string.IsNullOrEmpty(jstr))
             {
                 try
@@ -38,7 +39,7 @@ namespace ET.Client
     {
         public static void Save(this KeyCodeComponent self)
         {
-            PlayerPrefs.SetString(CacheKeys.KeyCodeSetting, JsonHelper.ToJson(self.KeyMap));
+            //PlayerPrefs.SetString(CacheKeys.KeyCodeSetting, JsonHelper.ToJson(self.KeyMap));
         }
         
         public static void Reset(this KeyCodeComponent self,Dictionary<int, int> old = null)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ET.Server;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace ET
@@ -97,7 +98,7 @@ namespace ET
         /// <param name="self"></param>
         /// <param name="newSceneId"></param>
         /// <param name="pos"></param>
-        public static async ETTask CheckAreaTransfer(this GhostComponent self, int newSceneId,Vector3 pos)
+        public static async ETTask CheckAreaTransfer(this GhostComponent self, int newSceneId,float3 pos)
         {
             if (!self.IsGoast)
             {
@@ -105,7 +106,7 @@ namespace ET
                 {
                     if (self.LeavePos != null)//超过2m才传送，防止在边缘反复横跳
                     {
-                        if (self.SqrMagnitude((Vector3)self.LeavePos, pos) > 16)
+                        if (self.SqrMagnitude((float3)self.LeavePos, pos) > 16)
                         {
                             await TransferHelper.AreaTransfer(self.GetParent<AOIUnitComponent>(),
                                 StartSceneConfigCategory.Instance.Get(newSceneId).InstanceId);
@@ -123,7 +124,7 @@ namespace ET
             }
         }
         
-        public static float SqrMagnitude(this GhostComponent self,Vector3 value1, Vector3 value2)
+        public static float SqrMagnitude(this GhostComponent self,float3 value1, float3 value2)
         {
             float num1 = value1.x - value2.x;
             float num2 = value1.y - value2.y;

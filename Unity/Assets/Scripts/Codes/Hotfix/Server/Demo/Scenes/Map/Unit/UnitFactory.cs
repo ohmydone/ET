@@ -25,8 +25,8 @@ namespace ET.Server
                         var numericComponent = unit.GetComponent<NumericComponent>();
 
                         // 加入aoi
-                        var aoiu = unit.AddComponent<AOIUnitComponent, float3, Quaternion, UnitType, int,bool>(
-                            unit.Position,(Quaternion) unit.Rotation, 
+                        var aoiu = unit.AddComponent<AOIUnitComponent, float3, quaternion, UnitType, int,bool>(
+                            unit.Position,(quaternion) unit.Rotation, 
                             unit.Type,
                             numericComponent.GetAsInt(NumericType.AOI),
                             type!=CreateUnitFromMsgType.Create);
@@ -75,7 +75,7 @@ namespace ET.Server
                             unit.AddComponent<ZhuiZhuAimComponent, Unit>(toUnit);
                             unit.AddComponent<AIComponent,int,int>(2,50);
                         }
-                        var aoiu =unit.AddComponent<AOIUnitComponent,float3,Quaternion, UnitType,bool>(pos,unit.Rotation,unit.Type,type!=CreateUnitFromMsgType.Create);
+                        var aoiu =unit.AddComponent<AOIUnitComponent,float3,quaternion, UnitType,bool>(pos,unit.Rotation,unit.Type,type!=CreateUnitFromMsgType.Create);
                         skillInfo.OnCreate();
                         if (type != CreateUnitFromMsgType.Create)
                         {
@@ -105,7 +105,7 @@ namespace ET.Server
                     //ChildType测试代码 取消注释 编译Server.hotfix 可发现报错
                     //unitComponent.AddChild<Player, string>("Player");
                     unit.AddComponent<MoveComponent>();
-                    unit.Position = new Vector3(-10, 0, -10);
+                    unit.Position = new float3(-10, 0, -10);
 			
                     NumericComponent numericComponent = unit.AddComponent<NumericComponent>();
                     numericComponent.Set(NumericType.SpeedBase, 6f); // 速度是6米每秒
@@ -127,7 +127,7 @@ namespace ET.Server
             }
         }
         
-        public static Unit CreateSkillCollider(Scene currentScene, int configId, float3 pos,Quaternion rota,SkillPara para)
+        public static Unit CreateSkillCollider(Scene currentScene, int configId, float3 pos,quaternion rota,SkillPara para)
         {
             UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
             Unit unit = unitComponent.AddChild<Unit,int>(configId);
@@ -159,7 +159,7 @@ namespace ET.Server
             {
                 unit.AddComponent<SkillColliderComponent, SkillPara>(para);
             }
-            unit.AddComponent<AOIUnitComponent,float3,Quaternion, UnitType>(pos,rota,unit.Type);
+            unit.AddComponent<AOIUnitComponent,float3,quaternion, UnitType>(pos,rota,unit.Type);
             return unit;
         }
     }

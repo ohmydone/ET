@@ -13,14 +13,14 @@ namespace ET
     /// </summary>
     [ComponentOf(typeof(Unit))]
     public class AOIUnitComponent:Entity,
-            IAwake<float3,Quaternion,UnitType,int>,
-            IAwake<float3,Quaternion,UnitType>,
-            IAwake<float3,Quaternion,UnitType,int,bool>,
-            IAwake<float3,Quaternion,UnitType,bool>
+            IAwake<float3,quaternion,UnitType,int>,
+            IAwake<float3,quaternion,UnitType>,
+            IAwake<float3,quaternion,UnitType,int,bool>,
+            IAwake<float3,quaternion,UnitType,bool>
             ,IDestroy
     {
         public float3 Position;
-        public Quaternion Rotation;
+        public quaternion Rotation;
         public AOISceneComponent Scene{ get; set; }
         public UnitType Type { get; set; }
         private EntityRef<AOICell> cell;

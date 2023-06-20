@@ -140,7 +140,7 @@ namespace ET
             {
                 var nowpos = self.GetParent<CombatUnitComponent>().unit.Position;
                 var nowpos2 = targetEntity.unit.Position;
-                if (Vector2.Distance(new Vector2(nowpos.x, nowpos.z), new Vector2(nowpos2.x, nowpos2.z)) >
+                if (math.length(new float2(nowpos.x, nowpos.z)- new float2(nowpos2.x, nowpos2.z)) >
                     spellSkill.SkillConfig.PreviewRange[0])
                 {
                     return;
@@ -162,7 +162,7 @@ namespace ET
         /// <param name="self"></param>
         /// <param name="spellSkill"></param>
         /// <param name="point"></param>
-        public static void SpellWithPoint(this SpellComponent self,SkillAbility spellSkill, Vector3 point)
+        public static void SpellWithPoint(this SpellComponent self,SkillAbility spellSkill, float3 point)
         {
             if (!self.Enable) return;
             if (self.CurSkillConfigId != 0)
@@ -170,11 +170,11 @@ namespace ET
             if(!spellSkill.CanUse())return;
             self.CurSkillConfigId = spellSkill.ConfigId;
             var f3 = self.GetParent<CombatUnitComponent>().unit.Position;
-            Vector3 nowpos = new Vector3(f3.x, f3.y, f3.z);
-            if (Vector2.Distance(new Vector2(nowpos.x, nowpos.z), new Vector2(point.x, point.z)) >
+            float3 nowpos = new float3(f3.x, f3.y, f3.z);
+            if (math.length(new float2(nowpos.x, nowpos.z)-new float2(point.x, point.z)) >
                 spellSkill.SkillConfig.PreviewRange[0])
             {
-                var dir =new Vector3(point.x - nowpos.x,0, point.z - nowpos.z).normalized;
+                var dir =math.normalize( new float3(point.x - nowpos.x,0, point.z - nowpos.z));
                 point = nowpos + dir * spellSkill.SkillConfig.PreviewRange[0];
             }
 
@@ -193,7 +193,7 @@ namespace ET
         /// <param name="self"></param>
         /// <param name="spellSkill"></param>
         /// <param name="point"></param>
-        public static void SpellWithDirect(this SpellComponent self,SkillAbility spellSkill, Vector3 point)
+        public static void SpellWithDirect(this SpellComponent self,SkillAbility spellSkill, float3 point)
         {
             if (!self.Enable) return;
             if (self.CurSkillConfigId != 0)
@@ -201,10 +201,10 @@ namespace ET
             if(!spellSkill.CanUse())return;
             self.CurSkillConfigId = spellSkill.ConfigId;
             float3 float3 = self.GetParent<CombatUnitComponent>().unit.Position;
-            Vector3 nowpos = new Vector3(float3.x, float3.y, float3.z);
-            point = new Vector3(point.x, nowpos.y, point.z);
-            var Rotation = Quaternion.LookRotation(point - nowpos,Vector3.up);
-            
+            float3 nowpos = new float3(float3.x, float3.y, float3.z);
+            point = new float3(point.x, nowpos.y, point.z);
+            var Rotation = quaternion.LookRotation(point - nowpos,math.up());
+
             self.GetComponent<SkillPara>().Clear();
             self.GetComponent<SkillPara>().Position = point;
             self.GetComponent<SkillPara>().Rotation = Rotation;
