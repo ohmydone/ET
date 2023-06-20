@@ -5,7 +5,7 @@ using UnityEngine;
 namespace ET
 {
     [ObjectSystem]
-    public class OBBComponentAwakeSystem : AwakeSystem<OBBComponent,float3>
+    public class OBBComponentAwakeSystem: AwakeSystem<OBBComponent, float3>
     {
         protected override void Awake(OBBComponent self, float3 a)
         {
@@ -14,13 +14,14 @@ namespace ET
             self.LastSides = ListComponent<Ray>.Create();
         }
     }
+
     [ObjectSystem]
-    public class OBBComponentDestroySystem : DestroySystem<OBBComponent>
+    public class OBBComponentDestroySystem: DestroySystem<OBBComponent>
     {
         protected override void Destroy(OBBComponent self)
         {
             var trigger = self.GetParent<AOITrigger>();
-            if(!trigger.IsCollider)
+            if (!trigger.IsCollider)
                 trigger.GetParent<AOIUnitComponent>().RemoverTrigger(trigger);
             else
                 trigger.GetParent<AOIUnitComponent>().RemoverCollider(trigger);
@@ -30,7 +31,8 @@ namespace ET
             self.LastSides.Dispose();
         }
     }
-    [FriendOf(typeof(OBBComponent))]
+
+    [FriendOf(typeof (OBBComponent))]
     public static class OBBComponentSystem
     {
         /// <summary>
@@ -40,13 +42,13 @@ namespace ET
         /// <param name="realPos"></param>
         /// <param name="realRot"></param>
         /// <returns></returns>
-        public static List<float3> GetAllVertex(this OBBComponent self,float3 realPos,Quaternion realRot)
+        public static List<float3> GetAllVertex(this OBBComponent self, float3 realPos, Quaternion realRot)
         {
-            if (self.LastVertexPosRot != null&& self.LastVertexPosRot.Pos.Equals(realPos)&&self.LastVertexPosRot.Rot.Equals(realRot))
+            if (self.LastVertexPosRot != null && self.LastVertexPosRot.Pos.Equals(realPos) && self.LastVertexPosRot.Rot.Equals(realRot))
             {
                 return self.LastVertex;
             }
-            
+
             self.LastVertex.Clear();
             for (float i = -0.5f; i <= 0.5f; i++)
             {
@@ -54,12 +56,13 @@ namespace ET
                 {
                     for (float k = -0.5f; k <= 0.5f; k++)
                     {
-                        Vector3 temp = new Vector3(self.Scale.x*i,self.Scale.y*j,self.Scale.z*k);
-                        temp = (Vector3)realPos + realRot * temp;
+                        float3 temp = new float3(self.Scale.x * i, self.Scale.y * j, self.Scale.z * k);
+                        temp = realPos + math.mul(realRot, temp);
                         self.LastVertex.Add(temp);
                     }
                 }
             }
+
             self.LastVertexPosRot = new OBBComponent.TempPosRot() { Pos = realPos, Rot = realRot };
             return self.LastVertex;
         }
@@ -71,106 +74,46 @@ namespace ET
         /// <param name="realPos"></param>
         /// <param name="realRot"></param>
         /// <returns></returns>
-        public static List<Ray> GetAllSide(this OBBComponent self, Vector3 realPos, Quaternion realRot)
+        public static List<Ray> GetAllSide(this OBBComponent self, float3 realPos, Quaternion realRot)
         {
-            if (self.LastSidesPosRot != null&&self.LastSidesPosRot.Pos .Equals(realPos) &&self.LastSidesPosRot.Rot.Equals(realRot))
+            if (self.LastSidesPosRot != null && self.LastSidesPosRot.Pos.Equals(realPos) && self.LastSidesPosRot.Rot.Equals(realRot))
             {
                 return self.LastSides;
             }
+
             self.LastSides.Clear();
-            Vector3 temp = realPos + realRot * new Vector3(self.Scale.x,self.Scale.y,self.Scale.z);
-            Ray ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.left,
-                Distance = self.Scale.x
-            };
+            float3 temp = realPos + math.mul(realRot, new float3(self.Scale.x, self.Scale.y, self.Scale.z));
+            Ray ray = new Ray() { Start = temp, Dir = realRot * math.left(), Distance = self.Scale.x };
             self.LastSides.Add(ray);
-            ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.down,
-                Distance = self.Scale.y
-            };
+            ray = new Ray() { Start = temp, Dir = realRot * math.down(), Distance = self.Scale.y };
             self.LastSides.Add(ray);
-            ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.back,
-                Distance = self.Scale.z
-            };
-            self.LastSides.Add(ray);
-            
-            temp = realPos + realRot * new Vector3(-self.Scale.x,-self.Scale.y,-self.Scale.z);
-            ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.right,
-                Distance = self.Scale.x
-            };
-            self.LastSides.Add(ray);
-            ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.up,
-                Distance = self.Scale.y
-            };
-            self.LastSides.Add(ray);
-            ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.forward,
-                Distance = self.Scale.z
-            };
+            ray = new Ray() { Start = temp, Dir = realRot * math.back(), Distance = self.Scale.z };
             self.LastSides.Add(ray);
 
-            temp = realPos + realRot * new Vector3(-self.Scale.x,self.Scale.y,self.Scale.z);
-            ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.up,
-                Distance = self.Scale.y
-            };
+            temp = realPos + math.mul(realRot, new float3(-self.Scale.x, -self.Scale.y, -self.Scale.z));
+            ray = new Ray() { Start = temp, Dir = realRot * math.right(), Distance = self.Scale.x };
             self.LastSides.Add(ray);
-            ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.forward,
-                Distance = self.Scale.z
-            };
+            ray = new Ray() { Start = temp, Dir = realRot * math.up(), Distance = self.Scale.y };
+            self.LastSides.Add(ray);
+            ray = new Ray() { Start = temp, Dir = realRot * math.forward(), Distance = self.Scale.z };
             self.LastSides.Add(ray);
 
-                
-            temp = realPos + realRot * new Vector3(self.Scale.x,self.Scale.y,-self.Scale.z);
-            ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.right,
-                Distance = self.Scale.x
-            };
+            temp = realPos + math.mul(realRot, new float3(-self.Scale.x, self.Scale.y, self.Scale.z));
+            ray = new Ray() { Start = temp, Dir = realRot * math.up(), Distance = self.Scale.y };
             self.LastSides.Add(ray);
-            ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.up,
-                Distance = self.Scale.y
-            };
+            ray = new Ray() { Start = temp, Dir = realRot * math.forward(), Distance = self.Scale.z };
             self.LastSides.Add(ray);
 
-            temp = realPos + realRot * new Vector3(self.Scale.x,-self.Scale.y,self.Scale.z);
-            ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.right,
-                Distance = self.Scale.x
-            };
+            temp = realPos + math.mul(realRot, new float3(self.Scale.x, self.Scale.y, -self.Scale.z));
+            ray = new Ray() { Start = temp, Dir = realRot * math.right(), Distance = self.Scale.x };
             self.LastSides.Add(ray);
-            ray = new Ray()
-            {
-                Start = temp,
-                Dir = realRot * Vector3.forward,
-                Distance = self.Scale.z
-            };
+            ray = new Ray() { Start = temp, Dir = realRot * math.up(), Distance = self.Scale.y };
+            self.LastSides.Add(ray);
+
+            temp = realPos + math.mul(realRot, new float3(self.Scale.x, -self.Scale.y, self.Scale.z));
+            ray = new Ray() { Start = temp, Dir = realRot * math.right(), Distance = self.Scale.x };
+            self.LastSides.Add(ray);
+            ray = new Ray() { Start = temp, Dir = realRot * math.forward(), Distance = self.Scale.z };
             self.LastSides.Add(ray);
             self.LastSidesPosRot = new OBBComponent.TempPosRot() { Pos = realPos, Rot = realRot };
             return self.LastSides;
@@ -186,8 +129,8 @@ namespace ET
         /// <param name="pos2"></param>
         /// <param name="rotation2"></param>
         /// <returns></returns>
-        public static bool IsInTrigger(this OBBComponent trigger1, OBBComponent trigger2, Vector3 pos1, 
-            Quaternion rotation1, Vector3 pos2, Quaternion rotation2)
+        public static bool IsInTrigger(this OBBComponent trigger1, OBBComponent trigger2, float3 pos1,
+        Quaternion rotation1, float3 pos2, Quaternion rotation2)
         {
             // Log.Info("判断OBB触发");
             //第一种情况一方有一个点在对方内部即为触发
@@ -195,7 +138,7 @@ namespace ET
                 var list = trigger1.GetAllVertex(pos1, rotation1);
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if(IsPointInTrigger(trigger2,list[i],pos2,rotation2))
+                    if (IsPointInTrigger(trigger2, list[i], pos2, rotation2))
                     {
                         return true;
                     }
@@ -205,7 +148,7 @@ namespace ET
                 var list = trigger2.GetAllVertex(pos2, rotation2);
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if(IsPointInTrigger(trigger1,list[i],pos1,rotation1))
+                    if (IsPointInTrigger(trigger1, list[i], pos1, rotation1))
                     {
                         return true;
                     }
@@ -224,6 +167,7 @@ namespace ET
             }
             return false;
         }
+
         /// <summary>
         /// 判断某个点是否在触发器移到指定位置后之内
         /// </summary>
@@ -232,10 +176,11 @@ namespace ET
         /// <param name="center"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static bool IsPointInTrigger(this OBBComponent trigger, Vector3 position,Vector3 center,Quaternion rotation)
+        public static bool IsPointInTrigger(this OBBComponent trigger, float3 position, float3 center, Quaternion rotation)
         {
             return AOIHelper.IsPointInTrigger(position, center, rotation, trigger.Scale);
         }
+
         /// <summary>
         /// 判断射线是否在触发器移到指定位置后之内
         /// </summary>
@@ -244,11 +189,11 @@ namespace ET
         /// <param name="center"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static bool IsRayInTrigger(this OBBComponent self, Ray ray, Vector3 center, Quaternion rotation)
+        public static bool IsRayInTrigger(this OBBComponent self, Ray ray, float3 center, Quaternion rotation)
         {
-            var hit = Vector3.zero;
+            var hit = float3.zero;
             //转换到模型空间
-            ray = Ray.WorldToModel(ray,rotation,center);
+            ray = Ray.WorldToModel(ray, rotation, center);
             var xMax = self.Scale.x / 2;
             var yMax = self.Scale.y / 2;
             var zMax = self.Scale.z / 2;
@@ -256,153 +201,167 @@ namespace ET
             if (-xMax <= ray.Start.x && ray.Start.x <= xMax && -yMax <= ray.Start.y && ray.Start.y <= yMax &&
                 -zMax <= ray.Start.z && ray.Start.z <= zMax)
             {
-                hit = rotation * ray.Start + center;
+                hit = math.mul(rotation, ray.Start) + center;
                 return true;
             }
 
             #region 方向向量只有一个轴有值
-            else if (ray.Dir.x == 0&&ray.Dir.y == 0&&ray.Dir.z != 0)
+
+            else if (ray.Dir.x == 0 && ray.Dir.y == 0 && ray.Dir.z != 0)
             {
                 if (ray.Start.z < 0)
                 {
                     if (ray.Dir.z < 0) return false;
-                    hit = new Vector3(ray.Start.x, ray.Start.y, -zMax);
+                    hit = new float3(ray.Start.x, ray.Start.y, -zMax);
                 }
                 else
                 {
                     if (ray.Dir.z > 0) return false;
-                    hit = new Vector3(ray.Start.x, ray.Start.y, zMax);
+                    hit = new float3(ray.Start.x, ray.Start.y, zMax);
                 }
-                hit = rotation * ray.Start + center;
-                if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+
+                hit = math.mul(rotation, ray.Start) + center;
+                if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                 return -xMax <= ray.Start.x && ray.Start.x <= xMax &&
-                       -yMax <= ray.Start.y && ray.Start.y <= yMax;
+                        -yMax <= ray.Start.y && ray.Start.y <= yMax;
             }
-            else if (ray.Dir.x == 0&&ray.Dir.y != 0&&ray.Dir.z == 0)
+            else if (ray.Dir.x == 0 && ray.Dir.y != 0 && ray.Dir.z == 0)
             {
                 if (ray.Start.y < 0)
                 {
                     if (ray.Dir.y < 0) return false;
-                    hit = new Vector3(ray.Start.x, -yMax, ray.Start.z);
+                    hit = new float3(ray.Start.x, -yMax, ray.Start.z);
                 }
                 else
                 {
                     if (ray.Dir.y > 0) return false;
-                    hit = new Vector3(ray.Start.x, yMax, ray.Start.z);
+                    hit = new float3(ray.Start.x, yMax, ray.Start.z);
                 }
-                hit = rotation * ray.Start + center;
-                if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+
+                hit = math.mul(rotation, ray.Start) + center;
+                if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                 return -xMax <= ray.Start.x && ray.Start.x <= xMax &&
-                       -zMax <= ray.Start.z && ray.Start.z <= zMax;
+                        -zMax <= ray.Start.z && ray.Start.z <= zMax;
             }
-            else if (ray.Dir.x != 0&&ray.Dir.y == 0&&ray.Dir.z == 0)
+            else if (ray.Dir.x != 0 && ray.Dir.y == 0 && ray.Dir.z == 0)
             {
                 if (ray.Start.x < 0)
                 {
                     if (ray.Dir.x < 0) return false;
-                    hit = new Vector3(-xMax, ray.Start.y, ray.Start.z);
+                    hit = new float3(-xMax, ray.Start.y, ray.Start.z);
                 }
                 else
                 {
                     if (ray.Dir.x > 0) return false;
-                    hit = new Vector3(xMax, ray.Start.y, ray.Start.z);
+                    hit = new float3(xMax, ray.Start.y, ray.Start.z);
                 }
-                hit = rotation * ray.Start + center;
-                if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+
+                hit = math.mul(rotation, ray.Start) + center;
+                if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                 return -yMax <= ray.Start.y && ray.Start.y <= yMax &&
-                       -zMax <= ray.Start.z && ray.Start.z <= zMax;
+                        -zMax <= ray.Start.z && ray.Start.z <= zMax;
             }
+
             #endregion
 
             #region 方向向量有两个轴有值
-            else if (ray.Dir.x == 0&&ray.Dir.y != 0&&ray.Dir.z != 0)
+
+            else if (ray.Dir.x == 0 && ray.Dir.y != 0 && ray.Dir.z != 0)
             {
                 //简化为平面直角坐标系
                 if (-xMax <= ray.Start.x && ray.Start.x <= xMax)
                 {
-                    if (IsRayInTrigger2D(ray.Start.y,ray.Start.z,ray.Dir.y,ray.Dir.z,yMax,zMax,out var hit2d))
+                    if (IsRayInTrigger2D(ray.Start.y, ray.Start.z, ray.Dir.y, ray.Dir.z, yMax, zMax, out var hit2d))
                     {
-                        hit = new Vector3(ray.Start.x, hit2d.x, hit2d.y);
-                        hit = rotation * ray.Start + center;
-                        if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+                        hit = new float3(ray.Start.x, hit2d.x, hit2d.y);
+                        hit = math.mul(rotation, ray.Start) + center;
+                        if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                         return true;
                     }
                 }
+
                 return false;
             }
-            else if (ray.Dir.x != 0&&ray.Dir.y == 0&&ray.Dir.z != 0)
+            else if (ray.Dir.x != 0 && ray.Dir.y == 0 && ray.Dir.z != 0)
             {
                 //简化为平面直角坐标系
                 if (-yMax <= ray.Start.y && ray.Start.y <= yMax)
                 {
-                    if (IsRayInTrigger2D(ray.Start.x,ray.Start.z,ray.Dir.x,ray.Dir.z,xMax,zMax,out var hit2d))
+                    if (IsRayInTrigger2D(ray.Start.x, ray.Start.z, ray.Dir.x, ray.Dir.z, xMax, zMax, out var hit2d))
                     {
-                        hit = new Vector3(hit2d.x,ray.Start.y,hit2d.y);
-                        hit = rotation * ray.Start + center;
-                        if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+                        hit = new float3(hit2d.x, ray.Start.y, hit2d.y);
+                        hit = math.mul(rotation, ray.Start) + center;
+                        if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                         return true;
                     }
                 }
+
                 return false;
             }
-            else if (ray.Dir.x != 0&&ray.Dir.y != 0&&ray.Dir.z == 0)
+            else if (ray.Dir.x != 0 && ray.Dir.y != 0 && ray.Dir.z == 0)
             {
                 //简化为平面直角坐标系
                 if (-zMax <= ray.Start.z && ray.Start.z <= zMax)
                 {
-                    if (IsRayInTrigger2D(ray.Start.x,ray.Start.y,ray.Dir.x,ray.Dir.y,xMax,yMax,out var hit2d))
+                    if (IsRayInTrigger2D(ray.Start.x, ray.Start.y, ray.Dir.x, ray.Dir.y, xMax, yMax, out var hit2d))
                     {
-                        hit = new Vector3(hit2d.x,hit2d.y,ray.Start.z);
-                        hit = rotation * ray.Start + center;
-                        if (Vector3.SqrMagnitude(hit-ray.Start) > ray.SqrDistance) return false;
+                        hit = new float3(hit2d.x, hit2d.y, ray.Start.z);
+                        hit = math.mul(rotation, ray.Start) + center;
+                        if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                         return true;
                     }
                 }
+
                 return false;
             }
+
             #endregion
-            
+
             //正常情况
             //判断3个面的投影是否都相交
-            if (!IsRayInTrigger2D(ray.Start.y,ray.Start.z,ray.Dir.y,ray.Dir.z,yMax,zMax,out var hit2d1))
+            if (!IsRayInTrigger2D(ray.Start.y, ray.Start.z, ray.Dir.y, ray.Dir.z, yMax, zMax, out var hit2d1))
             {
                 return false;
             }
-            if (!IsRayInTrigger2D(ray.Start.x,ray.Start.z,ray.Dir.x,ray.Dir.z,xMax,zMax,out var hit2d2))
+
+            if (!IsRayInTrigger2D(ray.Start.x, ray.Start.z, ray.Dir.x, ray.Dir.z, xMax, zMax, out var hit2d2))
             {
                 return false;
             }
-            if (!IsRayInTrigger2D(ray.Start.x,ray.Start.y,ray.Dir.x,ray.Dir.y,xMax,yMax,out var hit2d3))
+
+            if (!IsRayInTrigger2D(ray.Start.x, ray.Start.y, ray.Dir.x, ray.Dir.y, xMax, yMax, out var hit2d3))
             {
                 return false;
             }
+
             if (Mathf.Abs(Mathf.Abs(hit2d1.y) - zMax) < Mathf.Abs(Mathf.Abs(hit2d1.x) - yMax))
             {
                 if (Mathf.Abs(Mathf.Abs(hit2d3.y) - yMax) < Mathf.Abs(Mathf.Abs(hit2d3.x) - xMax))
                 {
-                    hit = new Vector3(hit2d3.x,hit2d1.y,hit2d1.x);
+                    hit = new float3(hit2d3.x, hit2d1.y, hit2d1.x);
                 }
                 else
                 {
-                    hit = new Vector3(hit2d3.x,hit2d1.y,hit2d2.y);
+                    hit = new float3(hit2d3.x, hit2d1.y, hit2d2.y);
                 }
             }
             else
             {
                 if (Mathf.Abs(Mathf.Abs(hit2d2.x) - xMax) < Mathf.Abs(Mathf.Abs(hit2d2.y) - zMax))
                 {
-                    hit = new Vector3(hit2d2.x,hit2d1.x,hit2d2.y);
+                    hit = new float3(hit2d2.x, hit2d1.x, hit2d2.y);
                 }
                 else
                 {
-                    hit = new Vector3(hit2d2.x,hit2d3.y,hit2d2.y);
+                    hit = new float3(hit2d2.x, hit2d3.y, hit2d2.y);
                 }
             }
-            hit = rotation * hit + center;
-            if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+
+            hit = math.mul(rotation, hit) + center;
+            if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
             return true;
         }
-        
+
         /// <summary>
         /// 判断射线是否在触发器移到指定位置后之内
         /// </summary>
@@ -411,11 +370,11 @@ namespace ET
         /// <param name="center"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static bool IsRayInTrigger(this OBBComponent self, Ray ray, Vector3 center, Quaternion rotation,out Vector3 hit)
+        public static bool IsRayInTrigger(this OBBComponent self, Ray ray, float3 center, Quaternion rotation, out float3 hit)
         {
-            hit = Vector3.zero;
+            hit = float3.zero;
             //转换到模型空间
-            ray = Ray.WorldToModel(ray,rotation,center);
+            ray = Ray.WorldToModel(ray, rotation, center);
             var xMax = self.Scale.x / 2;
             var yMax = self.Scale.y / 2;
             var zMax = self.Scale.z / 2;
@@ -423,153 +382,167 @@ namespace ET
             if (-xMax <= ray.Start.x && ray.Start.x <= xMax && -yMax <= ray.Start.y && ray.Start.y <= yMax &&
                 -zMax <= ray.Start.z && ray.Start.z <= zMax)
             {
-                hit = rotation * ray.Start + center;
+                hit = math.mul(rotation, ray.Start) + center;
                 return true;
             }
 
             #region 方向向量只有一个轴有值
-            else if (ray.Dir.x == 0&&ray.Dir.y == 0&&ray.Dir.z != 0)
+
+            else if (ray.Dir.x == 0 && ray.Dir.y == 0 && ray.Dir.z != 0)
             {
                 if (ray.Start.z < 0)
                 {
                     if (ray.Dir.z < 0) return false;
-                    hit = new Vector3(ray.Start.x, ray.Start.y, -zMax);
+                    hit = new float3(ray.Start.x, ray.Start.y, -zMax);
                 }
                 else
                 {
                     if (ray.Dir.z > 0) return false;
-                    hit = new Vector3(ray.Start.x, ray.Start.y, zMax);
+                    hit = new float3(ray.Start.x, ray.Start.y, zMax);
                 }
-                hit = rotation * ray.Start + center;
-                if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+
+                hit = math.mul(rotation, ray.Start) + center;
+                if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                 return -xMax <= ray.Start.x && ray.Start.x <= xMax &&
-                       -yMax <= ray.Start.y && ray.Start.y <= yMax;
+                        -yMax <= ray.Start.y && ray.Start.y <= yMax;
             }
-            else if (ray.Dir.x == 0&&ray.Dir.y != 0&&ray.Dir.z == 0)
+            else if (ray.Dir.x == 0 && ray.Dir.y != 0 && ray.Dir.z == 0)
             {
                 if (ray.Start.y < 0)
                 {
                     if (ray.Dir.y < 0) return false;
-                    hit = new Vector3(ray.Start.x, -yMax, ray.Start.z);
+                    hit = new float3(ray.Start.x, -yMax, ray.Start.z);
                 }
                 else
                 {
                     if (ray.Dir.y > 0) return false;
-                    hit = new Vector3(ray.Start.x, yMax, ray.Start.z);
+                    hit = new float3(ray.Start.x, yMax, ray.Start.z);
                 }
-                hit = rotation * ray.Start + center;
-                if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+
+                hit = math.mul(rotation, ray.Start) + center;
+                if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                 return -xMax <= ray.Start.x && ray.Start.x <= xMax &&
-                       -zMax <= ray.Start.z && ray.Start.z <= zMax;
+                        -zMax <= ray.Start.z && ray.Start.z <= zMax;
             }
-            else if (ray.Dir.x != 0&&ray.Dir.y == 0&&ray.Dir.z == 0)
+            else if (ray.Dir.x != 0 && ray.Dir.y == 0 && ray.Dir.z == 0)
             {
                 if (ray.Start.x < 0)
                 {
                     if (ray.Dir.x < 0) return false;
-                    hit = new Vector3(-xMax, ray.Start.y, ray.Start.z);
+                    hit = new float3(-xMax, ray.Start.y, ray.Start.z);
                 }
                 else
                 {
                     if (ray.Dir.x > 0) return false;
-                    hit = new Vector3(xMax, ray.Start.y, ray.Start.z);
+                    hit = new float3(xMax, ray.Start.y, ray.Start.z);
                 }
-                hit = rotation * ray.Start + center;
-                if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+
+                hit =math.mul( rotation , ray.Start) + center;
+                if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                 return -yMax <= ray.Start.y && ray.Start.y <= yMax &&
-                       -zMax <= ray.Start.z && ray.Start.z <= zMax;
+                        -zMax <= ray.Start.z && ray.Start.z <= zMax;
             }
+
             #endregion
 
             #region 方向向量有两个轴有值
-            else if (ray.Dir.x == 0&&ray.Dir.y != 0&&ray.Dir.z != 0)
+
+            else if (ray.Dir.x == 0 && ray.Dir.y != 0 && ray.Dir.z != 0)
             {
                 //简化为平面直角坐标系
                 if (-xMax <= ray.Start.x && ray.Start.x <= xMax)
                 {
-                    if (IsRayInTrigger2D(ray.Start.y,ray.Start.z,ray.Dir.y,ray.Dir.z,yMax,zMax,out var hit2d))
+                    if (IsRayInTrigger2D(ray.Start.y, ray.Start.z, ray.Dir.y, ray.Dir.z, yMax, zMax, out var hit2d))
                     {
-                        hit = new Vector3(ray.Start.x, hit2d.x, hit2d.y);
-                        hit = rotation * ray.Start + center;
-                        if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+                        hit = new float3(ray.Start.x, hit2d.x, hit2d.y);
+                        hit =math.mul( rotation , ray.Start) + center;
+                        if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                         return true;
                     }
                 }
+
                 return false;
             }
-            else if (ray.Dir.x != 0&&ray.Dir.y == 0&&ray.Dir.z != 0)
+            else if (ray.Dir.x != 0 && ray.Dir.y == 0 && ray.Dir.z != 0)
             {
                 //简化为平面直角坐标系
                 if (-yMax <= ray.Start.y && ray.Start.y <= yMax)
                 {
-                    if (IsRayInTrigger2D(ray.Start.x,ray.Start.z,ray.Dir.x,ray.Dir.z,xMax,zMax,out var hit2d))
+                    if (IsRayInTrigger2D(ray.Start.x, ray.Start.z, ray.Dir.x, ray.Dir.z, xMax, zMax, out var hit2d))
                     {
-                        hit = new Vector3(hit2d.x,ray.Start.y,hit2d.y);
-                        hit = rotation * ray.Start + center;
-                        if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+                        hit = new float3(hit2d.x, ray.Start.y, hit2d.y);
+                        hit =math.mul( rotation , ray.Start) + center;
+                        if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                         return true;
                     }
                 }
+
                 return false;
             }
-            else if (ray.Dir.x != 0&&ray.Dir.y != 0&&ray.Dir.z == 0)
+            else if (ray.Dir.x != 0 && ray.Dir.y != 0 && ray.Dir.z == 0)
             {
                 //简化为平面直角坐标系
                 if (-zMax <= ray.Start.z && ray.Start.z <= zMax)
                 {
-                    if (IsRayInTrigger2D(ray.Start.x,ray.Start.y,ray.Dir.x,ray.Dir.y,xMax,yMax,out var hit2d))
+                    if (IsRayInTrigger2D(ray.Start.x, ray.Start.y, ray.Dir.x, ray.Dir.y, xMax, yMax, out var hit2d))
                     {
-                        hit = new Vector3(hit2d.x,hit2d.y,ray.Start.z);
-                        hit = rotation * ray.Start + center;
-                        if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+                        hit = new float3(hit2d.x, hit2d.y, ray.Start.z);
+                        hit =math.mul( rotation , ray.Start) + center;
+                        if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
                         return true;
                     }
                 }
+
                 return false;
             }
+
             #endregion
-            
+
             //正常情况
             //判断3个面的投影是否都相交
-            if (!IsRayInTrigger2D(ray.Start.y,ray.Start.z,ray.Dir.y,ray.Dir.z,yMax,zMax,out var hit2d1))
+            if (!IsRayInTrigger2D(ray.Start.y, ray.Start.z, ray.Dir.y, ray.Dir.z, yMax, zMax, out var hit2d1))
             {
                 return false;
             }
-            if (!IsRayInTrigger2D(ray.Start.x,ray.Start.z,ray.Dir.x,ray.Dir.z,xMax,zMax,out var hit2d2))
+
+            if (!IsRayInTrigger2D(ray.Start.x, ray.Start.z, ray.Dir.x, ray.Dir.z, xMax, zMax, out var hit2d2))
             {
                 return false;
             }
-            if (!IsRayInTrigger2D(ray.Start.x,ray.Start.y,ray.Dir.x,ray.Dir.y,xMax,yMax,out var hit2d3))
+
+            if (!IsRayInTrigger2D(ray.Start.x, ray.Start.y, ray.Dir.x, ray.Dir.y, xMax, yMax, out var hit2d3))
             {
                 return false;
             }
+
             if (Mathf.Abs(Mathf.Abs(hit2d1.y) - zMax) < Mathf.Abs(Mathf.Abs(hit2d1.x) - yMax))
             {
                 if (Mathf.Abs(Mathf.Abs(hit2d3.y) - yMax) < Mathf.Abs(Mathf.Abs(hit2d3.x) - xMax))
                 {
-                    hit = new Vector3(hit2d3.x,hit2d1.y,hit2d1.x);
+                    hit = new float3(hit2d3.x, hit2d1.y, hit2d1.x);
                 }
                 else
                 {
-                    hit = new Vector3(hit2d3.x,hit2d1.y,hit2d2.y);
+                    hit = new float3(hit2d3.x, hit2d1.y, hit2d2.y);
                 }
             }
             else
             {
                 if (Mathf.Abs(Mathf.Abs(hit2d2.x) - xMax) < Mathf.Abs(Mathf.Abs(hit2d2.y) - zMax))
                 {
-                    hit = new Vector3(hit2d2.x,hit2d1.x,hit2d2.y);
+                    hit = new float3(hit2d2.x, hit2d1.x, hit2d2.y);
                 }
                 else
                 {
-                    hit = new Vector3(hit2d2.x,hit2d3.y,hit2d2.y);
+                    hit = new float3(hit2d2.x, hit2d3.y, hit2d2.y);
                 }
             }
-            hit = rotation * hit + center;
-            if (Vector3.SqrMagnitude(hit- ray.Start) > ray.SqrDistance) return false;
+
+            hit =math.mul( rotation , hit) + center;
+            if (math.lengthsq(hit - ray.Start) > ray.SqrDistance) return false;
             return true;
         }
-        
+
         /// <summary>
         /// 平面直角坐标系，检测射线和矩形的是否相交
         /// </summary>
@@ -582,7 +555,7 @@ namespace ET
         /// <param name="hit"></param>
         /// <returns></returns>
         public static bool IsRayInTrigger2D(float startX, float startY, float dirX, float dirY, float xMax, float yMax,
-            out Vector2 hit)
+        out Vector2 hit)
         {
             hit = Vector2.zero;
             if (startX > 0 && startY > 0) //第一象限
@@ -660,6 +633,7 @@ namespace ET
                     hit = new Vector2((yMax - b) / k, yMax);
                 return true;
             }
+
             return false;
         }
     }

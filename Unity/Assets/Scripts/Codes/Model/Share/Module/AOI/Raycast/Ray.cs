@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 
 namespace ET
 {
@@ -7,11 +8,11 @@ namespace ET
         /// <summary>
         /// 方向
         /// </summary>
-        public Vector3 Dir;
+        public float3 Dir;
         /// <summary>
         /// 起点
         /// </summary>
-        public Vector3 Start;
+        public float3 Start;
         /// <summary>
         /// 长度
         /// </summary>
@@ -27,12 +28,13 @@ namespace ET
         /// <param name="b"></param>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static Ray WorldToModel(Ray self, Quaternion b, Vector3 c)
+        public static Ray WorldToModel(Ray self, quaternion b, float3 c)
         {
             return new Ray
             {
-                Dir = Quaternion.Inverse(b) * self.Dir,
-                Start = Quaternion.Inverse(b) * (self.Start - c),
+                //quaternion mul float3 is rotate   
+                Dir =math.mul(math.inverse(b),self.Dir),
+                Start =math.mul(math.inverse(b),(self.Start - c)),
                 Distance = self.Distance,
                 SqrDistance = self.Distance*self.Distance
             };

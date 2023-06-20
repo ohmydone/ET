@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Mathematics;
 using UnityEngine;
 namespace ET
 {
@@ -47,9 +48,9 @@ namespace ET
             self.Awake(a);
         }
     }
-    public class SkillColliderAwakeSystem3 : AwakeSystem<SkillColliderComponent, SkillPara,Vector3>
+    public class SkillColliderAwakeSystem3 : AwakeSystem<SkillColliderComponent, SkillPara,float3>
     {
-        protected override void Awake(SkillColliderComponent self, SkillPara a, Vector3 b)
+        protected override void Awake(SkillColliderComponent self, SkillPara a, float3 b)
         {
             self.Position = b;
             self.Awake(a);

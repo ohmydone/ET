@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System;
+using Unity.Mathematics;
+
 namespace ET
 {
     [FriendOf(typeof(AOISceneComponent))]
@@ -34,7 +36,7 @@ namespace ET
                         b = ray.Start.z - k * ray.Start.x;
                     }
 
-                    Vector3 inPoint = ray.Start;
+                    float3 inPoint = ray.Start;
                     while (true)
                     {
                         long cellId = AOIHelper.CreateCellId(xIndex, yIndex);

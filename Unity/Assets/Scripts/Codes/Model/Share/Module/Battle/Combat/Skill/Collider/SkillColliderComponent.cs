@@ -6,7 +6,7 @@ using UnityEngine;
 namespace ET
 {
     [ComponentOf(typeof(Unit))]
-    public class SkillColliderComponent:Entity,IAwake<SkillPara>,IAwake<SkillPara,long>,IAwake<SkillPara,Vector3>,ITransfer,IDestroy
+    public class SkillColliderComponent:Entity,IAwake<SkillPara>,IAwake<SkillPara,long>,IAwake<SkillPara,float3>,ITransfer,IDestroy
     {
         public int ConfigId;
         [BsonIgnore]

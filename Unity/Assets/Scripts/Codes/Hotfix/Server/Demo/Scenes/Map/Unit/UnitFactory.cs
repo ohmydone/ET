@@ -144,7 +144,7 @@ namespace ET.Server
                 target.Add(pos);
                 target.Add(pos + math.normalize(para.Position - pos) * collider.Speed * collider.Time / 1000f);
                 moveComp.MoveToAsync(target, collider.Speed).Coroutine();
-                unit.AddComponent<SkillColliderComponent,SkillPara,Vector3>(para,para.Position);
+                unit.AddComponent<SkillColliderComponent,SkillPara,float3>(para,para.Position);
             }
             else if (collider.ColliderType == ColliderType.Aim) //锁定目标飞行
             {
