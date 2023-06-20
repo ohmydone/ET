@@ -41,7 +41,7 @@ namespace ET.Server
                 case SceneType.Map:
                     scene.AddComponent<UnitComponent>();
                     scene.AddComponent<AOIManagerComponent>();
-                    scene.AddComponent<AOISceneComponent, int>(Define.CellLen);
+                    scene.AddComponent<AOISceneComponent, int>(9);
                     break;
                 case SceneType.Location:
                     scene.AddComponent<LocationManagerComoponent>();

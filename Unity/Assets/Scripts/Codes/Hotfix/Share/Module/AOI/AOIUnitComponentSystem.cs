@@ -224,7 +224,7 @@ namespace ET
 
                 //Add
                 self.Cell = newgrid;
-                if (Define.Debug && newgrid.typeUnits[self.Type].Contains(self))
+                if (Options.Instance.Console == 1 && newgrid.typeUnits[self.Type].Contains(self))
                 {
                     Log.Error("newgrid.idUnits[self.Type].Contains(self)");
                 }

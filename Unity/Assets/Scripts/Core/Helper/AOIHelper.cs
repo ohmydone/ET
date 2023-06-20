@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using UnityEngine;
 
 namespace ET
 {
@@ -27,13 +26,13 @@ namespace ET
         {
             int yMax;
             
-            Vector2 point = new Vector2(position.x,position.z) ;
+            float2 point = new float2(position.x,position.z) ;
             //圆心在格子外 0或-1
             if (point.x <= xMin) //圆心在格子左方
             {
                 if (point.y <= yMin) //圆心在格子左下方
                 {
-                    if (Vector2.SqrMagnitude(point - new Vector2(xMin, yMin)) > sqrRadius)
+                    if (math.lengthsq(point - new float2(xMin, yMin)) > sqrRadius)
                         return -1;
                 }
                 else
@@ -41,7 +40,7 @@ namespace ET
                     yMax = yMin + gridLen;
                     if (point.y >= yMax) //圆心在格子左上方
                     {
-                        if (Vector2.SqrMagnitude(point - new Vector2(xMin, yMax)) > sqrRadius)
+                        if (math.lengthsq(point - new float2(xMin, yMax)) > sqrRadius)
                             return -1;
                     }
                     else //圆心在格子左侧方
@@ -59,12 +58,12 @@ namespace ET
                 {
                     if (point.y > yMax) //圆心在格子右上方
                     {
-                        if (Vector2.SqrMagnitude(point-new Vector2(xMax, yMax)) > sqrRadius)
+                        if (math.lengthsq(point-new float2(xMax, yMax)) > sqrRadius)
                             return -1;
                     }
                     else if (point.y < yMin) //圆心在格子右下方
                     {
-                        if (Vector2.SqrMagnitude(point- new Vector2(xMax, yMin)) > sqrRadius)
+                        if (math.lengthsq(point- new float2(xMax, yMin)) > sqrRadius)
                             return -1;
                     }
                     else //圆心在格子右侧方
@@ -92,22 +91,22 @@ namespace ET
                     //圆心在格子内 0或1
                     if (point.x > cenx && point.y > ceny) //圆心在格子内右上方
                     {
-                        if (Vector2.SqrMagnitude(point - new Vector2(xMin, yMin)) < sqrRadius)
+                        if (math.lengthsq(point - new float2(xMin, yMin)) < sqrRadius)
                             return 1;
                     }
                     else if (point.x > cenx && point.y < ceny) //圆心在格子内右下方
                     {
-                        if (Vector2.SqrMagnitude(point - new Vector2(xMin, yMax)) < sqrRadius)
+                        if (math.lengthsq(point - new float2(xMin, yMax)) < sqrRadius)
                             return 1;
                     }
                     else if (point.x < cenx && point.y > ceny) //圆心在格子内左上方
                     {
-                        if (Vector2.SqrMagnitude(point - new Vector2(xMax, yMin)) < sqrRadius)
+                        if (math.lengthsq(point - new float2(xMax, yMin)) < sqrRadius)
                             return 1;
                     }
                     else if (point.x < cenx && point.y < ceny) //圆心在格子内左下方
                     {
-                        if (Vector2.SqrMagnitude(point - new Vector2(xMax, yMax)) < sqrRadius)
+                        if (math.lengthsq(point - new float2(xMax, yMax)) < sqrRadius)
                             return 1;
                     }
                     //圆心在格子内中心 0或1
@@ -164,7 +163,7 @@ namespace ET
         {
             var xMax = xMin + gridLen;
             int yMax = yMin + gridLen;
-            Vector2 point = new Vector2(position.x,position.z);
+            float2 point = new float2(position.x,position.z);
             if (point.x < xMin - radius || point.x > xMax + radius || point.y < yMin - radius ||
                 point.y > yMax + radius)
                 return false;
@@ -176,7 +175,7 @@ namespace ET
             {
                 if (point.y <= yMin) //圆心在格子左下方
                 {
-                    if (Vector2.SqrMagnitude(point - new Vector2(xMin, yMin)) > sqrRadius)
+                    if (math.lengthsq(point - new float2(xMin, yMin)) > sqrRadius)
                         return false;
                 }
                 else
@@ -184,7 +183,7 @@ namespace ET
                     yMax = yMin + gridLen;
                     if (point.y >= yMax) //圆心在格子左上方
                     {
-                        if (Vector2.SqrMagnitude(point - new Vector2(xMin, yMax)) > sqrRadius)
+                        if (math.lengthsq(point - new float2(xMin, yMax)) > sqrRadius)
                             return false;
                     }
                     else //圆心在格子左侧方
@@ -201,12 +200,12 @@ namespace ET
                 {
                     if (point.y > yMax) //圆心在格子右上方
                     {
-                        if (Vector2.SqrMagnitude(point-new Vector2(xMax, yMax)) > sqrRadius)
+                        if (math.lengthsq(point-new float2(xMax, yMax)) > sqrRadius)
                             return false;
                     }
                     else if (point.y < yMin) //圆心在格子右下方
                     {
-                        if (Vector2.SqrMagnitude(point- new Vector2(xMax, yMin)) > sqrRadius)
+                        if (math.lengthsq(point- new float2(xMax, yMin)) > sqrRadius)
                             return false;
                     }
                     else //圆心在格子右侧方

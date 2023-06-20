@@ -11,7 +11,7 @@ namespace ET
     {
         protected override void Awake(AOITrigger self, float a, Action<AOIUnitComponent, AOITriggerType> b)
         {
-            if (Define.Debug)
+            if (Options.Instance.Console == 1)
             {
                 self.DebugMap = DictionaryComponent<AOICell, int>.Create();
                 self.LogInfo = ListComponent<string>.Create();
@@ -31,7 +31,7 @@ namespace ET
     {
         protected override void Awake(AOITrigger self, float a)
         {
-            if (Define.Debug)
+            if (Options.Instance.Console == 1)
             {
                 self.DebugMap = DictionaryComponent<AOICell, int>.Create();
                 self.LogInfo = ListComponent<string>.Create();
@@ -75,7 +75,7 @@ namespace ET
                 self.FollowCell = null;
             }
 
-            if (Define.Debug)
+            if (Options.Instance.Console == 1)
             {
                 bool hasErr = false;
                 foreach (var item in self.DebugMap)

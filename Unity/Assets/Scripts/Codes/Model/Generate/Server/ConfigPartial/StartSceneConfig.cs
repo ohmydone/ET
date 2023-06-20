@@ -32,7 +32,7 @@ namespace ET
             return this.ClientScenesByName[zone][name];
         }
 
-        public override void AfterEndInit()
+        public void AfterEndInit()
         {
             foreach (StartSceneConfig startSceneConfig in this.GetAll().Values)
             {
@@ -122,8 +122,13 @@ namespace ET
                 return this.outerIPPort;
             }
         }
+        
+        public void BeginInit()
+        {
+            throw new System.NotImplementedException();
+        }
 
-        public override void AfterEndInit()
+        public void EndInit()
         {
             this.Type = EnumHelper.FromString<SceneType>(this.SceneType);
             InstanceIdStruct instanceIdStruct = new InstanceIdStruct(this.Process, (uint) this.Id);

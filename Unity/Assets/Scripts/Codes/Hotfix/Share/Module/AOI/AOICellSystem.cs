@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity.Mathematics;
-using UnityEngine;
 
 namespace ET
 {
     [ObjectSystem]
-    public class AOIGridAwakeSystem : AwakeSystem<AOICell>
+    public class AOIGridAwakeSystem: AwakeSystem<AOICell>
     {
         protected override void Awake(AOICell self)
         {
@@ -20,13 +19,15 @@ namespace ET
             {
                 self.typeUnits.Add((UnitType)i, new List<AOIUnitComponent>());
             }
+
             self.Triggers = new List<AOITrigger>();
             self.ListenerUnits = new List<AOIUnitComponent>();
             self.Colliders = new List<AOITrigger>();
         }
     }
+
     [ObjectSystem]
-    public class AOIGridDestroySystem : DestroySystem<AOICell>
+    public class AOIGridDestroySystem: DestroySystem<AOICell>
     {
         protected override void Destroy(AOICell self)
         {
@@ -40,10 +41,11 @@ namespace ET
             self.Colliders = null;
         }
     }
-    [FriendOf(typeof(AOICell))]
-    [FriendOf(typeof(AOITrigger))]
-    [FriendOf(typeof(AOIUnitComponent))]
-    [FriendOf(typeof(OBBComponent))]
+
+    [FriendOf(typeof (AOICell))]
+    [FriendOf(typeof (AOITrigger))]
+    [FriendOf(typeof (AOIUnitComponent))]
+    [FriendOf(typeof (OBBComponent))]
     public static class AOICellSystem
     {
         /// <summary>
@@ -54,22 +56,22 @@ namespace ET
         /// <param name="position"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static int GetRelationshipWithTrigger(this AOICell self, AOITrigger trigger,float3 position ,quaternion rotation)
+        public static int GetRelationshipWithTrigger(this AOICell self, AOITrigger trigger, float3 position, quaternion rotation)
         {
             var len = self.GetParent<AOISceneComponent>().gridLen;
             if (trigger.TriggerType == TriggerShapeType.Cube)
             {
                 var obb = trigger.GetComponent<OBBComponent>();
-                return AOIHelper.GetGridRelationshipWithOBB(position, rotation,obb.Scale,len,self.xMin,
-                    self.yMin,trigger.Radius,trigger.SqrRadius);
+                return AOIHelper.GetGridRelationshipWithOBB(position, rotation, obb.Scale, len, self.xMin,
+                    self.yMin, trigger.Radius, trigger.SqrRadius);
             }
             else
             {
-                return AOIHelper.GetGridRelationshipWithSphere(position,trigger.Radius,len,self.xMin,
-                    self.yMin,trigger.SqrRadius);
+                return AOIHelper.GetGridRelationshipWithSphere(position, trigger.Radius, len, self.xMin,
+                    self.yMin, trigger.SqrRadius);
             }
-            
         }
+
         /// <summary>
         /// 获取与碰撞器的关系：false无关 true相交
         /// </summary>
@@ -78,12 +80,13 @@ namespace ET
         /// <param name="position"></param>
         /// <param name="rotation"></param>
         /// <returns></returns>
-        public static bool IsIntersectWithTrigger(this AOICell self, AOITrigger trigger,float3 position ,quaternion rotation)
+        public static bool IsIntersectWithTrigger(this AOICell self, AOITrigger trigger, float3 position, quaternion rotation)
         {
             var len = self.GetParent<AOISceneComponent>().gridLen;
-            return AOIHelper.IsGridIntersectWithSphere(position,trigger.Radius,len,self.xMin,
-                self.yMin,trigger.SqrRadius);
+            return AOIHelper.IsGridIntersectWithSphere(position, trigger.Radius, len, self.xMin,
+                self.yMin, trigger.SqrRadius);
         }
+
         /// <summary>
         /// 添加触发器监视
         /// </summary>
@@ -92,15 +95,14 @@ namespace ET
         /// <returns></returns>
         public static void AddTriggerListener(this AOICell self, AOITrigger trigger)
         {
-            if (Define.Debug)
             {
                 if (!trigger.DebugMap.ContainsKey(self)) trigger.DebugMap[self] = 0;
                 trigger.DebugMap[self]++;
-                trigger.LogInfo.Add("AddTriggerListener "+self.posx+","+self.posy+"  "+trigger.GetRealPos()+"  "+
-                                    DateTime.Now.ToString("HH:mm:ss fff:ffffff")+"\r\n"+new StackTrace());
+                trigger.LogInfo.Add("AddTriggerListener " + self.posx + "," + self.posy + "  " + trigger.GetRealPos() + "  " +
+                    DateTime.Now.ToString("HH:mm:ss fff:ffffff") + "\r\n" + new StackTrace());
             }
             trigger.FollowCell.Add(self);
-            if(trigger.IsCollider)
+            if (trigger.IsCollider)
                 self.Colliders.Add(trigger);
             else
                 self.Triggers.Add(trigger);
@@ -112,6 +114,7 @@ namespace ET
             }
 #endif
         }
+
         /// <summary>
         /// 移除触发器监视
         /// </summary>
@@ -120,16 +123,15 @@ namespace ET
         /// <returns></returns>
         public static void RemoveTriggerListener(this AOICell self, AOITrigger trigger)
         {
-            if (Define.Debug)
             {
                 if (!trigger.DebugMap.ContainsKey(self)) trigger.DebugMap[self] = 0;
                 trigger.DebugMap[self]--;
-                trigger.LogInfo.Add("RemoveTriggerListener "+self.posx+","+self.posy+"  "+trigger.GetRealPos()+"  "+
-                                    DateTime.Now.ToString("HH:mm:ss fff:ffffff")+"\r\n"+new StackTrace());
+                trigger.LogInfo.Add("RemoveTriggerListener " + self.posx + "," + self.posy + "  " + trigger.GetRealPos() + "  " +
+                    DateTime.Now.ToString("HH:mm:ss fff:ffffff") + "\r\n" + new StackTrace());
             }
             if (self.IsDisposed) return;
             trigger.FollowCell.Remove(self);
-            if(trigger.IsCollider)
+            if (trigger.IsCollider)
                 self.Colliders.Remove(trigger);
             else
                 self.Triggers.Remove(trigger);
@@ -141,6 +143,7 @@ namespace ET
             }
 #endif
         }
+
         /// <summary>
         /// 添加监视
         /// </summary>
@@ -159,6 +162,7 @@ namespace ET
             }
 #endif
         }
+
         /// <summary>
         /// 移除监视
         /// </summary>
@@ -177,7 +181,7 @@ namespace ET
             }
 #endif
         }
-        
+
         /// <summary>
         /// 进入格子
         /// </summary>
@@ -186,10 +190,11 @@ namespace ET
         public static void Add(this AOICell self, AOIUnitComponent unit)
         {
             unit.Cell = self;
-            if (Define.Debug&&self.typeUnits[unit.Type].Contains(unit))//Debug开启检测
+            if (Options.Instance.Console == 1 && self.typeUnits[unit.Type].Contains(unit)) //Debug开启检测
             {
                 Log.Error("self.idUnits[unit.Type].Contains(unit)");
             }
+
             self.typeUnits[unit.Type].Add(unit);
             ListComponent<AOIUnitComponent> list = ListComponent<AOIUnitComponent>.Create();
             list.Add(unit);
@@ -198,13 +203,10 @@ namespace ET
                 var item = self.ListenerUnits[i];
                 if (item.Type == UnitType.Player)
                 {
-                    EventSystem.Instance.Publish(self.DomainScene(),new EventType.AOIRegisterUnit()
-                    {
-                        Receive = item,
-                        Units = list
-                    });
+                    EventSystem.Instance.Publish(self.DomainScene(), new EventType.AOIRegisterUnit() { Receive = item, Units = list });
                 }
             }
+
             list.Dispose();
         }
 
@@ -225,19 +227,16 @@ namespace ET
                     var item = self.ListenerUnits[i];
                     if (item.Type == UnitType.Player)
                     {
-                        EventSystem.Instance.Publish(self.DomainScene(),new EventType.AOIRemoveUnit()
-                        {
-                            Receive = item,
-                            Units = list
-                        });
+                        EventSystem.Instance.Publish(self.DomainScene(), new EventType.AOIRemoveUnit() { Receive = item, Units = list });
                     }
                 }
+
                 self.typeUnits[unit.Type].Remove(unit);
                 unit.Cell = null;
             }
+
             list.Dispose();
         }
-        
 
         /// <summary>
         /// 获取所有指定类型单位
@@ -257,8 +256,10 @@ namespace ET
             {
                 res.AddRange(self.typeUnits[type]);
             }
+
             return res;
         }
+
         /// <summary>
         /// 获取所有指定类型单位
         /// </summary>
@@ -275,8 +276,10 @@ namespace ET
                     // Log.Info("GetAllUnit key:"+item.Key);
                     res.AddRange(item.Value);
                 }
+
             return res;
         }
+
         /// <summary>
         /// 获取所有指定类型单位的碰撞器
         /// </summary>
@@ -284,12 +287,12 @@ namespace ET
         /// <param name="types"></param>
         /// <param name="except"></param>
         /// <returns></returns>
-        public static ListComponent<AOITrigger> GetAllCollider(this AOICell self, List<UnitType> types,AOITrigger except)
+        public static ListComponent<AOITrigger> GetAllCollider(this AOICell self, List<UnitType> types, AOITrigger except)
         {
             var res = ListComponent<AOITrigger>.Create();
             if (self.IsDisposed) return res;
             var isAll = types.Contains(UnitType.ALL);
-            for (int i = self.Colliders.Count-1; i >=0 ; i--)
+            for (int i = self.Colliders.Count - 1; i >= 0; i--)
             {
                 var item = self.Colliders[i];
                 if (item.IsDisposed)
@@ -298,14 +301,16 @@ namespace ET
                     Log.Warning("自动移除不成功");
                     continue;
                 }
-                if(!item.IsCollider||item==except) continue;
-                
-                if (isAll||types.Contains(item.GetParent<AOIUnitComponent>().Type))
+
+                if (!item.IsCollider || item == except) continue;
+
+                if (isAll || types.Contains(item.GetParent<AOIUnitComponent>().Type))
                 {
                     // Log.Info("GetAllUnit key:"+item.Key);
                     res.Add(item);
                 }
             }
+
             return res;
         }
 
@@ -317,12 +322,12 @@ namespace ET
         /// <param name="except"></param>
         /// <returns></returns>
         public static ListComponent<AOITrigger> GetAllTrigger(this AOICell self, List<UnitType> types,
-            AOITrigger except)
+        AOITrigger except)
         {
             var res = ListComponent<AOITrigger>.Create();
             if (self.IsDisposed) return res;
             var isAll = types.Contains(UnitType.ALL);
-            for (int i = self.Colliders.Count-1; i >=0 ; i--)
+            for (int i = self.Colliders.Count - 1; i >= 0; i--)
             {
                 var item = self.Colliders[i];
                 if (item.IsDisposed)
@@ -331,23 +336,26 @@ namespace ET
                     Log.Warning("自动移除不成功");
                     continue;
                 }
-                if(item.IsCollider||item==except) continue;
-                
-                if (isAll||types.Contains(item.GetParent<AOIUnitComponent>().Type))
+
+                if (item.IsCollider || item == except) continue;
+
+                if (isAll || types.Contains(item.GetParent<AOIUnitComponent>().Type))
                 {
                     // Log.Info("GetAllUnit key:"+item.Key);
                     res.Add(item);
                 }
             }
+
             return res;
         }
+
         /// <summary>
         /// 获取自身为中心指定圈数的所有格子
         /// </summary>
         /// <param name="self"></param>
         /// <param name="turnNum">圈数</param>
         /// <returns></returns>
-        public static ListComponent<AOICell> GetNearbyGrid(this AOICell self,int turnNum)
+        public static ListComponent<AOICell> GetNearbyGrid(this AOICell self, int turnNum)
         {
             var scene = self.DomainScene().GetComponent<AOISceneComponent>();
             if (scene == null) return ListComponent<AOICell>.Create();
@@ -371,6 +379,7 @@ namespace ET
                 else if (self[i].typeUnits.ContainsKey(type))
                     res.AddRange(self[i].typeUnits[type]);
             }
+
             return res;
         }
 
@@ -389,12 +398,13 @@ namespace ET
                 grid.Dispose();
                 return res;
             }
+
             return ListComponent<AOIUnitComponent>.Create();
         }
-        
+
         #region Ghost
+
 #if SERVER
-        
         /// <summary>
         /// 获取当前格子所属场景
         /// </summary>
@@ -447,6 +457,7 @@ namespace ET
             return areaComp.TryGetCellMap(self.Id, out int _);
         }
 #endif
+
         #endregion
     }
 }
