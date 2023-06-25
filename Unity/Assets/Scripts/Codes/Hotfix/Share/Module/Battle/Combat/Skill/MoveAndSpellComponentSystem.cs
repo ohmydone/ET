@@ -97,11 +97,12 @@ namespace ET
                 TimerComponent.Instance.Remove(ref self.TimerId);
                 //unit.Stop(0);
             }
-#if SERVER //纯客户端单机游戏去掉
-            self.Parent.GetComponent<SpellComponent>().SpellWithTarget(spellSkill,targetEntity);
-#else
-            //spellSkill.UseSkill(Vector3.zero,targetEntity.Id);
-#endif
+            EventSystem.Instance.Publish(spellSkill.DomainScene(),new EventType.Battle_SpellWithTarget()
+            {
+                SpellComponent = self.Parent.GetComponent<SpellComponent>(),
+                SkillAbility = spellSkill,
+                Target= unit,
+            });
         }
         /// <summary>
         /// 释放对点技能
@@ -139,11 +140,13 @@ namespace ET
                 TimerComponent.Instance.Remove(ref self.TimerId);
                 //unit.Stop(0);
             }
-#if SERVER //纯客户端单机游戏去掉
-            self.Parent.GetComponent<SpellComponent>().SpellWithPoint(spellSkill,point);
-#else
-            //spellSkill.UseSkill(point);
-#endif
+            EventSystem.Instance.Publish(spellSkill.DomainScene(),new EventType.Battle_SpellWithPoint()
+            {
+                SpellComponent = self.Parent.GetComponent<SpellComponent>(),
+                SkillAbility = spellSkill,
+                Point= point,
+            });
+            
         }
         /// <summary>
         /// 释放方向技能
@@ -182,11 +185,12 @@ namespace ET
                 TimerComponent.Instance.Remove(ref self.TimerId);
                 //unit.Stop(0);
             }
-#if SERVER //纯客户端单机游戏去掉
-            self.Parent.GetComponent<SpellComponent>().SpellWithPoint(spellSkill,point);
-#else
-            //spellSkill.UseSkill(point);
-#endif
+            EventSystem.Instance.Publish(spellSkill.DomainScene(),new EventType.Battle_SpellWithPoint()
+            {
+                SpellComponent = self.Parent.GetComponent<SpellComponent>(),
+                SkillAbility = spellSkill,
+                Point= point,
+            });
         }
 
         public static void MoveTo(this MoveAndSpellComponent self,Unit unit, float3 point)
@@ -194,11 +198,12 @@ namespace ET
             if (self.Skill==null|| math.lengthsq(self.Point-point)>self.Skill.SkillConfig.PreviewRange[0]/2f)
             {
                 self.Point = point;
-#if !SERVER
-                //unit.MoveToAsync(point).Coroutine();
-#else //纯客户端单机游戏自己在客户端接入Recast库后去掉
-                unit.FindPathMoveToAsync(point).Coroutine();
-#endif
+                
+// #if !SERVER
+//                 unit.MoveToAsync(point).Coroutine();
+// #else //纯客户端单机游戏自己在客户端接入Recast库后去掉
+//                 unit.FindPathMoveToAsync(point).Coroutine();
+// #endif
             }
         }
 

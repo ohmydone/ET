@@ -16,7 +16,7 @@ namespace ET
             self.Type = type;
             self.Range = range;
             var aoiScene = self.DomainScene().GetComponent<AOISceneComponent>();
-#if SERVER
+#if DOTNET
             if(aoiScene.GetComponent<AreaComponent>()!=null)
                 self.AddComponent<GhostComponent>();
 #endif
@@ -33,7 +33,7 @@ namespace ET
             self.Type = type;
             self.Range = 1;
             var aoiScene = self.DomainScene().GetComponent<AOISceneComponent>();
-#if SERVER
+#if DOTNET
             if(aoiScene.GetComponent<AreaComponent>()!=null)
                 self.AddComponent<GhostComponent>();
 #endif
@@ -142,7 +142,7 @@ namespace ET
                 if (item.IsCollider ||!item.Enable|| item.Selecter == null || item.Selecter.Count == 0) continue;
                 item.AfterTriggerChangeBroadcastToMe(item.GetRealPos(oldpos),changeCell);
             }
-#if SERVER
+#if DOTNET
             if (self.GetComponent<GhostComponent>() != null)
             {
                 if (cell.TryGetCellMap(out var newSceneId))

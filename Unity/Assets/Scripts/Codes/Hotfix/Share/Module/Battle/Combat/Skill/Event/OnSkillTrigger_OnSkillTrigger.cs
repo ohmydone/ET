@@ -100,7 +100,7 @@ namespace ET
                 NumericComponent f = fromU.GetComponent<NumericComponent>();
                 NumericComponent t = toU.GetComponent<NumericComponent>();
                 float value = fx.GetData(f, t);
-#if SERVER
+#if DOTNET
                 BattleHelper.Damage(combatFromU,combatToU,value,ghost:skill?.GetComponent<GhostComponent>());
 #else
                 BattleHelper.Damage(combatFromU,combatToU,value);

@@ -22,22 +22,8 @@ namespace ET
         public quaternion Rotation;
         public AOISceneComponent Scene{ get; set; }
         public UnitType Type { get; set; }
-        private EntityRef<AOICell> cell;
-        public AOICell Cell
-        {
-            get =>this.cell;
-            set
-            {
-                EventSystem.Instance.Publish(this.Domain,new EventType.ChangeGrid()
-                {
-                    Unit = this,
-                    NewCell = value,
-                    OldCell = this.cell
-                });
-                this.cell = value;
-            }
-        }
-
+        public AOICell Cell { get; set; }
+        
         public int Range;
         public readonly List<AOITrigger> SphereTriggers = new List<AOITrigger>();//自己的触发器
         // public float MaxTriggerRadius=0;

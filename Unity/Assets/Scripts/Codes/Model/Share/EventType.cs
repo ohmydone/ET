@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using Unity.Mathematics;
+
+namespace ET
 {
     namespace EventType
     {
@@ -51,5 +53,20 @@
         {
             public SkillPara Para;
         }
+        
+        public struct Battle_SpellWithTarget
+        {
+            public SpellComponent SpellComponent;
+            public SkillAbility SkillAbility;
+            public Unit Target;
+        }
+        
+        public struct Battle_SpellWithPoint
+        {
+            public SpellComponent SpellComponent;
+            public SkillAbility SkillAbility;
+            public float3 Point;
+        }
+
     }
 }

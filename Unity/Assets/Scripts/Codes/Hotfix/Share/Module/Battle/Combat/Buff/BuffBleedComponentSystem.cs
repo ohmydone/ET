@@ -8,13 +8,13 @@ namespace ET
         protected override void Awake(BuffBleedComponent self, int a)
         {
             self.ConfigId = a;
-#if SERVER //纯客户端单机游戏去掉
+#if DOTNET //纯客户端单机游戏去掉
             self.LastBleedTime = TimeHelper.ServerNow();
             self.HandleBleed();
 #endif
         }
     }
-#if SERVER //纯客户端单机游戏去掉
+#if DOTNET //纯客户端单机游戏去掉
     [ObjectSystem]
     public class BuffBleedComponentDestroySystem: DestroySystem<BuffBleedComponent>
     {
@@ -37,7 +37,7 @@ namespace ET
     [FriendOf(typeof(Buff))]
     public static class BuffBleedComponentSystem
     {
-#if SERVER //纯客户端单机游戏去掉
+#if DOTNET //纯客户端单机游戏去掉
         public static void TryBleed(this BuffBleedComponent self)
         {
             var timeNow = TimeHelper.ServerNow();

@@ -16,7 +16,7 @@ namespace ET
             self.gridLen = gridLen;
             self.halfDiagonal = self.gridLen*0.7072f;
             Log.Info("AOIScene StandBy! ");
-#if SERVER
+#if DOTNET
             var id = (int)self.Id;
             if (MapSceneConfigCategory.Instance.GetAll().TryGetValue(id, out var config)&&!string.IsNullOrEmpty(config.Area))
             {
@@ -62,7 +62,7 @@ namespace ET
         {
             unit.Scene = self;
             AOICell cell = self.GetAOICell(unit.Position);
-#if SERVER
+#if DOTNET
             if (!unit.IsGhost()&&cell.TryGetCellMap(out var sceneId) && !cell.IsCurScene())
             {
                 TransferHelper.AreaCreate(unit, StartSceneConfigCategory.Instance.Get(sceneId).InstanceId);
@@ -78,7 +78,7 @@ namespace ET
                     {
                         var item = ListenerGrids[i];
                         item.AddListener(unit);
-#if SERVER
+#if DOTNET
                         if(!item.IsCurScene()) continue;
 #endif
                         using (var list = item.GetAllUnit())
@@ -115,7 +115,7 @@ namespace ET
                         {
                             var item = ListenerGrids[i];
                             item.RemoveListener(unit);
-#if SERVER
+#if DOTNET
                             if(!item.IsCurScene()) continue;
 #endif
                             using (var list = item.GetAllUnit())

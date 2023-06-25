@@ -187,7 +187,7 @@ namespace ET
             Buff buff = self.GetChild<Buff>(id);
             if (self.Remove(id, force))
             {
-#if SERVER
+#if DOTNET
                 if (self.unit.IsGhost()) return;
                 M2C_RemoveBuff msg = new M2C_RemoveBuff { UnitId = self.Id, ConfigId = buff.ConfigId, Timestamp = TimeHelper.ServerNow() };
                 MessageHelper.Broadcast(self.unit, msg);

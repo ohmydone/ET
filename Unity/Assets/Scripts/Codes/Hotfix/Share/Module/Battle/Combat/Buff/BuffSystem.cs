@@ -62,7 +62,7 @@
                 }
                 else if (self.Config.Type[i] == BuffSubType.Chant)
                 {
-#if SERVER//单机去掉
+#if DOTNET//单机去掉
                     self.Parent.GetParent<CombatUnitComponent>().GetComponent<SpellComponent>().Interrupt();
 #endif
                 }

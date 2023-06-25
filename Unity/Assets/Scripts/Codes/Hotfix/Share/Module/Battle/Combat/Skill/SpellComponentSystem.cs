@@ -68,7 +68,7 @@ namespace ET
         {
             if (self.CanInterrupt())
             {
-#if SERVER
+#if DOTNET
                 var unit = self.Parent.GetParent<Unit>();
                 if(unit.IsGhost()) return;
                 M2C_Interrupt msg = new M2C_Interrupt { UnitId = self.Id, ConfigId = self.CurSkillConfigId, Timestamp = TimeHelper.ServerNow() };

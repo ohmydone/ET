@@ -137,7 +137,7 @@ namespace ET
 
         public static void OnTrigger(this AOITrigger self, AOITrigger other, AOITriggerType type)
         {
-#if SERVER
+#if DOTNET
             if(self.GetParent<AOIUnitComponent>().IsGhost()) return;
 #endif
             // Log.Info("OnTrigger"+type);

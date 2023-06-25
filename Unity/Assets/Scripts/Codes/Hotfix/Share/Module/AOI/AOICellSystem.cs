@@ -107,15 +107,25 @@ namespace ET
                 self.Colliders.Add(trigger);
             else
                 self.Triggers.Add(trigger);
-#if SERVER
+
+        }
+
+        /// <summary>
+        /// 添加触发器监视
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="trigger"></param>
+        /// <returns></returns>
+        public static void GhostAddTriggerListener(this AOICell self, AOITrigger trigger)
+        {
             var ghost = trigger.Parent.GetComponent<GhostComponent>();
             if (ghost!=null&&self.TryGetCellMap(out int sceneId))
             {
                 ghost.AddListenerAreaIds(sceneId);
             }
-#endif
         }
-
+        
+        
         /// <summary>
         /// 移除触发器监视
         /// </summary>
@@ -137,15 +147,21 @@ namespace ET
                 self.Colliders.Remove(trigger);
             else
                 self.Triggers.Remove(trigger);
-#if SERVER
+        }
+        /// <summary>
+        /// 移除触发器监视
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="trigger"></param>
+        /// <returns></returns>
+        public static void GhostRemoveTriggerListener(this AOICell self, AOITrigger trigger)
+        {
             var ghost = self.Parent.GetComponent<GhostComponent>();
             if (ghost!=null&&self.TryGetCellMap(out int sceneId))
             {
                 ghost.RemoveListenerAreaIds(sceneId);
             }
-#endif
         }
-
         /// <summary>
         /// 添加监视
         /// </summary>
@@ -156,15 +172,24 @@ namespace ET
         {
             // Log.Info("AddListener"+unit.Id+" "+self.posx+","+self.posy);
             self.ListenerUnits.Add(unit);
-#if SERVER
+        }
+
+        /// <summary>
+        /// 添加监视
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="unit"></param>
+        /// <returns></returns>
+        public static void GhostAddListener(this AOICell self, AOIUnitComponent unit)
+        {
             var ghost = unit.GetComponent<GhostComponent>();
             if (ghost!=null&&self.TryGetCellMap(out int sceneId))
             {
                 ghost.AddListenerAreaIds(sceneId);
             }
-#endif
         }
-
+        
+        
         /// <summary>
         /// 移除监视
         /// </summary>
@@ -175,15 +200,24 @@ namespace ET
         {
             // Log.Info("RemoveListener"+unit.Id+" "+self.posx+","+self.posy);
             self.ListenerUnits.Remove(unit);
-#if SERVER
+        }
+
+        /// <summary>
+        /// 移除监视
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="unit"></param>
+        /// <returns></returns>
+        public static void GhostRemoveListener(this AOICell self, AOIUnitComponent unit)
+        {
             var ghost = unit.GetComponent<GhostComponent>();
             if (ghost!=null&&self.TryGetCellMap(out int sceneId))
             {
                 ghost.RemoveListenerAreaIds(sceneId);
             }
-#endif
         }
-
+        
+        
         /// <summary>
         /// 进入格子
         /// </summary>
@@ -191,7 +225,15 @@ namespace ET
         /// <param name="unit"></param>
         public static void Add(this AOICell self, AOIUnitComponent unit)
         {
+            var oldCell = unit.Cell;
             unit.Cell = self;
+            EventSystem.Instance.Publish(self.DomainScene(),new EventType.ChangeGrid()
+            {
+                Unit = unit,
+                NewCell = self,
+                OldCell = oldCell
+            });
+            
             if (Options.Instance.Console == 1 && self.typeUnits[unit.Type].Contains(unit)) //Debug开启检测
             {
                 Log.Error("self.idUnits[unit.Type].Contains(unit)");
@@ -234,7 +276,14 @@ namespace ET
                 }
 
                 self.typeUnits[unit.Type].Remove(unit);
+                var oldCell=unit.Cell;
                 unit.Cell = null;
+                EventSystem.Instance.Publish(self.DomainScene(),new EventType.ChangeGrid()
+                {
+                    Unit = unit,
+                    NewCell = self,
+                    OldCell = oldCell
+                });
             }
 
             list.Dispose();
@@ -405,8 +454,7 @@ namespace ET
         }
 
         #region Ghost
-
-#if SERVER
+        
         /// <summary>
         /// 获取当前格子所属场景
         /// </summary>
@@ -458,7 +506,7 @@ namespace ET
             }
             return areaComp.TryGetCellMap(self.Id, out int _);
         }
-#endif
+
 
         #endregion
     }
