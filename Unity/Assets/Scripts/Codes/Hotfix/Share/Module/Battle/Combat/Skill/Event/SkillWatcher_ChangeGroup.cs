@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using ET.EventType;
+
+namespace ET
 {
     /// <summary>
     /// 判断切换Group
@@ -28,31 +30,10 @@
             }
             else if (stepPara.Paras.Length >= 2)
             {
-#if SERVER//纯客户端单机游戏去掉
-                if (unit.unit.IsGhost())
+                EventSystem.Instance.Publish(unit.DomainScene(),new Battle_ChangeGroup()
                 {
-                    spell.WaitStep(SkillStepType.ChangeGroup);
-                    return;
-                }
-                if(StepParaHelper.TryParseString(ref stepPara.Paras[0], out var condition))
-                {
-                    var res = ConditionWatcherComponent.Instance.Run(condition,para);
-                    M2C_ChangeSkillGroup msg = new M2C_ChangeSkillGroup {  UnitId = unit.Id, Result = res?1:0,Timestamp = TimeHelper.ServerNow()};
-                    MessageHelper.Broadcast(unit.unit,msg);
-                    StepParaHelper.TryParseString(ref stepPara.Paras[1], out var suc);
-                    if (res)
-                    {
-                        spell.ChangeGroup(suc);
-                    }
-                    else if(stepPara.Paras.Length >= 3)
-                    {
-                        StepParaHelper.TryParseString(ref stepPara.Paras[2], out var fail);
-                        spell.ChangeGroup(fail);
-                    }
-                }
-#else
-                spell.WaitStep(SkillStepType.ChangeGroup);
-#endif
+                    Para = para
+                });
             }
 
         }

@@ -39,5 +39,17 @@
         {
             public string OperaId;
         }
+        
+        public struct AddEffect
+        {
+            public int EffectId;
+            public Unit Unit;
+            public Entity Parent;
+        }
+        
+        public struct Battle_ChangeGroup
+        {
+            public SkillPara Para;
+        }
     }
 }

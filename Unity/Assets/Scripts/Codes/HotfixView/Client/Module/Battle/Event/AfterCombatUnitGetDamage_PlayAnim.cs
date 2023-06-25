@@ -1,24 +1,26 @@
-﻿namespace ET
+﻿using ET.Client;
+
+namespace ET
 {
     [Event(SceneType.Client)]
     public class AfterCombatUnitGetDamage_PlayAnim:AEvent<Scene,EventType.AfterCombatUnitGetDamage>
     {
         protected override async ETTask Run(Scene scene, EventType.AfterCombatUnitGetDamage a)
         {
-            // var anim = args.Unit.unit.GetComponent<AnimatorComponent>();
-            // if (anim != null)
-            // {
-            //     if(args.Unit.unit.GetComponent<NumericComponent>().GetAsInt(NumericType.Hp)<=0)
-            //     {
-            //         anim.Play(MotionType.Died);
-            //     }
-            //     else
-            //         anim.Play(MotionType.Damage);
-            // }
-            // else if(args.Unit.unit.GetComponent<NumericComponent>().GetAsInt(NumericType.Hp)<=0)//直接死了
-            // {
-            //     args.Unit.unit.Dispose();
-            // }
+            var anim = a.Unit.unit.GetComponent<AnimationComponent>();
+            if (anim != null)
+            {
+                if(a.Unit.unit.GetComponent<NumericComponent>().GetAsInt(NumericType.Hp)<=0)
+                {
+                    anim.Play(AnimClipType.Died);
+                }
+                else
+                    anim.Play(AnimClipType.Damage);
+            }
+            else if(a.Unit.unit.GetComponent<NumericComponent>().GetAsInt(NumericType.Hp)<=0)//直接死了
+            {
+                a.Unit.unit.Dispose();
+            }
 
             await ETTask.CompletedTask;
         }

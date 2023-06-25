@@ -1,4 +1,4 @@
-﻿namespace ET
+﻿namespace ET.Server
 {
     /// <summary>
     /// 给自己加BUFF
@@ -8,7 +8,6 @@
     {
         public void Run(SkillPara para)
         {
-#if SERVER //纯客户端单机游戏去掉
             var unit = para.From.unit;
             if(unit.IsGhost()) return;//纯客户端单机游戏去掉
             var stepPara = para.GetCurSkillStepPara();
@@ -25,7 +24,6 @@
                     }
                 }
             }
-#endif
         }
         
     }

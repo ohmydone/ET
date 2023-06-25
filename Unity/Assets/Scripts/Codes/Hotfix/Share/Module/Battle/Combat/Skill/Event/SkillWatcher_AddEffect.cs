@@ -19,10 +19,10 @@ namespace ET
             var unit = para.From.unit;
             var stepPara = para.GetCurSkillStepPara();
             Log.Info("SkillWatcher_AddEffect");
-            // if (StepParaHelper.TryParseInt(ref stepPara.Paras[0], out var effectId))
-            // {
-            //     EventSystem.Instance.Publish(new EventType.AddEffect { EffectId = effectId, Parent = unit, Unit = unit });
-            // }
+            if (StepParaHelper.TryParseInt(ref stepPara.Paras[0], out var effectId))
+            {
+                EventSystem.Instance.Publish(unit.DomainScene(), new EventType.AddEffect { EffectId = effectId, Parent = unit, Unit = unit });
+            }
         }
         
     }

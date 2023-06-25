@@ -103,7 +103,7 @@ namespace ET
 #if SERVER
                 BattleHelper.Damage(combatFromU,combatToU,value,ghost:skill?.GetComponent<GhostComponent>());
 #else
-                //BattleHelper.Damage(combatFromU,combatToU,value);
+                BattleHelper.Damage(combatFromU,combatToU,value);
 #endif
                 
             }

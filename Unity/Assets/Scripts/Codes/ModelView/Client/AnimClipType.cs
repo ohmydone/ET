@@ -8,5 +8,9 @@ namespace ET.Client
     {
         public const string Idle = "Idle";
         public const string Run = "Run";
+        public const string Damage = "Damage";
+        public const string Died = "Died";
+        
+                
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define SERVER
+
+using System;
 using System.Threading;
 
 namespace ET

@@ -56,8 +56,8 @@ namespace ET
             }
             for (int i = 0; i < list.Count; i++)
             {
-                ISkillWatcher numericWatcher = list[i];
-                numericWatcher.Run(para);
+                ISkillWatcher watcher = list[i];
+                watcher.Run(para);
             }
         }
     }

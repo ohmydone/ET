@@ -95,6 +95,7 @@ namespace ET
         /// <returns></returns>
         public static void AddTriggerListener(this AOICell self, AOITrigger trigger)
         {
+            if (Options.Instance.Console == 1)
             {
                 if (!trigger.DebugMap.ContainsKey(self)) trigger.DebugMap[self] = 0;
                 trigger.DebugMap[self]++;
@@ -123,6 +124,7 @@ namespace ET
         /// <returns></returns>
         public static void RemoveTriggerListener(this AOICell self, AOITrigger trigger)
         {
+            if(Options.Instance.Console==1)
             {
                 if (!trigger.DebugMap.ContainsKey(self)) trigger.DebugMap[self] = 0;
                 trigger.DebugMap[self]--;
@@ -347,7 +349,7 @@ namespace ET
             }
 
             return res;
-        }
+        } 
 
         /// <summary>
         /// 获取自身为中心指定圈数的所有格子
