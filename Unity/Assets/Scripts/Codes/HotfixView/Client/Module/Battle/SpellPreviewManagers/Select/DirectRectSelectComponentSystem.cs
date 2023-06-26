@@ -10,9 +10,10 @@ namespace ET.Client
             self.waiter = ETTask<GameObject>.Create(); 
 
             string path =ResPathHelper.GetSpellPreviewPath("DirectRectSelectManager"); 
-            var obj= ResComponent.Instance.LoadAsset<GameObject>(path);
+            // var obj= ResComponent.Instance.LoadAsset<GameObject>(path);
+            // self.gameObject =GameObject.Instantiate(obj);
             
-            self.gameObject =GameObject.Instantiate(obj);
+            self.gameObject= GameObjectPoolComponent.Instance.GetGameObject(path);
             self.DirectObj = self.gameObject.transform.GetChild(0).gameObject;
             self.AreaObj = self.DirectObj.transform.GetChild(0).gameObject;
             self.waiter.SetResult(self.gameObject);

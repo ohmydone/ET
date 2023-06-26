@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
+using ET.Server;
 using Unity.Mathematics;
 
 namespace ET
@@ -68,12 +69,11 @@ namespace ET
         {
             if (self.CanInterrupt())
             {
-#if DOTNET
                 var unit = self.Parent.GetParent<Unit>();
                 if(unit.IsGhost()) return;
                 M2C_Interrupt msg = new M2C_Interrupt { UnitId = self.Id, ConfigId = self.CurSkillConfigId, Timestamp = TimeHelper.ServerNow() };
                 MessageHelper.Broadcast(unit, msg);
-#endif
+
                 self.ChangeGroup(self.GetComponent<SkillPara>().SkillConfig.InterruptGroup);
             }
         }

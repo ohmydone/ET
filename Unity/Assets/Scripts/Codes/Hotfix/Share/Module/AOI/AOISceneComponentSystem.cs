@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using ET.EventType;
+using ET.Server;
 using Unity.Mathematics;
 
 namespace ET
@@ -16,13 +17,12 @@ namespace ET
             self.gridLen = gridLen;
             self.halfDiagonal = self.gridLen*0.7072f;
             Log.Info("AOIScene StandBy! ");
-#if DOTNET
+
             var id = (int)self.Id;
             if (MapSceneConfigCategory.Instance.GetAll().TryGetValue(id, out var config)&&!string.IsNullOrEmpty(config.Area))
             {
                 self.AddComponent<AreaComponent, string>(config.Area);
             }
-#endif
         }
     }
 
@@ -62,12 +62,12 @@ namespace ET
         {
             unit.Scene = self;
             AOICell cell = self.GetAOICell(unit.Position);
-#if DOTNET
+
             if (!unit.IsGhost()&&cell.TryGetCellMap(out var sceneId) && !cell.IsCurScene())
             {
                 TransferHelper.AreaCreate(unit, StartSceneConfigCategory.Instance.Get(sceneId).InstanceId);
             }
-#endif
+
             cell.Add(unit);
             // Log.Info("RegisterUnit:" + unit.Id + "  Position:" + unit.Position + "  grid x:"+ cell.posx+",y:"+ cell.posy+" type"+unit.Type);
             if (unit.Type == UnitType.Player)
@@ -78,9 +78,8 @@ namespace ET
                     {
                         var item = ListenerGrids[i];
                         item.AddListener(unit);
-#if DOTNET
+
                         if(!item.IsCurScene()) continue;
-#endif
                         using (var list = item.GetAllUnit())
                         {
                             EventSystem.Instance.Publish(self.DomainScene(),new AOIRegisterUnit()
@@ -115,9 +114,7 @@ namespace ET
                         {
                             var item = ListenerGrids[i];
                             item.RemoveListener(unit);
-#if DOTNET
                             if(!item.IsCurScene()) continue;
-#endif
                             using (var list = item.GetAllUnit())
                             {
                                 EventSystem.Instance.Publish(self.DomainScene(),new AOIRemoveUnit()

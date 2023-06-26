@@ -153,8 +153,9 @@ namespace ET.Client
         private static async ETTask GetTargetIcon(this TargetSelectComponent self)
         {
             string targetPath = ResPathHelper.GetSpellPreviewPath("TargetIcon");
-            var obj = await ResComponent.Instance.LoadAssetAsync<GameObject>(targetPath);
-            GameObject go = GameObject.Instantiate(obj);
+            //var obj = await ResComponent.Instance.LoadAssetAsync<GameObject>(targetPath);
+            //GameObject go = GameObject.Instantiate(obj);
+            GameObject go =await GameObjectPoolComponent.Instance.GetGameObjectAsync(targetPath);
             self.CursorImage = go.GetComponent<Image>();
             self.CursorImage.transform.parent = GlobalComponent.Instance.PopUpRoot.transform;
             self.CursorImage.rectTransform.localScale = Vector3.one;
@@ -169,8 +170,7 @@ namespace ET.Client
         private static async ETTask GetTargetSelectManager(this TargetSelectComponent self)
         {
             string path = ResPathHelper.GetSpellPreviewPath("TargetSelectManager");
-            var obj = await ResComponent.Instance.LoadAssetAsync<GameObject>(path);
-            GameObject go = GameObject.Instantiate(obj);
+            var go = await GameObjectPoolComponent.Instance.GetGameObjectAsync(path);
             self.RangeCircleObj = go.transform.Find("RangeCircle").gameObject;
             self.gameObject = go;
             if (!self.IsShow)

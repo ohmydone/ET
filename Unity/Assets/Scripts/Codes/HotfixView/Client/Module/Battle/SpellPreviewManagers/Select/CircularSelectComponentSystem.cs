@@ -14,9 +14,9 @@ namespace ET.Client
                 self.waiter = ETTask<GameObject>.Create(); 
                 
                 string path =ResPathHelper.GetSpellPreviewPath("PointSelectManager"); 
-                var obj= ResComponent.Instance.LoadAsset<GameObject>(path);
-                
-                self.gameObject =GameObject.Instantiate(obj);
+                //var obj= ResComponent.Instance.LoadAsset<GameObject>(path);
+                var obj=GameObjectPoolComponent.Instance.GetGameObject(path);
+                //self.gameObject =GameObject.Instantiate(obj);
                 self.RangeCircleObj = self.gameObject.transform.Find("RangeCircle").gameObject;
                 self.SkillPointObj= self.gameObject.transform.Find("SkillPointPreview").gameObject;
                 self.SkillPointObj.SetActive(false);

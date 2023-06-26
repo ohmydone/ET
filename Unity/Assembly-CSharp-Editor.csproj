@@ -901,10 +901,6 @@
       <Project>{03938ccd-4b40-8dfb-6b9b-21988d5cac0a}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
-      <Project>{c4d634f5-6833-2b03-289c-a943cc171719}</Project>
-      <Name>Assembly-CSharp-Editor-firstpass</Name>
-    </ProjectReference>
     <ProjectReference Include="YooAsset.Editor.csproj">
       <Project>{e17e49b1-467b-9f35-a59e-d9aea156de57}</Project>
       <Name>YooAsset.Editor</Name>

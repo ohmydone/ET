@@ -1,4 +1,5 @@
-﻿using Unity.Mathematics;
+﻿using System.Collections.Generic;
+using Unity.Mathematics;
 
 namespace ET
 {
@@ -42,13 +43,35 @@ namespace ET
             public string OperaId;
         }
         
+        
+
+        
+       
+
+        #region Battle
+        public struct Battle_Damage
+        {
+            public CombatUnitComponent FromU;
+            public CombatUnitComponent ToU;
+            public AOIUnitComponent Skill;
+            public float Value;
+        }
+        
         public struct AddEffect
         {
             public int EffectId;
             public Unit Unit;
             public Entity Parent;
         }
-        
+        public struct AfterAddBuff
+        {
+            public Buff Buff;
+        }
+
+        public struct AfterRemoveBuff
+        {
+            public Buff Buff;
+        }
         public struct Battle_ChangeGroup
         {
             public SkillPara Para;
@@ -68,5 +91,27 @@ namespace ET
             public float3 Point;
         }
 
+        #endregion
+        
+        #region AOI
+        public struct AOIRemoveUnit
+        {
+            public AOIUnitComponent Receive;
+            public List<AOIUnitComponent> Units;
+        }
+
+        public struct AOIRegisterUnit
+        {
+            public AOIUnitComponent Receive;
+            public List<AOIUnitComponent> Units;
+        }
+
+        public struct ChangeGrid
+        {
+            public AOIUnitComponent Unit;
+            public AOICell NewCell;
+            public AOICell OldCell;
+        }
+        #endregion
     }
 }

@@ -100,12 +100,19 @@ namespace ET
                 NumericComponent f = fromU.GetComponent<NumericComponent>();
                 NumericComponent t = toU.GetComponent<NumericComponent>();
                 float value = fx.GetData(f, t);
-#if DOTNET
-                BattleHelper.Damage(combatFromU,combatToU,value,ghost:skill?.GetComponent<GhostComponent>());
-#else
-                BattleHelper.Damage(combatFromU,combatToU,value);
-#endif
                 
+// #if DOTNET
+//                 BattleHelper.Damage(combatFromU,combatToU,value,ghost:skill?.GetComponent<GhostComponent>());
+// #else
+//                 BattleHelper.Damage(combatFromU,combatToU,value);
+// #endif
+                EventSystem.Instance.Publish(combatFromU.DomainScene(),new EventType.Battle_Damage()
+                {
+                    FromU = combatFromU,
+                    ToU =  combatToU,
+                    Value = value,
+                    Skill = skill
+                });
             }
         }
         /// <summary>

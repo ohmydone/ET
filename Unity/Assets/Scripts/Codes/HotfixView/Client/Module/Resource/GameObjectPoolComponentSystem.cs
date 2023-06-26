@@ -57,39 +57,7 @@ namespace ET
     //[FriendOf(typeof(UITransform))]
     public static class GameObjectPoolComponentSystem
     {
-	    // /// <summary>
-	    // /// 从池子获取UI组件
-	    // /// </summary>
-	    // /// <param name="self"></param>
-	    // /// <param name="path"></param>
-	    // /// <typeparam name="T"></typeparam>
-	    // /// <returns></returns>
-     //    public static async ETTask<T> GetUIGameObjectAsync<T>(this GameObjectPoolComponent self, string path) where T : Entity,IAwake,IOnCreate
-     //    {
-     //        var obj = await self.GetGameObjectAsync(path);
-     //        if (obj == null) return null;
-     //        T res = self.AddChild<T>();
-     //        res.AddUIComponent<UITransform,Transform>("", obj.transform);
-     //        UIWatcherComponent.Instance.OnCreate(res);
-     //        return res;
-     //    }
-     //
-	    // /// <summary>
-	    // /// 池子回收UI组件
-	    // /// </summary>
-	    // /// <param name="self"></param>
-	    // /// <param name="obj"></param>
-	    // /// <param name="isClear"></param>
-	    // /// <typeparam name="T"></typeparam>
-     //    public static void RecycleUIGameObject<T>(this GameObjectPoolComponent self, T obj,bool isClear = false) where T : Entity,IAwake,IOnCreate
-     //    {
-     //        var uiTrans = obj.GetUIComponent<UITransform>();
-     //        self.RecycleGameObject(uiTrans.transform.gameObject, isClear);
-     //        obj.BeforeOnDestroy();
-     //        UIWatcherComponent.Instance.OnDestroy(obj);
-     //    }
-
-
+	    
 		/// <summary>
 		/// 预加载一系列资源
 		/// </summary>
@@ -154,7 +122,7 @@ namespace ET
 		/// <param name="path"></param>
 		/// <param name="inst_count">初始实例化个数</param>
 		/// <param name="callback"></param>
-		public static async ETTask PreLoadGameObjectAsync(this GameObjectPoolComponent self,string path, int inst_count,Action callback = null)
+		public static async ETTask PreLoadGameObjectAsync(this GameObjectPoolComponent self,string path, int inst_count)
 		{
 			CoroutineLock coroutineLock = null;
 			try
@@ -162,7 +130,7 @@ namespace ET
 				coroutineLock = await CoroutineLockComponent.Instance.Wait(CoroutineLockType.Resources, path.GetHashCode());
 				if (self.CheckHasCached(path))
 				{
-					callback?.Invoke();
+					await ETTask.CompletedTask;
 				}
 				else
 				{
@@ -171,7 +139,6 @@ namespace ET
 					{
 						self.CacheAndInstGameObject(path, go as GameObject, inst_count);
 					}
-					callback?.Invoke();
 				}
 			}
 			finally
@@ -179,6 +146,7 @@ namespace ET
 				coroutineLock?.Dispose();
 			}
 		}
+		
 		/// <summary>
 		/// 异步获取：必要时加载
 		/// </summary>
@@ -186,40 +154,19 @@ namespace ET
 		/// <param name="path"></param>
 		/// <param name="callback"></param>
 		/// <returns></returns>
-		public static ETTask GetGameObjectTask(this GameObjectPoolComponent self, string path, Action<GameObject> callback = null)
-		{
-			ETTask task = ETTask.Create();
-			self.GetGameObjectAsync(path, (data) =>
-			{
-				callback?.Invoke(data);
-				task.SetResult();
-			}).Coroutine();
-			return task;
-		}
-
-		/// <summary>
-		/// 异步获取：必要时加载
-		/// </summary>
-		/// <param name="self"></param>
-		/// <param name="path"></param>
-		/// <param name="callback"></param>
-		/// <returns></returns>
-		public static async ETTask<GameObject> GetGameObjectAsync(this GameObjectPoolComponent self,string path,Action<GameObject> callback = null)
+		public static async ETTask<GameObject> GetGameObjectAsync(this GameObjectPoolComponent self,string path)
 		{
 			if (self.TryGetFromCache(path, out var inst))
 			{
 				self.InitInst(inst);
-				callback?.Invoke(inst);
 				return inst;
 			}
 			await self.PreLoadGameObjectAsync(path, 1);
 			if (self.TryGetFromCache(path, out inst))
 			{
 				self.InitInst(inst);
-				callback?.Invoke(inst);
 				return inst;
 			}
-			callback?.Invoke(null);
 			return null;
 		}
 

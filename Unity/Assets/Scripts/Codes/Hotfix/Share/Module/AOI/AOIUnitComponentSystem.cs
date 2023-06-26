@@ -16,10 +16,10 @@ namespace ET
             self.Type = type;
             self.Range = range;
             var aoiScene = self.DomainScene().GetComponent<AOISceneComponent>();
-#if DOTNET
+
             if(aoiScene.GetComponent<AreaComponent>()!=null)
                 self.AddComponent<GhostComponent>();
-#endif
+
             aoiScene.RegisterUnit(self).Coroutine();
         }
     }
@@ -33,10 +33,10 @@ namespace ET
             self.Type = type;
             self.Range = 1;
             var aoiScene = self.DomainScene().GetComponent<AOISceneComponent>();
-#if DOTNET
+
             if(aoiScene.GetComponent<AreaComponent>()!=null)
                 self.AddComponent<GhostComponent>();
-#endif
+            
             aoiScene.RegisterUnit(self).Coroutine();
         }
     }
@@ -142,7 +142,7 @@ namespace ET
                 if (item.IsCollider ||!item.Enable|| item.Selecter == null || item.Selecter.Count == 0) continue;
                 item.AfterTriggerChangeBroadcastToMe(item.GetRealPos(oldpos),changeCell);
             }
-#if DOTNET
+
             if (self.GetComponent<GhostComponent>() != null)
             {
                 if (cell.TryGetCellMap(out var newSceneId))
@@ -154,7 +154,6 @@ namespace ET
                     //todo:倒计时拉回复活点
                 }
             }
-#endif
             await ETTask.CompletedTask;
         }
         /// <summary>

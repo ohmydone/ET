@@ -1,0 +1,77 @@
+﻿using ET.Client;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace ET
+{
+    [ObjectSystem]
+    public class InfoComponentAwakeSystem: AwakeSystem<InfoComponent>
+    {
+        protected override void Awake(InfoComponent self)
+        {
+            self.Awake().Coroutine();
+        }
+    }
+
+    [ObjectSystem]
+    public class InfoComponentDestroySystem: DestroySystem<InfoComponent>
+    {
+        protected override void Destroy(InfoComponent self)
+        {
+            //GameObjectPoolComponent.Instance?.RecycleGameObject(self.obj.gameObject);
+            self.obj = null;
+        }
+    }
+
+    [ObjectSystem]
+    public class InfoComponentUpdateSystem: UpdateSystem<InfoComponent>
+    {
+        protected override void Update(InfoComponent self)
+        {
+            self.Update();
+        }
+    }
+
+    [FriendOf(typeof (InfoComponent))]
+    public static class InfoComponentSystem
+    {
+        public static async ETTask Awake(this InfoComponent self)
+        {
+            Unit parent = self.GetParent<Unit>();
+            var obj = await GameObjectPoolComponent.Instance.GetGameObjectAsync(ResPathHelper.GetInfoPath("Info"));
+            obj = GameObject.Instantiate(obj);
+            self.obj = obj.transform as RectTransform;
+            self.obj.parent = GlobalComponent.Instance.PopUpRoot.transform;
+            self.obj.localScale = Vector3.one;
+            self.obj.localPosition = Vector3.zero;
+            self.head = parent.GetComponent<GameObjectComponent>().GameObject.transform.Find("Head");
+            //self.Num = self.obj.Find("Hp/HPNum").GetComponent<TMPro.TMP_Text>();
+            self.HpBg = self.obj.Find("Hp").GetComponent<Image>();
+            self.RefreshUI();
+            self.Update();
+        }
+
+        public static void Update(this InfoComponent self)
+        {
+            if (self.obj == null) return;
+            Vector2 pt = CameraManagerComponent.Instance.MainCamera().WorldToScreenPoint(self.head.position + new Vector3(0, 0.3f, 0)) *
+                    UIComponent.Instance.ScreenSizeflag;
+            self.obj.anchoredPosition = pt;
+        }
+
+        public static void RefreshUI(this InfoComponent self)
+        {
+            Unit parent = self.GetParent<Unit>();
+            NumericComponent nc = parent.GetComponent<NumericComponent>();
+            if (nc == null)
+            {
+                Log.Info("RefreshHP " + parent.Id + " 上没有添加 NumericComponent组件");
+                return;
+            }
+
+            //self.Num.text = nc.GetAsInt(NumericType.Hp).ToString();
+            float fCurrentHpPercent = nc.GetAsFloat(NumericType.Hp) / nc.GetAsFloat(NumericType.MaxHp);
+            self.HpBg.fillAmount = fCurrentHpPercent;
+        }
+    }
+}
