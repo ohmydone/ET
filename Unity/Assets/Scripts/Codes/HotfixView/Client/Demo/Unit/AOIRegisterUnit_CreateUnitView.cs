@@ -47,9 +47,11 @@ namespace ET.Client
                 idc.UnitId = unit.Id;
                 showObj = unit.AddComponent<GameObjectComponent>();
                 showObj.GameObject = go;
-                unit.AddComponent<AnimatorComponent>();
-                
+                unit.AddComponent<AnimationComponent,GameObject>(go);
                 unit.AddComponent<InfoComponent>();
+                if(unit.Id==UnitComponent.Instance.My.Id)
+                    unit.AddComponent<CameraComponent,Unit>(unit);
+                
                 var combatU = unit.GetComponent<CombatUnitComponent>();
                 if (combatU != null)
                 {

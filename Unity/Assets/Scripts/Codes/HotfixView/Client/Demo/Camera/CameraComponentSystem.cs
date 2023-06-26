@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace ET.Client
 {
@@ -6,11 +7,12 @@ namespace ET.Client
 	public static class CameraComponentSystem
 	{
 		[ObjectSystem]
-		public class CameraComponentAwakeSystem : AwakeSystem<CameraComponent>
+		public class CameraComponentAwakeSystem : AwakeSystem<CameraComponent,Unit>
 		{
-			protected override void Awake(CameraComponent self)
+			protected override void Awake(CameraComponent self,Unit unit)
 			{
 				self.Awake();
+				self.Unit = unit;
 				self.mainCamera.transform.rotation = Quaternion.Euler(Vector3.right*80);
 				Vector3 cameraPos = self.mainCamera.transform.position;
 				self.mainCamera.transform.position = new Vector3(cameraPos.x, 10, cameraPos.z - 1);

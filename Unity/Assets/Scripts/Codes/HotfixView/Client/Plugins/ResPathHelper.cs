@@ -25,9 +25,9 @@ namespace ET.Client
         {
             return "Assets/Bundles/Unit/" + unit;
         }
-        public static string GetSkillPath(string unit)
+        public static string GetSkillPath(string name)
         {
-            return "Assets/Bundles/Skill/" + unit;
+            return $"Assets/Bundles/Skill/{name}.prefab";
         }
         public static string GetScenePath(string scene)
         {
@@ -49,15 +49,14 @@ namespace ET.Client
             return "Assets/SpriteAltas/" + sa;
         }
 
-        public static string GetSpellPreviewPath(string sa)
+        public static string GetSpellPreviewPath(string name)
         {
-            return "Assets/Bundles/SkillPreview/Prefabs/" + sa;
-            
+            return $"Assets/Bundles/SkillPreview/Prefabs/{name}.prefab";
         }
         
-        public static string GetInfoPath(string sa)
+        public static string GetInfoPath(string name)
         {
-            return $"Assets/Bundles/Info/Prefabs/{sa}.prefab";
+            return $"Assets/Bundles/Info/Prefabs/{name}.prefab";
         }
     }
 }

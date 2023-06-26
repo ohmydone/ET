@@ -7,7 +7,7 @@
         {
             protected override void Awake(AreaComponent self,string name)
             {
-                //self.AreaConfigCategory = AreaConfigComponent.Instance.Get(name);
+                //self.AreaConfigCategory = AreaConfigCategory;
             }
         }
 

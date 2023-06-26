@@ -171,13 +171,21 @@ namespace ET
 		}
 
 		/// <summary>
-		/// 同步取已加载的，没加加载过则返回null
+		/// 同步取已加载的
 		/// </summary>
 		/// <param name="self"></param>
 		/// <param name="path"></param>
 		/// <returns></returns>
 		public static GameObject GetGameObject(this GameObjectPoolComponent self,string path)
 		{
+			if (!self.CheckHasCached(path))
+			{
+				var go = ResComponent.Instance.LoadAsset<GameObject>(path);
+				if (go != null)
+				{
+					self.CacheAndInstGameObject(path, go as GameObject, 1);
+				}
+			}
 			if (self.TryGetFromCache(path, out var inst))
 			{
 				self.InitInst(inst);

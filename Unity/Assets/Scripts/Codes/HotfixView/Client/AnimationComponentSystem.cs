@@ -9,12 +9,14 @@ namespace ET
     {
         protected override void Awake(AnimationComponent self, GameObject go)
         {
-            self.AnimancerCom = go.GetComponent<Animancer.AnimancerComponent>();
+            self.AnimancerCom = go.GetComponent<Animancer.NamedAnimancerComponent>();
             self.AnimancerCom.Animator.fireEvents = false;
            
 
             self.AnimancerCom.States.CreateIfNew(self.IdleAnimation);
             self.AnimancerCom.States.CreateIfNew(self.RunAnimation);
+            
+            
         }
     }
 
@@ -23,7 +25,7 @@ namespace ET
     {
         public static AnimationClip GetClip(this AnimationComponent self, string clipName)
         {
-            var clips = self.AnimancerCom.Animator.runtimeAnimatorController.animationClips;
+            var clips = self.AnimancerCom.Animations;
             for (int i = 0; i < clips.Length; i++)
             {
                 if (clipName == clips[i].name)

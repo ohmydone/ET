@@ -7,7 +7,7 @@ namespace ET
     [ComponentOf(typeof(Unit))]
     public class AnimationComponent : Entity,IAwake<GameObject>
     {
-        public Animancer.AnimancerComponent AnimancerCom{ get; set; }
+        public Animancer.NamedAnimancerComponent AnimancerCom{ get; set; }
         public AnimationClip IdleAnimation;
         public AnimationClip RunAnimation;
     }

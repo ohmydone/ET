@@ -18,11 +18,11 @@ namespace ET
             self.halfDiagonal = self.gridLen*0.7072f;
             Log.Info("AOIScene StandBy! ");
 
-            var id = (int)self.Id;
-            if (MapSceneConfigCategory.Instance.GetAll().TryGetValue(id, out var config)&&!string.IsNullOrEmpty(config.Area))
-            {
-                self.AddComponent<AreaComponent, string>(config.Area);
-            }
+            // var id = (int)self.Id;
+            // if (MapSceneConfigCategory.Instance.GetAll().TryGetValue(id, out var config)&&!string.IsNullOrEmpty(config.Area))
+            // {
+            //     self.AddComponent<AreaComponent, string>(config.Area);
+            // }
         }
     }
 
