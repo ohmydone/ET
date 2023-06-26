@@ -281,6 +281,7 @@ namespace ET
 
         public long NewFrameTimer(int type, object args)
         {
+            
 #if DOTNET
             return this.NewRepeatedTimerInner(100, type, args);
 #else

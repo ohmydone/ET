@@ -33,7 +33,7 @@ namespace ET.Client
                 Log.Info("AOIRegisterUnit"+unit.Id);
                 // Unit View层
                 // 这里可以改成异步加载，demo就不搞了
-                var go = await GameObjectPoolComponent.Instance.GetGameObjectAsync(unit.Config.Perfab);
+                var go = await GameObjectPoolComponent.Instance.GetGameObjectAsync(ResPathHelper.GetUnitPath(unit.Config.Perfab));
                 var trans = go.GetComponentsInChildren<Transform>();
                 for (int i = 0; i < trans.Length; i++)
                 {
@@ -59,7 +59,7 @@ namespace ET.Client
             else if (unit.Type==UnitType.Skill)
             {
                 SkillColliderComponent colliderComponent = unit.GetComponent<SkillColliderComponent>();
-                var go = await GameObjectPoolComponent.Instance.GetGameObjectAsync(unit.Config.Perfab);
+                var go = await GameObjectPoolComponent.Instance.GetGameObjectAsync(ResPathHelper.GetSkillPath( unit.Config.Perfab));
                 var trans = go.GetComponentsInChildren<Transform>();
                 for (int i = 0; i < trans.Length; i++)
                 {

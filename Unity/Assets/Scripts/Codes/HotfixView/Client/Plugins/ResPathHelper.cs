@@ -25,7 +25,10 @@ namespace ET.Client
         {
             return "Assets/Bundles/Unit/" + unit;
         }
-
+        public static string GetSkillPath(string unit)
+        {
+            return "Assets/Bundles/Skill/" + unit;
+        }
         public static string GetScenePath(string scene)
         {
             return "Assets/Scenes/" + scene;
@@ -54,7 +57,7 @@ namespace ET.Client
         
         public static string GetInfoPath(string sa)
         {
-            return "Assets/Bundles/Info/Prefabs/"+sa;
+            return $"Assets/Bundles/Info/Prefabs/{sa}.prefab";
         }
     }
 }

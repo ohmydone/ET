@@ -48,7 +48,6 @@
      <None Include="Assets\Standard Assets\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
      <Folder Include="Assets\Plugins\Sirenix\Odin Inspector\Assets\Editor" />
      <Folder Include="Assets\Standard Assets\Demigiant\DemiLib\Core\Editor" />
-     <Folder Include="Assets\Standard Assets\Skills\Editor" />
      <Folder Include="Assets\Plugins\Sirenix\Odin Validator\Editor" />
      <Folder Include="Assets\Plugins\Sirenix\Odin Inspector\Config\Editor" />
      <Folder Include="Assets\Standard Assets\Demigiant\DemiLib\Core\Editor\Imgs" />

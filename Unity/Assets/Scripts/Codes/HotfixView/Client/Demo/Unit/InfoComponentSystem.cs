@@ -18,7 +18,7 @@ namespace ET
     {
         protected override void Destroy(InfoComponent self)
         {
-            //GameObjectPoolComponent.Instance?.RecycleGameObject(self.obj.gameObject);
+            GameObjectPoolComponent.Instance?.RecycleGameObject(self.obj.gameObject);
             self.obj = null;
         }
     }
@@ -38,8 +38,7 @@ namespace ET
         public static async ETTask Awake(this InfoComponent self)
         {
             Unit parent = self.GetParent<Unit>();
-            var obj = await GameObjectPoolComponent.Instance.GetGameObjectAsync(ResPathHelper.GetInfoPath("Info"));
-            obj = GameObject.Instantiate(obj);
+            var obj = await GameObjectPoolComponent.Instance.GetGameObjectAsync(ResPathHelper.GetInfoPath("Info")); 
             self.obj = obj.transform as RectTransform;
             self.obj.parent = GlobalComponent.Instance.PopUpRoot.transform;
             self.obj.localScale = Vector3.one;
