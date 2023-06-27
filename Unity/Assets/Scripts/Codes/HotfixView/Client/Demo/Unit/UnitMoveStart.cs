@@ -8,20 +8,28 @@ namespace ET.Client
         protected override async ETTask Run(Scene scene, EventType.MoveStart args)
         {
             Unit unit = args.Unit;
-            unit= scene.GetComponent<UnitComponent>().Get(unit.Id);
-            unit.GetComponent<AnimationComponent>().Play(AnimClipType.Run);
+            unit = scene.GetComponent<UnitComponent>().Get(unit.Id);
+            if (unit.GetComponent<AnimationComponent>() != null)
+            {
+                unit.GetComponent<AnimationComponent>().Play(AnimClipType.Run);
+            }
+
             await ETTask.CompletedTask;
         }
     }
-    
+
     [Event(SceneType.Current)]
     public class UnitMoveStop: AEvent<Scene, EventType.MoveStop>
     {
         protected override async ETTask Run(Scene scene, EventType.MoveStop args)
         {
             Unit unit = args.Unit;
-            unit= scene.GetComponent<UnitComponent>().Get(unit.Id);
-            unit.GetComponent<AnimationComponent>().Play(AnimClipType.Idle);
+            unit = scene.GetComponent<UnitComponent>().Get(unit.Id);
+            if (unit.GetComponent<AnimationComponent>() != null)
+            {
+                unit.GetComponent<AnimationComponent>().Play(AnimClipType.Idle);
+            }
+
             await ETTask.CompletedTask;
         }
     }
