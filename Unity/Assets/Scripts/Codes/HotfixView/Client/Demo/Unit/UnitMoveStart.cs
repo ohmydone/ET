@@ -8,6 +8,7 @@ namespace ET.Client
         protected override async ETTask Run(Scene scene, EventType.MoveStart args)
         {
             Unit unit = args.Unit;
+            unit= scene.GetComponent<UnitComponent>().Get(unit.Id);
             unit.GetComponent<AnimationComponent>().Play(AnimClipType.Run);
             await ETTask.CompletedTask;
         }
@@ -19,6 +20,7 @@ namespace ET.Client
         protected override async ETTask Run(Scene scene, EventType.MoveStop args)
         {
             Unit unit = args.Unit;
+            unit= scene.GetComponent<UnitComponent>().Get(unit.Id);
             unit.GetComponent<AnimationComponent>().Play(AnimClipType.Idle);
             await ETTask.CompletedTask;
         }

@@ -10,7 +10,7 @@ namespace ET
         {
             SkillStepComponent.Instance = self;
             self.Params = DictionaryComponent<int, List<object[]>>.Create();
-            self.StepType = DictionaryComponent<int, List<int>>.Create();
+            self.StepType = DictionaryComponent<int, List<SkillStepType>>.Create();
             self.TimeLine = DictionaryComponent<int, List<int>>.Create();
         }
     }
@@ -36,23 +36,9 @@ namespace ET
             {
                 List<int> timeline = self.TimeLine[configId] = new List<int>();
                 SkillStepConfig config = SkillStepConfigCategory.Instance.Get(configId);
-                var type = config.GetType();
-                for (int i = 0; i < config.ParaCount; i++)
+                for(int i = 0; i < config.SkillStepDatas.Count; i++)
                 {
-                    object timelineItem = null;
-                    try
-                    {
-                        var triggerTime = type.GetProperty("TriggerTime" + i);
-                        timelineItem = triggerTime.GetValue(config);
-                        if(timelineItem!=null)
-                            timeline.Add((int)timelineItem);
-                        else
-                            timeline.Add(0);
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error(configId+" Load Fail! at "+i+" values:"+timelineItem+"\r\n"+ex);
-                    }
+                    timeline.Add(config.SkillStepDatas[i].TriggerTime);
                 }
                 return timeline;
             }
@@ -62,31 +48,16 @@ namespace ET
             }
         }
         
-        public static List<int> GetSkillStepType(this SkillStepComponent self,int configId)
+        public static List<SkillStepType> GetSkillStepType(this SkillStepComponent self,int configId)
         {
             if (!self.StepType.ContainsKey(configId))
             {
-                var steptype = self.StepType[configId] = new List<int>();
+                var steptype = self.StepType[configId] = new List<SkillStepType>();
                 SkillStepConfig config = SkillStepConfigCategory.Instance.Get(configId);
-                var type = config.GetType();
-                for (int i = 0; i < config.ParaCount; i++)
+                for(int i = 0; i < config.SkillStepDatas.Count; i++)
                 {
-                    object steptypeItem = null;
-                    try
-                    {
-                        var stepStyle = type.GetProperty("StepStyle" + i);
-                        steptypeItem = stepStyle.GetValue(config);
-                        if(steptypeItem!=null)
-                            steptype.Add((int)steptypeItem);
-                        else
-                            steptype.Add(0);
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error(configId+" Load Fail! at "+i+" values:"+" "+steptypeItem+"\r\n"+ex);
-                    }
+                    steptype.Add(config.SkillStepDatas[i].StepStyle);
                 }
-
                 return steptype;
             }
             else
@@ -101,33 +72,18 @@ namespace ET
             {
                 var paras = self.Params[configId] = new List<object[]>();
                 SkillStepConfig config = SkillStepConfigCategory.Instance.Get(configId);
-                var type = config.GetType();
-                for (int i = 0; i < config.ParaCount; i++)
+                for(int i = 0; i < config.SkillStepDatas.Count; i++)
                 {
-                    object stepParameterItem = null;
-                    try
+                    var list = (string[]) config.SkillStepDatas[i].StepParameter;
+                    
+                    object[] temp=new object[config.SkillStepDatas[i].StepParameter.Length];
+                    for (int j = 0; j < config.SkillStepDatas[i].StepParameter.Length; j++)
                     {
-                        var stepParameter = type.GetProperty("StepParameter" + i);
-                        stepParameterItem = stepParameter.GetValue(config);
-                        if (stepParameterItem != null)
-                        {
-                            var list = (string[]) stepParameterItem;
-                            object[] temp = new object[list.Length];
-                            for (int j = 0; j < temp.Length; j++)
-                            {
-                                temp[j] = list[j];
-                            }
-                            paras.Add(temp);
-                        }
-                        else
-                            paras.Add(new object[0]);
+                        temp[j] = config.SkillStepDatas[i].StepParameter[j];
                     }
-                    catch (Exception ex)
-                    {
-                        Log.Error(configId+" Load Fail! at "+i+" values:"+stepParameterItem+"\r\n"+ex);
-                    }
+                    
+                    paras.Add(temp);
                 }
-
                 return paras;
             }
             else

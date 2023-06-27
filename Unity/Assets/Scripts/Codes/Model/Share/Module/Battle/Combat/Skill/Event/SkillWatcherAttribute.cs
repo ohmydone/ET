@@ -2,9 +2,9 @@
 {
     public class SkillWatcherAttribute : BaseAttribute
     {
-        public int SkillStepType { get; }
+        public SkillStepType SkillStepType { get; }
 
-        public SkillWatcherAttribute(int type)
+        public SkillWatcherAttribute(SkillStepType type)
         {
             this.SkillStepType = type;
         }

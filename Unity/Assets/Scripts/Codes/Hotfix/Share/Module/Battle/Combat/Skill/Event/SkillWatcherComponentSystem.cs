@@ -27,7 +27,7 @@ namespace ET
 
         private static void Init(this SkillWatcherComponent self)
         {
-            self.allWatchers = new Dictionary<int, List<ISkillWatcher>>();
+            self.allWatchers = new Dictionary<SkillStepType, List<ISkillWatcher>>();
 
             var types = EventSystem.Instance.GetTypes(TypeInfo<SkillWatcherAttribute>.Type);
             foreach (Type type in types)
@@ -47,7 +47,7 @@ namespace ET
             }
         }
 
-        public static void Run(this SkillWatcherComponent self, int type,SkillPara para)
+        public static void Run(this SkillWatcherComponent self, SkillStepType type,SkillPara para)
         {
             List<ISkillWatcher> list;
             if (!self.allWatchers.TryGetValue(type, out list))

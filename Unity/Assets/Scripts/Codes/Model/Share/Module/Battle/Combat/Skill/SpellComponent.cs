@@ -19,6 +19,6 @@ namespace ET
 
         public bool Enable { get; set; } = true;
 
-        public int WaitStep = SkillStepType.None;//等待的步骤
+        public SkillStepType WaitStep = SkillStepType.None;//等待的步骤
     }
 }

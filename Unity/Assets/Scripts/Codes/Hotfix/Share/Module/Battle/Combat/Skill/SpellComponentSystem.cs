@@ -259,7 +259,7 @@ namespace ET
         /// </summary>
         /// <param name="self"></param>
         /// <param name="stepType"></param>
-        public static void WaitStep(this SpellComponent self,int stepType)
+        public static void WaitStep(this SpellComponent self,SkillStepType stepType)
         {
             if(self.CurSkillConfigId==0||self.WaitStep == stepType) return;
             var index = self.NextSkillStep;
@@ -274,7 +274,7 @@ namespace ET
         /// </summary>
         /// <param name="self"></param>
         /// <param name="stepType"></param>
-        public static void WaitStepOver(this SpellComponent self,int stepType)
+        public static void WaitStepOver(this SpellComponent self,SkillStepType stepType)
         {
             if (self.WaitStep == stepType)
             {

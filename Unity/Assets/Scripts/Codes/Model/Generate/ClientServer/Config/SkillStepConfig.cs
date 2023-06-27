@@ -20,24 +20,7 @@ public sealed partial class SkillStepConfig: Bright.Config.BeanBase
         SkillId = _buf.ReadInt();
         Group = _buf.ReadString();
         ParaCount = _buf.ReadInt();
-        TriggerTime0 = _buf.ReadInt();
-        StepStyle0 = _buf.ReadInt();
-        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter0 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter0[__index0] = __e0;}}
-        TriggerTime1 = _buf.ReadInt();
-        StepStyle1 = _buf.ReadInt();
-        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter1 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter1[__index0] = __e0;}}
-        TriggerTime2 = _buf.ReadInt();
-        StepStyle2 = _buf.ReadInt();
-        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter2 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter2[__index0] = __e0;}}
-        TriggerTime3 = _buf.ReadInt();
-        StepStyle3 = _buf.ReadInt();
-        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter3 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter3[__index0] = __e0;}}
-        TriggerTime4 = _buf.ReadInt();
-        StepStyle4 = _buf.ReadInt();
-        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter4 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter4[__index0] = __e0;}}
-        TriggerTime5 = _buf.ReadInt();
-        StepStyle5 = _buf.ReadInt();
-        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);StepParameter5 = new string[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { string __e0;__e0 = _buf.ReadString(); StepParameter5[__index0] = __e0;}}
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SkillStepDatas = new System.Collections.Generic.List<SkillStepData>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { SkillStepData _e0;  _e0 = SkillStepData.DeserializeSkillStepData(_buf); SkillStepDatas.Add(_e0);}}
         PostInit();
     }
 
@@ -62,89 +45,20 @@ public sealed partial class SkillStepConfig: Bright.Config.BeanBase
     /// 参数数量
     /// </summary>
     public int ParaCount { get; private set; }
-    /// <summary>
-    /// 时间节点0
-    /// </summary>
-    public int TriggerTime0 { get; private set; }
-    /// <summary>
-    /// 步骤类型0
-    /// </summary>
-    public int StepStyle0 { get; private set; }
-    /// <summary>
-    /// 步骤参数0
-    /// </summary>
-    public string[] StepParameter0 { get; private set; }
-    /// <summary>
-    /// 时间节点1
-    /// </summary>
-    public int TriggerTime1 { get; private set; }
-    /// <summary>
-    /// 步骤类型1
-    /// </summary>
-    public int StepStyle1 { get; private set; }
-    /// <summary>
-    /// 步骤参数1
-    /// </summary>
-    public string[] StepParameter1 { get; private set; }
-    /// <summary>
-    /// 时间节点2
-    /// </summary>
-    public int TriggerTime2 { get; private set; }
-    /// <summary>
-    /// 步骤类型2
-    /// </summary>
-    public int StepStyle2 { get; private set; }
-    /// <summary>
-    /// 步骤参数2
-    /// </summary>
-    public string[] StepParameter2 { get; private set; }
-    /// <summary>
-    /// 时间节点3
-    /// </summary>
-    public int TriggerTime3 { get; private set; }
-    /// <summary>
-    /// 步骤类型3
-    /// </summary>
-    public int StepStyle3 { get; private set; }
-    /// <summary>
-    /// 步骤参数3
-    /// </summary>
-    public string[] StepParameter3 { get; private set; }
-    /// <summary>
-    /// 时间节点4
-    /// </summary>
-    public int TriggerTime4 { get; private set; }
-    /// <summary>
-    /// 步骤类型4
-    /// </summary>
-    public int StepStyle4 { get; private set; }
-    /// <summary>
-    /// 步骤参数4
-    /// </summary>
-    public string[] StepParameter4 { get; private set; }
-    /// <summary>
-    /// 时间节点5
-    /// </summary>
-    public int TriggerTime5 { get; private set; }
-    /// <summary>
-    /// 步骤类型5
-    /// </summary>
-    public int StepStyle5 { get; private set; }
-    /// <summary>
-    /// 步骤参数5
-    /// </summary>
-    public string[] StepParameter5 { get; private set; }
+    public System.Collections.Generic.List<SkillStepData> SkillStepDatas { get; private set; }
 
     public const int __ID__ = 1762171455;
     public override int GetTypeId() => __ID__;
 
     public  void Resolve(Dictionary<string, IConfigSingleton> _tables)
     {
+        foreach(var _e in SkillStepDatas) { _e?.Resolve(_tables); }
         PostResolve();
     }
 
     public  void TranslateText(System.Func<string, string, string> translator)
     {
+        foreach(var _e in SkillStepDatas) { _e?.TranslateText(translator); }
     }
 
     public override string ToString()
@@ -154,24 +68,7 @@ public sealed partial class SkillStepConfig: Bright.Config.BeanBase
         + "SkillId:" + SkillId + ","
         + "Group:" + Group + ","
         + "ParaCount:" + ParaCount + ","
-        + "TriggerTime0:" + TriggerTime0 + ","
-        + "StepStyle0:" + StepStyle0 + ","
-        + "StepParameter0:" + Bright.Common.StringUtil.CollectionToString(StepParameter0) + ","
-        + "TriggerTime1:" + TriggerTime1 + ","
-        + "StepStyle1:" + StepStyle1 + ","
-        + "StepParameter1:" + Bright.Common.StringUtil.CollectionToString(StepParameter1) + ","
-        + "TriggerTime2:" + TriggerTime2 + ","
-        + "StepStyle2:" + StepStyle2 + ","
-        + "StepParameter2:" + Bright.Common.StringUtil.CollectionToString(StepParameter2) + ","
-        + "TriggerTime3:" + TriggerTime3 + ","
-        + "StepStyle3:" + StepStyle3 + ","
-        + "StepParameter3:" + Bright.Common.StringUtil.CollectionToString(StepParameter3) + ","
-        + "TriggerTime4:" + TriggerTime4 + ","
-        + "StepStyle4:" + StepStyle4 + ","
-        + "StepParameter4:" + Bright.Common.StringUtil.CollectionToString(StepParameter4) + ","
-        + "TriggerTime5:" + TriggerTime5 + ","
-        + "StepStyle5:" + StepStyle5 + ","
-        + "StepParameter5:" + Bright.Common.StringUtil.CollectionToString(StepParameter5) + ","
+        + "SkillStepDatas:" + Bright.Common.StringUtil.CollectionToString(SkillStepDatas) + ","
         + "}";
     }
     

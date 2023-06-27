@@ -12,7 +12,7 @@ namespace ET
     {
         public static SkillWatcherComponent Instance { get; set; }
 		
-        public Dictionary<int, List<ISkillWatcher>> allWatchers;
+        public Dictionary<SkillStepType, List<ISkillWatcher>> allWatchers;
         
     }
 }

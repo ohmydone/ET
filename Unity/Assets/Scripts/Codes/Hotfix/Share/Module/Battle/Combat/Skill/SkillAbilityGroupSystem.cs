@@ -19,7 +19,7 @@ namespace ET
             return SkillStepComponent.Instance.GetSkillStepTimeLine(self.ConfigId);
         }
         
-        public static List<int> GetStepType(this SkillAbilityGroup self)
+        public static List<SkillStepType> GetStepType(this SkillAbilityGroup self)
         {
             return SkillStepComponent.Instance.GetSkillStepType(self.ConfigId);
         }
