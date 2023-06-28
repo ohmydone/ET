@@ -18,7 +18,7 @@ public sealed partial class SkillJudgeConfig: Bright.Config.BeanBase
     {
         Id = _buf.ReadInt();
         ColliderType = (ColliderType)_buf.ReadInt();
-        StartPosType = _buf.ReadInt();
+        StartPosType = (StartPosType)_buf.ReadInt();
         Time = _buf.ReadInt();
         ColliderShape = (ColliderShape)_buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);ColliderPara = new System.Collections.Generic.List<float>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { float _e0;  _e0 = _buf.ReadFloat(); ColliderPara.Add(_e0);}}
@@ -42,7 +42,7 @@ public sealed partial class SkillJudgeConfig: Bright.Config.BeanBase
     /// <summary>
     /// 起始位置（1自身，2目标，3鼠标位置）
     /// </summary>
-    public int StartPosType { get; private set; }
+    public StartPosType StartPosType { get; private set; }
     /// <summary>
     /// 碰撞体持续时间（单位:毫秒）
     /// </summary>
