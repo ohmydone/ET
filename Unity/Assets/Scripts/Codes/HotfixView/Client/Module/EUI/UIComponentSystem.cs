@@ -20,6 +20,7 @@ namespace ET
     {
         protected override void Destroy(UIComponent self)
         {
+            InputWatcherComponent.Instance.RemoveInputEntity(self);
             self.Destroy();
         }
     }
@@ -42,6 +43,8 @@ namespace ET
             var flagx = (float)Define.DesignScreen_Width / (Screen.width > Screen.height ? Screen.width : Screen.height);
             var flagy = (float)Define.DesignScreen_Height / (Screen.width > Screen.height ? Screen.height : Screen.width);
             self.ScreenSizeflag = flagx > flagy ? flagx : flagy;
+            
+            InputWatcherComponent.Instance.RegisterInputEntity(self);
         }
         
         /// <summary>

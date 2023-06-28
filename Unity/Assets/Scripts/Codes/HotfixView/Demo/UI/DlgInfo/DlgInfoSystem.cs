@@ -6,6 +6,22 @@ using UnityEngine.UI;
 
 namespace ET.Client
 {
+	[InputSystem((int)KeyCode.Tab,InputType.KeyDown)]
+	public class KeyDown_Tab : InputSystem<UIComponent>
+	{
+		public override void Run(UIComponent self, int key, int type, ref bool stop)
+		{
+			if (self.IsWindowVisible(WindowID.WindowID_Info))
+			{
+				self.HideWindow<DlgInfo>();
+			}
+			else
+			{
+				self.ShowWindow<DlgInfo>();
+			}
+		}
+	}
+	
 	[FriendOf(typeof(DlgInfo))]
 	public static  class DlgInfoSystem
 	{

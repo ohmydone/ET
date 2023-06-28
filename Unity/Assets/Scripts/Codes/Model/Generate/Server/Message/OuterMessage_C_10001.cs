@@ -662,6 +662,34 @@ namespace ET
 
 	}
 
+	[ResponseType(nameof(M2C_GM))]
+	[Message(OuterMessage.C2M_GM)]
+	[ProtoContract]
+	public partial class C2M_GM: ProtoObject, IRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public string GM { get; set; }
+
+	}
+
+	[Message(OuterMessage.M2C_GM)]
+	[ProtoContract]
+	public partial class M2C_GM: ProtoObject, IResponse
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int Error { get; set; }
+
+		[ProtoMember(3)]
+		public string Message { get; set; }
+
+	}
+
 	public static class OuterMessage
 	{
 		 public const ushort HttpGetRouterResponse = 10002;
@@ -707,5 +735,7 @@ namespace ET
 		 public const ushort M2C_ChangeSkillGroup = 10042;
 		 public const ushort M2C_RemoveBuff = 10043;
 		 public const ushort M2C_Interrupt = 10044;
+		 public const ushort C2M_GM = 10045;
+		 public const ushort M2C_GM = 10046;
 	}
 }

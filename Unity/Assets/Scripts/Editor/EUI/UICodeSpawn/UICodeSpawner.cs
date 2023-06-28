@@ -322,7 +322,7 @@ public partial class UICodeSpawner
         strBuilder.AppendLine()
 	        .AppendLine("using UnityEngine;");
         strBuilder.AppendLine("using UnityEngine.UI;");
-        strBuilder.AppendLine("namespace ET");
+        strBuilder.AppendLine("namespace ET.Client");
         strBuilder.AppendLine("{");
         strBuilder.AppendLine("\t[ObjectSystem]");
         strBuilder.AppendFormat("\tpublic class {0}AwakeSystem : AwakeSystem<{1}> \r\n", strDlgComponentName, strDlgComponentName);

@@ -17,10 +17,10 @@ public sealed partial class SkillJudgeConfig: Bright.Config.BeanBase
     public SkillJudgeConfig(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
-        ColliderType = _buf.ReadInt();
+        ColliderType = (ColliderType)_buf.ReadInt();
         StartPosType = _buf.ReadInt();
         Time = _buf.ReadInt();
-        ColliderShape = _buf.ReadInt();
+        ColliderShape = (ColliderShape)_buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);ColliderPara = new System.Collections.Generic.List<float>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { float _e0;  _e0 = _buf.ReadFloat(); ColliderPara.Add(_e0);}}
         Speed = _buf.ReadFloat();
         PostInit();
@@ -38,7 +38,7 @@ public sealed partial class SkillJudgeConfig: Bright.Config.BeanBase
     /// <summary>
     /// 碰撞体类型类型(0固定位置碰撞体1固定朝向碰撞体2指定位置飞行碰撞体3朝向飞行碰撞体（锁定）4目标立刻结算)
     /// </summary>
-    public int ColliderType { get; private set; }
+    public ColliderType ColliderType { get; private set; }
     /// <summary>
     /// 起始位置（1自身，2目标，3鼠标位置）
     /// </summary>
@@ -50,7 +50,7 @@ public sealed partial class SkillJudgeConfig: Bright.Config.BeanBase
     /// <summary>
     /// 碰撞体形状(0.立即判断;1.矩形;2.圆形；3.扇形)
     /// </summary>
-    public int ColliderShape { get; private set; }
+    public ColliderShape ColliderShape { get; private set; }
     /// <summary>
     /// 碰撞体形状参数(m)
     /// </summary>

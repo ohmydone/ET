@@ -14,7 +14,7 @@ namespace ET.Client
     
     [ComponentOf(typeof(Scene))]
     [ChildOf(typeof(UIBaseWindow))]
-    public class UIComponent : Entity,IAwake,IDestroy
+    public class UIComponent : Entity,IAwake,IDestroy,IInput
     {
         [StaticField]
         public static UIComponent Instance;

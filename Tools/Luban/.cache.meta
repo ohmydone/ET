@@ -135,7 +135,7 @@ D:/project/Magic/Config/Json/s/StartConfig/Localhost/startprocessconfigcategory.
 D:/project/Magic/Config/Json/s/StartConfig/Localhost/startsceneconfigcategory.json,ED75B9B73CCE79779ACA8976C6FFA487,1627,1684723505376
 D:/project/Magic/Config/Json/s/StartConfig/Localhost/startzoneconfigcategory.json,E4B983FA8E2ACDDFFD4FB5614DD4877,310,1684723505377
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/__beans__.xlsx,44236322C18E75BB4C44A81D05C35,10460,1687854354400
-D:/project/Magic/Unity/Assets/Config/Excel/Datas/__enums__.xlsx,859AC5CB8B2A1F788B8655E1FAA0804E,11892,1687854359353
+D:/project/Magic/Unity/Assets/Config/Excel/Datas/__enums__.xlsx,CA76AE42CCDE78E26769389CE6FBCCF3,12525,1687946666358
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/__tables__.xlsx,F2F876331DC1EBBCB85BA61388FE778,11185,1686734058245
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/AIConfig.xlsx,57C6517AA7FBD1AB557C82FB8957C130,10754,1676530553413
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/Battle/AttributeConfig.xlsx,DB64D9CCCEFB7813ADAD73B4CE3BA,10653,1686117744005
@@ -147,7 +147,7 @@ D:/project/Magic/Unity/Assets/Config/Excel/Datas/Battle/BuffConfig.xlsx,E150EBF4
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/Battle/EffectConfig.xlsx,9F4FB2785D7A829983CB409068512259,12172,1686121219867
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/Battle/FormulaConfig.xlsx,E0F7595FD4F1F17727961709990FD1F,11485,1686121604410
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/Battle/SkillConfig.xlsx,C8D13518540CD9DFE4739337BD1932,11089,1687255874483
-D:/project/Magic/Unity/Assets/Config/Excel/Datas/Battle/SkillJudgeConfig.xlsx,524AD7DBB61F2AF64F1E2E2371F0D96B,10978,1686121408912
+D:/project/Magic/Unity/Assets/Config/Excel/Datas/Battle/SkillJudgeConfig.xlsx,30E75CF415FA1D3BB8CA1633AFC9BB,11116,1687946693563
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/Battle/SkillStepConfig.xlsx,23E8A7309CECE7AD2B39D5788A47AE1E,12921,1687855193297
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/EquipmentConfig.xlsx,C01DB44994CEB5DCA2DE58B2A389C8,10804,1685944902465
 D:/project/Magic/Unity/Assets/Config/Excel/Datas/LocalizeConfig_Excel.csv,C47C5A8F45E59433B35C587A6639FD5,322,1684480326756
@@ -176,6 +176,8 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/BuffCha
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/BuffChantConfigCategory.cs,26473DB385A7CEF26F89F4228DA235,2248,1686121684488
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/BuffConfig.cs,9EA65193375C33A664C63DDCD576463,3076,1686121684488
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/BuffConfigCategory.cs,EE8E01D8DC084637CEFAE5E0BFBF11,2168,1686121684490
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/ColliderShape.cs,659CF7956CD3F396C8AC979D3C36182D,662,1687946011163
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/ColliderType.cs,450D949F5A43FDA288D12302A6E1F3,929,1687946011163
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/EffectConfig.cs,95B8BB27C270F97DC3921B5F8F534058,3032,1686121684495
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/EffectConfigCategory.cs,3E29C6CDC1A7B6B2F340896CAFB534,2200,1686121684465
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/FormulaConfig.cs,73EC5EC4821D4F48D05494C95A1A469A,1594,1686121684489
@@ -193,7 +195,7 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/MapScen
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/MapSceneConfigCategory.cs,3CC960CCAA5E5139E6FDAA2199DEAEE,2232,1686734070814
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SkillConfig.cs,BED8CF12B152370145FAD559CA4672D,3946,1686727901545
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SkillConfigCategory.cs,50C2D48AAF4268C65DD8A62E42F2E5E8,2184,1685944954332
-D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SkillJudgeConfig.cs,6C7F110A9358CA6AE2E63D73D9282,2941,1686121684464
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SkillJudgeConfig.cs,8F723C6EF68B7D8BD6D1FC611C825752,2989,1687946699950
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SkillJudgeConfigCategory.cs,86723C5056EC734294E0C341E5D76D94,2264,1686121684469
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SkillStepConfig.cs,EB4B6DAF2F87F9B27B7EC55DB66090B3,2418,1687846786486
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Client/Config/SkillStepConfigCategory.cs,91122D3B9C41BFCD3F16873913753B,2248,1686121684464
@@ -216,6 +218,8 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/B
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/BuffChantConfigCategory.cs,26473DB385A7CEF26F89F4228DA235,2248,1686121691978
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/BuffConfig.cs,9EA65193375C33A664C63DDCD576463,3076,1686121691949
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/BuffConfigCategory.cs,EE8E01D8DC084637CEFAE5E0BFBF11,2168,1686121691949
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/ColliderShape.cs,659CF7956CD3F396C8AC979D3C36182D,662,1687946018425
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/ColliderType.cs,450D949F5A43FDA288D12302A6E1F3,929,1687946018425
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/EffectConfig.cs,95B8BB27C270F97DC3921B5F8F534058,3032,1686121691949
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/EffectConfigCategory.cs,3E29C6CDC1A7B6B2F340896CAFB534,2200,1686121691949
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/FormulaConfig.cs,73EC5EC4821D4F48D05494C95A1A469A,1594,1686121691949
@@ -233,7 +237,7 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/M
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/MapSceneConfigCategory.cs,3CC960CCAA5E5139E6FDAA2199DEAEE,2232,1686734078445
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/SkillConfig.cs,BED8CF12B152370145FAD559CA4672D,3946,1686727908730
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/SkillConfigCategory.cs,50C2D48AAF4268C65DD8A62E42F2E5E8,2184,1685944961574
-D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/SkillJudgeConfig.cs,6C7F110A9358CA6AE2E63D73D9282,2941,1686121691978
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/SkillJudgeConfig.cs,8F723C6EF68B7D8BD6D1FC611C825752,2989,1687946707015
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/SkillJudgeConfigCategory.cs,86723C5056EC734294E0C341E5D76D94,2264,1686121691978
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/SkillStepConfig.cs,EB4B6DAF2F87F9B27B7EC55DB66090B3,2418,1687846793594
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/ClientServer/Config/SkillStepConfigCategory.cs,91122D3B9C41BFCD3F16873913753B,2248,1686121691978
@@ -263,6 +267,8 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/BuffCha
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/BuffChantConfigCategory.cs,26473DB385A7CEF26F89F4228DA235,2248,1686121687877
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/BuffConfig.cs,9EA65193375C33A664C63DDCD576463,3076,1686121687871
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/BuffConfigCategory.cs,EE8E01D8DC084637CEFAE5E0BFBF11,2168,1686121687853
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/ColliderShape.cs,659CF7956CD3F396C8AC979D3C36182D,662,1687946014481
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/ColliderType.cs,450D949F5A43FDA288D12302A6E1F3,929,1687946014481
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/EffectConfig.cs,95B8BB27C270F97DC3921B5F8F534058,3032,1686121687874
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/EffectConfigCategory.cs,3E29C6CDC1A7B6B2F340896CAFB534,2200,1686121687877
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/FormulaConfig.cs,73EC5EC4821D4F48D05494C95A1A469A,1594,1686121687875
@@ -271,7 +277,7 @@ D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/MapScen
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/MapSceneConfigCategory.cs,3CC960CCAA5E5139E6FDAA2199DEAEE,2232,1686734074351
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/SkillConfig.cs,BED8CF12B152370145FAD559CA4672D,3946,1686727904722
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/SkillConfigCategory.cs,50C2D48AAF4268C65DD8A62E42F2E5E8,2184,1685944957619
-D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/SkillJudgeConfig.cs,6C7F110A9358CA6AE2E63D73D9282,2941,1686121687854
+D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/SkillJudgeConfig.cs,8F723C6EF68B7D8BD6D1FC611C825752,2989,1687946703101
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/SkillJudgeConfigCategory.cs,86723C5056EC734294E0C341E5D76D94,2264,1686121687875
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/SkillStepConfig.cs,EB4B6DAF2F87F9B27B7EC55DB66090B3,2418,1687846789663
 D:/project/Magic/Unity/Assets/Scripts/Codes/Model/Generate/Server/Config/SkillStepConfigCategory.cs,91122D3B9C41BFCD3F16873913753B,2248,1686121687877
