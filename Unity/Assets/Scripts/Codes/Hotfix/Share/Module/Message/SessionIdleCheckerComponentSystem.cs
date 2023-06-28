@@ -38,7 +38,7 @@ namespace ET
 
     public static class SessionIdleCheckerComponentSystem
     {
-        public const int CheckInteral = 2000;
+        public const int CheckInteral = 10000;
         
         public static void Check(this SessionIdleCheckerComponent self)
         {
