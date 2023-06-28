@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ET.Server;
 using Unity.Mathematics;
 
 namespace ET
@@ -43,6 +44,11 @@ namespace ET
             public string OperaId;
         }
 
+        public struct DOGM
+        {
+            public string Gm;
+        }
+        
         #region Move
         public struct MoveStart
         {
@@ -146,6 +152,26 @@ namespace ET
             public List<int> Cost;
             public SkillConfig Config;
         }
+        
+        public struct OnSelectTarget
+        {
+            public Unit Unit;
+        } 
+        public struct OnPointSelect
+        {
+            public float3 pos;
+        } 
+    
+        public struct OnCircularSelect
+        {
+            public float3 pos;
+        } 
+    
+    
+        public struct OnDirectRectSelect
+        {
+            public float3 pos;
+        }
         #endregion
         
         #region AOI
@@ -167,6 +193,19 @@ namespace ET
             public AOICell NewCell;
             public AOICell OldCell;
         }
+        
+        public struct UnitEnterSightRange
+        {
+            public AOIEntity A;
+            public AOIEntity B;
+        }
+
+        public struct UnitLeaveSightRange
+        {
+            public AOIEntity A;
+            public AOIEntity B;
+        }
+        
         #endregion
     }
 }

@@ -34,7 +34,7 @@
                         DamageValue = damageValue, 
                         RealValue = realValue,
                         NowBaseValue = nowBaseValue,
-                        Ghost = ghost,
+                        //Ghost = ghost,
                     });
                 }
             }
@@ -42,8 +42,5 @@
             buffF?.AfterDamage(fU, tU, info);
             info.Dispose();
         }
-        
-        
     }
-
 }

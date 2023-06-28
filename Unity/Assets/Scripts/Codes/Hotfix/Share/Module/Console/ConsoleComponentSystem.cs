@@ -15,8 +15,10 @@ namespace ET
             protected override void Awake(ConsoleComponent self)
             {
                 self.Load();
-            
+#if DOTNET
                 self.Start().Coroutine();
+#endif
+                
             }
         }
 
@@ -55,6 +57,26 @@ namespace ET
                 self.Handlers.Add(consoleHandlerAttribute.Mode, iConsoleHandler);
             }
         }
+
+        public static async ETTask RunGM(this ConsoleComponent self,string gm)
+        {
+            ModeContex modeContex = self.GetComponent<ModeContex>();
+            string[] lines = gm.Split(" ");
+            string mode = modeContex == null? lines[0] : modeContex.Mode;
+
+            if (!self.Handlers.TryGetValue(mode, out IConsoleHandler iConsoleHandler))
+            {
+                Log.Console($"not found command: {gm}");
+                return;
+            }
+
+            if (modeContex == null)
+            {
+                modeContex = self.AddComponent<ModeContex>();
+                modeContex.Mode = mode;
+            }
+            await iConsoleHandler.Run(modeContex, gm);
+        }
         
         public static async ETTask Start(this ConsoleComponent self)
         {
@@ -65,6 +87,7 @@ namespace ET
                 try
                 {
                     ModeContex modeContex = self.GetComponent<ModeContex>();
+                    
                     string line = await Task.Factory.StartNew(() =>
                     {
                         Console.Write($"{modeContex?.Mode ?? ""}> ");

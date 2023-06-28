@@ -47,7 +47,7 @@ namespace ET.Server
                     break;
             }
 
-            if (Options.Instance.Console == 1)
+            //if (Options.Instance.Console == 1)
             {
                 Root.Instance.Scene.AddComponent<ConsoleComponent>();
             }
