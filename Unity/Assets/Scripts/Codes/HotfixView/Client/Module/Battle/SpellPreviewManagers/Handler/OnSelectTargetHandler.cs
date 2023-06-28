@@ -9,6 +9,7 @@ namespace ET.Client
         {
             SpellPreviewComponent com = UnitComponent.Instance.My.GetComponent<CombatUnitComponent>().GetComponent<SpellPreviewComponent>();
             com.OnSelectedTarget(a.Unit);
+            await ETTask.CompletedTask;
         }
     }
 }

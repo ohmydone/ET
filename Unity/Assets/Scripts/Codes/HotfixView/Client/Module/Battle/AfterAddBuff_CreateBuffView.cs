@@ -18,6 +18,7 @@ namespace ET.Client
                     Unit = args.Buff.GetParent<BuffComponent>().unit
                 });
             }
+            await ETTask.CompletedTask;
         }
 
     }

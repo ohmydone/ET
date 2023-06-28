@@ -22,7 +22,9 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <ItemGroup>
-
+        <Compile Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Client\**\*.cs"> 
+            <Link>Client\%(RecursiveDir)%(FileName)%(Extension)</Link>
+        </Compile> 
         <Compile Include="..\..\Unity\Assets\Scripts\Codes\Hotfix\Server\**\*.cs">
             <Link>Server\%(RecursiveDir)%(FileName)%(Extension)</Link>
         </Compile>

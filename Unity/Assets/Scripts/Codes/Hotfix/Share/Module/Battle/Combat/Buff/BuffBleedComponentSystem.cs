@@ -18,7 +18,7 @@ namespace ET
     [ObjectSystem]
     public class BuffBleedComponentDestroySystem: DestroySystem<BuffBleedComponent>
     {
-        public override void Destroy(BuffBleedComponent self)
+        protected override void Destroy(BuffBleedComponent self)
         {
             self.TryBleed();
         }
@@ -27,7 +27,7 @@ namespace ET
     [ObjectSystem]
     public class BuffBleedComponentUpdateSystem: UpdateSystem<BuffBleedComponent>
     {
-        public override void Update(BuffBleedComponent self)
+        protected override void Update(BuffBleedComponent self)
         {
             self.TryBleed();
         }

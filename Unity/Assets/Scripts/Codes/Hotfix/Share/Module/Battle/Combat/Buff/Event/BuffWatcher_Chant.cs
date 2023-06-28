@@ -35,7 +35,7 @@ namespace ET
             if (buff.BuffChantConfig.MoveInterrupt == 1)
             {
                 var sc = target.GetComponent<CombatUnitComponent>()?.GetComponent<SpellComponent>();
-                if (sc != null&&sc.CanInterrupt() && Vector3.SqrMagnitude(target.Position-before)>0.01)
+                if (sc != null&&sc.CanInterrupt() && math.lengthsq(target.Position-before)>0.01)
                 {
                     var bc = target.GetComponent<CombatUnitComponent>()?.GetComponent<BuffComponent>();
                     bc.RemoveByOther(buff.Id);

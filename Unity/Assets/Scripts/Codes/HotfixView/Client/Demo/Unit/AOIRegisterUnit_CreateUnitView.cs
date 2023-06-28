@@ -23,6 +23,7 @@ namespace ET.Client
                 var unit = args.Units[i].GetParent<Unit>();
                 RunAsync(unit).Coroutine();
             }
+            await ETTask.CompletedTask;
         }
 
         public async ETTask RunAsync(Unit unit)

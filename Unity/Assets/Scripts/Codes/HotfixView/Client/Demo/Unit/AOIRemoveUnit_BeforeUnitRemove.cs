@@ -25,7 +25,7 @@
                 // unit.RemoveComponent<NumberComponent>();
                 unit.RemoveComponent<GameObjectComponent>();
             }
+            await ETTask.CompletedTask;
         }
-   
     }
 }

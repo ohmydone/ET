@@ -24,7 +24,9 @@
         <Optimize>true</Optimize>
     </PropertyGroup>
     <ItemGroup>
-
+        <Compile Include="..\..\Unity\Assets\Scripts\Codes\Model\Client\**\*.cs"> 
+            <Link>Client\%(RecursiveDir)%(FileName)%(Extension)</Link>
+        </Compile>
         <Compile Include="..\..\Unity\Assets\Scripts\Codes\Model\Server\**\*.cs"> 
             <Link>Server\%(RecursiveDir)%(FileName)%(Extension)</Link>
         </Compile>
