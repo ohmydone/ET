@@ -17,7 +17,6 @@ public sealed partial class AttributeConfig: Bright.Config.BeanBase
     public AttributeConfig(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
-        Remarks = _buf.ReadString();
         Key = _buf.ReadString();
         Name = _buf.ReadString();
         Type = _buf.ReadInt();
@@ -36,10 +35,6 @@ public sealed partial class AttributeConfig: Bright.Config.BeanBase
     /// Id
     /// </summary>
     public int Id { get; private set; }
-    /// <summary>
-    /// 策划备注(程序不读)
-    /// </summary>
-    public string Remarks { get; private set; }
     /// <summary>
     /// 索引
     /// </summary>
@@ -81,7 +76,6 @@ public sealed partial class AttributeConfig: Bright.Config.BeanBase
     {
         return "{ "
         + "Id:" + Id + ","
-        + "Remarks:" + Remarks + ","
         + "Key:" + Key + ","
         + "Name:" + Name + ","
         + "Type:" + Type + ","
