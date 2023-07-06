@@ -15,6 +15,9 @@ namespace ET
 
 	public static class Scroll_ItemSkilSystem
 	{
-		
+		public static void BindSkill(this Scroll_ItemSkil self,string skillName)
+		{
+			
+		}
 	}
 }

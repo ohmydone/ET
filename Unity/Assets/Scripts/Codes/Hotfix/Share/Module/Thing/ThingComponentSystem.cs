@@ -30,5 +30,21 @@ namespace ET
             }
             thing.Add(count);
         }
+        
+        public static void ThingConsume(this ThingComponent self, int configId,int count)
+        {
+            Thing thing = null;
+            if (self.IdThingMap.ContainsKey(configId))
+            {
+                thing= self.GetChild<Thing>(self.IdThingMap[configId]);
+            }
+            else
+            {
+                thing= self.AddChild<Thing,int>(configId);
+                self.IdThingMap.Add(configId, thing.Id);
+            }
+            thing.Add(count);
+        }
+        
     }
 }

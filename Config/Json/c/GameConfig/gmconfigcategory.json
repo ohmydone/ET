@@ -1,0 +1,60 @@
+[
+  {
+    "Id": 1,
+    "Name": "ReloadDll",
+    "Para": []
+  },
+  {
+    "Id": 2,
+    "Name": "ReloadConfig",
+    "Para": []
+  },
+  {
+    "Id": 3,
+    "Name": "ShowMemory",
+    "Para": []
+  },
+  {
+    "Id": 4,
+    "Name": "Repl",
+    "Para": []
+  },
+  {
+    "Id": 5,
+    "Name": "Debugger",
+    "Para": []
+  },
+  {
+    "Id": 6,
+    "Name": "CreateRobot",
+    "Para": []
+  },
+  {
+    "Id": 7,
+    "Name": "Robot",
+    "Para": []
+  },
+  {
+    "Id": 8,
+    "Name": "CreateMonster",
+    "Para": [
+      "数量"
+    ]
+  },
+  {
+    "Id": 9,
+    "Name": "AddItem",
+    "Para": [
+      "物品ID",
+      "物品数量"
+    ]
+  },
+  {
+    "Id": 10,
+    "Name": "MinusItem",
+    "Para": [
+      "物品ID",
+      "物品数量"
+    ]
+  }
+]

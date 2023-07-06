@@ -161,6 +161,9 @@
      <Reference Include="UnityEngine.SubstanceModule">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.SubstanceModule.dll</HintPath>
      </Reference>
+     <Reference Include="UnityEngine.SubsystemsModule">
+     <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.SubsystemsModule.dll</HintPath>
+     </Reference>
      <Reference Include="UnityEngine.TLSModule">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.TLSModule.dll</HintPath>
      </Reference>
@@ -233,6 +236,9 @@
      <Reference Include="UnityEngine.VFXModule">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.VFXModule.dll</HintPath>
      </Reference>
+     <Reference Include="UnityEngine.VRModule">
+     <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.VRModule.dll</HintPath>
+     </Reference>
      <Reference Include="UnityEngine.VehiclesModule">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.VehiclesModule.dll</HintPath>
      </Reference>
@@ -244,6 +250,9 @@
      </Reference>
      <Reference Include="UnityEngine.WindModule">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.WindModule.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.XRModule">
+     <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.XRModule.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
@@ -400,6 +409,39 @@
      </Reference>
      <Reference Include="MongoDB.Bson">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\MongoDB.Bson.dll</HintPath>
+     </Reference>
+     <Reference Include="log4netPlastic">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+     </Reference>
+     <Reference Include="ReportGeneratorMerged">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.testtools.codecoverage@1.2.2\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Plastic.Newtonsoft.Json">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Analytics.StandardEvents">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.analytics@3.6.12\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Analytics.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Plastic.Antlr3.Runtime">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Analytics.Tracker">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Tracker.dll</HintPath>
+     </Reference>
+     <Reference Include="Newtonsoft.Json">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="unityplastic">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+     </Reference>
+     <Reference Include="NSubstitute">
+     <HintPath>D:\project\Magic\Unity\Assets\SharpUI\Libs\NSubstitute\NSubstitute.dll</HintPath>
+     </Reference>
+     <Reference Include="Castle.Core">
+     <HintPath>D:\project\Magic\Unity\Assets\SharpUI\Libs\CastleCore\Castle.Core.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.18f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\mscorlib.dll</HintPath>

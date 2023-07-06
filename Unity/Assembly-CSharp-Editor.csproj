@@ -411,6 +411,39 @@
      <Reference Include="MongoDB.Bson">
      <HintPath>D:\project\Magic\Unity\Assets\Plugins\MongoDB\MongoDB.Bson.dll</HintPath>
      </Reference>
+     <Reference Include="log4netPlastic">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+     </Reference>
+     <Reference Include="ReportGeneratorMerged">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.testtools.codecoverage@1.2.2\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Plastic.Newtonsoft.Json">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Analytics.StandardEvents">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.analytics@3.6.12\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Analytics.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Plastic.Antlr3.Runtime">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Analytics.Tracker">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Tracker.dll</HintPath>
+     </Reference>
+     <Reference Include="Newtonsoft.Json">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="unityplastic">
+     <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+     </Reference>
+     <Reference Include="NSubstitute">
+     <HintPath>D:\project\Magic\Unity\Assets\SharpUI\Libs\NSubstitute\NSubstitute.dll</HintPath>
+     </Reference>
+     <Reference Include="Castle.Core">
+     <HintPath>D:\project\Magic\Unity\Assets\SharpUI\Libs\CastleCore\Castle.Core.dll</HintPath>
+     </Reference>
      <Reference Include="nunit.framework">
      <HintPath>D:\project\Magic\Unity\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
      </Reference>
@@ -891,6 +924,96 @@
      <Reference Include="Unity.RenderPipelines.Core.Editor">
      <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="UnityEngine.SpatialTracking">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.Purchasing.SecurityStub">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Recorder">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Tilemap.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Services.Core.Analytics">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.Purchasing.Codeless">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.Purchasing.Codeless.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.Purchasing">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.Advertisements">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.Advertisements.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Services.Core">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Analytics.DataPrivacy">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Analytics.DataPrivacy.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Services.Core.Environments">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.Purchasing.Stores">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.Purchasing.Stores.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Services.Analytics">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Services.Analytics.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Sprite.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.Purchasing">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEditor.Purchasing.dll</HintPath>
+     </Reference>
+     <Reference Include="Purchasing.Common">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Purchasing.Common.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.PlasticSCM.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Services.Analytics.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Services.Analytics.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.Advertisements.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.Advertisements.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Recorder.Base">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.Monetization">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.SpatialTracking">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.Purchasing.SecurityCore">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Recorder.Editor">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Analytics">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\Analytics.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+     <HintPath>D:\project\Magic\Unity\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
@@ -996,6 +1119,14 @@
     <ProjectReference Include="Unity.Editor.Codes.csproj">
       <Project>{89dd0821-4ae5-0ee7-65a0-445ef4c85913}</Project>
       <Name>Unity.Editor.Codes</Name>
+    </ProjectReference>
+    <ProjectReference Include="SharpUIScriptsAssembly.csproj">
+      <Project>{645d093b-afdb-b740-71fd-940c027419cd}</Project>
+      <Name>SharpUIScriptsAssembly</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{6f6f584c-082e-ba11-83d0-f0219dc72408}</Project>
+      <Name>UniRx</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

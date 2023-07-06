@@ -47,7 +47,7 @@ namespace ET
         public void Info(string message, params object[] args)
         {
             UnityEngine.Debug.LogFormat(message, args);
-        }
+        }   
 
         public void Debug(string message, params object[] args)
         {

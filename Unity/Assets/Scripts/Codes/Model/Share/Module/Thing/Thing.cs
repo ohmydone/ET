@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MongoDB.Bson.Serialization.Attributes;
 using UnityEngine;
 
 namespace ET
@@ -9,5 +10,8 @@ namespace ET
     {
         public int ConfigId;
         public int Count;
+        
+        [BsonIgnore]
+        public ThingConfig Config => ThingConfigCategory.Instance.Get(this.ConfigId);
     }
 }

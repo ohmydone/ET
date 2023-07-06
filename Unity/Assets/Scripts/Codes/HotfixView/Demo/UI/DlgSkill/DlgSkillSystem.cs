@@ -21,7 +21,7 @@ namespace ET
         public static void ShowWindow(this DlgSkill self, Entity contextData = null)
         {
             SpellComponent spellComponent = UnitComponent.Instance.My.GetComponent<CombatUnitComponent>().GetComponent<SpellComponent>();
-           var list = new List<SkillAbility>();
+             var list = new List<SkillAbility>();
             foreach (long id in spellComponent.Children.Keys)
             {
                 SkillAbility spell = spellComponent.GetChild<SkillAbility>(id);
@@ -34,8 +34,8 @@ namespace ET
 
         public static void ItemReFresh(this DlgSkill self,Transform arg1, int arg2)
         {
-            // Scroll_ItemSkil itemSkil = self.ScrollItemSkils[arg2].BindTrans(arg1);
-            // itemSkil.BindSkill(self.Spells[arg2]);
+            Scroll_ItemSkil itemSkil = self.ScrollItemSkils[arg2].BindTrans(arg1);
+            itemSkil.BindSkill("");
         }
 
         public static void HideWindow(this DlgSkill self)
@@ -43,4 +43,5 @@ namespace ET
             
         }
     }
+    
 }
