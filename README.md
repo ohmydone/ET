@@ -5,12 +5,16 @@
 2. 全新为AI实现的新的Fiber机制，Fiber有父子关系，Fiber由谁创建则由谁施放，安全可靠
 3. 全新的日志设计，消息流更加清晰
 4. 为AI设计的各种分析器，严格限制AI，让AI写出的代码可读可改
+5. 视频演示：  
+[游戏逻辑开发-Claude Code With ET1](https://www.bilibili.com/video/BV1ykujzcEvp/?vd_source=e55f8234b8f8039504cbf131082c93dd#reply268665744592)  
+[游戏逻辑开发-Claude Code With ET2](https://www.bilibili.com/video/BV15juAzrEeg?spm_id_from=333.788.recommend_more_video.0&vd_source=e55f8234b8f8039504cbf131082c93dd)
 
-自此，使用AI全闭环写前后端逻辑完全打通！！
-
-# ET类魔兽世界预制游戏与课程上架，已经录完52集
-WOW052-行为树编辑器-拖动节点.mp4
-WOW051-行为树编辑器复制粘贴改变.mp4    
+# ET类魔兽世界预制游戏与课程上架，已经录完55集
+WOW055-Claude Code With ET2.mp4  
+WOW054-Claude Code With ET1.mp4  
+WOW053-ET cursor使用入门.mp4  
+WOW052-行为树编辑器-拖动节点.mp4  
+WOW051-行为树编辑器复制粘贴改变.mp4  
 WOW050-行为树编辑器删除折叠.mp4    
 WOW049-行为树自动布局.mp4    
 WOW048-行为树编辑器创建节点.mp4    
