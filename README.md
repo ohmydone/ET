@@ -7,9 +7,11 @@
 4. 为AI设计的各种分析器，严格限制AI，让AI写出的代码可读可改
 5. 视频演示：  
 [游戏逻辑开发-Claude Code With ET1](https://www.bilibili.com/video/BV1ykujzcEvp/?vd_source=e55f8234b8f8039504cbf131082c93dd#reply268665744592)  
-[游戏逻辑开发-Claude Code With ET2](https://www.bilibili.com/video/BV15juAzrEeg?spm_id_from=333.788.recommend_more_video.0&vd_source=e55f8234b8f8039504cbf131082c93dd)
+[游戏逻辑开发-Claude Code With ET2](https://www.bilibili.com/video/BV15juAzrEeg?spm_id_from=333.788.recommend_more_video.0&vd_source=e55f8234b8f8039504cbf131082c93dd)  
+[新的Fiber设计](https://www.bilibili.com/video/BV1KntGzvEho/?vd_source=e55f8234b8f8039504cbf131082c93dd#reply271421069312)
 
-# ET类魔兽世界预制游戏与课程上架，已经录完55集
+# ET类魔兽世界预制游戏与课程上架，已经录完56集
+WOW056-New Fiber.mp4  
 WOW055-Claude Code With ET2.mp4  
 WOW054-Claude Code With ET1.mp4  
 WOW053-ET cursor使用入门.mp4  
